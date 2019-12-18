@@ -11,22 +11,33 @@ function setup()
 function draw()
 {
   
-  // draws P1's 
+  // draws P1's UI
   fill(255, 90, 90);
   rect(0, 600, 500, 400);
   
+  // draws P2's UI
   fill(90, 90, 255);
   rect(1350, 600, 500, 400);
   
-  
+  // draws P1's commands
+  /*
   fill(200, 0, 0);  
   text('Text Here', 20, 640);
+  */
   
+  // draws P2's commands
   fill(0, 0, 200);
   text('Text There', 1370, 640);
+  
+  fill(200, 0, 0);
+  for (var i = 0; i < numCommands; i++)
+  {
+      text('Text Here', 20, 640 + (i * textInterval));
+  }
+  
 }
 var startY = 650;
-var endY = 900;
+var endY = 950;
 var numCommands = 5;
 var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
