@@ -15,5 +15,7 @@ function draw()
   fill(200, 0, 0);
   textSize(32);
   textStyle(BOLD);
-  text('text', 20, 640);
+  text('Text Here', 20, 640);
+  fill(0, 0, 200);
+  text('Text There', 1370, 640);
 }
