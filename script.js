@@ -1,3 +1,9 @@
+// ---------- IDEAS ----------
+
+// make players take their turns AT THE SAME TIME! 
+// make the player choices invisible on the screen... aka rather than moving up and down with some selector, they just press 6 to do command 6
+
+
 // called at the beginning
 function setup()
 {
@@ -14,8 +20,12 @@ function draw()
   // draws stage
   fill("lime");
   rect(425, 400, 1000, 20);
-  fill("brown");
-  arc(1000, 500, 1000, 250, 0, PI);
+  fill("green");
+  arc(925, 420, 1000, 250, 0, PI);
+  fill("yellow");
+  rect(575, 250, 250, 20);
+  fill("red");
+  rect()
   
   // draws P1's UI
   fill(255, 90, 90);
