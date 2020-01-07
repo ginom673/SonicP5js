@@ -29,6 +29,10 @@ function draw()
   fill(0, 0, 200);
   text('Text There', 1370, 640);
   
+  // draws stage
+  fill("lime");
+  
+  
   fill(200, 0, 0);
   for (var i = 0; i < numCommands; i++)
   {
@@ -38,6 +42,6 @@ function draw()
 }
 var startY = 650;
 var endY = 950;
-var numCommands = 5;
+var numCommands = 6;
 var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
