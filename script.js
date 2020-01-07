@@ -23,9 +23,11 @@ function draw()
   fill("green");
   arc(925, 420, 1000, 250, 0, PI);
   fill("yellow");
-  rect(575, 250, 250, 20);
+  rect(575, 300, 250, 20);
   fill("red");
-  rect()
+  rect(800, 200, 250, 20);
+  fill("blue");
+  rect(1025, 300, 250, 20);
   
   // draws P1's UI
   fill(255, 90, 90);
