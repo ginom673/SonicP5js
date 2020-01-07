@@ -11,6 +11,12 @@ function setup()
 function draw()
 {
   
+  // draws stage
+  fill("lime");
+  rect(425, 400, 1000, 20);
+  fill("brown");
+  arc(1000, 500, 1000, 250, 0, PI);
+  
   // draws P1's UI
   fill(255, 90, 90);
   rect(0, 600, 500, 400);
@@ -28,9 +34,6 @@ function draw()
   // draws P2's commands
   fill(0, 0, 200);
   text('Text There', 1370, 640);
-  
-  // draws stage
-  fill("lime");
   
   
   fill(200, 0, 0);
