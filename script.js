@@ -11,6 +11,9 @@ var maxHP = 500;
 var currentHP1 = maxHP;
 var currentHP2 = maxHP;
 
+var HPBarLength = 500;
+var HPBarStartX = 40;
+
 
 // called at the beginning
 function setup()
@@ -41,11 +44,11 @@ function draw()
   
   // draws P1's health bar
   fill("lightgreen");
-  rect(40, 40, 500, 20);
+  rect(HPBarStartX, 40, HPBarLength, 20);
   
   // draws P2's health bar
   fill("lightgreen");
-  rect(1310, 40, 500, 20)
+  rect(1310, 40, HPBarLength, 20)
   
   // draw fighter
   image(fighterImg, g1x, g1y, 66, 82);
@@ -97,3 +100,15 @@ var g1y = 320;
 var g2x = 1300;
 var g2y = 320;
 
+function health() 
+{
+  
+  var healthPercent = 0.2;
+  
+  var damageBarLength = HPBarLength * (1 - healthPercent);
+  
+  var damageBarStartX = (HPBarStartX + HPBarLength) - damageBarLength;
+  
+  
+  
+}
