@@ -34,7 +34,7 @@ function draw()
   
   // draw fighter
   // GINO - test platform locations here!
-  image(fighterImg, p1x, p1y, 66, 82);
+  image(fighterImg, p3x, p3y, 66, 82);
   
   // draws P1's UI
   fill(255, 90, 90);
@@ -70,8 +70,14 @@ var textInterval = textBoxHeight / (numCommands - 1);
 
 
 // coordinates for the centers of the platforms
-
+// p1 is yellow, p2 is red, p3 is blue
 var p1x = 650;
 var p1y = 220;
-//var p2x = 
-
+var p2x = 875;
+var p2y = 120;
+var p3x = 1100;
+var p3y = 220;
+var g1x = 450;
+var g1y = 400;
+var g2x
+var g2y
