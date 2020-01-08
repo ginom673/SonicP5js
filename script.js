@@ -39,6 +39,14 @@ function draw()
   fill("blue");
   rect(1025, 300, 250, 20);
   
+  // draws P1's health bar
+  fill("lightgreen");
+  rect(40, 40, 500, 20);
+  
+  // draws P2's health bar
+  fill("lightgreen");
+  rect(1310, 40, 500, 20)
+  
   // draw fighter
   image(fighterImg, g1x, g1y, 66, 82);
   image(fighterImg2, g2x, g2y, 66, 82);
@@ -88,3 +96,4 @@ var g1x = 450;
 var g1y = 320;
 var g2x = 1300;
 var g2y = 320;
+
