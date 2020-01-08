@@ -107,11 +107,11 @@ var g2y = 320;
 function health1() 
 {
   
-  var healthPercent1 = 0.9;
+  var healthPercent1 = 0.1;
   
-  var damageBarLength = HPBarLength1 * (1 - healthPercent1);
+  var damageBarLength = HPBarLength * (1 - healthPercent1);
   
-  var damageBarStartX1 = (HPBarStartX + HPBarLength) - damageBarLength;
+  var damageBarStartX1 = (HPBarStartX1 + HPBarLength) - damageBarLength;
   
   fill("red");
   rect(damageBarStartX1, 40, damageBarLength, 20);
@@ -121,11 +121,11 @@ function health1()
 
 function health2()
 {
-  var healthPercent2 = 0.8;
+  var healthPercent2 = 0.1;
   
-  var damageBarLength = HPBarLength2 * (1 - healthPercent2);
+  var damageBarLength = HPBarLength * (1 - healthPercent2);
   
-  var damageBarStartX2 = (HPBarStartX + HPBarLength) - damageBarLength;
+  var damageBarStartX2 = (HPBarStartX2 + HPBarLength) - damageBarLength;
   
   fill("red");
   rect(damageBarStartX2, 40, damageBarLength, 20);
