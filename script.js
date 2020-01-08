@@ -5,6 +5,12 @@
 
 
 var fighterImg;
+var fighterImg2;
+
+var maxHP = 500;
+var currentHP1 = maxHP;
+var currentHP2 = maxHP;
+
 
 // called at the beginning
 function setup()
@@ -14,6 +20,7 @@ function setup()
   textStyle(BOLD);
   textSize(32);
   fighterImg = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Foldschool%20sonic%20removebg.png?v=1578441223317");
+  fighterImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Foldschool%20sonic%20removebg.png?v=1578441223317");
 }
 
 // constantly called to update the screen 
@@ -33,8 +40,8 @@ function draw()
   rect(1025, 300, 250, 20);
   
   // draw fighter
-  // GINO - test platform locations here!
-  image(fighterImg, p3x, p3y, 66, 82);
+  image(fighterImg, g1x, g1y, 66, 82);
+  image(fighterImg2, g2x, g2y, 66, 82);
   
   // draws P1's UI
   fill(255, 90, 90);
@@ -78,6 +85,6 @@ var p2y = 120;
 var p3x = 1100;
 var p3y = 220;
 var g1x = 450;
-var g1y = 400;
-var g2x
-var g2y
+var g1y = 320;
+var g2x = 1300;
+var g2y = 320;
