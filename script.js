@@ -31,9 +31,9 @@ function setup()
   var myObj = {};
   
   myObj['ground'] = [[450, 320], [1300, 320]];
-  myObj['yellow'] = [[650, 220], [20, 20]];
-  myObj['red'] = [[50, 50], [20, 20]];
-  myObj['blue'] = [[50, 50], [20, 20]];
+  myObj['yellow'] = [[580, 220], [950, 220]];
+  myObj['red'] = [[820, 120], [900, 120]];
+  myObj['blue'] = [[1000, 220], [100, 220]];
   console.log(myObj);
   
   
@@ -76,7 +76,7 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, p1x, p1y, 66, 82);
+  image(fighterImg, 950, 120, 66, 82);
   image(fighterImg2, player2X, player2Y, 66, 82);
   
   // draws P1's UI
