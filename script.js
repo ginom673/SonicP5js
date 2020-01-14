@@ -15,10 +15,20 @@ var HPBarLength = 500;
 var HPBarStartX1 = 40;
 var HPBarStartX2 = 1310;
 
+var playerTurn = "P1";
+
 
 // called at the beginning
 function setup()
 {
+  
+  
+  var myObj = {};
+  myObj['yellow'] = [50, 50];
+  myObj['ground'] = [-100, 100];
+  myObj['blue'] = [50, 50];
+  console.log(myObj);
+  
   createCanvas(1850,1000);
   background(0);
   textStyle(BOLD);
@@ -133,6 +143,14 @@ function health2()
 }
 
 function moveToGround() 
+{
+  if (playerTurn == "P1")
+  {
+    
+  }
+}
+
+function moveToYellow() 
 {
   
 }
