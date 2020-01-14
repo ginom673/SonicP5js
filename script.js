@@ -131,3 +131,8 @@ function health2()
   fill("red");
   rect(damageBarStartX2, 40, damageBarLength, 20);
 }
+
+function moveToGround() 
+{
+  
+}
