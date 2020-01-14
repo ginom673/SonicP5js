@@ -104,10 +104,11 @@ var g1y = 320;
 var g2x = 1300;
 var g2y = 320;
 
+// health bar for player 1
 function health1() 
 {
   
-  var healthPercent1 = 0.1;
+  var healthPercent1 = 1.0;
   
   var damageBarLength = HPBarLength * (1 - healthPercent1);
   
@@ -118,10 +119,10 @@ function health1()
   
   
 }
-
+// health bar for player 2
 function health2()
 {
-  var healthPercent2 = 0.1;
+  var healthPercent2 = 1.0;
   
   var damageBarLength = HPBarLength * (1 - healthPercent2);
   
