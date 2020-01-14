@@ -17,6 +17,11 @@ var HPBarStartX2 = 1310;
 
 var playerTurn = "P1";
 
+var player1X = g1x;
+var player1Y = g1y;
+var player2X = g2x;
+var player2Y = g2y;
+
 
 // called at the beginning
 function setup()
@@ -24,10 +29,16 @@ function setup()
   
   
   var myObj = {};
-  myObj['yellow'] = [50, 50];
-  myObj['ground'] = [-100, 100];
-  myObj['blue'] = [50, 50];
+  
+  myObj['ground'] = [[450, 320], [1300, 320]];
+  myObj['yellow'] = [[650, 220], [20, 20]];
+  myObj['red'] = [[50, 50], [20, 20]];
+  myObj['blue'] = [[50, 50], [20, 20]];
   console.log(myObj);
+  
+  
+  myObj['ground'][0] // [50, 250]
+  myObj['ground'][0][1] // 250
   
   createCanvas(1850,1000);
   background(0);
@@ -65,8 +76,8 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, g1x, g1y, 66, 82);
-  image(fighterImg2, g2x, g2y, 66, 82);
+  image(fighterImg, p1x, p1y, 66, 82);
+  image(fighterImg2, player2X, player2Y, 66, 82);
   
   // draws P1's UI
   fill(255, 90, 90);
