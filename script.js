@@ -164,6 +164,7 @@ function keyPressed()
 {
   
   var platformNames = platformXYs.keys(); // ['ground', 'yellow', 'blue', 'red'];
+  // platformNames[2]
   
   var myList = [50, 20, -10];
   console.log(myList[0])
@@ -175,9 +176,9 @@ function keyPressed()
   // i 
   // platformNames.length      4
   
-  for (var i = 0; ; )
+  for (var i = platformNames.length - 1; i > ; i--)
     {
-      console.log();
+      console.log(platformNames[i]);
     }
   
   
