@@ -29,7 +29,6 @@ var platformXYs = {};
 function setup()
 {
   
-  var platformXYs = {};
   
   platformXYs['ground'] = [[450, 320], [1300, 320]];
   platformXYs['yellow'] = [[580, 220], [950, 220]];
@@ -163,7 +162,8 @@ var currentPlatform = "ground";
 function keyPressed()
 {
   
-  var platformNames = platformXYs.keys(); // ['ground', 'yellow', 'blue', 'red'];
+  
+  var platformNames = Object.keys(platformXYs); // ['ground', 'yellow', 'blue', 'red'];
   // platformNames[2]
   
   var myList = [50, 20, -10];
@@ -176,11 +176,17 @@ function keyPressed()
   // i 
   // platformNames.length      4
   
-  for (var i = platformNames.length - 1; i > ; i--)
+  /*
+  for (var i = platformNames.length - 1; i > -1; i--)
     {
       console.log(platformNames[i]);
     }
+  */
   
+  for (var i = 0; i < platformNames.length; i++)
+    {
+      console.log(platformNames[i]);
+    }
   
   if (keyCode === RIGHT_ARROW)
     {
