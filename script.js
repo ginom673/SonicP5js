@@ -163,9 +163,22 @@ var currentPlatform = "ground";
 function keyPressed()
 {
   
-  var platformNames = platformXYs.keys();
+  var platformNames = platformXYs.keys(); // ['ground', 'yellow', 'blue', 'red'];
   
-  for (var )
+  var myList = [50, 20, -10];
+  console.log(myList[0])
+  
+  // for loop has three main parts:
+  // for (index initialization; condition statement; update statement)
+  
+  
+  // i 
+  // platformNames.length      4
+  
+  for (var i = 0; ; )
+    {
+      console.log();
+    }
   
   
   if (keyCode === RIGHT_ARROW)
