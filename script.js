@@ -22,23 +22,23 @@ var player1Y = g1y;
 var player2X = g2x;
 var player2Y = g2y;
 
+// objects for the ground and platforms
+var platformXYs = {};
 
 // called at the beginning
 function setup()
 {
   
+  var platformXYs = {};
   
-  var myObj = {};
+  platformXYs['ground'] = [[450, 320], [1300, 320]];
+  platformXYs['yellow'] = [[580, 220], [950, 220]];
+  platformXYs['red'] = [[820, 120], [900, 120]];
+  platformXYs['blue'] = [[1040, 220], [1180, 220]];
   
-  myObj['ground'] = [[450, 320], [1300, 320]];
-  myObj['yellow'] = [[580, 220], [950, 220]];
-  myObj['red'] = [[820, 120], [900, 120]];
-  myObj['blue'] = [[1000, 220], [100, 220]];
-  console.log(myObj);
-  
-  
-  myObj['ground'][0] // [50, 250]
-  myObj['ground'][0][1] // 250
+  //console.log(myObj);
+  //myObj['ground'][0] // [50, 250]
+  //myObj['ground'][0][1] // 250
   
   createCanvas(1850,1000);
   background(0);
@@ -76,7 +76,7 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, 950, 120, 66, 82);
+  image(fighterImg, 1180, 220, 66, 82);
   image(fighterImg2, player2X, player2Y, 66, 82);
   
   // draws P1's UI
@@ -153,15 +153,23 @@ function health2()
   rect(damageBarStartX2, 40, damageBarLength, 20);
 }
 
-function moveToGround() 
-{
-  if (playerTurn == "P1")
-  {
-    
-  }
-}
-
-function moveToYellow() 
+function moveTo() 
 {
   
+}
+
+var currentPlatform = "ground";
+
+function keyPressed()
+{
+  
+  var platformNames = platformXYs.keys();
+  
+  for (var )
+  
+  
+  if (keyCode === RIGHT_ARROW)
+    {
+      moveTo();
+    }
 }
