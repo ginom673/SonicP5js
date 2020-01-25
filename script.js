@@ -2,7 +2,8 @@
 
 // make players take their turns AT THE SAME TIME! 
 // make the player choices invisible on the screen... aka rather than moving up and down with some selector, they just press 6 to do command 6
-
+// make gif animated
+// write some code which allows the players to be repositioned with a button press or something for debugging purposes
 
 var fighterImg;
 var fighterImg2;
@@ -17,27 +18,31 @@ var HPBarStartX2 = 1310;
 
 var playerTurn = "P1";
 
-var player1X = platformXYs["ground"][0];
-var player1Y = platformXYs["ground"][1];
-var player2X = platformXYs["ground"];
-var player2Y = g2y;
+var platformXYs = {};
+
+// platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
+// platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
+// platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
+// platformXYs.platformName[3] gives the y coordinate for player 2 for this platform
+//platformXYs['ground'] = [450, 293, 1280, 293];
+platformXYs.ground = [450, 293, 1280, 293];
+platformXYs.yellow = [580, 193, 710, 193];
+platformXYs.red = [800, 93, 920, 93];
+platformXYs.blue = [1020, 193, 1160, 193];
+
+var player1X = platformXYs.ground[0];
+var player1Y = platformXYs.ground[1];
+var player2X = platformXYs.ground[2];
+var player2Y = platformXYs.ground[3];
+
+//for (var i = 0; i < myList.length; i++)
+
 
 // objects for the ground and platforms
-var platformXYs = {};
 
 // called at the beginning
 function setup()
-{
-  
-  // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
-  // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
-  // platformXYs.platformName[2] gives t
-  // platformXYs.platformName[3] gives ...
-  //platformXYs['ground'] = [450, 293, 1280, 293];
-  platformXYs.ground = [450, 293, 1280, 293];
-  platformXYs['yellow'] = [[580, 193], [710, 193]];
-  platformXYs['red'] = [[800, 93], [920, 93]];
-  platformXYs['blue'] = [[1020, 193], [1160, 193]];
+{  
   
   //console.log(myObj);
   //myObj['ground'][0] // [50, 250]
@@ -106,8 +111,8 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, 1020, 193, 128, 128);
-  image(fighterImg2, 1160, 193, 128, 128);
+  image(fighterImg, player1X, player1Y, 128, 128);
+  image(fighterImg2, player2X, player2Y, 128, 128);
   
   // draws P1's UI
   fill(255, 90, 90);
