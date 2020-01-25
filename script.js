@@ -17,7 +17,7 @@ var HPBarStartX2 = 1310;
 
 var playerTurn = "P1";
 
-var player1X = g1x;
+var player1X = platformXYs["ground"][0];
 var player1Y = g1y;
 var player2X = g2x;
 var player2Y = g2y;
@@ -30,10 +30,10 @@ function setup()
 {
   
   
-  platformXYs['ground'] = [[450, 293], [1300, 293]];
-  platformXYs['yellow'] = [[580, 220], [950, 220]];
-  platformXYs['red'] = [[820, 120], [900, 120]];
-  platformXYs['blue'] = [[1040, 220], [1180, 220]];
+  platformXYs['ground'] = [[450, 293], [1280, 293]];
+  platformXYs['yellow'] = [[580, 193], [710, 193]];
+  platformXYs['red'] = [[800, 93], [920, 93]];
+  platformXYs['blue'] = [[1020, 193], [1160, 193]];
   
   //console.log(myObj);
   //myObj['ground'][0] // [50, 250]
@@ -76,8 +76,8 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, 450, 293, 128, 128);
-  image(fighterImg2, 1300, 293, 128, 128);
+  image(fighterImg, 1020, 193, 128, 128);
+  image(fighterImg2, 1160, 193, 128, 128);
   
   // draws P1's UI
   fill(255, 90, 90);
@@ -114,6 +114,7 @@ var textInterval = textBoxHeight / (numCommands - 1);
 
 // coordinates for the centers of the platforms
 // p1 is yellow, p2 is red, p3 is blue
+/*
 var p1x = 650;
 var p1y = 220;
 var p2x = 875;
@@ -124,7 +125,7 @@ var g1x = 450;
 var g1y = 320;
 var g2x = 1300;
 var g2y = 320;
-
+*/
 // health bar for player 1
 function health1() 
 {
