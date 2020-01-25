@@ -18,8 +18,8 @@ var HPBarStartX2 = 1310;
 var playerTurn = "P1";
 
 var player1X = platformXYs["ground"][0];
-var player1Y = g1y;
-var player2X = g2x;
+var player1Y = platformXYs["ground"][1];
+var player2X = platformXYs["ground"];
 var player2Y = g2y;
 
 // objects for the ground and platforms
@@ -29,8 +29,12 @@ var platformXYs = {};
 function setup()
 {
   
-  
-  platformXYs['ground'] = [[450, 293], [1280, 293]];
+  // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
+  // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
+  // platformXYs.platformName[2] gives t
+  // platformXYs.platformName[3] gives ...
+  //platformXYs['ground'] = [450, 293, 1280, 293];
+  platformXYs.ground = [450, 293, 1280, 293];
   platformXYs['yellow'] = [[580, 193], [710, 193]];
   platformXYs['red'] = [[800, 93], [920, 93]];
   platformXYs['blue'] = [[1020, 193], [1160, 193]];
@@ -46,6 +50,32 @@ function setup()
   fighterImg = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
   fighterImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
 }
+
+
+// EXAMPLE OBJECT FUNCTIONS for fighters that we could maybe use later
+/*
+function createFighter(x, y)
+{
+  var fighter = {};
+  fighter.x = x;
+  fighter.y = y;
+  fighter.hp = 500;
+  fighter.max_hp = 500;
+  //fighter.image = loadImage("blah blah blah");
+  fighter.color = "red";
+}
+
+function recolorFighter(fighter, colorName)
+{
+  fighter.color = colorName;
+}
+
+function damage(fighter, amount)
+{
+  fighter.hp = fighter.hp = amount;
+  // include logic to check if dead or something, hp <= 0
+}
+*/
 
 // constantly called to update the screen 
 function draw()
