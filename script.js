@@ -30,7 +30,7 @@ function setup()
 {
   
   
-  platformXYs['ground'] = [[450, 320], [1300, 320]];
+  platformXYs['ground'] = [[450, 293], [1300, 293]];
   platformXYs['yellow'] = [[580, 220], [950, 220]];
   platformXYs['red'] = [[820, 120], [900, 120]];
   platformXYs['blue'] = [[1040, 220], [1180, 220]];
@@ -43,8 +43,8 @@ function setup()
   background(0);
   textStyle(BOLD);
   textSize(32);
-  fighterImg = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Foldschool%20sonic%20removebg.png?v=1578441223317");
-  fighterImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Foldschool%20sonic%20removebg.png?v=1578441223317");
+  fighterImg = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
+  fighterImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
 }
 
 // constantly called to update the screen 
@@ -52,6 +52,7 @@ function draw()
 {
   
   // draws stage
+  background(100, 50, 120);
   fill("lime");
   rect(425, 400, 1000, 20);
   fill("green");
@@ -75,8 +76,8 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, 1180, 220, 66, 82);
-  image(fighterImg2, player2X, player2Y, 66, 82);
+  image(fighterImg, 450, 293, 128, 128);
+  image(fighterImg2, 1300, 293, 128, 128);
   
   // draws P1's UI
   fill(255, 90, 90);
