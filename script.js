@@ -39,6 +39,7 @@ var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
 var player2Y = platformXYs.ground[3];
 
+
 //for (var i = 0; i < myList.length; i++)
 
 
@@ -49,6 +50,10 @@ function setup()
 {  
   
   //console.log(myObj);
+  
+  // myObj['property']
+  // myObj.property 
+  
   //myObj['ground'][0] // [50, 250]
   //myObj['ground'][0][1] // 250
   
@@ -58,6 +63,8 @@ function setup()
   textSize(32);
   loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
   loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
+  createImg1 = createImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
+  console.log(createImg1);
 }
 
 
@@ -115,8 +122,10 @@ function draw()
   health2();
   
   // draw fighter
-  image(fighterImg, player1X, player1Y, 128, 128);
-  image(fighterImg2, player2X, player2Y, 128, 128);
+  image(loadImg1, player1X, player1Y, 128, 128);
+  image(loadImg2, player2X, player2Y, 128, 128);
+  //image(createImg1, player1X, player1Y, 128, 128);
+  createImg1.set(player1X, player1Y, 'red');
   
   // draws P1's UI
   fill(255, 90, 90);
