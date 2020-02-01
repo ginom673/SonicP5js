@@ -8,8 +8,8 @@
 // however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
 // use this link to hopefully animate the gifs -- https://github.com/antiboredom/p5.gif.js/tree/master
 
-var loadImg1;
-var loadImg2;
+//var loadImg1;
+//var loadImg2;
 var createImg1;
 var createImg2;
 
@@ -123,11 +123,13 @@ function draw()
   health2();
   
   // draw fighter
-  image(loadImg1, player1X, player1Y, 128, 128);
-  image(loadImg2, player2X, player2Y, 128, 128);
-  image(createImg1, player1X, player1Y, 64, 64);
-  createImg1.position(player1X, player1Y);
+  //image(loadImg1, player1X, player1Y, 128, 128);
+  //image(loadImg2, player2X, player2Y, 128, 128);
+  //image(createImg1, player1X, player1Y, 128, 128);
+  //image(createImg2, player2X, player2Y, 64, 64);
   
+  createImg1.position(player1X, player1Y);
+  createImg2.position(player2X, player2Y);
   
   // draws P1's UI
   fill(255, 90, 90);
