@@ -125,7 +125,7 @@ function draw()
   image(loadImg1, player1X, player1Y, 128, 128);
   image(loadImg2, player2X, player2Y, 128, 128);
   //image(createImg1, player1X, player1Y, 128, 128);
-  createImg1.set(player1X, player1Y, 'red');
+  createImg1.position(player1X, player1Y);
   
   // draws P1's UI
   fill(255, 90, 90);
