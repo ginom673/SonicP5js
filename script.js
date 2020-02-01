@@ -6,6 +6,7 @@
 // write some code which allows the players to be repositioned with a button press or something for debugging purposes
 // if we reposition the gif, it may restart... minor concern though
 // however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
+// use this link to hopefully animate the gifs -- https://github.com/antiboredom/p5.gif.js/tree/master
 
 var loadImg1;
 var loadImg2;
@@ -63,8 +64,8 @@ function setup()
   textSize(32);
   loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
   loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
-  createImg1 = createImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
-  console.log(createImg1);
+  /*createImg1 = createImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
+  console.log(createImg1); */
 }
 
 
@@ -125,7 +126,7 @@ function draw()
   image(loadImg1, player1X, player1Y, 128, 128);
   image(loadImg2, player2X, player2Y, 128, 128);
   //image(createImg1, player1X, player1Y, 128, 128);
-  createImg1.position(player1X, player1Y);
+  //createImg1.position(player1X, player1Y);
   
   // draws P1's UI
   fill(255, 90, 90);
