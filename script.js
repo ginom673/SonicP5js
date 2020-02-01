@@ -4,9 +4,13 @@
 // make the player choices invisible on the screen... aka rather than moving up and down with some selector, they just press 6 to do command 6
 // make gif animated
 // write some code which allows the players to be repositioned with a button press or something for debugging purposes
+// if we reposition the gif, it may restart... minor concern though
+// however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
 
-var fighterImg;
-var fighterImg2;
+var loadImg1;
+var loadImg2;
+var createImg1;
+var createImg2;
 
 var maxHP = 500;
 var currentHP1 = maxHP;
@@ -52,8 +56,8 @@ function setup()
   background(0);
   textStyle(BOLD);
   textSize(32);
-  fighterImg = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
-  fighterImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
+  loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
+  loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
 }
 
 
