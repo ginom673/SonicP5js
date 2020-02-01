@@ -2,11 +2,9 @@
 
 // make players take their turns AT THE SAME TIME! 
 // make the player choices invisible on the screen... aka rather than moving up and down with some selector, they just press 6 to do command 6
-// make gif animated
 // write some code which allows the players to be repositioned with a button press or something for debugging purposes
 // if we reposition the gif, it may restart... minor concern though
 // however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
-// use this link to hopefully animate the gifs -- https://github.com/antiboredom/p5.gif.js/tree/master
 
 //var loadImg1;
 //var loadImg2;
