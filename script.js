@@ -30,10 +30,10 @@ var platformXYs = {};
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
 // platformXYs.platformName[3] gives the y coordinate for player 2 for this platform
 //platformXYs['ground'] = [450, 293, 1280, 293];
-platformXYs.ground = [450, 293, 1280, 293];
-platformXYs.yellow = [580, 193, 710, 193];
-platformXYs.red = [800, 93, 920, 93];
-platformXYs.blue = [1020, 193, 1160, 193];
+platformXYs.ground = [450, 325, 1360, 325];
+platformXYs.yellow = [580, 225, 710, 225];
+platformXYs.red = [800, 125, 920, 125];
+platformXYs.blue = [1020, 225, 1160, 225];
 
 var player1X = platformXYs.ground[0];
 var player1Y = platformXYs.ground[1];
@@ -62,10 +62,10 @@ function setup()
   background(0);
   textStyle(BOLD);
   textSize(32);
-  loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
-  loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
-  createImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
-  createImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
+  //loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
+  //loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
+  createImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP1_Idle.gif?v=1580578684764");
+  createImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
 }
 
 
