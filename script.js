@@ -1,3 +1,7 @@
+// ---------- NOTES ----------
+// it seems that the image position represents the bottom-left corner of the image
+
+
 // ---------- IDEAS ----------
 
 // make players take their turns AT THE SAME TIME! 
