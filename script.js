@@ -6,8 +6,11 @@
 // prep is frames 1-6 (6 frames)
 // jump is frames 7-16 (10 frames)
 // land is frames 17-21 (5 frames)
-// if we assume the peak of our jump is horizontally halfway between the source and destination,
+// we assume the peak of our jump is horizontally halfway between the source and destination,
 // and that the peak of our jump is 50% of dy above the highest point
+
+// with these numbers, this means our jump should take 10/13 of a second
+// if we want half the jump to be going up and half to be going down, each half takes 10/26 of a second
 
 
 // ---------- IDEAS ----------
@@ -22,6 +25,9 @@
 //var loadImg2;
 var createImg1;
 var createImg2;
+
+var jumpImg1;
+var jumpImg2;
 
 var maxHP = 500;
 var currentHP1 = maxHP;
@@ -78,6 +84,10 @@ function setup()
   //loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
   createImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP1_Idle.gif?v=1580578684764");
   createImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
+  
+  jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
+  jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
+  
 }
 
 
@@ -105,6 +115,12 @@ function damage(fighter, amount)
   // include logic to check if dead or something, hp <= 0
 }
 */
+
+function jump()
+{
+  // here do createImg1.remove()
+  // and then position jumpImg1 in the right place
+}
 
 // constantly called to update the screen 
 function draw()
@@ -226,44 +242,19 @@ function health2()
   rect(damageBarStartX2, 40, damageBarLength, 20);
 }
 
-function moveTo() 
-{
-  
-}
-
 var currentPlatform = "ground";
 
 function keyPressed()
 {
   
+  // console.log(keyCode);
+  // the above line of code would give the ID of the key just pressed
   
-  var platformNames = Object.keys(platformXYs); // ['ground', 'yellow', 'blue', 'red'];
-  // platformNames[2]
+  // if they press "j"
+  if(keyCode == 74)
+  {
+    jump();
+  }
   
-  var myList = [50, 20, -10];
-  console.log(myList[0])
-  
-  // for loop has three main parts:
-  // for (index initialization; condition statement; update statement)
-  
-  
-  // i 
-  // platformNames.length      4
-  
-  /*
-  for (var i = platformNames.length - 1; i > -1; i--)
-    {
-      console.log(platformNames[i]);
-    }
-  */
-  
-  for (var i = 0; i < platformNames.length; i++)
-    {
-      console.log(platformNames[i]);
-    }
-  
-  if (keyCode === RIGHT_ARROW)
-    {
-      moveTo();
-    }
 }
+
