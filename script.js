@@ -33,6 +33,8 @@ platformXYs.yellow = [580, 225, 710, 225];
 platformXYs.red = [800, 125, 920, 125];
 platformXYs.blue = [1020, 225, 1160, 225];
 
+// the game sets the sprites position to (450, 325)
+
 var player1X = platformXYs.ground[0];
 var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
@@ -161,6 +163,14 @@ var numCommands = 6;
 var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
 
+// called whenever we click anywhere in the game in order to log its coordinates
+function reportClick()
+{
+  var x = event.clientX;
+  var y = event.clientY; 
+  var coor = "Click @ (" + x + ", " + y + ")";
+  console.log(coor);
+}
 
 // coordinates for the centers of the platforms
 // p1 is yellow, p2 is red, p3 is blue
