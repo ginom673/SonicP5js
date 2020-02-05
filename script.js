@@ -1,6 +1,14 @@
 // ---------- NOTES ----------
 // it seems that the image position represents the bottom-left corner of the image
 
+// ANIMATION
+// gif is 13 FPS
+// prep is frames 1-6 (6 frames)
+// jump is frames 7-16 (10 frames)
+// land is frames 17-21 (5 frames)
+// if we assume the peak of our jump is horizontally halfway between the source and destination,
+// and that the peak of our jump is 50% of dy above the highest point
+
 
 // ---------- IDEAS ----------
 
