@@ -15,6 +15,7 @@
 // FIND AND REPLACE ALL
 // in glitch.com you can find and replace text using CTRL+ALT+F
 
+// for some reason, the jump animation plays in the middle of when you jump (if you get lucky)
 
 // ---------- IDEAS ----------
 
@@ -46,6 +47,10 @@ var platformXYs = {};
 
 var p1Jumping = false;
 var p2Jumping = false;
+
+var gameFPS = 13;
+var gameSPF = 1/gameFPS;
+var jumpAnimLength = 21;
 
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
@@ -164,7 +169,7 @@ function draw()
 {
   
   // draws stage
-  background(100, 50, 120);
+  background(100, 50, 180);
   fill("lime");
   rect(425, 400, 1000, 20);
   fill("green");
