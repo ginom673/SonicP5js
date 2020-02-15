@@ -87,7 +87,14 @@ function setup()
   
   jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
   jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
+  jumpImg1.remove();
+  jumpImg2.remove();
   
+}
+
+function createJumpImg1()
+{
+  jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
 }
 
 
@@ -124,8 +131,8 @@ function jump()
   jumpImg1.position(player1X, player1Y);
   setTimeout(function(){
     jumpImg1.remove();
+    createImg1.position(player1X, player1Y);
   }, (21/13*1000));
-  createImg1.position(player1X, player1Y);
 }
 
 // constantly called to update the screen 
