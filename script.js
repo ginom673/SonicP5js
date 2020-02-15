@@ -161,7 +161,7 @@ function jump()
     p1Jumping = false;
     idleImg1.position(player1X, player1Y);
   }, (21/13*1000));
-  
+  //setInterval
 }
 
 // constantly called to update the screen 
@@ -169,7 +169,7 @@ function draw()
 {
   
   // draws stage
-  background(100, 50, 180);
+  background(90, 70, 170);
   fill("lime");
   rect(425, 400, 1000, 20);
   fill("green");
