@@ -122,6 +122,10 @@ function jump()
   // and then position jumpImg1 in the right place
   createImg1.remove()
   jumpImg1.position(player1X, player1Y);
+  setTimeout(function(){
+    jumpImg1.remove();
+  }, (21/13*1000));
+  createImg1.position(player1X, player1Y);
 }
 
 // constantly called to update the screen 
