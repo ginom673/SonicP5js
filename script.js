@@ -95,6 +95,7 @@ function setup()
 function createJumpImg1()
 {
   jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
+  jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
 }
 
 
@@ -128,6 +129,7 @@ function jump()
   // here do createImg1.remove()
   // and then position jumpImg1 in the right place
   createImg1.remove()
+  createJumpImg1();
   jumpImg1.position(player1X, player1Y);
   setTimeout(function(){
     jumpImg1.remove();
