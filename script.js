@@ -12,6 +12,9 @@
 // with these numbers, this means our jump should take 10/13 of a second
 // if we want half the jump to be going up and half to be going down, each half takes 10/26 of a second
 
+// FIND AND REPLACE ALL
+// in glitch.com you can find and replace text using CTRL+ALT+F
+
 
 // ---------- IDEAS ----------
 
@@ -23,8 +26,8 @@
 
 //var loadImg1;
 //var loadImg2;
-var createImg1;
-var createImg2;
+var idleImg1;
+var idleImg2;
 
 var jumpImg1;
 var jumpImg2;
@@ -82,8 +85,8 @@ function setup()
   textSize(32);
   //loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
   //loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
-  createImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP1_Idle.gif?v=1580578684764");
-  createImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
+  idleImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP1_Idle.gif?v=1580578684764");
+  idleImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
   
   jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
   jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
@@ -95,10 +98,17 @@ function setup()
 function createJumpImg1()
 {
   jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
+}
+
+function createJumpImg2()
+{
   jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
 }
 
-
+function createIdleImg1()
+{
+  
+}
 // EXAMPLE OBJECT FUNCTIONS for fighters that we could maybe use later
 /*
 function createFighter(x, y)
@@ -126,14 +136,14 @@ function damage(fighter, amount)
 
 function jump()
 {
-  // here do createImg1.remove()
+  // here do idleImg1.remove()
   // and then position jumpImg1 in the right place
-  createImg1.remove()
+  idleImg1.remove()
   createJumpImg1();
   jumpImg1.position(player1X, player1Y);
   setTimeout(function(){
     jumpImg1.remove();
-    createImg1.position(player1X, player1Y);
+    idleImg1.position(player1X, player1Y);
   }, (21/13*1000));
 }
 
@@ -168,11 +178,11 @@ function draw()
   // draw fighter
   //image(loadImg1, player1X, player1Y, 128, 128);
   //image(loadImg2, player2X, player2Y, 128, 128);
-  //image(createImg1, player1X, player1Y, 128, 128);
-  //image(createImg2, player2X, player2Y, 64, 64);
+  //image(idleImg1, player1X, player1Y, 128, 128);
+  //image(idleImg2, player2X, player2Y, 64, 64);
   
-  createImg1.position(player1X, player1Y);
-  createImg2.position(player2X, player2Y);
+  idleImg1.position(player1X, player1Y);
+  idleImg2.position(player2X, player2Y);
   
   // draws P1's UI
   fill(255, 90, 90);
