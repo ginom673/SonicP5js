@@ -288,7 +288,7 @@ function keyPressed()
   // the above line of code would give the ID of the key just pressed
   
   // if they press "j"
-  if(keyCode == 74 &&)
+  if(keyCode == 74 && !p1Jumping)
   {
     jump();
   }
