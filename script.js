@@ -120,6 +120,8 @@ function jump()
 {
   // here do createImg1.remove()
   // and then position jumpImg1 in the right place
+  createImg1.remove()
+  jumpImg1.position(player1X, player1Y);
 }
 
 // constantly called to update the screen 
