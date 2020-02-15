@@ -44,6 +44,9 @@ var playerTurn = "P1";
 
 var platformXYs = {};
 
+var p1Jumping = false;
+var p2Jumping = false;
+
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
@@ -107,7 +110,12 @@ function createJumpImg2()
 
 function createIdleImg1()
 {
-  
+  idleImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP1_Idle.gif?v=1580578684764");
+}
+
+function createIdleImg2()
+{
+  idleImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
 }
 // EXAMPLE OBJECT FUNCTIONS for fighters that we could maybe use later
 /*
@@ -141,10 +149,14 @@ function jump()
   idleImg1.remove()
   createJumpImg1();
   jumpImg1.position(player1X, player1Y);
+  p1Jumping = true;
   setTimeout(function(){
     jumpImg1.remove();
+    createIdleImg1();
+    p1Jumping = false;
     idleImg1.position(player1X, player1Y);
   }, (21/13*1000));
+  
 }
 
 // constantly called to update the screen 
@@ -276,7 +288,7 @@ function keyPressed()
   // the above line of code would give the ID of the key just pressed
   
   // if they press "j"
-  if(keyCode == 74)
+  if(keyCode == 74 &&)
   {
     jump();
   }
