@@ -3,9 +3,12 @@
 body {
   font-family: helvetica, arial, sans-serif;
   margin: 2em;
+  background-color: #5a46aa;
 }
 
 h1 {
   font-style: italic;
   color: #373fff;
 }
+
+//background(90, 70, 170);

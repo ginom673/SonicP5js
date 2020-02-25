@@ -101,6 +101,9 @@ function setup()
   jumpImg1.remove();
   jumpImg2.remove();
   
+  
+  https://stackoverflow.com/questions/21093570/force-page-zoom-at-100-with-js
+  
 }
 
 function createJumpImg1()
