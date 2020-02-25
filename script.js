@@ -213,19 +213,20 @@ function draw()
   idleImg2.position(player2X, player2Y);
   
   // draws P1's UI
-  fill(255, 90, 90);
+  fill(255, 90, 90);  
   rect(0, 600, 500, 400);
   
   // draws P2's UI
   fill(90, 90, 255);
   rect(1350, 600, 500, 400);
-  
-  // draws Middle UI
-  fill(100, 0, 100);
-  rect(500, 600, 860, 400);
+
+  // draw middle UI box
+  fill(50, 0, 50);
+  rect(500, 600, 850, 400);
   
   // draws P1's commands
   fill(200, 0, 0);
+  textSize(32);
   for (var i = 0; i < numCommands; i++)
   {
       text('Text Here', 20, 640 + (i * textInterval));
@@ -233,11 +234,19 @@ function draw()
     
   // draws P2's commands
   fill(0, 0, 200);
-  //text('Text There', 1370, 640);
+  textSize(32);
   for (var i = 0; i < numCommands; i++)
   {
       text('Text There', 1370, 640 + (i * textInterval));
   }
+  
+  // draws Middle UI text
+  textSize(130);
+  midUIMidX = (500 + 1350) / 2;
+  fill(255, 255, 0);
+  text("10", midUIMidX - 70, 850);
+  textSize(32);
+  
   
   
 }
