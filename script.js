@@ -101,8 +101,15 @@ function setup()
   jumpImg1.remove();
   jumpImg2.remove();
   
-  
-  https://stackoverflow.com/questions/21093570/force-page-zoom-at-100-with-js
+  // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
+  // NOTE: this does not work!
+  //https://stackoverflow.com/questions/21093570/force-page-zoom-at-100-with-js
+  /*
+  var scale = 'scale(0.9)';
+  document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+  document.body.style.msTransform =   scale;       // IE 9
+  document.body.style.transform = scale;     // General
+  */
   
 }
 
@@ -192,6 +199,7 @@ function draw()
   fill("lightgreen");
   rect(HPBarStartX2, 40, HPBarLength, 20);
   
+  
   health1();
   health2();
   
@@ -212,22 +220,25 @@ function draw()
   fill(90, 90, 255);
   rect(1350, 600, 500, 400);
   
+  // draws Middle UI
+  fill(100, 0, 100);
+  rect(500, 600, 860, 400);
+  
   // draws P1's commands
-  /*
-  fill(200, 0, 0);  
-  text('Text Here', 20, 640);
-  */
-  
-  // draws P2's commands
-  fill(0, 0, 200);
-  text('Text There', 1370, 640);
-  
-  
   fill(200, 0, 0);
   for (var i = 0; i < numCommands; i++)
   {
       text('Text Here', 20, 640 + (i * textInterval));
   }
+    
+  // draws P2's commands
+  fill(0, 0, 200);
+  //text('Text There', 1370, 640);
+  for (var i = 0; i < numCommands; i++)
+  {
+      text('Text There', 1370, 640 + (i * textInterval));
+  }
+  
   
 }
 var startY = 650;
