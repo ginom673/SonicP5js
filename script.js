@@ -111,6 +111,8 @@ function setup()
   document.body.style.transform = scale;     // General
   */
   
+  setInterval(updateClock(), 1000);
+  
 }
 
 function createJumpImg1()
@@ -170,8 +172,13 @@ function jump()
     createIdleImg1();
     p1Jumping = false;
     idleImg1.position(player1X, player1Y);
-  }, (21/13*1000));
+  }, (21/13)*1000);
   //setInterval
+}
+
+function updateClock()
+{
+  
 }
 
 // constantly called to update the screen 
@@ -242,11 +249,13 @@ function draw()
   
   // draws Middle UI text
   textSize(130);
-  midUIMidX = (500 + 1350) / 2;
+  var midUIMidX = (500 + 1350) / 2;
   fill(255, 255, 0);
   text("10", midUIMidX - 70, 850);
   textSize(32);
-  
+  fill(255, 255, 255);
+  text("You have...", midUIMidX - 70, 740);
+  text("seconds to make your command decision!", midUIMidX - 310, 900);
   
   
 }
