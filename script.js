@@ -52,6 +52,8 @@ var gameFPS = 13;
 var gameSPF = 1/gameFPS;
 var jumpAnimLength = 21;
 
+var secondsLeft = 10;
+
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
@@ -111,7 +113,7 @@ function setup()
   document.body.style.transform = scale;     // General
   */
   
-  setInterval(updateClock(), 1000);
+  setInterval(updateClock, 1000);
   
 }
 
@@ -178,7 +180,7 @@ function jump()
 
 function updateClock()
 {
-  
+  secondsLeft = secondsLeft - 1;
 }
 
 // constantly called to update the screen 
@@ -250,8 +252,18 @@ function draw()
   // draws Middle UI text
   textSize(130);
   var midUIMidX = (500 + 1350) / 2;
-  fill(255, 255, 0);
-  text("10", midUIMidX - 70, 850);
+  
+  if (secondsLeft <= 5)
+    {
+      fill(255, 100, 100);
+    }
+  else
+    {
+      fill(255, 255, 0);  
+    }
+  
+  //
+  text(secondsLeft, midUIMidX - 70, 850);
   textSize(32);
   fill(255, 255, 255);
   text("You have...", midUIMidX - 70, 740);
