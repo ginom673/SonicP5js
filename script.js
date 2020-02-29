@@ -331,15 +331,13 @@ function draw()
       text(secondsLeft, midUIMidX - alignSeconds, 850);
     }
   
-  if(secondsLeft <= 0)
-    {
-      
-    }
-  
   textSize(32);
   fill(255, 255, 255);
   text("You have...", midUIMidX - 70, 740);
   text("seconds to make your decision!", midUIMidX - 240, 900);
+  text("*placehold*", 520, 650);
+  textAlign(RIGHT);
+  text("*placehold*", midUIMidX, 650)
   
   
 }
