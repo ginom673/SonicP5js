@@ -254,15 +254,6 @@ function draw()
   textSize(130);
   var midUIMidX = (500 + 1350) / 2;
   
-  if(secondsLeft == 9)
-    {
-      alignSeconds = alignSeconds - 70;
-    }
-  else
-    {
-      alignSeconds = 70;
-    }
-  
   if (secondsLeft <= 5)
     {
       fill(255, 100, 100);
@@ -272,8 +263,17 @@ function draw()
       fill(255, 255, 0);  
     }
   
-  //
-  text(secondsLeft, midUIMidX - alignSeconds, 850);
+  if(secondsLeft <= 9)
+    {
+      text(secondsLeft, midUIMidX - alignSeconds + 30, 850);
+    }
+  else
+    {
+      text(secondsLeft, midUIMidX - alignSeconds, 850);
+    }
+  
+  if
+  
   textSize(32);
   fill(255, 255, 255);
   text("You have...", midUIMidX - 70, 740);
