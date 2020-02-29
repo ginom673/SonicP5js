@@ -284,27 +284,28 @@ function draw()
   {
       if(i == 0)
         {
-          text('1', 1830, 640 + (i * textInterval));
+          text('7', 1830, 640 + (i * textInterval));
         }
     else if(i == 1)
         {
-          text('1', 10, 640 + (i * textInterval));
+          text('8', 1830, 640 + (i * textInterval));
         }
     else if(i == 2)
         {
-          text('1', 10, 640 + (i * textInterval));
+          text('9', 1830, 640 + (i * textInterval));
         }
     else if(i == 3)
         {
-          text('1', 10, 640 + (i * textInterval));
+          text('0', 1830, 640 + (i * textInterval));
         }
     else if(i == 4)
         {
-          text('1', 10, 640 + (i * textInterval));
+          text('-', 1830, 640 + (i * textInterval));
         }
     else if(i == 5)
         {
-          text('1', 10, 640 + (i * textInterval));
+          text('=', 1830, 640 + (i * textInterval));
+        }
   }
   textAlign(LEFT);
   
