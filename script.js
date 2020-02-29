@@ -53,6 +53,7 @@ var gameSPF = 1/gameFPS;
 var jumpAnimLength = 21;
 
 var secondsLeft = 10;
+var alignSeconds = 70;
 
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
@@ -253,6 +254,15 @@ function draw()
   textSize(130);
   var midUIMidX = (500 + 1350) / 2;
   
+  if(secondsLeft == 9)
+    {
+      alignSeconds = alignSeconds - 70;
+    }
+  else
+    {
+      alignSeconds = 70;
+    }
+  
   if (secondsLeft <= 5)
     {
       fill(255, 100, 100);
@@ -263,11 +273,11 @@ function draw()
     }
   
   //
-  text(secondsLeft, midUIMidX - 70, 850);
+  text(secondsLeft, midUIMidX - alignSeconds, 850);
   textSize(32);
   fill(255, 255, 255);
   text("You have...", midUIMidX - 70, 740);
-  text("seconds to make your command decision!", midUIMidX - 310, 900);
+  text("seconds to make your decision!", midUIMidX - 240, 900);
   
   
 }
