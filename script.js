@@ -365,8 +365,37 @@ function draw()
     {
       text("*placehold*", 520, 650);
     }
+  
   fill("skyblue");
-  text("*placehold*", midUIMidX, 650);
+  if (keyCode == 55)
+    {
+      text("*num7*", midUIMidX, 650);
+    }
+  else if (keyCode == 56)
+    {
+      text("*num8*", midUIMidX, 650);
+    }
+  else if (keyCode == 57)
+    {
+      text("*num9*", midUIMidX, 650);
+    }
+  else if (keyCode == 48)
+    {
+      text("*num0*", midUIMidX, 650);
+    }
+  else if (keyCode == 189)
+    {
+      text("*sym-*", midUIMidX, 650);
+    }
+  else if (keyCode == 187)
+    {
+      text("*sym=*", midUIMidX, 650);
+    }
+  else
+    {
+      text("*placehold*", midUIMidX, 650);
+    }
+  
   
   
 }
