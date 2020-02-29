@@ -335,9 +335,38 @@ function draw()
   fill(255, 255, 255);
   text("You have...", midUIMidX - 70, 740);
   text("seconds to make your decision!", midUIMidX - 240, 900);
-  text("*placehold*", 520, 650);
-  textAlign(RIGHT);
-  text("*placehold*", midUIMidX, 650)
+
+  fill("hotpink");
+  if (keyCode == 49)
+    {
+      text("*num1*", 520, 650);
+    }
+  else if (keyCode == 50)
+    {
+      text("*num2*", 520, 650);
+    }
+  else if (keyCode == 51)
+    {
+      text("*num3*", 520, 650);
+    }
+  else if (keyCode == 52)
+    {
+      text("*num4*", 520, 650);
+    }
+  else if (keyCode == 53)
+    {
+      text("*num5*", 520, 650);
+    }
+  else if (keyCode == 54)
+    {
+      text("*num6*", 520, 650);
+    }
+  else
+    {
+      text("*placehold*", 520, 650);
+    }
+  fill("skyblue");
+  text("*placehold*", midUIMidX, 650);
   
   
 }
