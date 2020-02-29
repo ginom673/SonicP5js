@@ -181,7 +181,10 @@ function jump()
 
 function updateClock()
 {
-  secondsLeft = secondsLeft - 1;
+  if(secondsLeft > 0)
+    {
+      secondsLeft = secondsLeft - 1;    
+    }  
 }
 
 // constantly called to update the screen 
@@ -245,10 +248,12 @@ function draw()
   // draws P2's commands
   fill(0, 0, 200);
   textSize(32);
+  textAlign(RIGHT);
   for (var i = 0; i < numCommands; i++)
   {
-      text('Text There', 1370, 640 + (i * textInterval));
+      text('Text There', 1820, 640 + (i * textInterval));      
   }
+  textAlign(LEFT);
   
   // draws Middle UI text
   textSize(130);
@@ -272,7 +277,10 @@ function draw()
       text(secondsLeft, midUIMidX - alignSeconds, 850);
     }
   
-  if
+  if(secondsLeft <= 0)
+    {
+      
+    }
   
   textSize(32);
   fill(255, 255, 255);
