@@ -242,7 +242,34 @@ function draw()
   textSize(32);
   for (var i = 0; i < numCommands; i++)
   {
-      text('Text Here', 20, 640 + (i * textInterval));
+      text('Text Here', 40, 640 + (i * textInterval));
+  }
+  for (var i = 0; i < numCommands; i++)
+  {
+      if(i == 0)
+        {
+          text('1', 10, 640 + (i * textInterval));
+        }
+      else if(i == 1)
+        {
+          text('2', 10, 640 + (i * textInterval));
+        }
+      else if(i == 2)
+        {
+          text('3', 10, 640 + (i * textInterval));
+        }
+      else if(i == 3)
+        {
+          text('4', 10, 640 + (i * textInterval));
+        }
+      else if(i == 4)
+        {
+          text('5', 10, 640 + (i * textInterval));
+        }
+      else if(i == 5)
+        {
+          text('6', 10, 640 + (i * textInterval));
+        }
   }
     
   // draws P2's commands
@@ -251,7 +278,33 @@ function draw()
   textAlign(RIGHT);
   for (var i = 0; i < numCommands; i++)
   {
-      text('Text There', 1820, 640 + (i * textInterval));      
+      text('Text There', 1800, 640 + (i * textInterval));
+  }
+  for (var i = 0; i < numCommands; i++)
+  {
+      if(i == 0)
+        {
+          text('1', 1830, 640 + (i * textInterval));
+        }
+    else if(i == 1)
+        {
+          text('1', 10, 640 + (i * textInterval));
+        }
+    else if(i == 2)
+        {
+          text('1', 10, 640 + (i * textInterval));
+        }
+    else if(i == 3)
+        {
+          text('1', 10, 640 + (i * textInterval));
+        }
+    else if(i == 4)
+        {
+          text('1', 10, 640 + (i * textInterval));
+        }
+    else if(i == 5)
+        {
+          text('1', 10, 640 + (i * textInterval));
   }
   textAlign(LEFT);
   
