@@ -390,6 +390,7 @@ function draw()
   if (keyCode == 49)
     {
       text("Player 1 uses Fire Throw!", 520, 650);
+      damage(2, 100);
     }
   else if (keyCode == 50)
     {
@@ -485,10 +486,9 @@ var g2y = 320;
 // health bar for player 1
 function health1() 
 {
-  var damageBarLength = HPBarLength * (1 - healthPercent1);
-  
-  var damageBarStartX1 = (HPBarStartX1 + HPBarLength) - damageBarLength;
-  
+  healthPercent1 = currentHP1 / maxHP;
+  var damageBarLength = HPBarLength * (1 - healthPercent1);  
+  var damageBarStartX1 = (HPBarStartX1 + HPBarLength) - damageBarLength;  
   fill("red");
   rect(damageBarStartX1, 40, damageBarLength, 20);
   
@@ -497,10 +497,9 @@ function health1()
 // health bar for player 2
 function health2()
 { 
-  var damageBarLength = HPBarLength * (1 - healthPercent2);
-  
-  var damageBarStartX2 = (HPBarStartX2 + HPBarLength) - damageBarLength;
-  
+  healthPercent2 = currentHP2 / maxHP;
+  var damageBarLength = HPBarLength * (1 - healthPercent2);  
+  var damageBarStartX2 = (HPBarStartX2 + HPBarLength) - damageBarLength;  
   fill("red");
   rect(damageBarStartX2, 40, damageBarLength, 20);
 }
@@ -520,5 +519,17 @@ function keyPressed()
   }
   
 }
-function 
+
+// TODO LATER: make sure that this doesn't cause negative HP
+function damage(playerID, damageAmount)
+{
+  if (playerID == 1)
+    {
+      currentHP1 = currentHP1 - damageAmount;
+    }
+  else
+    {
+      currentHP2 = currentHP2 - damageAmount;
+    }
+}
 
