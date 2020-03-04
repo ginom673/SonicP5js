@@ -245,31 +245,27 @@ function draw()
     
       if(i == 0)
         {
-          text('Text Here', 40, 640 + (i * textInterval));
+          text('Fire Throw', 40, 640 + (i * textInterval));
         }
-    if(i == 0)
+      if(i == 1)
         {
-          text('Text Here', 40, 640 + (i * textInterval));
+          text('Power Blast', 40, 640 + (i * textInterval));
         }
-    if(i == 0)
+      if(i == 2)
         {
-          text('Text Here', 40, 640 + (i * textInterval));
+          text('Sword Strike', 40, 640 + (i * textInterval));
         }
-    if(i == 0)
+      if(i == 3)
         {
-          text('Text Here', 40, 640 + (i * textInterval));
+          text('Fiery Counter', 40, 640 + (i * textInterval));
         }
-    if(i == 0)
+      if(i == 4)
         {
-          text('Text Here', 40, 640 + (i * textInterval));
+          text('Steam Up', 40, 640 + (i * textInterval));
         }
-    if(i == 0)
+      if(i == 5)
         {
-          text('Text Here', 40, 640 + (i * textInterval));
-        }
-    if(i == 0)
-        {
-          text('Text Here', 40, 640 + (i * textInterval));
+          text('Heat Shield', 40, 640 + (i * textInterval));
         }
   }
   for (var i = 0; i < numCommands; i++)
@@ -306,7 +302,30 @@ function draw()
   textAlign(RIGHT);
   for (var i = 0; i < numCommands; i++)
   {
-      text('Text There', 1800, 640 + (i * textInterval));
+    if(i == 0)
+        {
+          text('Icicle Toss', 1800, 640 + (i * textInterval));
+        }
+      if(i == 1)
+        {
+          text('Iceberg Crush', 1800, 640 + (i * textInterval));
+        }
+      if(i == 2)
+        {
+          text('Ice Breath', 1800, 640 + (i * textInterval));
+        }
+      if(i == 3)
+        {
+          text('Icy Reflect', 1800, 640 + (i * textInterval));
+        }
+      if(i == 4)
+        {
+          text('Frozen Mystery', 1800, 640 + (i * textInterval));
+        }
+      if(i == 5)
+        {
+          text('Ice Wall', 1800, 640 + (i * textInterval));
+        }
   }
   for (var i = 0; i < numCommands; i++)
   {
@@ -314,23 +333,23 @@ function draw()
         {
           text('7', 1830, 640 + (i * textInterval));
         }
-    else if(i == 1)
+      else if(i == 1)
         {
           text('8', 1830, 640 + (i * textInterval));
         }
-    else if(i == 2)
+      else if(i == 2)
         {
           text('9', 1830, 640 + (i * textInterval));
         }
-    else if(i == 3)
+      else if(i == 3)
         {
           text('0', 1830, 640 + (i * textInterval));
         }
-    else if(i == 4)
+      else if(i == 4)
         {
           text('-', 1830, 640 + (i * textInterval));
         }
-    else if(i == 5)
+      else if(i == 5)
         {
           text('=', 1830, 640 + (i * textInterval));
         }
