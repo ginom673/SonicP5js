@@ -242,7 +242,35 @@ function draw()
   textSize(32);
   for (var i = 0; i < numCommands; i++)
   {
-      text('Text Here', 40, 640 + (i * textInterval));
+    
+      if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
+    if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
+    if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
+    if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
+    if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
+    if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
+    if(i == 0)
+        {
+          text('Text Here', 40, 640 + (i * textInterval));
+        }
   }
   for (var i = 0; i < numCommands; i++)
   {
