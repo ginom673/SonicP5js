@@ -386,31 +386,31 @@ function draw()
   fill("hotpink");
   if (keyCode == 49)
     {
-      text("*num1*", 520, 650);
+      text("Player 1 uses Fire Throw!", 520, 650);
     }
   else if (keyCode == 50)
     {
-      text("*num2*", 520, 650);
+      text("Player 1 uses Power Blast!", 520, 650);
     }
   else if (keyCode == 51)
     {
-      text("*num3*", 520, 650);
+      text("Player 1 uses Sword Strike!", 520, 650);
     }
   else if (keyCode == 52)
     {
-      text("*num4*", 520, 650);
+      text("Player 1 uses Fiery Counter!", 520, 650);
     }
   else if (keyCode == 53)
     {
-      text("*num5*", 520, 650);
+      text("Player 1 uses Steam Up!", 520, 650);
     }
   else if (keyCode == 54)
     {
-      text("*num6*", 520, 650);
+      text("Player 1 uses Heat Shield!", 520, 650);
     }
   else
     {
-      text("*placehold*", 520, 650);
+      text("Awaiting P1's Decision...", 520, 650);
     }
   
   fill("skyblue");  
@@ -418,31 +418,31 @@ function draw()
   var rightCommandShift = 400;
   if (keyCode == 55)
     {
-      text("*num7*", midUIMidX + rightCommandShift, 650);
+      text("Player 2 uses Icicle Toss!", midUIMidX + rightCommandShift, 650);
     }
   else if (keyCode == 56)
     {
-      text("*num8*", midUIMidX + rightCommandShift, 650);
+      text("Player 2 uses Iceberg Crush!", midUIMidX + rightCommandShift, 650);
     }
   else if (keyCode == 57)
     {
-      text("*num9*", midUIMidX + rightCommandShift, 650);
+      text("Player 2 uses Ice Breath!", midUIMidX + rightCommandShift, 650);
     }
   else if (keyCode == 48)
     {
-      text("*num0*", midUIMidX + rightCommandShift, 650);
+      text("Player 2 uses Icy Reflect!", midUIMidX + rightCommandShift, 650);
     }
   else if (keyCode == 189)
     {
-      text("*sym-*", midUIMidX + rightCommandShift, 650);
+      text("Player 2 uses Frozen Mystery!", midUIMidX + rightCommandShift, 650);
     }
   else if (keyCode == 187)
     {
-      text("*sym=*", midUIMidX + rightCommandShift, 650);
+      text("Player 2 uses Ice Wall!", midUIMidX + rightCommandShift, 650);
     }
   else
     {
-      text("*placehold*", midUIMidX + rightCommandShift, 650);
+      text("Awaiting P2's Decision...", midUIMidX + rightCommandShift, 650);
     }
   
   textAlign(LEFT);
