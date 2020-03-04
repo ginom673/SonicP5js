@@ -55,6 +55,9 @@ var jumpAnimLength = 21;
 var secondsLeft = 10;
 var alignSeconds = 70;
 
+var healthPercent1 = 1.0;
+var healthPercent2 = 1.0;
+
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
@@ -482,9 +485,6 @@ var g2y = 320;
 // health bar for player 1
 function health1() 
 {
-  
-  var healthPercent1 = 1.0;
-  
   var damageBarLength = HPBarLength * (1 - healthPercent1);
   
   var damageBarStartX1 = (HPBarStartX1 + HPBarLength) - damageBarLength;
@@ -496,9 +496,7 @@ function health1()
 }
 // health bar for player 2
 function health2()
-{
-  var healthPercent2 = 1.0;
-  
+{ 
   var damageBarLength = HPBarLength * (1 - healthPercent2);
   
   var damageBarStartX2 = (HPBarStartX2 + HPBarLength) - damageBarLength;
@@ -522,4 +520,5 @@ function keyPressed()
   }
   
 }
+function 
 
