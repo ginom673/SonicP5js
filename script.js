@@ -250,6 +250,7 @@ function draw()
   rect(500, 600, 850, 400);
   
   // draws P1's commands
+  strokeWeight(0);
   fill(200, 0, 0);
   textSize(32);
   for (var i = 0; i < numCommands; i++)
@@ -435,33 +436,37 @@ function draw()
   fill("black");
   text("D", 400, 745);
   
+  stroke("white");
+  
   // I(P2)
-  fill("red");
-  rect(325, 660, 50, 50);
-  fill("black");
-  text("W", 350, 695);
+  fill("darkred");
+  rect(1425, 660, 50, 50);
+  fill("white");
+  text("I", 1450, 695);
   
   // J(P2)
-  fill("yellow");
-  rect(275, 710, 50, 50);
-  fill("black");
-  text("A", 300, 745);
+  fill(200, 200, 0);
+  rect(1375, 710, 50, 50);
+  fill("white");
+  text("J", 1400, 745);
   
   // K(P2)
-  fill("lime");
-  rect(325, 710, 50, 50);
-  fill("black");
-  text("S", 350, 745);
+  fill("green");
+  rect(1425, 710, 50, 50);
+  fill("white");
+  text("K", 1450, 745);
   
   // L(P2)
-  fill("blue");
-  rect(375, 710, 50, 50);
-  fill("black");
-  text("D", 400, 745
+  fill("darkblue");
+  rect(1475, 710, 50, 50);
+  fill("white");
+  text("L", 1500, 745);
+  
   
   // reset font attributes
   textAlign(LEFT);
   textFont('Arial');
+  stroke("black");
 }
 var startY = 650;
 var endY = 950;
