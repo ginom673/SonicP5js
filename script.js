@@ -567,18 +567,26 @@ function keyReleased()
   else if (keyCode == 87)
     {
       p1ChoiceText = "Player 1 moves to the Red Platform!";
+      player1X = platformXYs.red[0];
+      player1Y = platformXYs.red[1];
     }
   else if (keyCode == 65)
     {
       p1ChoiceText = "Player 1 moves to the Yellow Platform!";
+      player1X = platformXYs.yellow[0];
+      player1Y = platformXYs.yellow[1];
     }
   else if (keyCode == 83)
     {
       p1ChoiceText = "Player 1 moves to the Ground!";
+      player1X = platformXYs.ground[0];
+      player1Y = platformXYs.ground[1];
     }
   else if (keyCode == 68)
     {
       p1ChoiceText = "Player 1 moves to the Blue Platform!";
+      player1X = platformXYs.blue[0];
+      player1Y = platformXYs.blue[1];
     }
   else
     {
@@ -613,10 +621,14 @@ function keyReleased()
   else if (keyCode == 73)
     {
       p2ChoiceText = "Player 2 moves to the Red Platform!";
+      player1X = platformXYs.red[0];
+      player1Y = platformXYs.red[1];
     }
   else if (keyCode == 74)
     {
       p2ChoiceText = "Player 2 moves to the Yellow Platform!";
+      player1X = platformXYs.red[0];
+      player1Y = platformXYs.red[1];
     }
   else if (keyCode == 75)
     {
