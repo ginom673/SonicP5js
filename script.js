@@ -69,11 +69,14 @@ platformXYs.red = [800, 125, 920, 125];
 platformXYs.blue = [1020, 225, 1160, 225];
 
 // the game sets the sprites position to (450, 325)
-
 var player1X = platformXYs.ground[0];
 var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
 var player2Y = platformXYs.ground[3];
+
+// this represents the text displaying the "status" of each player's decision
+p1ChoiceText = "Awaiting P1's Decision...";
+p2ChoiceText = "Awaiting P2's Decision...";
 
 
 //for (var i = 0; i < myList.length; i++)
@@ -387,67 +390,14 @@ function draw()
   text("seconds to make your decision!", midUIMidX - 240, 900);
 
   fill("hotpink");
-  if (keyCode == 49)
-    {
-      text("Player 1 uses Fire Throw!", 520, 650);
-      damage(2, 100);
-    }
-  else if (keyCode == 50)
-    {
-      text("Player 1 uses Power Blast!", 520, 650);
-    }
-  else if (keyCode == 51)
-    {
-      text("Player 1 uses Sword Strike!", 520, 650);
-    }
-  else if (keyCode == 52)
-    {
-      text("Player 1 uses Fiery Counter!", 520, 650);
-    }
-  else if (keyCode == 53)
-    {
-      text("Player 1 uses Steam Up!", 520, 650);
-    }
-  else if (keyCode == 54)
-    {
-      text("Player 1 uses Heat Shield!", 520, 650);
-    }
-  else
-    {
-      text("Awaiting P1's Decision...", 520, 650);
-    }
+  text(p1ChoiceText, 520, 650);
+  // p1 command text here
   
   fill("skyblue");  
   textAlign(RIGHT);
   var rightCommandShift = 400;
-  if (keyCode == 55)
-    {
-      text("Player 2 uses Icicle Toss!", midUIMidX + rightCommandShift, 650);
-    }
-  else if (keyCode == 56)
-    {
-      text("Player 2 uses Iceberg Crush!", midUIMidX + rightCommandShift, 650);
-    }
-  else if (keyCode == 57)
-    {
-      text("Player 2 uses Ice Breath!", midUIMidX + rightCommandShift, 650);
-    }
-  else if (keyCode == 48)
-    {
-      text("Player 2 uses Icy Reflect!", midUIMidX + rightCommandShift, 650);
-    }
-  else if (keyCode == 189)
-    {
-      text("Player 2 uses Frozen Mystery!", midUIMidX + rightCommandShift, 650);
-    }
-  else if (keyCode == 187)
-    {
-      text("Player 2 uses Ice Wall!", midUIMidX + rightCommandShift, 650);
-    }
-  else
-    {
-      text("Awaiting P2's Decision...", midUIMidX + rightCommandShift, 650);
-    }
+  text(p2ChoiceText);
+  // p2 command text here
   
   textAlign(LEFT);
   
@@ -520,16 +470,91 @@ function keyPressed()
   
 }
 
-// TODO LATER: make sure that this doesn't cause negative HP
+function keyReleased()
+{
+  if (keyCode == 49)
+    {
+      text("Player 1 uses Fire Throw!", 520, 650);
+      damage(2, 100);
+    }
+  else if (keyCode == 50)
+    {
+      text("Player 1 uses Power Blast!", 520, 650);
+    }
+  else if (keyCode == 51)
+    {
+      text("Player 1 uses Sword Strike!", 520, 650);
+    }
+  else if (keyCode == 52)
+    {
+      text("Player 1 uses Fiery Counter!", 520, 650);
+    }
+  else if (keyCode == 53)
+    {
+      text("Player 1 uses Steam Up!", 520, 650);
+    }
+  else if (keyCode == 54)
+    {
+      text("Player 1 uses Heat Shield!", 520, 650);
+    }
+  else
+    {
+      text("Awaiting P1's Decision...", 520, 650);
+    }
+  
+  if (keyCode == 55)
+    {
+      text("Player 2 uses Icicle Toss!", midUIMidX + rightCommandShift, 650);
+    }
+  else if (keyCode == 56)
+    {
+      text("Player 2 uses Iceberg Crush!", midUIMidX + rightCommandShift, 650);
+    }
+  else if (keyCode == 57)
+    {
+      text("Player 2 uses Ice Breath!", midUIMidX + rightCommandShift, 650);
+    }
+  else if (keyCode == 48)
+    {
+      text("Player 2 uses Icy Reflect!", midUIMidX + rightCommandShift, 650);
+    }
+  else if (keyCode == 189)
+    {
+      text("Player 2 uses Frozen Mystery!", midUIMidX + rightCommandShift, 650);
+    }
+  else if (keyCode == 187)
+    {
+      text("Player 2 uses Ice Wall!", midUIMidX + rightCommandShift, 650);
+    }
+  else
+    {
+      text("Awaiting P2's Decision...", midUIMidX + rightCommandShift, 650);
+    }
+}
+
+// damages the given player by a given amount
 function damage(playerID, damageAmount)
 {
   if (playerID == 1)
     {
       currentHP1 = currentHP1 - damageAmount;
+      
+      // if this damage caused us to fall below 0 HP, instead set our HP to 0
+      if (currentHP1 < 0)
+        {
+          currentHP1 = 0;
+        }
+      
     }
   else
     {
       currentHP2 = currentHP2 - damageAmount;
+      
+      // if this damage caused us to fall below 0 HP, instead set our HP to 0
+      if (currentHP2 < 0)
+        {
+          currentHP2 = 0;
+        }
     }
 }
 
