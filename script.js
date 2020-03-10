@@ -408,9 +408,27 @@ function draw()
   textAlign(LEFT);
   
   // Labels for wasd/ijkl movement keys
-  fill("lime");
+  textAlign(CENTER);
+  
+  // W(P1)
+  fill("red");
+  rect(325, 660, 50, 50);
+  fill("black");
   text("W", 350, 700);
   
+  // A(P1)
+  fill("yellow");
+  rect(275, 710, 50, 50);
+  fill("black");
+  text("A", 300, 750);
+  
+  // S(P1)
+  fill("lime");
+  rect(325, 710, 50, 50);
+  fill("black");
+  text("S", 350, 750);
+  
+  textAlign(LEFT);
 }
 var startY = 650;
 var endY = 950;
