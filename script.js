@@ -409,26 +409,59 @@ function draw()
   
   // Labels for wasd/ijkl movement keys
   textAlign(CENTER);
+  textFont('Georgia');
   
   // W(P1)
   fill("red");
   rect(325, 660, 50, 50);
   fill("black");
-  text("W", 350, 700);
+  text("W", 350, 695);
   
   // A(P1)
   fill("yellow");
   rect(275, 710, 50, 50);
   fill("black");
-  text("A", 300, 750);
+  text("A", 300, 745);
   
   // S(P1)
   fill("lime");
   rect(325, 710, 50, 50);
   fill("black");
-  text("S", 350, 750);
+  text("S", 350, 745);
   
+  // D(P1)
+  fill("blue");
+  rect(375, 710, 50, 50);
+  fill("black");
+  text("D", 400, 745);
+  
+  // I(P2)
+  fill("red");
+  rect(325, 660, 50, 50);
+  fill("black");
+  text("W", 350, 695);
+  
+  // J(P2)
+  fill("yellow");
+  rect(275, 710, 50, 50);
+  fill("black");
+  text("A", 300, 745);
+  
+  // K(P2)
+  fill("lime");
+  rect(325, 710, 50, 50);
+  fill("black");
+  text("S", 350, 745);
+  
+  // L(P2)
+  fill("blue");
+  rect(375, 710, 50, 50);
+  fill("black");
+  text("D", 400, 745
+  
+  // reset font attributes
   textAlign(LEFT);
+  textFont('Arial');
 }
 var startY = 650;
 var endY = 950;
