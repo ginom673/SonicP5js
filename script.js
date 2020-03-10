@@ -368,6 +368,7 @@ function draw()
         }
   }
   textAlign(LEFT);
+  strokeWeight(1);
   
   // draws Middle UI text
   textSize(130);
@@ -563,6 +564,22 @@ function keyReleased()
     {
       p1ChoiceText = "Player 1 uses Heat Shield!";
     }
+  else if (keyCode == 87)
+    {
+      p1ChoiceText = "Player 1 moves to the Red Platform!";
+    }
+  else if (keyCode == 65)
+    {
+      p1ChoiceText = "Player 1 moves to the Yellow Platform!";
+    }
+  else if (keyCode == 83)
+    {
+      p1ChoiceText = "Player 1 moves to the Ground!";
+    }
+  else if (keyCode == 68)
+    {
+      p1ChoiceText = "Player 1 moves to the Blue Platform!";
+    }
   else
     {
       p1ChoiceText = "Awaiting P1's Decision...";
@@ -592,6 +609,22 @@ function keyReleased()
   else if (keyCode == 187)
     {
       p2ChoiceText = "Player 2 uses Ice Wall!";
+    }
+  else if (keyCode == 73)
+    {
+      p2ChoiceText = "Player 2 moves to the Red Platform!";
+    }
+  else if (keyCode == 74)
+    {
+      p2ChoiceText = "Player 2 moves to the Yellow Platform!";
+    }
+  else if (keyCode == 75)
+    {
+      p2ChoiceText = "Player 2 moves to the Ground!";
+    }
+  else if (keyCode == 76)
+    {
+      p2ChoiceText = "Player 2 moves to the Blue Platform!";
     }
   else
     {
