@@ -407,7 +407,9 @@ function draw()
   
   textAlign(LEFT);
   
-  
+  // Labels for wasd/ijkl movement keys
+  fill("lime");
+  text("W", 350, 700);
   
 }
 var startY = 650;
