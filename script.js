@@ -25,6 +25,12 @@
 // if we reposition the gif, it may restart... minor concern though
 // however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
 
+
+// if the jumping animation is constnatly happening the background, such that when we press j, we may start the animation in the middle,
+// ... IF that is true, a solution would potentially be resetting the gif every time we restart it
+
+
+
 //var loadImg1;
 //var loadImg2;
 var idleImg1;
@@ -396,7 +402,7 @@ function draw()
   fill("skyblue");  
   textAlign(RIGHT);
   var rightCommandShift = 400;
-  text(p2ChoiceText);
+  text(p2ChoiceText, midUIMidX + rightCommandShift, 650);
   // p2 command text here
   
   textAlign(LEFT);
@@ -472,63 +478,66 @@ function keyPressed()
 
 function keyReleased()
 {
+  
+  // player 1 commands
   if (keyCode == 49)
     {
-      text("Player 1 uses Fire Throw!", 520, 650);
+      p1ChoiceText = "Player 1 uses Fire Throw!";
       damage(2, 100);
     }
   else if (keyCode == 50)
     {
-      text("Player 1 uses Power Blast!", 520, 650);
+      p1ChoiceText = "Player 1 uses Power Blast!";
     }
   else if (keyCode == 51)
     {
-      text("Player 1 uses Sword Strike!", 520, 650);
+      p1ChoiceText = "Player 1 uses Sword Strike!";
     }
   else if (keyCode == 52)
     {
-      text("Player 1 uses Fiery Counter!", 520, 650);
+      p1ChoiceText = "Player 1 uses Fiery Counter!";
     }
   else if (keyCode == 53)
     {
-      text("Player 1 uses Steam Up!", 520, 650);
+      p1ChoiceText = "Player 1 uses Steam Up!";
     }
   else if (keyCode == 54)
     {
-      text("Player 1 uses Heat Shield!", 520, 650);
+      p1ChoiceText = "Player 1 uses Heat Shield!";
     }
   else
     {
-      text("Awaiting P1's Decision...", 520, 650);
+      p1ChoiceText = "Awaiting P1's Decision...";
     }
   
+  // player 2 commands
   if (keyCode == 55)
     {
-      text("Player 2 uses Icicle Toss!", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Player 2 uses Icicle Toss!";
     }
   else if (keyCode == 56)
     {
-      text("Player 2 uses Iceberg Crush!", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Player 2 uses Iceberg Crush!";
     }
   else if (keyCode == 57)
     {
-      text("Player 2 uses Ice Breath!", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Player 2 uses Ice Breath!";
     }
   else if (keyCode == 48)
     {
-      text("Player 2 uses Icy Reflect!", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Player 2 uses Icy Reflect!";
     }
   else if (keyCode == 189)
     {
-      text("Player 2 uses Frozen Mystery!", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Player 2 uses Frozen Mystery!";
     }
   else if (keyCode == 187)
     {
-      text("Player 2 uses Ice Wall!", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Player 2 uses Ice Wall!";
     }
   else
     {
-      text("Awaiting P2's Decision...", midUIMidX + rightCommandShift, 650);
+      p2ChoiceText = "Awaiting P2's Decision...";
     }
 }
 
