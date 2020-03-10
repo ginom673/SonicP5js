@@ -64,6 +64,8 @@ var alignSeconds = 70;
 var healthPercent1 = 1.0;
 var healthPercent2 = 1.0;
 
+var timerActive = false;
+
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
@@ -189,6 +191,11 @@ function jump()
     idleImg1.position(player1X, player1Y);
   }, (21/13)*1000);
   //setInterval
+}
+
+function startTimer()
+{
+  
 }
 
 function updateClock()
@@ -528,7 +535,7 @@ function keyPressed()
   // the above line of code would give the ID of the key just pressed
   
   // if they press "j"
-  if(keyCode == 74 && !p1Jumping)
+  if(keyCode == 72 && !p1Jumping)
   {
     jump();
   }
@@ -621,22 +628,26 @@ function keyReleased()
   else if (keyCode == 73)
     {
       p2ChoiceText = "Player 2 moves to the Red Platform!";
-      player1X = platformXYs.red[0];
-      player1Y = platformXYs.red[1];
+      player2X = platformXYs.red[2];
+      player2Y = platformXYs.red[3];
     }
   else if (keyCode == 74)
     {
       p2ChoiceText = "Player 2 moves to the Yellow Platform!";
-      player1X = platformXYs.red[0];
-      player1Y = platformXYs.red[1];
+      player2X = platformXYs.yellow[2];
+      player2Y = platformXYs.yellow[3];
     }
   else if (keyCode == 75)
     {
       p2ChoiceText = "Player 2 moves to the Ground!";
+      player2X = platformXYs.ground[2];
+      player2Y = platformXYs.ground[3];
     }
   else if (keyCode == 76)
     {
       p2ChoiceText = "Player 2 moves to the Blue Platform!";
+      player2X = platformXYs.blue[2];
+      player2Y = platformXYs.blue[3];
     }
   else
     {
