@@ -128,7 +128,6 @@ function setup()
   document.body.style.transform = scale;     // General
   */
   
-  setInterval(updateClock, 1000);
   
 }
 
@@ -195,7 +194,8 @@ function jump()
 
 function startTimer()
 {
-  
+  setInterval(updateClock, 1000);
+  timerActive = true;
 }
 
 function updateClock()
