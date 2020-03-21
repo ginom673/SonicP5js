@@ -30,6 +30,10 @@
 // ... IF that is true, a solution would potentially be resetting the gif every time we restart it
 
 
+// ---------- BUG ----------
+
+// for some reason, the positioning of the click for the button is a little off
+
 
 //var loadImg1;
 //var loadImg2;
@@ -70,8 +74,8 @@ var timerActive = false;
 
 var midUIMidX = (500 + 1350) / 2;
 
-var clickX;
-var clickY;
+//var clickX;
+//var clickY;
 var buttonX = midUIMidX - alignSeconds + 30;
 var buttonY = 800;
 var buttonWidth = 179;
@@ -225,6 +229,9 @@ function updateClock()
 // constantly called to update the screen 
 function draw()
 {
+  
+  // wipes the entire game screen clean
+  clear();
   
   // draws stage
   background(90, 70, 170);
@@ -393,11 +400,7 @@ function draw()
   textAlign(LEFT);
   strokeWeight(1);
   
-  // draws Middle UI text
-  if(clickX > buttonX && clickX < buttonX + buttonWidth && clickY > buttonY && clickY < buttonY + buttonHeight)
-  {
-    showTimer = true;
-  }
+
   if(showTimer)
   {
     textSize(130);    
@@ -500,9 +503,13 @@ function draw()
   textFont('Arial');
   stroke("black");
   
-  drawReadyButton();
-  //readyButton.position(0,0);
-  readyButton.position(midUIMidX - alignSeconds + 30, 800);
+  if(!startTimer)
+  {
+    drawReadyButton();
+    //readyButton.position(0,0);
+    readyButton.position(midUIMidX - alignSeconds + 30, 800);
+  }
+  
 }
 var startY = 650;
 var endY = 950;
@@ -517,12 +524,28 @@ function drawReadyButton()
 }
 
 // called whenever we click anywhere in the game in order to log its coordinates
+// this works just fine, but its not the convention we normally have for p5.js
+// use mouseClicked instead
+// see https://p5js.org/reference/#/p5/mouseClicked for more info
+/*
 function reportClick()
 {
   var x = event.clientX;
   var y = event.clientY; 
   var coor = "Click @ (" + x + ", " + y + ")";
   console.log(coor);
+}
+*/
+
+function mouseClicked()
+{
+  // draws Middle UI text
+  if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight)
+  {
+    showTimer = true;
+    readyButton.remove();
+    readyButton = null;
+  }  
 }
 
 // coordinates for the centers of the platforms
