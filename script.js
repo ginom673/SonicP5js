@@ -68,6 +68,13 @@ var healthPercent2 = 1.0;
 
 var timerActive = false;
 
+var clickX;
+var clickY;
+var buttonX;
+var buttonY;
+var buttonWidth;
+var buttonHeight;
+
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
@@ -385,6 +392,10 @@ function draw()
   strokeWeight(1);
   
   // draws Middle UI text
+  if(clickX > buttonX && clickX < buttonX + buttonWidth && clickY > buttonY && clickY < buttonY + buttonHeight)
+  {
+    
+  }
   var midUIMidX = (500 + 1350) / 2;
   if(showTimer)
   {
@@ -425,6 +436,7 @@ function draw()
 
     textAlign(LEFT);
   }
+  
   
   
   // Labels for wasd/ijkl movement keys
@@ -701,4 +713,6 @@ function damage(playerID, damageAmount)
         }
     }
 }
+
+
 
