@@ -39,6 +39,8 @@ var idleImg2;
 var jumpImg1;
 var jumpImg2;
 
+var readyButton;
+
 var maxHP = 500;
 var currentHP1 = maxHP;
 var currentHP2 = maxHP;
@@ -117,6 +119,9 @@ function setup()
   jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
   jumpImg1.remove();
   jumpImg2.remove();
+  
+  readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
+  readyButton.remove();
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
   // NOTE: this does not work!
@@ -479,8 +484,10 @@ function draw()
   // draws the "Ready!" button
   function drawReadyButton()
   {
-    readyButton = loadImg("")
+    readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
   }
+  drawReadyButton();
+  readyButton.position(0, 0);
 }
 var startY = 650;
 var endY = 950;
