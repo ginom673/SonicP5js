@@ -68,12 +68,14 @@ var healthPercent2 = 1.0;
 
 var timerActive = false;
 
+var midUIMidX = (500 + 1350) / 2;
+
 var clickX;
 var clickY;
-var buttonX;
-var buttonY;
-var buttonWidth;
-var buttonHeight;
+var buttonX = midUIMidX - alignSeconds + 30;
+var buttonY = 800;
+var buttonWidth = 179;
+var buttonHeight = 72;
 
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
@@ -394,9 +396,8 @@ function draw()
   // draws Middle UI text
   if(clickX > buttonX && clickX < buttonX + buttonWidth && clickY > buttonY && clickY < buttonY + buttonHeight)
   {
-    
+    showTimer = true;
   }
-  var midUIMidX = (500 + 1350) / 2;
   if(showTimer)
   {
     textSize(130);    
