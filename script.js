@@ -135,8 +135,9 @@ function setup()
   jumpImg1.remove();
   jumpImg2.remove();
   
-  readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
-  readyButton.remove();
+  readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");  
+  readyButton.position(midUIMidX - alignSeconds + 30, 800);
+  //readyButton.remove();
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
   // NOTE: this does not work!
@@ -507,7 +508,6 @@ function draw()
   {
     drawReadyButton();
     //readyButton.position(0,0);
-    readyButton.position(midUIMidX - alignSeconds + 30, 800);
   }
   
 }
@@ -545,6 +545,7 @@ function mouseClicked()
     showTimer = true;
     readyButton.remove();
     readyButton = null;
+    startTimer();
   }  
 }
 
