@@ -88,6 +88,8 @@ var player2Y = platformXYs.ground[3];
 p1ChoiceText = "Awaiting P1's Decision...";
 p2ChoiceText = "Awaiting P2's Decision...";
 
+var showTimer = false;
+
 
 //for (var i = 0; i < myList.length; i++)
 
@@ -383,43 +385,47 @@ function draw()
   strokeWeight(1);
   
   // draws Middle UI text
-  textSize(130);
-  var midUIMidX = (500 + 1350) / 2;
-  
-  if (secondsLeft <= 5)
-    {
-      fill(255, 100, 100);
-    }
-  else
-    {
-      fill(255, 255, 0);  
-    }
-  
-  if(secondsLeft <= 9)
-    {
-      text(secondsLeft, midUIMidX - alignSeconds + 30, 850);
-    }
-  else
-    {
-      text(secondsLeft, midUIMidX - alignSeconds, 850);
-    }
-  
-  textSize(32);
-  fill(255, 255, 255);
-  text("You have...", midUIMidX - 70, 740);
-  text("seconds to make your decision!", midUIMidX - 240, 900);
+  if(showTimer)
+  {
+    textSize(130);
+    var midUIMidX = (500 + 1350) / 2;
 
-  fill("hotpink");
-  text(p1ChoiceText, 520, 650);
-  // p1 command text here
+    if (secondsLeft <= 5)
+      {
+        fill(255, 100, 100);
+      }
+    else
+      {
+        fill(255, 255, 0);  
+      }
+
+    if(secondsLeft <= 9)
+      {
+        text(secondsLeft, midUIMidX - alignSeconds + 30, 850);
+      }
+    else
+      {
+        text(secondsLeft, midUIMidX - alignSeconds, 850);
+      }
+
+    textSize(32);
+    fill(255, 255, 255);
+    text("You have...", midUIMidX - 70, 740);
+    text("seconds to make your decision!", midUIMidX - 240, 900);
+
+    fill("hotpink");
+    text(p1ChoiceText, 520, 650);
+    // p1 command text here
+
+    fill("skyblue");  
+    textAlign(RIGHT);
+    var rightCommandShift = 400;
+    text(p2ChoiceText, midUIMidX + rightCommandShift, 650);
+    // p2 command text here
+
+    textAlign(LEFT);
+  }
   
-  fill("skyblue");  
-  textAlign(RIGHT);
-  var rightCommandShift = 400;
-  text(p2ChoiceText, midUIMidX + rightCommandShift, 650);
-  // p2 command text here
-  
-  textAlign(LEFT);
   
   // Labels for wasd/ijkl movement keys
   textAlign(CENTER);
@@ -487,7 +493,7 @@ function draw()
     readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
   }
   drawReadyButton();
-  readyButton.position(0, 0);
+  readyButton.position(midUIMidX - alignSeconds + 30, 800);
 }
 var startY = 650;
 var endY = 950;
