@@ -385,10 +385,10 @@ function draw()
   strokeWeight(1);
   
   // draws Middle UI text
+  var midUIMidX = (500 + 1350) / 2;
   if(showTimer)
   {
-    textSize(130);
-    var midUIMidX = (500 + 1350) / 2;
+    textSize(130);    
 
     if (secondsLeft <= 5)
       {
@@ -487,12 +487,8 @@ function draw()
   textFont('Arial');
   stroke("black");
   
-  // draws the "Ready!" button
-  function drawReadyButton()
-  {
-    readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
-  }
   drawReadyButton();
+  //readyButton.position(0,0);
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
 }
 var startY = 650;
@@ -500,6 +496,12 @@ var endY = 950;
 var numCommands = 6;
 var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
+
+// draws the "Ready!" button
+function drawReadyButton()
+{
+  readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
+}
 
 // called whenever we click anywhere in the game in order to log its coordinates
 function reportClick()
