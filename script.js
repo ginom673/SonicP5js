@@ -475,6 +475,12 @@ function draw()
   textAlign(LEFT);
   textFont('Arial');
   stroke("black");
+  
+  // draws the "Ready!" button
+  function drawReadyButton()
+  {
+    readyButton = loadImg("")
+  }
 }
 var startY = 650;
 var endY = 950;
