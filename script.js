@@ -118,8 +118,6 @@ var p1ChoiceText = "Awaiting P1's Decision...";
 var p2ChoiceText = "Awaiting P2's Decision...";
 
 
-
-
 //for (var i = 0; i < myList.length; i++)
 
 
@@ -801,6 +799,8 @@ function damage(playerID, damageAmount)
 
 function interpretCommands()
 {
+  
+  alert("interpret");
   
   // player 1 commands
   if (p1Choice == 1 && startTimer == false)
