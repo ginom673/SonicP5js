@@ -286,7 +286,6 @@ function draw()
   fill("lightgreen");
   rect(HPBarStartX2, 40, HPBarLength, 20);
   
-  
   health1();
   health2();
   
@@ -680,29 +679,29 @@ function keyReleased()
     {
       p1Choice = "W";
       //p1ChoiceText = "Player 1 moves to the Red Platform!";
-      player1X = platformXYs.red[0];
-      player1Y = platformXYs.red[1];
+      //player1X = platformXYs.red[0];
+      //player1Y = platformXYs.red[1];
     }
   else if (keyCode == 65)
     {
       p1Choice = "A";
       //p1ChoiceText = "Player 1 moves to the Yellow Platform!";
-      player1X = platformXYs.yellow[0];
-      player1Y = platformXYs.yellow[1];
+      //player1X = platformXYs.yellow[0];
+      //player1Y = platformXYs.yellow[1];
     }
   else if (keyCode == 83)
     {
       p1Choice = "S";
       //p1ChoiceText = "Player 1 moves to the Ground!";
-      player1X = platformXYs.ground[0];
-      player1Y = platformXYs.ground[1];
+      //player1X = platformXYs.ground[0];
+      //player1Y = platformXYs.ground[1];
     }
   else if (keyCode == 68)
     {
       p1Choice = "D";
       //p1ChoiceText = "Player 1 moves to the Blue Platform!";
-      player1X = platformXYs.blue[0];
-      player1Y = platformXYs.blue[1];
+      //player1X = platformXYs.blue[0];
+      //player1Y = platformXYs.blue[1];
     }
   else
     {
@@ -744,29 +743,29 @@ function keyReleased()
     {
       p2Choice = "I";
       //p2ChoiceText = "Player 2 moves to the Red Platform!";
-      player2X = platformXYs.red[2];
-      player2Y = platformXYs.red[3];
+      //player2X = platformXYs.red[2];
+      //player2Y = platformXYs.red[3];
     }
   else if (keyCode == 74)
     {
       p2Choice = "J";
       //p2ChoiceText = "Player 2 moves to the Yellow Platform!";
-      player2X = platformXYs.yellow[2];
-      player2Y = platformXYs.yellow[3];
+      //player2X = platformXYs.yellow[2];
+      //player2Y = platformXYs.yellow[3];
     }
   else if (keyCode == 75)
     {
       p2Choice = "K";
       //p2ChoiceText = "Player 2 moves to the Ground!";
-      player2X = platformXYs.ground[2];
-      player2Y = platformXYs.ground[3];
+      //player2X = platformXYs.ground[2];
+      //player2Y = platformXYs.ground[3];
     }
   else if (keyCode == 76)
     {
       p2Choice = "L";
       //p2ChoiceText = "Player 2 moves to the Blue Platform!";
-      player2X = platformXYs.blue[2];
-      player2Y = platformXYs.blue[3];
+      //player2X = platformXYs.blue[2];
+      //player2Y = platformXYs.blue[3];
     }
   else
     {
@@ -829,25 +828,25 @@ function interpretCommands()
     {
       p1ChoiceText = "Player 1 uses Heat Shield!";
     }
-  else if (p1Choice == "W")
+  else if (p1Choice == "W" && startTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Red Platform!";
       player1X = platformXYs.red[0];
       player1Y = platformXYs.red[1];
     }
-  else if (p1Choice == "A")
+  else if (p1Choice == "A" && startTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Yellow Platform!";
       player1X = platformXYs.yellow[0];
       player1Y = platformXYs.yellow[1];
     }
-  else if (p1Choice == "S")
+  else if (p1Choice == "S" && startTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Ground!";
       player1X = platformXYs.ground[0];
       player1Y = platformXYs.ground[1];
     }
-  else if (p1Choice == "D")
+  else if (p1Choice == "D" && startTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Blue Platform!";
       player1X = platformXYs.blue[0];
@@ -855,61 +854,61 @@ function interpretCommands()
     }
   else
     {
-      //p1ChoiceText = "Awaiting P1's Decision...";
+      p1ChoiceText = "Awaiting P1's Decision...";
     }
   
   // player 2 commands
-  if (p2Choice == 1)
+  if (p2Choice == 1 && startTimer == false)
     {
       p2ChoiceText = "Player 2 uses Icicle Toss!";
     }
-  else if (p2Choice == 2)
+  else if (p2Choice == 2 && startTimer == false)
     {
       p2ChoiceText = "Player 2 uses Iceberg Crush!";
     }
-  else if (p2Choice == 3)
+  else if (p2Choice == 3 && startTimer == false)
     {
       p2ChoiceText = "Player 2 uses Ice Breath!";
     }
-  else if (p2Choice == 4)
+  else if (p2Choice == 4 && startTimer == false)
     {
       p2ChoiceText = "Player 2 uses Icy Reflect!";
     }
-  else if (p2Choice == 5)
+  else if (p2Choice == 5 && startTimer == false)
     {
       p2ChoiceText = "Player 2 uses Frozen Mystery!";
     }
-  else if (p2Choice == 6)
+  else if (p2Choice == 6 && startTimer == false)
     {
       p2ChoiceText = "Player 2 uses Ice Wall!";
     }
-  else if (p2Choice == "I")
+  else if (p2Choice == "I" && startTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Red Platform!";
       player2X = platformXYs.red[2];
       player2Y = platformXYs.red[3];
     }
-  else if (p2Choice == "J")
+  else if (p2Choice == "J" && startTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Yellow Platform!";
-      //player2X = platformXYs.yellow[2];
-      //player2Y = platformXYs.yellow[3];
+      player2X = platformXYs.yellow[2];
+      player2Y = platformXYs.yellow[3];
     }
-  else if (p2Choice == "K")
+  else if (p2Choice == "K" && startTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Ground!";
-      //player2X = platformXYs.ground[2];
-      //player2Y = platformXYs.ground[3];
+      player2X = platformXYs.ground[2];
+      player2Y = platformXYs.ground[3];
     }
-  else if (p2Choice == "L")
+  else if (p2Choice == "L" && startTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Blue Platform!";
-      //player2X = platformXYs.blue[2];
-      //player2Y = platformXYs.blue[3];
+      player2X = platformXYs.blue[2];
+      player2Y = platformXYs.blue[3];
     }
   else
     {
-      //p2ChoiceText = "Awaiting P2's Decision...";
+      p2ChoiceText = "Awaiting P2's Decision...";
     }
 }
 
