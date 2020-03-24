@@ -70,7 +70,13 @@ var alignSeconds = 70;
 var healthPercent1 = 1.0;
 var healthPercent2 = 1.0;
 
+// timerActive determines if the timer is ticking down from 10 to 0, meaning we are awaiting player decisions
+// if its false, we are simply not ticking the clock RIGHT NOW
 var timerActive = false;
+
+// gameStarted determines if the game has started
+// and for now, is basically used to determine if the ready button should be displayed or not
+var gameStarted = false;
 
 var midUIMidX = (500 + 1350) / 2;
 
@@ -504,7 +510,7 @@ function draw()
   textFont('Arial');
   stroke("black");
   
-  if(!startTimer)
+  if(!gameStarted)
   {
     drawReadyButton();
     //readyButton.position(0,0);
