@@ -43,7 +43,7 @@ var idleImg2;
 var jumpImg1;
 var jumpImg2;
 
-var readyButton;
+var readyButton; // undefined
 
 var maxHP = 500;
 var currentHP1 = maxHP;
@@ -70,9 +70,9 @@ var alignSeconds = 70;
 var healthPercent1 = 1.0;
 var healthPercent2 = 1.0;
 
-// timerActive determines if the timer is ticking down from 10 to 0, meaning we are awaiting player decisions
+// showTimer determines if the timer is ticking down from 10 to 0, meaning we are awaiting player decisions
 // if its false, we are simply not ticking the clock RIGHT NOW
-var timerActive = false;
+var showTimer = false;
 
 // gameStarted determines if the game has started
 // and for now, is basically used to determine if the ready button should be displayed or not
@@ -86,6 +86,7 @@ var buttonX = midUIMidX - alignSeconds + 30;
 var buttonY = 800;
 var buttonWidth = 179;
 var buttonHeight = 72;
+
 
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
@@ -103,11 +104,14 @@ var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
 var player2Y = platformXYs.ground[3];
 
+var p1Choice;
+var p2Choice;
+
 // this represents the text displaying the "status" of each player's decision
 p1ChoiceText = "Awaiting P1's Decision...";
 p2ChoiceText = "Awaiting P2's Decision...";
 
-var showTimer = false;
+
 
 
 //for (var i = 0; i < myList.length; i++)
@@ -526,7 +530,10 @@ var textInterval = textBoxHeight / (numCommands - 1);
 // draws the "Ready!" button
 function drawReadyButton()
 {
-  readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
+  if(readyButton == undefined)
+  {
+      readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
+  }  
 }
 
 // called whenever we click anywhere in the game in order to log its coordinates
@@ -549,6 +556,7 @@ function mouseClicked()
   if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight)
   {
     showTimer = true;
+    gameStarted = true;
     readyButton.remove();
     readyButton = null;
     startTimer();
