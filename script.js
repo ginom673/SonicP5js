@@ -1,4 +1,13 @@
+// ---------- TIPS ----------
+
+
+// FIND AND REPLACE ALL
+// in glitch.com you can find and replace text using CTRL+ALT+F
+
+
 // ---------- NOTES ----------
+
+
 // it seems that the image position represents the bottom-left corner of the image
 
 // ANIMATION
@@ -12,12 +21,9 @@
 // with these numbers, this means our jump should take 10/13 of a second
 // if we want half the jump to be going up and half to be going down, each half takes 10/26 of a second
 
-// FIND AND REPLACE ALL
-// in glitch.com you can find and replace text using CTRL+ALT+F
-
-// for some reason, the jump animation plays in the middle of when you jump (if you get lucky)
 
 // ---------- IDEAS ----------
+
 
 // make players take their turns AT THE SAME TIME! 
 // make the player choices invisible on the screen... aka rather than moving up and down with some selector, they just press 6 to do command 6
@@ -26,13 +32,13 @@
 // however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
 
 
-// if the jumping animation is constnatly happening the background, such that when we press j, we may start the animation in the middle,
-// ... IF that is true, a solution would potentially be resetting the gif every time we restart it
-
-
 // ---------- BUG ----------
 
+
 // for some reason, the positioning of the click for the button is a little off
+// for some reason, the jump animation plays in the middle of when you jump (if you get lucky)
+// if the jumping animation is constnatly happening the background, such that when we press j, we may start the animation in the middle,
+// ... IF that is true, a solution would potentially be resetting the gif every time we restart it
 
 
 //var loadImg1;
@@ -71,7 +77,7 @@ var healthPercent1 = 1.0;
 var healthPercent2 = 1.0;
 
 // showTimer determines if the timer is ticking down from 10 to 0, meaning we are awaiting player decisions
-// if its false, we are simply not ticking the clock RIGHT NOW
+// if its false, we are simply not ticking the timer RIGHT NOW
 var showTimer = false;
 
 // gameStarted determines if the game has started
@@ -223,18 +229,30 @@ function jump()
   //setInterval
 }
 
+var timerInterval;
+
 function startTimer()
 {
-  setInterval(updateClock, 1000);
+  timerInterval = setInterval(updateTimer, 1000);
   timerActive = true;
 }
 
-function updateClock()
+function updateTimer()
 {
   if(secondsLeft > 0)
-    {
-      secondsLeft = secondsLeft - 1;    
-    }  
+  {
+    secondsLeft = secondsLeft - 1;    
+  }  
+  else
+  {
+    stopTimer();
+  }
+}
+
+function stopTimer()
+{
+  timerActive = false;
+  clearInterval(timerInterval);
 }
 
 // constantly called to update the screen 
@@ -617,113 +635,135 @@ function keyPressed()
 function keyReleased()
 {
   
+  // if the game hasn't started, or timer is inactive, return, so we ignore their key presses
+  if(!gameStarted || !showTimer)
+  {
+    return;
+  }
+  
   // player 1 commands
   if (keyCode == 49)
     {
-      p1ChoiceText = "Player 1 uses Fire Throw!";
-      damage(2, 100);
+      p1Choice = 1;
+      //p1ChoiceText = "Player 1 uses Fire Throw!";
+      //damage(2, 100);
     }
   else if (keyCode == 50)
     {
-      p1ChoiceText = "Player 1 uses Power Blast!";
+      p1Choice = 2;
+      //p1ChoiceText = "Player 1 uses Power Blast!";
     }
   else if (keyCode == 51)
     {
-      p1ChoiceText = "Player 1 uses Sword Strike!";
+      p1Choice = 3;
+      //p1ChoiceText = "Player 1 uses Sword Strike!";
     }
   else if (keyCode == 52)
     {
-      p1ChoiceText = "Player 1 uses Fiery Counter!";
+      p1Choice = 4;
+      //p1ChoiceText = "Player 1 uses Fiery Counter!";
     }
   else if (keyCode == 53)
     {
-      p1ChoiceText = "Player 1 uses Steam Up!";
+      p1Choice = 5;
+      //p1ChoiceText = "Player 1 uses Steam Up!";
     }
   else if (keyCode == 54)
     {
-      p1ChoiceText = "Player 1 uses Heat Shield!";
+      p1Choice = 6;
+      //p1ChoiceText = "Player 1 uses Heat Shield!";
     }
   else if (keyCode == 87)
     {
-      p1ChoiceText = "Player 1 moves to the Red Platform!";
+      p1Choice = "W";
+      //p1ChoiceText = "Player 1 moves to the Red Platform!";
       player1X = platformXYs.red[0];
       player1Y = platformXYs.red[1];
     }
   else if (keyCode == 65)
     {
-      p1ChoiceText = "Player 1 moves to the Yellow Platform!";
+      p1Choice = "A";
+      //p1ChoiceText = "Player 1 moves to the Yellow Platform!";
       player1X = platformXYs.yellow[0];
       player1Y = platformXYs.yellow[1];
     }
   else if (keyCode == 83)
     {
-      p1ChoiceText = "Player 1 moves to the Ground!";
+      p1Choice = "S";
+      //p1ChoiceText = "Player 1 moves to the Ground!";
       player1X = platformXYs.ground[0];
       player1Y = platformXYs.ground[1];
     }
   else if (keyCode == 68)
     {
-      p1ChoiceText = "Player 1 moves to the Blue Platform!";
+      p1Choice = "D";
+      //p1ChoiceText = "Player 1 moves to the Blue Platform!";
       player1X = platformXYs.blue[0];
       player1Y = platformXYs.blue[1];
     }
   else
     {
-      p1ChoiceText = "Awaiting P1's Decision...";
+      //p1ChoiceText = "Awaiting P1's Decision...";
     }
   
   // player 2 commands
   if (keyCode == 55)
     {
-      p2ChoiceText = "Player 2 uses Icicle Toss!";
+      //p2ChoiceText = "Player 2 uses Icicle Toss!";
+      p2Choice = 1;
     }
   else if (keyCode == 56)
     {
-      p2ChoiceText = "Player 2 uses Iceberg Crush!";
+      //p2ChoiceText = "Player 2 uses Iceberg Crush!";
+      p2Choice = 2;
     }
   else if (keyCode == 57)
     {
-      p2ChoiceText = "Player 2 uses Ice Breath!";
+      //p2ChoiceText = "Player 2 uses Ice Breath!";
+      p2Choice = 3;
     }
   else if (keyCode == 48)
     {
-      p2ChoiceText = "Player 2 uses Icy Reflect!";
+      //p2ChoiceText = "Player 2 uses Icy Reflect!";
+      p2Choice = 4;
     }
   else if (keyCode == 189)
     {
-      p2ChoiceText = "Player 2 uses Frozen Mystery!";
+      //p2ChoiceText = "Player 2 uses Frozen Mystery!";
+      p2Choice = 5;
     }
   else if (keyCode == 187)
     {
-      p2ChoiceText = "Player 2 uses Ice Wall!";
+      //p2ChoiceText = "Player 2 uses Ice Wall!";
+      p2Choice = 6;
     }
   else if (keyCode == 73)
     {
-      p2ChoiceText = "Player 2 moves to the Red Platform!";
+      //p2ChoiceText = "Player 2 moves to the Red Platform!";
       player2X = platformXYs.red[2];
       player2Y = platformXYs.red[3];
     }
   else if (keyCode == 74)
     {
-      p2ChoiceText = "Player 2 moves to the Yellow Platform!";
+      //p2ChoiceText = "Player 2 moves to the Yellow Platform!";
       player2X = platformXYs.yellow[2];
       player2Y = platformXYs.yellow[3];
     }
   else if (keyCode == 75)
     {
-      p2ChoiceText = "Player 2 moves to the Ground!";
+      //p2ChoiceText = "Player 2 moves to the Ground!";
       player2X = platformXYs.ground[2];
       player2Y = platformXYs.ground[3];
     }
   else if (keyCode == 76)
     {
-      p2ChoiceText = "Player 2 moves to the Blue Platform!";
+      //p2ChoiceText = "Player 2 moves to the Blue Platform!";
       player2X = platformXYs.blue[2];
       player2Y = platformXYs.blue[3];
     }
   else
     {
-      p2ChoiceText = "Awaiting P2's Decision...";
+      //p2ChoiceText = "Awaiting P2's Decision...";
     }
 }
 
