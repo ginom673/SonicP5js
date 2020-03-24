@@ -234,6 +234,8 @@ function startTimer()
   timerInterval = setInterval(updateTimer, 1000);
   showTimer = true;
   secondsLeft = 10;
+  p1ChoiceText = "Awaiting P1's Decision...";
+  p2ChoiceText = "Awaiting P2's Decision...";
 }
 
 function updateTimer()
@@ -456,7 +458,11 @@ function draw()
     fill(255, 255, 255);
     text("You have...", midUIMidX - 70, 740);
     text("seconds to make your decision!", midUIMidX - 240, 900);
-
+    
+  }
+  
+  if(gameStarted)
+  {
     fill("hotpink");
     text(p1ChoiceText, 520, 650);
     // p1 command text here
@@ -466,10 +472,9 @@ function draw()
     var rightCommandShift = 400;
     text(p2ChoiceText, midUIMidX + rightCommandShift, 650);
     // p2 command text here
+  } 
 
-    textAlign(LEFT);
-  }
-  
+  textAlign(LEFT);
   
   
   // Labels for wasd/ijkl movement keys
@@ -800,53 +805,53 @@ function damage(playerID, damageAmount)
 function interpretCommands()
 {
   
-  alert("interpret");
+  //alert("interpret");
   
   // player 1 commands
-  if (p1Choice == 1 && startTimer == false)
+  if (p1Choice == 1 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Fire Throw!";
       damage(2, 100);
     }
-  else if (p1Choice == 2 && startTimer == false)
+  else if (p1Choice == 2 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Power Blast!";
     }
-  else if (p1Choice == 3 && startTimer == false)
+  else if (p1Choice == 3 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Sword Strike!";
     }
-  else if (p1Choice == 4 && startTimer == false)
+  else if (p1Choice == 4 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Fiery Counter!";
     }
-  else if (p1Choice == 5 && startTimer == false)
+  else if (p1Choice == 5 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Steam Up!";
     }
-  else if (p1Choice == 6 && startTimer == false)
+  else if (p1Choice == 6 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Heat Shield!";
     }
-  else if (p1Choice == "W" && startTimer == false)
+  else if (p1Choice == "W" && showTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Red Platform!";
       player1X = platformXYs.red[0];
       player1Y = platformXYs.red[1];
     }
-  else if (p1Choice == "A" && startTimer == false)
+  else if (p1Choice == "A" && showTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Yellow Platform!";
       player1X = platformXYs.yellow[0];
       player1Y = platformXYs.yellow[1];
     }
-  else if (p1Choice == "S" && startTimer == false)
+  else if (p1Choice == "S" && showTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Ground!";
       player1X = platformXYs.ground[0];
       player1Y = platformXYs.ground[1];
     }
-  else if (p1Choice == "D" && startTimer == false)
+  else if (p1Choice == "D" && showTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Blue Platform!";
       player1X = platformXYs.blue[0];
@@ -858,49 +863,49 @@ function interpretCommands()
     }
   
   // player 2 commands
-  if (p2Choice == 1 && startTimer == false)
+  if (p2Choice == 1 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Icicle Toss!";
     }
-  else if (p2Choice == 2 && startTimer == false)
+  else if (p2Choice == 2 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Iceberg Crush!";
     }
-  else if (p2Choice == 3 && startTimer == false)
+  else if (p2Choice == 3 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Ice Breath!";
     }
-  else if (p2Choice == 4 && startTimer == false)
+  else if (p2Choice == 4 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Icy Reflect!";
     }
-  else if (p2Choice == 5 && startTimer == false)
+  else if (p2Choice == 5 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Frozen Mystery!";
     }
-  else if (p2Choice == 6 && startTimer == false)
+  else if (p2Choice == 6 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Ice Wall!";
     }
-  else if (p2Choice == "I" && startTimer == false)
+  else if (p2Choice == "I" && showTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Red Platform!";
       player2X = platformXYs.red[2];
       player2Y = platformXYs.red[3];
     }
-  else if (p2Choice == "J" && startTimer == false)
+  else if (p2Choice == "J" && showTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Yellow Platform!";
       player2X = platformXYs.yellow[2];
       player2Y = platformXYs.yellow[3];
     }
-  else if (p2Choice == "K" && startTimer == false)
+  else if (p2Choice == "K" && showTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Ground!";
       player2X = platformXYs.ground[2];
       player2Y = platformXYs.ground[3];
     }
-  else if (p2Choice == "L" && startTimer == false)
+  else if (p2Choice == "L" && showTimer == false)
     {
       p2ChoiceText = "Player 2 moves to the Blue Platform!";
       player2X = platformXYs.blue[2];
