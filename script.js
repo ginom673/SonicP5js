@@ -463,14 +463,15 @@ function draw()
   
   if(gameStarted)
   {
+    textAlign(CENTER);
+    
     fill("hotpink");
-    text(p1ChoiceText, 520, 650);
+    text(p1ChoiceText, midUIMidX, 640);
     // p1 command text here
 
     fill("skyblue");  
-    textAlign(RIGHT);
     var rightCommandShift = 400;
-    text(p2ChoiceText, midUIMidX + rightCommandShift, 650);
+    text(p2ChoiceText, midUIMidX, 680);
     // p2 command text here
   } 
 
@@ -917,3 +918,4 @@ function interpretCommands()
     }
 }
 
+if(startTimer == true && keycode == )
