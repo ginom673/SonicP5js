@@ -157,6 +157,10 @@ function setup()
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
   //readyButton.remove();
   
+  drawMeleeIcon();
+  meleeIcon.position(40, 640);
+  image(meleeIcon, 40, 640, 10, 10);
+  
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
   // NOTE: this does not work!
   //https://stackoverflow.com/questions/21093570/force-page-zoom-at-100-with-js
@@ -579,7 +583,7 @@ function drawRangedIcon()
 // draws the Other Icon
 function drawOtherIcon()
 {
-  otherIcon = createImg("");
+  otherIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FOther_Icon.png?v=1585696324459");
 }
 
 // called whenever we click anywhere in the game in order to log its coordinates
