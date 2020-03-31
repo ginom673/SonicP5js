@@ -707,61 +707,53 @@ function keyReleased()
   // player 2 commands
   if (keyCode == 55)
     {
-      //p2ChoiceText = "Player 2 uses Icicle Toss!";
+      p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 1;
     }
   else if (keyCode == 56)
     {
-      //p2ChoiceText = "Player 2 uses Iceberg Crush!";
+      p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 2;
     }
   else if (keyCode == 57)
     {
-      //p2ChoiceText = "Player 2 uses Ice Breath!";
+      p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 3;
     }
   else if (keyCode == 48)
     {
-      //p2ChoiceText = "Player 2 uses Icy Reflect!";
+      p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 4;
     }
   else if (keyCode == 189)
     {
-      //p2ChoiceText = "Player 2 uses Frozen Mystery!";
+      p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 5;
     }
   else if (keyCode == 187)
     {
-      //p2ChoiceText = "Player 2 uses Ice Wall!";
+      p1ChoiceText = "Player 2 Has Decided!";
       p2Choice = 6;
     }
   else if (keyCode == 73)
     {
       p2Choice = "I";
-      //p2ChoiceText = "Player 2 moves to the Red Platform!";
-      //player2X = platformXYs.red[2];
-      //player2Y = platformXYs.red[3];
+      p2ChoiceText = "Player 2 Has Decided!";
     }
   else if (keyCode == 74)
     {
       p2Choice = "J";
-      //p2ChoiceText = "Player 2 moves to the Yellow Platform!";
-      //player2X = platformXYs.yellow[2];
-      //player2Y = platformXYs.yellow[3];
+      p2ChoiceText = "Player 2 Has Decided!";
     }
   else if (keyCode == 75)
     {
       p2Choice = "K";
-      //p2ChoiceText = "Player 2 moves to the Ground!";
-      //player2X = platformXYs.ground[2];
-      //player2Y = platformXYs.ground[3];
+      p2ChoiceText = "Player 2 Has Decided!";
     }
   else if (keyCode == 76)
     {
       p2Choice = "L";
-      //p2ChoiceText = "Player 2 moves to the Blue Platform!";
-      //player2X = platformXYs.blue[2];
-      //player2Y = platformXYs.blue[3];
+      p2ChoiceText = "Player 2 Has Decided!";
     }
   else
     {
