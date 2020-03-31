@@ -158,8 +158,10 @@ function setup()
   //readyButton.remove();
   
   drawMeleeIcon();
-  meleeIcon.position(40, 640);
-  image(meleeIcon, 40, 640, 10, 10);
+  meleeIcon.position(40, 680);
+  drawRangedIcon();
+  rangedIcon.position(40, 730);
+  
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
   // NOTE: this does not work!
@@ -573,17 +575,17 @@ function drawReadyButton()
 // draws the Melee Icon
 function drawMeleeIcon()
 {
-  meleeIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FMelee_Icon.png?v=1585696299938");
+  meleeIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fmelee_icon.png?v=1585697930465");
 }
 // draws the Ranged Icon
 function drawRangedIcon()
 {
-  rangedIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FRanged_Icon.png?v=1585696307078");
+  rangedIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Franged_icon.png?v=1585697945658");
 }
 // draws the Other Icon
 function drawOtherIcon()
 {
-  otherIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FOther_Icon.png?v=1585696324459");
+  otherIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fother_icon.png?v=1585697948579");
 }
 
 // called whenever we click anywhere in the game in order to log its coordinates
