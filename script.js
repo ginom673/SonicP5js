@@ -157,10 +157,23 @@ function setup()
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
   //readyButton.remove();
   
-  drawMeleeIcon();
-  meleeIcon.position(40, 680);
+  // player's command icons
+  
+  // p1 fire throw
   drawRangedIcon();
-  rangedIcon.position(40, 730);
+  rangedIcon.position(240, 640);
+  // p1 power blast
+  drawRangedIcon();
+  rangedIcon.position(260, 700);
+  // p1 sword strike
+  drawMeleeIcon();
+  meleeIcon.position(270, 760);
+  // p1 fiery counter
+  drawMeleeIcon();
+  meleeIcon.position(280, 820);
+  // p1 steam up
+  drawOtherIcon();
+  otherIcon.position(220, 80);
   
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
