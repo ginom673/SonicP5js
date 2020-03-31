@@ -51,6 +51,10 @@ var jumpImg2;
 
 var readyButton; // undefined
 
+var meleeIcon;
+var rangedIcon;
+var otherIcon;
+
 var maxHP = 500;
 var currentHP1 = maxHP;
 var currentHP2 = maxHP;
@@ -538,6 +542,8 @@ function draw()
   textFont('Arial');
   stroke("black");
   
+  
+  
   if(!gameStarted)
   {
     drawReadyButton();
@@ -558,6 +564,22 @@ function drawReadyButton()
   {
       readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
   }  
+}
+
+// draws the Melee Icon
+function drawMeleeIcon()
+{
+  meleeIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FMelee_Icon.png?v=1585696299938");
+}
+// draws the Ranged Icon
+function drawRangedIcon()
+{
+  rangedIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FRanged_Icon.png?v=1585696307078");
+}
+// draws the Other Icon
+function drawOtherIcon()
+{
+  otherIcon = createImg("");
 }
 
 // called whenever we click anywhere in the game in order to log its coordinates
