@@ -651,61 +651,53 @@ function keyReleased()
   if (keyCode == 49)
     {
       p1Choice = 1;
-      //p1ChoiceText = "Player 1 uses Fire Throw!";
+      p1ChoiceText = "Player 1 Has Decided!";
       //damage(2, 100);
     }
   else if (keyCode == 50)
     {
       p1Choice = 2;
-      //p1ChoiceText = "Player 1 uses Power Blast!";
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 51)
     {
       p1Choice = 3;
-      //p1ChoiceText = "Player 1 uses Sword Strike!";
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 52)
     {
       p1Choice = 4;
-      //p1ChoiceText = "Player 1 uses Fiery Counter!";
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 53)
     {
       p1Choice = 5;
-      //p1ChoiceText = "Player 1 uses Steam Up!";
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 54)
     {
       p1Choice = 6;
-      //p1ChoiceText = "Player 1 uses Heat Shield!";
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 87)
     {
       p1Choice = "W";
-      //p1ChoiceText = "Player 1 moves to the Red Platform!";
-      //player1X = platformXYs.red[0];
-      //player1Y = platformXYs.red[1];
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 65)
     {
       p1Choice = "A";
-      //p1ChoiceText = "Player 1 moves to the Yellow Platform!";
-      //player1X = platformXYs.yellow[0];
-      //player1Y = platformXYs.yellow[1];
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 83)
     {
       p1Choice = "S";
-      //p1ChoiceText = "Player 1 moves to the Ground!";
-      //player1X = platformXYs.ground[0];
-      //player1Y = platformXYs.ground[1];
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else if (keyCode == 68)
     {
       p1Choice = "D";
-      //p1ChoiceText = "Player 1 moves to the Blue Platform!";
-      //player1X = platformXYs.blue[0];
-      //player1Y = platformXYs.blue[1];
+      p1ChoiceText = "Player 1 Has Decided!";
     }
   else
     {
@@ -918,4 +910,3 @@ function interpretCommands()
     }
 }
 
-if(startTimer == true && keycode == )
