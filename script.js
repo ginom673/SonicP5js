@@ -173,7 +173,14 @@ function setup()
   meleeIcon.position(280, 820);
   // p1 steam up
   drawOtherIcon();
-  otherIcon.position(220, 80);
+  otherIcon.position(220, 880);
+  // p1 heat shield
+  drawOtherIcon();
+  otherIcon.position(245, 940);
+  
+  // p2 icicle toss
+  drawRangedIcon();
+  rangedIcon.position(1640, 640);
   
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
