@@ -41,6 +41,13 @@
 // ... IF that is true, a solution would potentially be resetting the gif every time we restart it
 
 
+
+var lastPowerBlastTurn = -99999;
+var currentTurn = 0;
+if currentTurn -
+
+
+
 //var loadImg1;
 //var loadImg2;
 var idleImg1;
@@ -907,10 +914,12 @@ function interpretCommands()
   else if (p1Choice == 2 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Power Blast!";
+      damage(2, 200);
     }
   else if (p1Choice == 3 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Sword Strike!";
+      damage(2, 150);
     }
   else if (p1Choice == 4 && showTimer == false)
     {
