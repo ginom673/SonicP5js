@@ -859,7 +859,32 @@ function interpretCommands()
   if (p1Choice == 1 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Fire Throw!";
-      damage(2, 100);
+      var fireThrow = Math.floor(Math.random() * 6);
+      
+      if (fireThrow == 1)
+        {
+          damage(2, 50);
+        }
+      else if (fireThrow == 2)
+        {
+          damage(2, 50);
+        }
+      else if (fireThrow == 2)
+        {
+          damage(2, 50);
+        }
+      else if (fireThrow == 2)
+        {
+          damage(2, 50);
+        }
+      else if (fireThrow == 2)
+        {
+          damage(2, 50);
+        }
+      else
+        {
+          damage(2, 0);
+        }
     }
   else if (p1Choice == 2 && showTimer == false)
     {
