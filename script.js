@@ -188,9 +188,14 @@ function setup()
   drawRangedIcon();
   rangedIcon.position(1640, 760);
   // p2 icy reflect
+  drawRangedIcon();
+  rangedIcon.position(1640, 825);
+  // p2 frozen mystery
   drawOtherIcon();
-  otherIcon.position(1640, 825);
-  // p2 ice 
+  otherIcon.position(1560, 885);
+  // p2 ice wall
+  drawOtherIcon();
+  otherIcon.position(1680, 945);
   
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
