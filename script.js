@@ -41,10 +41,12 @@
 // ... IF that is true, a solution would potentially be resetting the gif every time we restart it
 
 
-
+// COOLDOWN NOTES
 var lastPowerBlastTurn = -99999;
-var currentTurn = 0;
-if currentTurn -
+var currentTurn = -1; // once the game starts, currentTurn will be set to 0
+var powerBlastCooldown = 3;
+if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown):
+  // they can use powerblast
 
 
 
@@ -285,6 +287,7 @@ function startTimer()
 {
   timerInterval = setInterval(updateTimer, 1000);
   showTimer = true;
+  currentTurn = currentTurn + 1;
   secondsLeft = 10;
   p1ChoiceText = "Awaiting P1's Decision...";
   p2ChoiceText = "Awaiting P2's Decision...";
