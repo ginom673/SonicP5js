@@ -864,22 +864,23 @@ function interpretCommands()
       if (fireThrow == 1)
         {
           damage(2, 50);
+          setTimeout(function());
         }
       else if (fireThrow == 2)
         {
-          damage(2, 50);
+          damage(2, 100);
         }
-      else if (fireThrow == 2)
+      else if (fireThrow == 3)
         {
-          damage(2, 50);
+          damage(2, 150);
         }
-      else if (fireThrow == 2)
+      else if (fireThrow == 4)
         {
-          damage(2, 50);
+          damage(2, 200);
         }
-      else if (fireThrow == 2)
+      else if (fireThrow == 5)
         {
-          damage(2, 50);
+          damage(2, 250);
         }
       else
         {
