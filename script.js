@@ -181,6 +181,16 @@ function setup()
   // p2 icicle toss
   drawRangedIcon();
   rangedIcon.position(1640, 640);
+  // p2 iceberg crush
+  drawMeleeIcon();
+  meleeIcon.position(1590, 705);
+  // p2 ice breath
+  drawRangedIcon();
+  rangedIcon.position(1640, 760);
+  // p2 icy reflect
+  drawOtherIcon();
+  otherIcon.position(1640, 825);
+  // p2 ice 
   
   
   // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
