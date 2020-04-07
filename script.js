@@ -864,27 +864,44 @@ function interpretCommands()
       if (fireThrow == 1)
         {
           damage(2, 50);
-          setTimeout(function());
+          setTimeout(function(){
+            p1ChoiceText = "It hit one time!";
+          }, 2000);
         }
       else if (fireThrow == 2)
         {
           damage(2, 100);
+          setTimeout(function(){
+            p1ChoiceText = "It hit two times!";
+          }, 2000);
         }
       else if (fireThrow == 3)
         {
           damage(2, 150);
+          setTimeout(function(){
+            p1ChoiceText = "It hit three times!";
+          }, 2000);
         }
       else if (fireThrow == 4)
         {
           damage(2, 200);
+          setTimeout(function(){
+            p1ChoiceText = "It hit four times!";
+          }, 2000);
         }
       else if (fireThrow == 5)
         {
           damage(2, 250);
+          setTimeout(function(){
+            p1ChoiceText = "It hit five times!";
+          }, 2000);
         }
       else
         {
           damage(2, 0);
+          setTimeout(function(){
+            p1ChoiceText = "Player 2 dodged it!";
+          }, 2000);
         }
     }
   else if (p1Choice == 2 && showTimer == false)
