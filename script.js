@@ -838,9 +838,15 @@ function keyReleased()
 }
 
 // damages the given player by a given amount
-function damage(playerID, damageAmount)
+function damage(targetedPlayer, damageAmount, playerSource)
 {
-  if (playerID == 1)
+  
+  // add an if statement that checks if the source of htis attack is from player 1
+  // if so, multiply the resulting damage by p1dmgmultiplier (which is a variable we haven't made yet)
+  
+  
+  
+  if (targetedPlayer == 1)
     {
       currentHP1 = currentHP1 - damageAmount;
       
@@ -876,42 +882,42 @@ function interpretCommands()
       
       if (fireThrow == 1)
         {
-          damage(2, 50);
+          damage(2, 50, 1);
           setTimeout(function(){
             p1ChoiceText = "It hit one time!";
           }, 2000);
         }
       else if (fireThrow == 2)
         {
-          damage(2, 100);
+          damage(2, 100, 1);
           setTimeout(function(){
             p1ChoiceText = "It hit two times!";
           }, 2000);
         }
       else if (fireThrow == 3)
         {
-          damage(2, 150);
+          damage(2, 150, 1);
           setTimeout(function(){
             p1ChoiceText = "It hit three times!";
           }, 2000);
         }
       else if (fireThrow == 4)
         {
-          damage(2, 200);
+          damage(2, 200, 1);
           setTimeout(function(){
             p1ChoiceText = "It hit four times!";
           }, 2000);
         }
       else if (fireThrow == 5)
         {
-          damage(2, 250);
+          damage(2, 250, 1);
           setTimeout(function(){
             p1ChoiceText = "It hit five times!";
           }, 2000);
         }
       else
         {
-          damage(2, 0);
+          //damage(2, 0, 1);
           setTimeout(function(){
             p1ChoiceText = "Player 2 dodged it!";
           }, 2000);
@@ -920,12 +926,12 @@ function interpretCommands()
   else if (p1Choice == 2 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Power Blast!";
-      damage(2, 200);
+      damage(2, 200, 1);
     }
   else if (p1Choice == 3 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Sword Strike!";
-      damage(2, 150);
+      damage(2, 150, 1);
     }
   else if (p1Choice == 4 && showTimer == false)
     {
@@ -934,6 +940,7 @@ function interpretCommands()
   else if (p1Choice == 5 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Steam Up!";
+      
     }
   else if (p1Choice == 6 && showTimer == false)
     {
