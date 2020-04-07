@@ -45,8 +45,11 @@
 var lastPowerBlastTurn = -99999;
 var currentTurn = -1; // once the game starts, currentTurn will be set to 0
 var powerBlastCooldown = 3;
-if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown):
+if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
+{
   // they can use powerblast
+}
+
 
 
 
