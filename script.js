@@ -50,7 +50,8 @@ if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
   // they can use powerblast
 }
 
-
+// MULTIPLIER
+var p1DmgMult = 1.5;
 
 
 //var loadImg1;
@@ -844,7 +845,10 @@ function damage(targetedPlayer, damageAmount, playerSource)
   // add an if statement that checks if the source of htis attack is from player 1
   // if so, multiply the resulting damage by p1dmgmultiplier (which is a variable we haven't made yet)
   
-  
+  if (playerSource == 1)
+    {
+      damageAmount = damageAmount * p1DmgMult;
+    }
   
   if (targetedPlayer == 1)
     {
