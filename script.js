@@ -40,6 +40,10 @@
 // if the jumping animation is constnatly happening the background, such that when we press j, we may start the animation in the middle,
 // ... IF that is true, a solution would potentially be resetting the gif every time we restart it
 
+// icicle toss and fire throw deal different damage...?
+
+// restart button doesnt load
+
 
 // COOLDOWN NOTES
 var lastPowerBlastTurn = -99999;
@@ -110,6 +114,8 @@ var buttonX = midUIMidX - alignSeconds + 30;
 var buttonY = 800;
 var buttonWidth = 179;
 var buttonHeight = 72;
+
+var P1
 
 
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
@@ -291,12 +297,48 @@ var timerInterval;
 
 function startTimer()
 {
-  timerInterval = setInterval(updateTimer, 1000);
-  showTimer = true;
-  currentTurn = currentTurn + 1;
-  secondsLeft = 10;
-  p1ChoiceText = "Awaiting P1's Decision...";
-  p2ChoiceText = "Awaiting P2's Decision...";
+  
+  
+  // check if either player has won, or if it's a draw
+  
+  // check for draw first
+  if (currentHP1 <= 0 && currentHP2 <= 0)
+    {
+      p1ChoiceText = "It's a Draw!";
+      p2ChoiceText = "It's a Draw!";
+      restartButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_play-again.png?v=1586904545517");
+      restartButton.position(midUIMidX - alignSeconds, 800);
+    }
+  // check if player 1 won
+  else if (currentHP2 <= 0)
+    {
+      p1ChoiceText = "Player 1 has Won the Game!";
+      p2ChoiceText = "Player 2 has Lost the Game!";
+      restartButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_play-again.png?v=1586904545517");
+      restartButton.position(midUIMidX - alignSeconds, 800);
+    }
+  
+  // check if player 2 won
+  else if (currentHP1 <= 0)
+    {
+      p2ChoiceText = "Player 2 has Won the Game!";
+      p1ChoiceText = "Player 1 has Lost the Game!";
+      restartButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_play-again.png?v=1586904545517");
+      restartButton.position(midUIMidX - alignSeconds, 800);
+    }
+  
+  // game is not over yet
+  else
+    {
+      timerInterval = setInterval(updateTimer, 1000);
+      showTimer = true;
+      currentTurn = currentTurn + 1;
+      secondsLeft = 10;
+      p1ChoiceText = "Awaiting P1's Decision...";
+      p2ChoiceText = "Awaiting P2's Decision...";
+    }
+  
+  
 }
 
 function updateTimer()
@@ -318,7 +360,8 @@ function stopTimer()
 {
   showTimer = false;
   clearInterval(timerInterval);
-  interpretCommands();  
+  interpretCommands();
+  setTimeout(startTimer, 5000);
 }
 
 // constantly called to update the screen 
