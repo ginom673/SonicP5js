@@ -63,6 +63,7 @@ var jumpImg1;
 var jumpImg2;
 
 var readyButton; // undefined
+var restartButton;
 
 var meleeIcon;
 var rangedIcon;
@@ -169,6 +170,7 @@ function setup()
   readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");  
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
   //readyButton.remove();
+  
   
   // player's command icons
   
@@ -316,36 +318,7 @@ function stopTimer()
 {
   showTimer = false;
   clearInterval(timerInterval);
-  interpretCommands();
-  
-  // check if either player has won, or if it's a draw
-  
-  // check for draw first
-  if (currentHP1 <= 0 && currentHP2 <= 0)
-    {
-      p1ChoiceText = "It's a Draw!";
-      p2ChoiceText = "It's a Draw!";
-    }
-  // check if player 1 won
-  else if (currentHP2 <= 0)
-    {
-      p1ChoiceText = "Player 1 has Won the Game!";
-      p2ChoiceText = "Player 2 has Lost the Game!";
-    }
-  
-  // check if player 2 won
-  else if (currentHP1 <= 0)
-    {
-      p2ChoiceText = "Player 1 has Won the Game!";
-      p2ChoiceText = "Player 2 has Lost the Game!";
-    }
-  
-  // game is not over yet
-  else
-    {
-      setTimeout(startTimer, 5000);
-    }
-  
+  interpretCommands();  
 }
 
 // constantly called to update the screen 
