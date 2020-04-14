@@ -1018,6 +1018,18 @@ function interpretCommands()
   else if (p1Choice == 4 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Fiery Counter!";
+      
+      if (p2MoveType == "melee")
+        {
+          damage(2, 150, 1);
+          setTimeout(function(){
+            p1ChoiceText = "Player 1 Successfully Countered!";
+          }, 2000);
+        }
+      else
+        {
+          
+        }
     }
   else if (p1Choice == 5 && showTimer == false)
     {
