@@ -1,3 +1,10 @@
+var myVariable;
+console.log(myVariable);
+myVariable = 5;
+console.log(myVariable);
+myVariable;
+console.log(myVariable);
+
 // ---------- TIPS ----------
 
 
@@ -837,8 +844,8 @@ function keyReleased()
     }
   else
     {
-      p1ChoiceText = "P1 did not decide!";
-      p1MoveType;
+      //p1ChoiceText = "P1 did not decide!";
+      p1MoveType = undefined;
     }
   
   // player 2 commands
@@ -904,8 +911,8 @@ function keyReleased()
     }
   else
     {
-      p2ChoiceText = "P2 did not decide!";
-      p2MoveType;
+      //p2ChoiceText = "P2 did not decide!";
+      p2MoveType = undefined;
     }
 }
 
@@ -1047,7 +1054,7 @@ function interpretCommands()
     }
   else
     {
-      p1ChoiceText = "Awaiting P1's Decision...";
+      p1ChoiceText = "Player 1 did not decide!";
     }
   
   // player 2 commands
@@ -1145,7 +1152,7 @@ function interpretCommands()
     }
   else
     {
-      p2ChoiceText = "Awaiting P2's Decision...";
+      p2ChoiceText = "Player 2 did not decide!";
     }
 }
 
