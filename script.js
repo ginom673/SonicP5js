@@ -983,6 +983,50 @@ function interpretCommands()
   if (p2Choice == 1 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Icicle Toss!";
+      var icicleToss = Math.floor(Math.random() * 6);
+      
+      if (icicleToss == 1)
+        {
+          damage(2, 50, 1);
+          setTimeout(function(){
+            p1ChoiceText = "It hit one time!";
+          }, 2000);
+        }
+      else if (icicleToss == 2)
+        {
+          damage(2, 100, 1);
+          setTimeout(function(){
+            p1ChoiceText = "It hit two times!";
+          }, 2000);
+        }
+      else if (icicleToss == 3)
+        {
+          damage(2, 150, 1);
+          setTimeout(function(){
+            p1ChoiceText = "It hit three times!";
+          }, 2000);
+        }
+      else if (icicleToss == 4)
+        {
+          damage(2, 200, 1);
+          setTimeout(function(){
+            p1ChoiceText = "It hit four times!";
+          }, 2000);
+        }
+      else if (icicle == 5)
+        {
+          damage(2, 250, 1);
+          setTimeout(function(){
+            p1ChoiceText = "It hit five times!";
+          }, 2000);
+        }
+      else
+        {
+          //damage(2, 0, 1);
+          setTimeout(function(){
+            p1ChoiceText = "Player 2 dodged it!";
+          }, 2000);
+        }
     }
   else if (p2Choice == 2 && showTimer == false)
     {
