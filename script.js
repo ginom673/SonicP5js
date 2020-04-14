@@ -115,7 +115,9 @@ var buttonY = 800;
 var buttonWidth = 179;
 var buttonHeight = 72;
 
-var P1
+// will be set to Ranged, Melee, Other, or Movement
+var p1MoveType;
+var p2MoveType;
 
 
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
@@ -776,56 +778,67 @@ function keyReleased()
     {
       p1Choice = 1;
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "ranged";
       //damage(2, 100);
     }
   else if (keyCode == 50)
     {
       p1Choice = 2;
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "ranged";
     }
   else if (keyCode == 51)
     {
       p1Choice = 3;
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "melee";
     }
   else if (keyCode == 52)
     {
       p1Choice = 4;
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "melee";
     }
   else if (keyCode == 53)
     {
       p1Choice = 5;
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "other";
     }
   else if (keyCode == 54)
     {
       p1Choice = 6;
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "other";
     }
   else if (keyCode == 87)
     {
       p1Choice = "W";
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "movement";
     }
   else if (keyCode == 65)
     {
       p1Choice = "A";
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "movement";
     }
   else if (keyCode == 83)
     {
       p1Choice = "S";
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "movement";
     }
   else if (keyCode == 68)
     {
       p1Choice = "D";
       p1ChoiceText = "Player 1 Has Decided!";
+      p1MoveType = "movement";
     }
   else
     {
-      //p1ChoiceText = "Awaiting P1's Decision...";
+      p1ChoiceText = "P1 did not decide!";
+      p1MoveType;
     }
   
   // player 2 commands
@@ -833,55 +846,66 @@ function keyReleased()
     {
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 1;
+      p2MoveType = "ranged";
     }
   else if (keyCode == 56)
     {
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 2;
+      p2MoveType = "melee";
     }
   else if (keyCode == 57)
     {
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 3;
+      p2MoveType = "ranged";
     }
   else if (keyCode == 48)
     {
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 4;
+      p2MoveType = "ranged";
     }
   else if (keyCode == 189)
     {
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 5;
+      p2MoveType = "other";
     }
   else if (keyCode == 187)
     {
       p1ChoiceText = "Player 2 Has Decided!";
       p2Choice = 6;
+      p2MoveType = "other";
     }
   else if (keyCode == 73)
     {
       p2Choice = "I";
       p2ChoiceText = "Player 2 Has Decided!";
+      p2MoveType = "movement";
     }
   else if (keyCode == 74)
     {
       p2Choice = "J";
       p2ChoiceText = "Player 2 Has Decided!";
+      p2MoveType = "movement";
     }
   else if (keyCode == 75)
     {
       p2Choice = "K";
       p2ChoiceText = "Player 2 Has Decided!";
+      p2MoveType = "movement";
     }
   else if (keyCode == 76)
     {
       p2Choice = "L";
       p2ChoiceText = "Player 2 Has Decided!";
+      p2MoveType = "movement";
     }
   else
     {
-      //p2ChoiceText = "Awaiting P2's Decision...";
+      p2ChoiceText = "P2 did not decide!";
+      p2MoveType;
     }
 }
 
