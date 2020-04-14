@@ -309,12 +309,28 @@ function updateTimer()
   }
 }
 
+// called at the end of every turn
+// to stop the timer from ticking
+// and also we interpret player commands and execute the turn, execute their choices
 function stopTimer()
 {
   showTimer = false;
   clearInterval(timerInterval);
   interpretCommands();
   setTimeout(startTimer, 5000);
+  
+  // check if either player has won, or if it's a draw
+  
+  // check for draw first
+  if (currentHP1 == 0 && currentHP2 == 0)
+    {
+      
+    }
+  // check if player 1 won
+  if (currentHP2 == 0 )
+  currentHP1
+  currentHP2
+  
 }
 
 // constantly called to update the screen 
