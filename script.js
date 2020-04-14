@@ -1,10 +1,10 @@
-var myVariable;
+/*var myVariable;
 console.log(myVariable);
 myVariable = 5;
 console.log(myVariable);
 myVariable;
 console.log(myVariable);
-
+*/
 // ---------- TIPS ----------
 
 
@@ -786,6 +786,8 @@ function keyReleased()
       p1Choice = 1;
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "ranged";
+      console.log(p1MoveType);
+      console.log(p2MoveType);
       //damage(2, 100);
     }
   else if (keyCode == 50)
@@ -872,6 +874,8 @@ function keyReleased()
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 4;
       p2MoveType = "ranged";
+      console.log(p1MoveType);
+      console.log(p2MoveType);
     }
   else if (keyCode == 189)
     {
@@ -1028,7 +1032,9 @@ function interpretCommands()
         }
       else
         {
-          
+          setTimeout(function(){
+            p1ChoiceText = "Player 1's Counter Failed!";
+          }, 2000);
         }
     }
   else if (p1Choice == 5 && showTimer == false)
@@ -1129,6 +1135,20 @@ function interpretCommands()
   else if (p2Choice == 4 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Icy Reflect!";
+      
+      if (p1MoveType == "ranged")
+        {
+          damage(1, 150, 2);
+          setTimeout(function(){
+            p2ChoiceText = "Player 2 Successfully Countered!";
+          }, 2000);
+        }
+      else
+        {
+          setTimeout(function(){
+            p2ChoiceText = "Player 2's Counter Failed!";
+          }, 2000);
+        }
     }
   else if (p2Choice == 5 && showTimer == false)
     {
