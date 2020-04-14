@@ -317,19 +317,34 @@ function stopTimer()
   showTimer = false;
   clearInterval(timerInterval);
   interpretCommands();
-  setTimeout(startTimer, 5000);
   
   // check if either player has won, or if it's a draw
   
   // check for draw first
-  if (currentHP1 == 0 && currentHP2 == 0)
+  if (currentHP1 <= 0 && currentHP2 <= 0)
     {
-      
+      p1ChoiceText = "It's a Draw!";
+      p2ChoiceText = "It's a Draw!";
     }
   // check if player 1 won
-  if (currentHP2 == 0 )
-  currentHP1
-  currentHP2
+  else if (currentHP2 <= 0)
+    {
+      p1ChoiceText = "Player 1 has Won the Game!";
+      p2ChoiceText = "Player 2 has Lost the Game!";
+    }
+  
+  // check if player 2 won
+  else if (currentHP1 <= 0)
+    {
+      p2ChoiceText = "Player 1 has Won the Game!";
+      p2ChoiceText = "Player 2 has Lost the Game!";
+    }
+  
+  // game is not over yet
+  else
+    {
+      setTimeout(startTimer, 5000);
+    }
   
 }
 
