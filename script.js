@@ -987,44 +987,44 @@ function interpretCommands()
       
       if (icicleToss == 1)
         {
-          damage(2, 50, 1);
+          damage(1, 50, 2);
           setTimeout(function(){
-            p1ChoiceText = "It hit one time!";
+            p2ChoiceText = "It hit one time!";
           }, 2000);
         }
       else if (icicleToss == 2)
         {
-          damage(2, 100, 1);
+          damage(1, 100, 2);
           setTimeout(function(){
-            p1ChoiceText = "It hit two times!";
+            p2ChoiceText = "It hit two times!";
           }, 2000);
         }
       else if (icicleToss == 3)
         {
-          damage(2, 150, 1);
+          damage(1, 150, 2);
           setTimeout(function(){
-            p1ChoiceText = "It hit three times!";
+            p2ChoiceText = "It hit three times!";
           }, 2000);
         }
       else if (icicleToss == 4)
         {
-          damage(2, 200, 1);
+          damage(1, 200, 2);
           setTimeout(function(){
-            p1ChoiceText = "It hit four times!";
+            p2ChoiceText = "It hit four times!";
           }, 2000);
         }
-      else if (icicle == 5)
+      else if (icicleToss == 5)
         {
-          damage(2, 250, 1);
+          damage(1, 250, 2);
           setTimeout(function(){
-            p1ChoiceText = "It hit five times!";
+            p2ChoiceText = "It hit five times!";
           }, 2000);
         }
       else
         {
           //damage(2, 0, 1);
           setTimeout(function(){
-            p1ChoiceText = "Player 2 dodged it!";
+            p2ChoiceText = "Player 1 dodged it!";
           }, 2000);
         }
     }
