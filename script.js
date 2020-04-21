@@ -117,10 +117,18 @@ var midUIMidX = (500 + 1350) / 2;
 
 //var clickX;
 //var clickY;
+
+// Ready button variables
 var buttonX = midUIMidX - alignSeconds + 30;
 var buttonY = 800;
 var buttonWidth = 179;
 var buttonHeight = 72;
+// Play Again button variables
+var buttonX2 = midUIMidX - alignSeconds;
+var buttonY2 = 800;
+var buttonWidth2 = 228;
+var buttonHeight2 = 72;
+
 
 // will be set to Ranged, Melee, Other, or Movement
 var p1MoveType;
@@ -718,6 +726,11 @@ function mouseClicked()
     readyButton = null;
     startTimer();
   }  
+  
+  if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2)
+  {
+    
+  }
 }
 
 // coordinates for the centers of the platforms
