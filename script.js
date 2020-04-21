@@ -99,7 +99,8 @@ var gameFPS = 13;
 var gameSPF = 1/gameFPS;
 var jumpAnimLength = 21;
 
-var secondsLeft = 10;
+var maxSeconds = 3;
+var secondsLeft = maxSeconds;
 var alignSeconds = 70;
 
 var healthPercent1 = 1.0;
@@ -724,6 +725,15 @@ function reportClick()
 
 function mouseClicked()
 {
+  
+  console.log(mouseX);
+  console.log(buttonX);
+  console.log(buttonWidth);
+  console.log(buttonY);
+  console.log(mouseY);
+  console.log(buttonHeight);
+  console.log(restartBtnIsActive);  
+  
   // draws Middle UI text
   if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight && !restartBtnIsActive)
   {
@@ -758,7 +768,7 @@ function resetGame()
   player2Y = platformXYs.ground[3];
   p1Choice = undefined;
   p2Choice = undefined;
-  
+  clearInterval(timerInterval);
   
 }
 
