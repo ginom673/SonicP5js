@@ -129,6 +129,9 @@ var buttonY2 = 800;
 var buttonWidth2 = 228;
 var buttonHeight2 = 72;
 
+var readyBtnIsActive;
+var restartBtnIsActive;
+
 
 // will be set to Ranged, Melee, Other, or Movement
 var p1MoveType;
@@ -682,6 +685,7 @@ function drawReadyButton()
   if(readyButton == undefined)
   {
       readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");
+      readyBtnIsActive = true;
   }  
 }
 
@@ -724,6 +728,7 @@ function mouseClicked()
     gameStarted = true;
     readyButton.remove();
     readyButton = null;
+    readyBtnIsActive = false;
     startTimer();
   }  
   
@@ -738,6 +743,7 @@ function resetGame()
   restartButton.remove();
   showTimer = false;
   drawReadyButton();
+  readyButton.position(midUIMidX - alignSeconds + 30, 800);
   currentHP1 = maxHP;
   currentHP2 = maxHP;
   
