@@ -729,8 +729,18 @@ function mouseClicked()
   
   if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2)
   {
-    
+    resetGame();
   }
+}
+
+function resetGame()
+{
+  restartButton.remove();
+  showTimer = false;
+  drawReadyButton();
+  currentHP1 = maxHP;
+  currentHP2 = maxHP;
+  
 }
 
 // coordinates for the centers of the platforms
