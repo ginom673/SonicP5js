@@ -730,7 +730,7 @@ function mouseClicked()
     showTimer = true;
     gameStarted = true;
     readyButton.remove();
-    readyButton = null;
+    //readyButton = null;
     readyBtnIsActive = false;
     startTimer();
   }  
@@ -755,7 +755,7 @@ function resetGame()
   player1X = platformXYs.ground[0];
   player1Y = platformXYs.ground[1];
   player2X = platformXYs.ground[2];
-  player2Y = platformXYs.blue[3];
+  player2Y = platformXYs.ground[3];
   
   
 }
