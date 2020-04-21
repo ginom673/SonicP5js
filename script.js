@@ -130,7 +130,7 @@ var buttonWidth2 = 228;
 var buttonHeight2 = 72;
 
 var readyBtnIsActive;
-var restartBtnIsActive;
+var restartBtnIsActive = false;
 
 
 // will be set to Ranged, Melee, Other, or Movement
@@ -328,6 +328,7 @@ function startTimer()
       p2ChoiceText = "It's a Draw!";
       restartButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_play-again.png?v=1586904545517");
       restartButton.position(midUIMidX - alignSeconds, 800);
+      restartBtnIsActive = true;
     }
   // check if player 1 won
   else if (currentHP2 <= 0)
@@ -336,6 +337,7 @@ function startTimer()
       p2ChoiceText = "Player 2 has Lost the Game!";
       restartButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_play-again.png?v=1586904545517");
       restartButton.position(midUIMidX - alignSeconds, 800);
+      restartBtnIsActive = true;
     }
   
   // check if player 2 won
@@ -345,6 +347,7 @@ function startTimer()
       p1ChoiceText = "Player 1 has Lost the Game!";
       restartButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_play-again.png?v=1586904545517");
       restartButton.position(midUIMidX - alignSeconds, 800);
+      restartBtnIsActive = true;
     }
   
   // game is not over yet
@@ -722,7 +725,7 @@ function reportClick()
 function mouseClicked()
 {
   // draws Middle UI text
-  if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight)
+  if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight && !restartBtnIsActive)
   {
     showTimer = true;
     gameStarted = true;
@@ -732,7 +735,7 @@ function mouseClicked()
     startTimer();
   }  
   
-  if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2)
+  if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2 && !readyBtnIsActive)
   {
     resetGame();
   }
@@ -741,11 +744,19 @@ function mouseClicked()
 function resetGame()
 {
   restartButton.remove();
+  restartBtnIsActive = false;
   showTimer = false;
   drawReadyButton();
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
+  readyBtnIsActive = true;
   currentHP1 = maxHP;
   currentHP2 = maxHP;
+  gameStarted = false;
+  player1X = platformXYs.ground[0];
+  player1Y = platformXYs.ground[1];
+  player2X = platformXYs.ground[2];
+  player2Y = platformXYs.blue[3];
+  
   
 }
 
