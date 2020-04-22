@@ -357,7 +357,7 @@ function startTimer()
       timerInterval = setInterval(updateTimer, 1000);
       showTimer = true;
       currentTurn = currentTurn + 1;
-      secondsLeft = 10;
+      secondsLeft = maxSeconds;
       p1ChoiceText = "Awaiting P1's Decision...";
       p2ChoiceText = "Awaiting P2's Decision...";
     }
