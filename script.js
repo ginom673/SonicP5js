@@ -181,6 +181,16 @@ var p2Choice;
 var p1ChoiceText = "Awaiting P1's Decision...";
 var p2ChoiceText = "Awaiting P2's Decision...";
 
+var timerInterval;
+
+var startY = 650;
+var endY = 950;
+var numCommands = 6;
+var textBoxHeight = endY - startY;
+var textInterval = textBoxHeight / (numCommands - 1);
+
+var currentPlatform = "ground";
+
 // called at the beginning
 function setup()
 {  
@@ -267,7 +277,8 @@ function createIdleImg2()
   idleImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
 }
 
-// 
+// makes player jump
+// NOTE: currently unused
 function jump()
 {
   // here do idleImg1.remove()
@@ -284,8 +295,6 @@ function jump()
   }, (21/13)*1000);
   //setInterval
 }
-
-var timerInterval;
 
 function startTimer()
 {
@@ -648,11 +657,7 @@ function draw()
   }
   
 }
-var startY = 650;
-var endY = 950;
-var numCommands = 6;
-var textBoxHeight = endY - startY;
-var textInterval = textBoxHeight / (numCommands - 1);
+
 
 // draws the "Ready!" button
 function drawReadyButton()
@@ -777,8 +782,6 @@ function health2()
   fill("red");
   rect(damageBarStartX2, 40, damageBarLength, 20);
 }
-
-var currentPlatform = "ground";
 
 function keyPressed()
 {
