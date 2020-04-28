@@ -1068,7 +1068,7 @@ function interpretCommands()
   else if (p1Choice == 5 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Steam Up!";
-      
+      p1DmgMult = p1DmgMult * 1.5;
     }
   else if (p1Choice == 6 && showTimer == false)
     {
@@ -1217,6 +1217,7 @@ function interpretCommands()
 }
 
 
+
 var myFighterObject = {};
 myFighterObject.health = 2;
 myFighterObject.listOfEnemyNames = ['bowser', 'ganon', 'wario', 'dr. eggman', 'ridley'];
@@ -1227,5 +1228,7 @@ myFighterObject.color = "red";
 
 function damageSelf()
 {
-  
+  this.
 }
+
+cons
