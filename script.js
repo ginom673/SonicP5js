@@ -85,34 +85,37 @@ var HPBarStartX2 = 1310;
 // whose turn it is
 var playerTurn = "P1";
 
-// 
-var platformXYs = {
-  ground = 
-};
-
+// player positions for each platform
+// platformXYs is an object where each property is a list of coordinates
 // platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
 // platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
 // platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
 // platformXYs.platformName[3] gives the y coordinate for player 2 for this platform
+var platformXYs = {};
+
+// alternatively you can set properties like this
 //platformXYs['ground'] = [450, 293, 1280, 293];
+// you can also set the properties when you create the object
 platformXYs.ground = [450, 325, 1360, 325];
 platformXYs.yellow = [580, 225, 710, 225];
 platformXYs.red = [800, 125, 920, 125];
 platformXYs.blue = [1020, 225, 1160, 225];
 
-// the game sets the sprites position to (450, 325)
 var player1X = platformXYs.ground[0];
 var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
 var player2Y = platformXYs.ground[3];
 
+// sets if the player is jumping
 var p1Jumping = false;
 var p2Jumping = false;
 
+// FPS for animations
 var gameFPS = 13;
 var gameSPF = 1/gameFPS;
 var jumpAnimLength = 21;
 
+// timer seconds
 var maxSeconds = 3;
 var secondsLeft = maxSeconds;
 var alignSeconds = 70;
