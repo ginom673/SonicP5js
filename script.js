@@ -20,6 +20,30 @@
 // with these numbers, this means our jump should take 10/13 of a second
 // if we want half the jump to be going up and half to be going down, each half takes 10/26 of a second
 
+// EXAMPLE OBJECT FUNCTIONS for fighters that we could maybe use later
+/*
+function createFighter(x, y)
+{
+  var fighter = {};
+  fighter.x = x;
+  fighter.y = y;
+  fighter.hp = 500;
+  fighter.max_hp = 500;
+  //fighter.image = loadImage("blah blah blah");
+  fighter.color = "red";
+}
+
+function recolorFighter(fighter, colorName)
+{
+  fighter.color = colorName;
+}
+
+function damage(fighter, amount)
+{
+  fighter.hp = fighter.hp = amount;
+  // include logic to check if dead or something, hp <= 0
+}
+*/
 
 // ---------- IDEAS ----------
 
@@ -72,15 +96,15 @@ var meleeIcon;
 var rangedIcon;
 var otherIcon;
 
-// player health
+// health attributes
 var maxHP = 500;
 var currentHP1 = maxHP;
 var currentHP2 = maxHP;
-
-// health bar attributes
 var HPBarLength = 500;
 var HPBarStartX1 = 40;
 var HPBarStartX2 = 1310;
+var healthPercent1 = 1.0;
+var healthPercent2 = 1.0;
 
 // whose turn it is
 var playerTurn = "P1";
@@ -120,9 +144,6 @@ var maxSeconds = 3;
 var secondsLeft = maxSeconds;
 var alignSeconds = 70;
 
-var healthPercent1 = 1.0;
-var healthPercent2 = 1.0;
-
 // showTimer determines if the timer is ticking down from 10 to 0, meaning we are awaiting player decisions
 // if its false, we are simply not ticking the timer RIGHT NOW
 var showTimer = false;
@@ -131,31 +152,28 @@ var showTimer = false;
 // and for now, is basically used to determine if the ready button should be displayed or not
 var gameStarted = false;
 
+// middle UI xvalue
 var midUIMidX = (500 + 1350) / 2;
-
-//var clickX;
-//var clickY;
 
 // Ready button variables
 var buttonX = midUIMidX - alignSeconds + 30;
 var buttonY = 800;
 var buttonWidth = 179;
 var buttonHeight = 72;
+var readyBtnIsActive;
+
 // Play Again button variables
 var buttonX2 = midUIMidX - alignSeconds;
 var buttonY2 = 800;
 var buttonWidth2 = 228;
 var buttonHeight2 = 72;
-
-var readyBtnIsActive;
 var restartBtnIsActive = false;
-
 
 // will be set to Ranged, Melee, Other, or Movement
 var p1MoveType;
 var p2MoveType;
 
-
+// can be set to a specific move
 var p1Choice;
 var p2Choice;
 
@@ -163,43 +181,30 @@ var p2Choice;
 var p1ChoiceText = "Awaiting P1's Decision...";
 var p2ChoiceText = "Awaiting P2's Decision...";
 
-
-//for (var i = 0; i < myList.length; i++)
-
-
-// objects for the ground and platforms
-
 // called at the beginning
-
 function setup()
 {  
   
-  //console.log(myObj);
-  
-  // myObj['property']
-  // myObj.property 
-  
-  //myObj['ground'][0] // [50, 250]
-  //myObj['ground'][0][1] // 250
-  
+  // set screen and text
   createCanvas(1850,1000);
   background(0);
   textStyle(BOLD);
   textSize(32);
-  //loadImg1 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Idle.gif?v=1579979781888");
-  //loadImg2 = loadImage("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Idle.gif?v=1579979790415");
+  
+  // load idle images
   idleImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP1_Idle.gif?v=1580578684764");
   idleImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
   
+  // load jump images, and make sure they do not display
   jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
   jumpImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P2_Jump.gif?v=1580861430655");
   jumpImg1.remove();
   jumpImg2.remove();
   
+  // load ready button image
   readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");  
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
-  //readyButton.remove();
-  
+  //readyButton.remove();  
   
   // player's command icons
   
@@ -239,20 +244,7 @@ function setup()
   otherIcon.position(1560, 885);
   // p2 ice wall
   drawOtherIcon();
-  otherIcon.position(1680, 945);
-  
-  
-  // UNUSED CODE TO FORCE BROWSER ZOOM TO 90%
-  // NOTE: this does not work!
-  //https://stackoverflow.com/questions/21093570/force-page-zoom-at-100-with-js
-  /*
-  var scale = 'scale(0.9)';
-  document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
-  document.body.style.msTransform =   scale;       // IE 9
-  document.body.style.transform = scale;     // General
-  */
-  
-  
+  otherIcon.position(1680, 945);    
 }
 
 function createJumpImg1()
@@ -274,31 +266,8 @@ function createIdleImg2()
 {
   idleImg2 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FP2_Idle.gif?v=1580578684764");
 }
-// EXAMPLE OBJECT FUNCTIONS for fighters that we could maybe use later
-/*
-function createFighter(x, y)
-{
-  var fighter = {};
-  fighter.x = x;
-  fighter.y = y;
-  fighter.hp = 500;
-  fighter.max_hp = 500;
-  //fighter.image = loadImage("blah blah blah");
-  fighter.color = "red";
-}
 
-function recolorFighter(fighter, colorName)
-{
-  fighter.color = colorName;
-}
-
-function damage(fighter, amount)
-{
-  fighter.hp = fighter.hp = amount;
-  // include logic to check if dead or something, hp <= 0
-}
-*/
-
+// 
 function jump()
 {
   // here do idleImg1.remove()
