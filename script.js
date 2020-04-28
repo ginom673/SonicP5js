@@ -350,7 +350,8 @@ function startTimer()
   
 }
 
-// 
+// ticks one second off of the active timer
+// if the timer reaches 0, call stopTimer()
 function updateTimer()
 {
   if(secondsLeft > 0)
@@ -547,7 +548,7 @@ function draw()
   textAlign(LEFT);
   strokeWeight(1);
   
-
+  // display timer and awaiting decision text
   if(showTimer)
   {
     textSize(130);    
@@ -577,6 +578,7 @@ function draw()
     
   }
   
+  // display player choices
   if(gameStarted)
   {
     textAlign(CENTER);
@@ -591,8 +593,7 @@ function draw()
     // p2 command text here
   } 
 
-  textAlign(LEFT);
-  
+  textAlign(LEFT);  
   
   // Labels for wasd/ijkl movement keys
   textAlign(CENTER);
@@ -646,16 +647,14 @@ function draw()
   fill("darkblue");
   rect(1475, 710, 50, 50);
   fill("white");
-  text("L", 1500, 745);
-  
+  text("L", 1500, 745);  
   
   // reset font attributes
   textAlign(LEFT);
   textFont('Arial');
-  stroke("black");
+  stroke("black");  
   
-  
-  
+  // draw ready button at start of game
   if(!gameStarted)
   {
     drawReadyButton();
@@ -663,7 +662,6 @@ function draw()
   }
   
 }
-
 
 // draws the "Ready!" button
 function drawReadyButton()
@@ -680,11 +678,13 @@ function drawMeleeIcon()
 {
   meleeIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fmelee_icon.png?v=1585697930465");
 }
+
 // draws the Ranged Icon
 function drawRangedIcon()
 {
   rangedIcon = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Franged_icon.png?v=1585697945658");
 }
+
 // draws the Other Icon
 function drawOtherIcon()
 {
@@ -705,16 +705,20 @@ function reportClick()
 }
 */
 
+// handles a mouse click event
+// essentially checks if the mouse clicked on a button
 function mouseClicked()
 {
   
+  /*
   console.log(mouseX);
   console.log(buttonX);
   console.log(buttonWidth);
   console.log(buttonY);
   console.log(mouseY);
   console.log(buttonHeight);
-  console.log(restartBtnIsActive);  
+  console.log(restartBtnIsActive); 
+  */
   
   // draws Middle UI text
   if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight && !restartBtnIsActive)
@@ -733,6 +737,7 @@ function mouseClicked()
   }
 }
 
+// resets game when restart game button is pressed
 function resetGame()
 {
   restartButton.remove();
@@ -750,25 +755,10 @@ function resetGame()
   player2Y = platformXYs.ground[3];
   p1Choice = undefined;
   p2Choice = undefined;
-  clearInterval(timerInterval);
-  
+  clearInterval(timerInterval);  
 }
 
-// coordinates for the centers of the platforms
-// p1 is yellow, p2 is red, p3 is blue
-/*
-var p1x = 650;
-var p1y = 220;
-var p2x = 875;
-var p2y = 120;
-var p3x = 1100;
-var p3y = 220;
-var g1x = 450;
-var g1y = 320;
-var g2x = 1300;
-var g2y = 320;
-*/
-// health bar for player 1
+// draw health bar for player 1
 function health1() 
 {
   healthPercent1 = currentHP1 / maxHP;
@@ -779,7 +769,8 @@ function health1()
   
   
 }
-// health bar for player 2
+
+// draw health bar for player 2
 function health2()
 { 
   healthPercent2 = currentHP2 / maxHP;
@@ -789,20 +780,23 @@ function health2()
   rect(damageBarStartX2, 40, damageBarLength, 20);
 }
 
+// handles a key being pressed
+// NOTE: unused
+/*
 function keyPressed()
-{
-  
+{  
   // console.log(keyCode);
-  // the above line of code would give the ID of the key just pressed
-  
+  // the above line of code would give the ID of the key just pressed  
   // if they press "j"
   if(keyCode == 72 && !p1Jumping)
   {
     jump();
-  }
-  
+  }  
 }
+*/
 
+// handles a key being released
+// this usually sets the playerChoice and playerChoiceText variables (for player 1 or 2 respectively)
 function keyReleased()
 {
   
@@ -987,6 +981,8 @@ function damage(targetedPlayer, damageAmount, playerSource)
     }
 }
 
+// interpret the existing user playerChoice variables to see what command they gave, if any
+// then, execute that command
 function interpretCommands()
 {
   
@@ -1220,3 +1216,16 @@ function interpretCommands()
     }
 }
 
+
+var myFighterObject = {};
+myFighterObject.health = 2;
+myFighterObject.listOfEnemyNames = ['bowser', 'ganon', 'wario', 'dr. eggman', 'ridley'];
+myFigherObject.isJumping = false;
+myFigherObject.x = 2;
+myFighterOBject.y = 200;
+myFighterObject.color = "red";
+
+function damageSelf()
+{
+  
+}
