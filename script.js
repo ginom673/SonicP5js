@@ -130,6 +130,9 @@ var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
 var player2Y = platformXYs.ground[3];
 
+// tracks the platform each player is on, to determine if their attacks can strike each other
+var currentPlatform = "ground";
+
 // sets if the player is jumping
 var p1Jumping = false;
 var p2Jumping = false;
@@ -181,15 +184,15 @@ var p2Choice;
 var p1ChoiceText = "Awaiting P1's Decision...";
 var p2ChoiceText = "Awaiting P2's Decision...";
 
+// function call interval for timer that may or may not eget cancelled/restarted
 var timerInterval;
 
+// controls how we display text box commands
 var startY = 650;
 var endY = 950;
 var numCommands = 6;
 var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
-
-var currentPlatform = "ground";
 
 // called at the beginning
 function setup()
@@ -296,9 +299,11 @@ function jump()
   //setInterval
 }
 
+// starts off each turn
+// checks for win/loss conditions
+// if no win/loss, awaits player decisions
 function startTimer()
 {
-  
   
   // check if either player has won, or if it's a draw
   
@@ -345,6 +350,7 @@ function startTimer()
   
 }
 
+// 
 function updateTimer()
 {
   if(secondsLeft > 0)
