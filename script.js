@@ -1221,14 +1221,31 @@ function interpretCommands()
 var myFighterObject = {};
 myFighterObject.health = 2;
 myFighterObject.listOfEnemyNames = ['bowser', 'ganon', 'wario', 'dr. eggman', 'ridley'];
-myFigherObject.isJumping = false;
-myFigherObject.x = 2;
-myFighterOBject.y = 200;
+myFighterObject.isJumping = false;
+myFighterObject.x = 2;
+myFighterObject.y = 200;
 myFighterObject.color = "red";
 
 function damageSelf()
 {
-  this.
+  this.health = this.health - 1;
 }
 
-cons
+myFighterObject.damageMyself = damageSelf;
+
+console.log(myFighterObject.health);
+myFighterObject.damageMyself();
+console.log(myFighterObject.health);
+
+mySecondFighter = {};
+// ... set up that object ...
+//mySecondFighter.damagemySelf() // this changes mySecondFighter's health... NOT myFighterObject's health
+
+
+// what is the for loop syntax?
+var myList = ['apples', 'bananas', 'carrots'];
+
+for (var i = 0; i < myList.length; i++)
+  {
+    
+  }
