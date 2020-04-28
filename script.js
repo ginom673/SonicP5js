@@ -1,12 +1,4 @@
-/*var myVariable;
-console.log(myVariable);
-myVariable = 5;
-console.log(myVariable);
-myVariable;
-console.log(myVariable);
-*/
 // ---------- TIPS ----------
-
 
 // FIND AND REPLACE ALL
 // in glitch.com you can find and replace text using CTRL+ALT+F
@@ -31,16 +23,13 @@ console.log(myVariable);
 
 // ---------- IDEAS ----------
 
-
-// make players take their turns AT THE SAME TIME! 
-// make the player choices invisible on the screen... aka rather than moving up and down with some selector, they just press 6 to do command 6
 // write some code which allows the players to be repositioned with a button press or something for debugging purposes
+
+
+// ---------- BUGS ----------
+
 // if we reposition the gif, it may restart... minor concern though
 // however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
-
-
-// ---------- BUG ----------
-
 
 // for some reason, the positioning of the click for the button is a little off
 // for some reason, the jump animation plays in the middle of when you jump (if you get lucky)
@@ -52,7 +41,8 @@ console.log(myVariable);
 // restart button doesnt load
 
 
-// COOLDOWN NOTES
+// example for cooldown timing
+/*
 var lastPowerBlastTurn = -99999;
 var currentTurn = -1; // once the game starts, currentTurn will be set to 0
 var powerBlastCooldown = 3;
@@ -60,10 +50,10 @@ if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
 {
   // they can use powerblast
 }
+*/
 
 // MULTIPLIER
 var p1DmgMult = 1.5;
-
 
 //var loadImg1;
 //var loadImg2;
