@@ -1243,9 +1243,11 @@ mySecondFighter = {};
 
 
 // what is the for loop syntax?
+/*
 var myList = ['apples', 'bananas', 'carrots'];
 
 for (var i = 0; i < myList.length; i++)
   {
-    
+    text(myList[i], 0, 0);
+    console.log(myList[i]);
   }
