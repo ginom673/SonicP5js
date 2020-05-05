@@ -345,6 +345,10 @@ function startTimer()
       secondsLeft = maxSeconds;
       p1ChoiceText = "Awaiting P1's Decision...";
       p2ChoiceText = "Awaiting P2's Decision...";
+      p1MoveType = undefined;
+      p2MoveType = undefined;
+      p1Choice = undefined;
+      p2Choice = undefined;
     }
   
   
@@ -824,9 +828,8 @@ function keyReleased()
   
   // player 1 commands
   
-  if (keyCodeIsAPlayer1Key)
-    {
-      if (keyCode == 49)
+  
+  if (keyCode == 49)
     {
       p1Choice = 1;
       p1ChoiceText = "Player 1 Has Decided!";
@@ -892,12 +895,7 @@ function keyReleased()
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "movement";
     }
-  else
-    {
-      //p1ChoiceText = "P1 did not decide!";
-      p1MoveType = undefined;
-    }
-    }
+
   
   
   
@@ -962,11 +960,7 @@ function keyReleased()
       p2ChoiceText = "Player 2 Has Decided!";
       p2MoveType = "movement";
     }
-  else
-    {
-      //p2ChoiceText = "P2 did not decide!";
-      p2MoveType = undefined;
-    }
+ 
 }
 
 // damages the given player by a given amount
