@@ -823,7 +823,10 @@ function keyReleased()
   }
   
   // player 1 commands
-  if (keyCode == 49)
+  
+  if (keyCodeIsAPlayer1Key)
+    {
+      if (keyCode == 49)
     {
       p1Choice = 1;
       p1ChoiceText = "Player 1 Has Decided!";
@@ -873,6 +876,10 @@ function keyReleased()
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "movement";
     }
+  
+  // hey gino
+  // i see you are uncertain
+  // one sec
   else if (keyCode == 83)
     {
       p1Choice = "S";
@@ -890,6 +897,9 @@ function keyReleased()
       //p1ChoiceText = "P1 did not decide!";
       p1MoveType = undefined;
     }
+    }
+  
+  
   
   // player 2 commands
   if (keyCode == 55)
