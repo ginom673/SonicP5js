@@ -828,13 +828,12 @@ function keyReleased()
       p1Choice = 1;
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "ranged";
-      console.log(p1MoveType);
-      console.log(p2MoveType);
       //damage(2, 100);
     }
   else if (keyCode == 50)
     {
       p1Choice = 2;
+      
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "ranged";
     }
@@ -916,8 +915,6 @@ function keyReleased()
       p2ChoiceText = "Player 2 Has Decided!";
       p2Choice = 4;
       p2MoveType = "ranged";
-      console.log(p1MoveType);
-      console.log(p2MoveType);
     }
   else if (keyCode == 189)
     {
@@ -1008,6 +1005,8 @@ function interpretCommands()
   if (p1Choice == 1 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Fire Throw!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       var fireThrow = Math.floor(Math.random() * 6);
       
       if (fireThrow == 1)
@@ -1056,16 +1055,22 @@ function interpretCommands()
   else if (p1Choice == 2 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Power Blast!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       damage(2, 200, 1);
     }
   else if (p1Choice == 3 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Sword Strike!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       damage(2, 150, 1);
     }
   else if (p1Choice == 4 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Fiery Counter!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       
       if (p2MoveType == "melee")
         {
@@ -1084,21 +1089,29 @@ function interpretCommands()
   else if (p1Choice == 5 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Steam Up!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       p1DmgMult = p1DmgMult * 1.5;
     }
   else if (p1Choice == 6 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Heat Shield!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
     }
   else if (p1Choice == "W" && showTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Red Platform!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       player1X = platformXYs.red[0];
       player1Y = platformXYs.red[1];
     }
   else if (p1Choice == "A" && showTimer == false)
     {
       p1ChoiceText = "Player 1 moves to the Yellow Platform!";
+      console.log("P1: ", p1MoveType);
+      console.log("P2: ", p2MoveType);
       player1X = platformXYs.yellow[0];
       player1Y = platformXYs.yellow[1];
     }
