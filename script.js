@@ -775,6 +775,7 @@ function resetGame()
   player2Y = platformXYs.ground[3];
   p1Choice = undefined;
   p2Choice = undefined;
+  p1DmgMult = 1.0;
   clearInterval(timerInterval);  
 }
 
@@ -1215,13 +1216,13 @@ function interpretCommands()
         {
           damage(1, 150, 2);
           setTimeout(function(){
-            p2ChoiceText = "Player 2 Successfully Countered!";
+            p2ChoiceText = "Player 2 Successfully Reflected!";
           }, 2000);
         }
       else
         {
           setTimeout(function(){
-            p2ChoiceText = "Player 2's Counter Failed!";
+            p2ChoiceText = "Player 2's Reflect Failed!";
           }, 2000);
         }
     }
