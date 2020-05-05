@@ -341,7 +341,7 @@ function startTimer()
     {
       timerInterval = setInterval(updateTimer, 1000);
       showTimer = true;
-      currentTurn = currentTurn + 1;
+      //currentTurn = currentTurn + 1;
       secondsLeft = maxSeconds;
       p1ChoiceText = "Awaiting P1's Decision...";
       p2ChoiceText = "Awaiting P2's Decision...";
@@ -720,7 +720,12 @@ function mouseClicked()
   console.log(restartBtnIsActive); 
   */
   
-  // draws Middle UI text
+  // start game button
+  console.log(restartBtnIsActive);
+  console.log(mouseX > buttonX);
+  console.log(mouseX < buttonX + buttonWidth);
+  console.log(mouseY > buttonY);
+  console.log(mouseY < buttonY + buttonHeight);
   if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight && !restartBtnIsActive)
   {
     showTimer = true;
@@ -731,16 +736,22 @@ function mouseClicked()
     startTimer();
   }  
   
+  // restart game button
   if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2 && !readyBtnIsActive)
   {
     resetGame();
   }
 }
 
+
 // resets game when restart game button is pressed
 function resetGame()
 {
-  restartButton.remove();
+  if (restartButton != undefined)
+  {
+    restartButton.remove();    
+  }
+  
   restartBtnIsActive = false;
   showTimer = false;
   drawReadyButton();
@@ -1217,7 +1228,7 @@ function interpretCommands()
 }
 
 
-
+/*
 var myFighterObject = {};
 myFighterObject.health = 2;
 myFighterObject.listOfEnemyNames = ['bowser', 'ganon', 'wario', 'dr. eggman', 'ridley'];
@@ -1238,6 +1249,7 @@ myFighterObject.damageMyself();
 console.log(myFighterObject.health);
 
 mySecondFighter = {};
+*/
 // ... set up that object ...
 //mySecondFighter.damagemySelf() // this changes mySecondFighter's health... NOT myFighterObject's health
 
