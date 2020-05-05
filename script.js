@@ -377,7 +377,7 @@ function stopTimer()
 
 // constantly called to update the screen 
 function draw()
-{
+{ 
   
   // wipes the entire game screen clean
   clear();
@@ -720,24 +720,29 @@ function mouseClicked()
   console.log(restartBtnIsActive); 
   */
   
-  // start game button
+  /*
   console.log(restartBtnIsActive);
   console.log(mouseX > buttonX);
   console.log(mouseX < buttonX + buttonWidth);
   console.log(mouseY > buttonY);
   console.log(mouseY < buttonY + buttonHeight);
+  */
+
+  
   if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight && !restartBtnIsActive)
   {
+    //console.log("a");
     showTimer = true;
     gameStarted = true;
     readyButton.remove();
+    //remove(readyButton);
     readyButton = undefined;
     readyBtnIsActive = false;
     startTimer();
   }  
   
   // restart game button
-  if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2 && !readyBtnIsActive)
+  else if(mouseX > buttonX2 && mouseX < buttonX2 + buttonWidth2 && mouseY > buttonY2 && mouseY < buttonY2 + buttonHeight2 && !readyBtnIsActive)
   {
     resetGame();
   }
