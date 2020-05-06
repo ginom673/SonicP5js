@@ -143,7 +143,7 @@ var gameSPF = 1/gameFPS;
 var jumpAnimLength = 21;
 
 // timer seconds
-var maxSeconds = 3;
+var maxSeconds = 10;
 var secondsLeft = maxSeconds;
 var alignSeconds = 70;
 
