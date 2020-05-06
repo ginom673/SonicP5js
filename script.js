@@ -1108,7 +1108,7 @@ function interpretCommands()
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       
-      //p2Countering
+      p1Countering = true;
       
       /*
       if (p2MoveType == "melee")
@@ -1253,6 +1253,9 @@ function interpretCommands()
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       
+      p2Countering = true;
+      
+      /*
       if (p1MoveType == "ranged")
         {
           //damage(1, 150, 2);
@@ -1267,6 +1270,7 @@ function interpretCommands()
             p2ChoiceText = "Player 2's Reflect Failed!";
           }, 2000);
         }
+      */
     }
   else if (p2Choice == 5 && showTimer == false)
     {
@@ -1318,6 +1322,9 @@ function interpretCommands()
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
     }
+  
+  // NEXT TIME: add the code here for countering!
+  
 }
 
 
