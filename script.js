@@ -49,6 +49,8 @@ function damage(fighter, amount)
 
 // write some code which allows the players to be repositioned with a button press or something for debugging purposes
 
+// make sure the players can only attack each other with melee attacks if they are near each other
+
 
 // ---------- BUGS ----------
 
@@ -1004,7 +1006,6 @@ function damage(targetedPlayer, damageAmount, playerSource)
 function interpretCommands()
 {
   
-  //alert("interpret");
   
   // change all of the function calls to damage
   // to instead record this into a variable
@@ -1019,7 +1020,14 @@ function interpretCommands()
   // if so, inflict the counter damage to the damaged target
   // otherwise, inflict damageToPlayer1 (or damageToPlayer2) to that player directly
   
+  // NOTE: counters are considered melee attacks
+  
   var dmgToP1 = 0;
+  var dmgToP2 = 0;
+  
+  // let's make two boolean variables that track whether or not p1 or p2 just used a counter move
+  var p1Countering = false;
+  var p2Countering = false;
   
   
   // player 1 commands
@@ -1032,35 +1040,40 @@ function interpretCommands()
       
       if (fireThrow == 1)
         {
-          damage(2, 50, 1);
+          //damage(2, 50, 1);
+          dmgToP2 = 50;
           setTimeout(function(){
             p1ChoiceText = "It hit one time!";
           }, 2000);
         }
       else if (fireThrow == 2)
         {
-          damage(2, 100, 1);
+          //damage(2, 100, 1);
+          dmgToP2 = 100;
           setTimeout(function(){
             p1ChoiceText = "It hit two times!";
           }, 2000);
         }
       else if (fireThrow == 3)
         {
-          damage(2, 150, 1);
+          //damage(2, 150, 1);
+          dmgToP2 = 150;
           setTimeout(function(){
             p1ChoiceText = "It hit three times!";
           }, 2000);
         }
       else if (fireThrow == 4)
         {
-          damage(2, 200, 1);
+          //damage(2, 200, 1);
+          dmgToP2 = 200;
           setTimeout(function(){
             p1ChoiceText = "It hit four times!";
           }, 2000);
         }
       else if (fireThrow == 5)
         {
-          damage(2, 250, 1);
+          //damage(2, 250, 1);
+          dmgToP2 = 250
           setTimeout(function(){
             p1ChoiceText = "It hit five times!";
           }, 2000);
@@ -1078,14 +1091,16 @@ function interpretCommands()
       p1ChoiceText = "Player 1 uses Power Blast!";
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
-      damage(2, 200, 1);
+      //damage(2, 200, 1);
+      dmgToP2 = 200;
     }
   else if (p1Choice == 3 && showTimer == false)
     {
       p1ChoiceText = "Player 1 uses Sword Strike!";
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
-      damage(2, 150, 1);
+      //damage(2, 150, 1);
+      dmgToP2 = 150;
     }
   else if (p1Choice == 4 && showTimer == false)
     {
@@ -1093,9 +1108,13 @@ function interpretCommands()
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       
+      //p2Countering
+      
+      /*
       if (p2MoveType == "melee")
         {
-          damage(2, 150, 1);
+          //damage(2, 150, 1);
+          dmgToP2 = 150;
           setTimeout(function(){
             p1ChoiceText = "Player 1 Successfully Countered!";
           }, 2000);
@@ -1106,6 +1125,7 @@ function interpretCommands()
             p1ChoiceText = "Player 1's Counter Failed!";
           }, 2000);
         }
+      */
     }
   else if (p1Choice == 5 && showTimer == false)
     {
@@ -1169,42 +1189,46 @@ function interpretCommands()
       
       if (icicleToss == 1)
         {
-          damage(1, 50, 2);
+          //damage(1, 50, 2);
+          dmgToP1 = 50;
           setTimeout(function(){
             p2ChoiceText = "It hit one time!";
           }, 2000);
         }
       else if (icicleToss == 2)
         {
-          damage(1, 100, 2);
+          //damage(1, 100, 2);
+          dmgToP1 = 100;
           setTimeout(function(){
             p2ChoiceText = "It hit two times!";
           }, 2000);
         }
       else if (icicleToss == 3)
         {
-          damage(1, 150, 2);
+          //damage(1, 150, 2);
+          dmgToP1 = 150;
           setTimeout(function(){
             p2ChoiceText = "It hit three times!";
           }, 2000);
         }
       else if (icicleToss == 4)
         {
-          damage(1, 200, 2);
+          //damage(1, 200, 2);
+          dmgToP1 = 200;
           setTimeout(function(){
             p2ChoiceText = "It hit four times!";
           }, 2000);
         }
       else if (icicleToss == 5)
         {
-          damage(1, 250, 2);
+          //damage(1, 250, 2);
+          dmgToP1 = 250;
           setTimeout(function(){
             p2ChoiceText = "It hit five times!";
           }, 2000);
         }
       else
         {
-          //damage(2, 0, 1);
           setTimeout(function(){
             p2ChoiceText = "Player 1 dodged it!";
           }, 2000);
@@ -1213,6 +1237,7 @@ function interpretCommands()
   else if (p2Choice == 2 && showTimer == false)
     {
       p2ChoiceText = "Player 2 uses Iceberg Crush!";
+      dmgToP1 = 150;
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
     }
@@ -1230,7 +1255,8 @@ function interpretCommands()
       
       if (p1MoveType == "ranged")
         {
-          damage(1, 150, 2);
+          //damage(1, 150, 2);
+          dmgToP1 = 150;
           setTimeout(function(){
             p2ChoiceText = "Player 2 Successfully Reflected!";
           }, 2000);
