@@ -1006,6 +1006,22 @@ function interpretCommands()
   
   //alert("interpret");
   
+  // change all of the function calls to damage
+  // to instead record this into a variable
+  // damageToPlayer1 = 0;
+  // ...
+  // damage(1, 50, 2) --> this line of code says player 2 is attempting to damage player 1 with 50 damage
+  // ... INSTEAD OF DOING THAT
+  // lets change damageToPlayer1 = 50;
+  // ...
+  // and THEN, at the end of all this if/else stuff
+  // we determine if either player tried to counter
+  // if so, inflict the counter damage to the damaged target
+  // otherwise, inflict damageToPlayer1 (or damageToPlayer2) to that player directly
+  
+  var dmgToP1 = 0;
+  
+  
   // player 1 commands
   if (p1Choice == 1 && showTimer == false)
     {
