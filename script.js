@@ -1325,13 +1325,18 @@ function interpretCommands()
   if (p1Countering && !p2Countering && p2MoveType == "melee")
     {
       dmgToP2 = dmgToP1;
-      dmgToP1 = -dmgToP2;
+      dmgToP1 = 0;
     }
   else if (p2Countering && !p1Countering && p1MoveType == "ranged")
     {
       dmgToP1 = dmgToP2;
-      dmgToP2 = -dmgToP1;
+      dmgToP2 = 0;
     }
+  
+    // add damage calls here
+    // and then test it
+    //damage(dmgtop1, 1);
+    //damage(dmgtop2, 2);
   
 }
 
