@@ -1323,11 +1323,14 @@ function interpretCommands()
       console.log("P2: ", p2MoveType);
     }
   
-  if (p1Countering)
+  
+  // NOTE: we likely need to change how the multi hit moves report multi hits with countering
+  
+  if (p1Countering && !p2Countering && p2MoveType == "")
     {
       
     }
-  if (p2Countering)
+  else if (p2Countering && !p1Countering)
     {
       
     }
