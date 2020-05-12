@@ -882,10 +882,6 @@ function keyReleased()
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "movement";
     }
-  
-  // hey gino
-  // i see you are uncertain
-  // one sec
   else if (keyCode == 83)
     {
       p1Choice = "S";
@@ -1328,11 +1324,13 @@ function interpretCommands()
   
   if (p1Countering && !p2Countering && p2MoveType == "melee")
     {
-      
+      dmgToP2 = dmgToP1;
+      dmgToP1 = -dmgToP2;
     }
   else if (p2Countering && !p1Countering && p1MoveType == "ranged")
     {
-      
+      dmgToP1 = dmgToP2;
+      dmgToP2 = -dmgToP1;
     }
   
 }
