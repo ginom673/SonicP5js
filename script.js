@@ -1323,7 +1323,14 @@ function interpretCommands()
       console.log("P2: ", p2MoveType);
     }
   
-  // NEXT TIME: add the code here for countering!
+  if (p1Countering)
+    {
+      
+    }
+  if (p2Countering)
+    {
+      
+    }
   
 }
 
