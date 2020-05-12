@@ -1326,11 +1326,11 @@ function interpretCommands()
   
   // NOTE: we likely need to change how the multi hit moves report multi hits with countering
   
-  if (p1Countering && !p2Countering && p2MoveType == "")
+  if (p1Countering && !p2Countering && p2MoveType == "melee")
     {
       
     }
-  else if (p2Countering && !p1Countering)
+  else if (p2Countering && !p1Countering && p1MoveType == "ranged")
     {
       
     }
