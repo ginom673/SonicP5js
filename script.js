@@ -6,7 +6,6 @@
 
 // ---------- NOTES ----------
 
-
 // it seems that the image position represents the bottom-left corner of the image
 
 // ANIMATION
@@ -16,7 +15,6 @@
 // land is frames 17-21 (5 frames)
 // we assume the peak of our jump is horizontally halfway between the source and destination,
 // and that the peak of our jump is 50% of dy above the highest point
-
 // with these numbers, this means our jump should take 10/13 of a second
 // if we want half the jump to be going up and half to be going down, each half takes 10/26 of a second
 
@@ -45,29 +43,7 @@ function damage(fighter, amount)
 }
 */
 
-// ---------- IDEAS ----------
-
-// write some code which allows the players to be repositioned with a button press or something for debugging purposes
-
-// make sure the players can only attack each other with melee attacks if they are near each other
-
-
-// ---------- BUGS ----------
-
-// if we reposition the gif, it may restart... minor concern though
-// however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
-
-// for some reason, the positioning of the click for the button is a little off
-// for some reason, the jump animation plays in the middle of when you jump (if you get lucky)
-// if the jumping animation is constnatly happening the background, such that when we press j, we may start the animation in the middle,
-// ... IF that is true, a solution would potentially be resetting the gif every time we restart it
-
-// icicle toss and fire throw deal different damage...?
-
-// restart button doesnt load
-
-
-// example for cooldown timing
+// EXAMPLE COOLDOWN TIMING
 /*
 var lastPowerBlastTurn = -99999;
 var currentTurn = -1; // once the game starts, currentTurn will be set to 0
@@ -77,6 +53,26 @@ if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
   // they can use powerblast
 }
 */
+
+// ---------- IDEAS ----------
+
+// write some code which allows the players to be repositioned with a button press or something for debugging purposes
+// make sure the players can only attack each other with melee attacks if they are near each other
+
+
+// ---------- BUGS ----------
+
+// if we reposition the gif, it may restart from frame 1 instead of the frame where it moved ... minor concern though
+// however, we may decide to make a "movement animation", such that we dont instantly teleport between locations, and instead get a gradual movement to the location
+
+// for some reason, the positioning of the click for the button is a little off
+// for some reason, the jump animation plays in the middle of when you jump (if you get lucky)
+// if the jumping animation is constantly happening the background, such that when we press j, we may start the animation in the middle,
+// ... IF that is true, a solution would potentially be resetting the gif every time we restart it
+
+// icicle toss and fire throw deal different damage...?
+
+// restart button doesnt load
 
 
 /* GLOBAL VARIABLES */
@@ -130,6 +126,7 @@ platformXYs.yellow = [580, 225, 710, 225];
 platformXYs.red = [800, 125, 920, 125];
 platformXYs.blue = [1020, 225, 1160, 225];
 
+// player starting positions
 var player1X = platformXYs.ground[0];
 var player1Y = platformXYs.ground[1];
 var player2X = platformXYs.ground[2];
@@ -222,7 +219,6 @@ function setup()
   // load ready button image
   readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");  
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
-  
   
   // player's command icons:
   
@@ -412,7 +408,7 @@ function draw()
   fill("lightgreen");
   rect(HPBarStartX2, 40, HPBarLength, 20);
   
-  // draws health
+  // finishes health bars
   health1();
   health2();
   
@@ -795,8 +791,8 @@ function keyPressed()
 }
 */
 
-// handles a key being released
-// this usually sets the playerChoice and playerChoiceText variables (for player 1 or 2 respectively)
+// keyReleased: handles a key being released.
+// This usually sets the playerChoice and playerChoiceText variables (for player 1 or 2 respectively)
 function keyReleased()
 {
   
@@ -807,8 +803,6 @@ function keyReleased()
   }
   
   // player 1 commands
-  
-  
   if (keyCode == 49)
     {
       p1Choice = 1;
@@ -939,13 +933,9 @@ function keyReleased()
  
 }
 
-// damages the given player by a given amount
+// damage: damages the given player by a given amount
 function damage(targetedPlayer, damageAmount, playerSource)
 {
-  
-  // add an if statement that checks if the source of htis attack is from player 1
-  // if so, multiply the resulting damage by p1dmgmultiplier (which is a variable we haven't made yet)
-  
   if (playerSource == 1)
     {
       damageAmount = damageAmount * p1DmgMult;
@@ -974,7 +964,7 @@ function damage(targetedPlayer, damageAmount, playerSource)
     }
 }
 
-// interpret the existing user playerChoice variables to see what command they gave, if any
+// interpretCommands: interpret the existing user playerChoice variables to see what command they gave, if any
 // then, execute that command
 function interpretCommands()
 {
@@ -998,7 +988,6 @@ function interpretCommands()
   var dmgToP1 = 0;
   var dmgToP2 = 0;
   
-  // let's make two boolean variables that track whether or not p1 or p2 just used a counter move
   var p1Countering = false;
   var p2Countering = false;
   
@@ -1299,6 +1288,7 @@ function interpretCommands()
   
   // NOTE: we likely need to change how the multi hit moves report multi hits with countering
   
+  // Countering
   if (p1Countering && !p2Countering && p2MoveType == "melee")
     {
       dmgToP2 = dmgToP1;
@@ -1310,10 +1300,6 @@ function interpretCommands()
       dmgToP2 = 0;
     }
   
-    // add damage calls here
-    // and then test it
-    //damage(dmgtop1, 1);
-    //damage(dmgtop2, 2);
   
 }
 
