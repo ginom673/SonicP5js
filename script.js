@@ -78,7 +78,8 @@ if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
 }
 */
 
-/
+
+/* GLOBAL VARIABLES */
 
 // player 1 damage multiplier
 var p1DmgMult = 1.0;
@@ -198,7 +199,7 @@ var numCommands = 6;
 var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
 
-// called at the beginning
+/* SETUP (called at the beginning) */
 function setup()
 {  
   
@@ -221,9 +222,9 @@ function setup()
   // load ready button image
   readyButton = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955");  
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
-  //readyButton.remove();  
   
-  // player's command icons
+  
+  // player's command icons:
   
   // p1 fire throw
   drawRangedIcon();
@@ -264,6 +265,7 @@ function setup()
   otherIcon.position(1680, 945);    
 }
 
+// Create images
 function createJumpImg1()
 {
   jumpImg1 = createImg("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FFighter_P1_Jump.gif?v=1580860847142");
@@ -300,12 +302,11 @@ function jump()
     p1Jumping = false;
     idleImg1.position(player1X, player1Y);
   }, (21/13)*1000);
-  //setInterval
 }
 
-// starts off each turn
-// checks for win/loss conditions
-// if no win/loss, awaits player decisions
+// startTimer: starts off each turn,
+// checks for win/loss conditions,
+// and if no win/loss, awaits player decisions
 function startTimer()
 {
   
@@ -358,8 +359,8 @@ function startTimer()
   
 }
 
-// ticks one second off of the active timer
-// if the timer reaches 0, call stopTimer()
+// updateTimer: ticks one second off of the active timer,
+// and if the timer reaches 0, call stopTimer()
 function updateTimer()
 {
   if(secondsLeft > 0)
@@ -372,8 +373,8 @@ function updateTimer()
   }
 }
 
-// called at the end of every turn
-// to stop the timer from ticking
+// stopTimer: called at the end of every turn
+// to stop the timer from ticking,
 // and also we interpret player commands and execute the turn, execute their choices
 function stopTimer()
 {
@@ -383,7 +384,7 @@ function stopTimer()
   setTimeout(startTimer, 5000);
 }
 
-// constantly called to update the screen 
+/* DRAW (constantly called to update the screen) */ 
 function draw()
 { 
   
@@ -411,15 +412,11 @@ function draw()
   fill("lightgreen");
   rect(HPBarStartX2, 40, HPBarLength, 20);
   
+  // draws health
   health1();
   health2();
   
-  // draw fighter
-  //image(loadImg1, player1X, player1Y, 128, 128);
-  //image(loadImg2, player2X, player2Y, 128, 128);
-  //image(idleImg1, player1X, player1Y, 128, 128);
-  //image(idleImg2, player2X, player2Y, 64, 64);
-  
+  // positions player idle images
   idleImg1.position(player1X, player1Y);
   idleImg2.position(player2X, player2Y);
   
@@ -666,7 +663,6 @@ function draw()
   if(!gameStarted)
   {
     drawReadyButton();
-    //readyButton.position(0,0);
   }
   
 }
@@ -713,37 +709,16 @@ function reportClick()
 }
 */
 
-// handles a mouse click event
-// essentially checks if the mouse clicked on a button
+// mouseClicked: handles a mouse click event
+// and essentially checks if the mouse clicked on a button
 function mouseClicked()
 {
-  
-  /*
-  console.log(mouseX);
-  console.log(buttonX);
-  console.log(buttonWidth);
-  console.log(buttonY);
-  console.log(mouseY);
-  console.log(buttonHeight);
-  console.log(restartBtnIsActive); 
-  */
-  
-  /*
-  console.log(restartBtnIsActive);
-  console.log(mouseX > buttonX);
-  console.log(mouseX < buttonX + buttonWidth);
-  console.log(mouseY > buttonY);
-  console.log(mouseY < buttonY + buttonHeight);
-  */
-
-  
+  // ready button
   if(mouseX > buttonX && mouseX < buttonX + buttonWidth && mouseY > buttonY && mouseY < buttonY + buttonHeight && !restartBtnIsActive)
   {
-    //console.log("a");
     showTimer = true;
     gameStarted = true;
     readyButton.remove();
-    //remove(readyButton);
     readyButton = undefined;
     readyBtnIsActive = false;
     startTimer();
@@ -757,7 +732,7 @@ function mouseClicked()
 }
 
 
-// resets game when restart game button is pressed
+// resetGame: resets game when restart game button is pressed
 function resetGame()
 {
   if (restartButton != undefined)
@@ -783,7 +758,7 @@ function resetGame()
   clearInterval(timerInterval);  
 }
 
-// draw health bar for player 1
+// sets up health bar for player 1
 function health1() 
 {
   healthPercent1 = currentHP1 / maxHP;
@@ -795,7 +770,7 @@ function health1()
   
 }
 
-// draw health bar for player 2
+// sets up health bar for player 2
 function health2()
 { 
   healthPercent2 = currentHP2 / maxHP;
