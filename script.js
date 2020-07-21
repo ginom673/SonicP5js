@@ -44,15 +44,13 @@ function damage(fighter, amount)
 */
 
 // EXAMPLE COOLDOWN TIMING
-/*
-var lastPowerBlastTurn = -99999;
+var lastPowerBlastTurn = 99999;
 var currentTurn = -1; // once the game starts, currentTurn will be set to 0
 var powerBlastCooldown = 3;
 if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
 {
   // they can use powerblast
 }
-*/
 
 // ---------- IDEAS ----------
 
@@ -762,8 +760,6 @@ function health1()
   var damageBarStartX1 = (HPBarStartX1 + HPBarLength) - damageBarLength;  
   fill("red");
   rect(damageBarStartX1, 40, damageBarLength, 20);
-  
-  
 }
 
 // sets up health bar for player 2
@@ -865,9 +861,7 @@ function keyReleased()
       p1ChoiceText = "Player 1 Has Decided!";
       p1MoveType = "movement";
     }
-
-  
-  
+ 
   
   // player 2 commands
   if (keyCode == 55)
@@ -968,7 +962,6 @@ function damage(targetedPlayer, damageAmount, playerSource)
 // then, execute that command
 function interpretCommands()
 {
-  
   
   // change all of the function calls to damage
   // to instead record this into a variable
@@ -1300,43 +1293,6 @@ function interpretCommands()
       dmgToP2 = 0;
     }
   
-  
 }
 
 
-/*
-var myFighterObject = {};
-myFighterObject.health = 2;
-myFighterObject.listOfEnemyNames = ['bowser', 'ganon', 'wario', 'dr. eggman', 'ridley'];
-myFighterObject.isJumping = false;
-myFighterObject.x = 2;
-myFighterObject.y = 200;
-myFighterObject.color = "red";
-
-function damageSelf()
-{
-  this.health = this.health - 1;
-}
-
-myFighterObject.damageMyself = damageSelf;
-
-console.log(myFighterObject.health);
-myFighterObject.damageMyself();
-console.log(myFighterObject.health);
-
-mySecondFighter = {};
-*/
-// ... set up that object ...
-//mySecondFighter.damagemySelf() // this changes mySecondFighter's health... NOT myFighterObject's health
-
-
-// what is the for loop syntax?
-/*
-var myList = ['apples', 'bananas', 'carrots'];
-
-for (var i = 0; i < myList.length; i++)
-  {
-    text(myList[i], 0, 0);
-    console.log(myList[i]);
-  }
-*/
