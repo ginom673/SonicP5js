@@ -78,6 +78,8 @@ if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
 }
 */
 
+/
+
 // player 1 damage multiplier
 var p1DmgMult = 1.0;
 
