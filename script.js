@@ -1052,10 +1052,14 @@ function interpretCommands()
   else if (p1Choice == 2 && showTimer == false)
     {
       if (powerBlastReady == true)
-        {
-          p1ChoiceText = "Player 1 uses Power Blast!";
-          dmgToP2 = 200;
-        }
+      {
+        p1ChoiceText = "Player 1 uses Power Blast!";
+        dmgToP2 = 200;
+      }
+      else
+      {
+        p1ChoiceText = "Power Blast is still cooling down!";
+      }
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       //damage(2, 200, 1);
@@ -1205,10 +1209,14 @@ function interpretCommands()
   else if (p2Choice == 2 && showTimer == false)
     {
       if (icebergCrushReady == true)
-        {
-          p2ChoiceText = "Player 2 uses Iceberg Crush!";
-        }
-      dmgToP1 = 150;
+      {
+        p2ChoiceText = "Player 2 uses Iceberg Crush!";
+        dmgToP1 = 150;
+      }
+      else
+      {
+        p2ChoiceText = "Iceberg Crush is still cooling down!";
+      }
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       icebergCrushReady = false;
