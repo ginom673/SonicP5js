@@ -348,7 +348,7 @@ function startTimer()
     {
       timerInterval = setInterval(updateTimer, 1000);
       showTimer = true;
-      //currentTurn = currentTurn + 1;
+      currentTurn = currentTurn + 1;
       secondsLeft = maxSeconds;
       p1ChoiceText = "Awaiting P1's Decision...";
       p2ChoiceText = "Awaiting P2's Decision...";
@@ -1051,11 +1051,14 @@ function interpretCommands()
     }
   else if (p1Choice == 2 && showTimer == false)
     {
-      p1ChoiceText = "Player 1 uses Power Blast!";
+      if (powerBlastReady == true)
+        {
+          p1ChoiceText = "Player 1 uses Power Blast!";
+          dmgToP2 = 200;
+        }
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       //damage(2, 200, 1);
-      dmgToP2 = 200;
       powerBlastReady = false;
       lastPowerBlastTurn = currentTurn;
     }
@@ -1201,12 +1204,15 @@ function interpretCommands()
     }
   else if (p2Choice == 2 && showTimer == false)
     {
-      p2ChoiceText = "Player 2 uses Iceberg Crush!";
+      if (icebergCrushReady == true)
+        {
+          p2ChoiceText = "Player 2 uses Iceberg Crush!";
+        }
       dmgToP1 = 150;
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
       icebergCrushReady = false;
-      icebergCrush
+      lastIcebergCrushTurn = currentTurn;
     }
   else if (p2Choice == 3 && showTimer == false)
     {
@@ -1304,6 +1310,9 @@ function interpretCommands()
       dmgToP1 = dmgToP2;
       dmgToP2 = 0;
     }
+  
+  damage(1,dmgToP1,2);
+  damage(2,dmgToP2,1);
   
 }
 
