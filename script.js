@@ -962,7 +962,7 @@ function interpretCommands() {
     console.log("P2: ", p2MoveType);
     //damage(2, 200, 1);
     powerBlastReady = false;
-    lastPowerBlastTurn = currentTurn;
+    lastPowerBlastTurn = currentTurn - 1;
   } else if (p1Choice == 3 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Sword Strike!";
     console.log("P1: ", p1MoveType);
@@ -1083,7 +1083,7 @@ function interpretCommands() {
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
     icebergCrushReady = false;
-    lastIcebergCrushTurn = currentTurn;
+    lastIcebergCrushTurn = currentTurn - 1;
   } else if (p2Choice == 3 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Breath!";
     console.log("P1: ", p1MoveType);
