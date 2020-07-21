@@ -44,14 +44,22 @@ function damage(fighter, amount)
 */
 
 // EXAMPLE COOLDOWN TIMING
-var lastPowerBlastTurn = 99999;
+var powerBlastReady = true;
+var lastPowerBlastTurn = 0;
 var currentTurn = -1; // once the game starts, currentTurn will be set to 0
 var powerBlastCooldown = 3;
-if (currentTurn - lastPowerBlastTurn >= powerBlastCooldown)
-{
-  // they can use powerblast
+if (currentTurn - lastPowerBlastTurn > powerBlastCooldown)
+{  
+  powerBlastReady = true;
 }
 
+var icebergCrushReady = true;
+var lastIcebergCrushTurn = 0;
+var icebergCrushCooldown = 3;
+if (currentTurn - lastIcebergCrushTurn > icebergCrushCooldown)
+  {
+    icebergCrushReady = true;
+  }
 // ---------- IDEAS ----------
 
 // write some code which allows the players to be repositioned with a button press or something for debugging purposes
@@ -1048,6 +1056,8 @@ function interpretCommands()
       console.log("P2: ", p2MoveType);
       //damage(2, 200, 1);
       dmgToP2 = 200;
+      powerBlastReady = false;
+      lastPowerBlastTurn = currentTurn;
     }
   else if (p1Choice == 3 && showTimer == false)
     {
@@ -1195,6 +1205,8 @@ function interpretCommands()
       dmgToP1 = 150;
       console.log("P1: ", p1MoveType);
       console.log("P2: ", p2MoveType);
+      icebergCrushReady = false;
+      icebergCrush
     }
   else if (p2Choice == 3 && showTimer == false)
     {
