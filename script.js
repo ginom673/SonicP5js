@@ -200,6 +200,10 @@ var icebergCrushCooldown = 3;
 var p2Burning = false;
 var p1Frozen = false;
 
+// shielding
+var p1Blocking = false;
+var p2Blocking = false;
+
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -1017,6 +1021,7 @@ function interpretCommands() {
     }, 2000);
   } else if (p1Choice == 6 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Heat Shield!";
+    p1Blocking = true;
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
   } else if (p1Choice == "W" && showTimer == false) {
@@ -1110,7 +1115,7 @@ function interpretCommands() {
     if (freeze == 1) {
       p1Frozen = true;
       setTimeout(function() {
-        p2ChoiceText = "Player 2 froze Player 1";
+        p2ChoiceText = "Player 2 froze Player 1!";
       }, 2000);
     } else {
       setTimeout(function() {
