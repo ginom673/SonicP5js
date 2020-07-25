@@ -1148,6 +1148,16 @@ function interpretCommands() {
     p2ChoiceText = "Player 2 uses Frozen Mystery!";
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
   } else if (p2Choice == 6 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Wall!";
     console.log("P1: ", p1MoveType);
