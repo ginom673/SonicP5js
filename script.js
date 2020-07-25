@@ -196,6 +196,9 @@ var icebergCrushReady = true;
 var lastIcebergCrushTurn = 0;
 var icebergCrushCooldown = 3;
 
+
+
+
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -969,6 +972,7 @@ function interpretCommands() {
     console.log("P2: ", p2MoveType);
     //damage(2, 150, 1);
     dmgToP2 = 150;
+    
   } else if (p1Choice == 4 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Fiery Counter!";
     console.log("P1: ", p1MoveType);
