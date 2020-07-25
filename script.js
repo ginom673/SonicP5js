@@ -196,6 +196,10 @@ var icebergCrushReady = true;
 var lastIcebergCrushTurn = 0;
 var icebergCrushCooldown = 3;
 
+// burn/freeze
+var p2Burning = false;
+var p1Frozen = false;
+
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -969,7 +973,6 @@ function interpretCommands() {
     console.log("P2: ", p2MoveType);
     //damage(2, 150, 1);
     var burn = Math.floor(Math.random() * 3);
-    var p2Burning = false;
     if (burn == 2) {
       p2Burning = true;
       setTimeout(function() {
@@ -1103,6 +1106,17 @@ function interpretCommands() {
     p2ChoiceText = "Player 2 uses Ice Breath!";
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
+    var freeze = Math.floor(Math.random() * 2);
+    if (freeze == 1) {
+      p1Frozen = true;
+      setTimeout(function() {
+        p2ChoiceText = "Player 2 froze Player 1";
+      }, 2000);
+    } else {
+      setTimeout(function() {
+        p2ChoiceText = "Player 2 failed to freeze Player 1!";
+      }, 2000);
+    }
   } else if (p2Choice == 4 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Icy Reflect!";
     console.log("P1: ", p1MoveType);
