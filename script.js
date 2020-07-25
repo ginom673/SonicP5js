@@ -196,9 +196,6 @@ var icebergCrushReady = true;
 var lastIcebergCrushTurn = 0;
 var icebergCrushCooldown = 3;
 
-
-
-
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -971,8 +968,19 @@ function interpretCommands() {
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
     //damage(2, 150, 1);
+    var burn = Math.floor(Math.random() * 3);
+    var p2Burning = false;
+    if (burn == 2) {
+      p2Burning = true;
+      setTimeout(function() {
+        p1ChoiceText = "Player 1 burnt Player 2!";
+      }, 2000);
+    } else {
+      setTimeout(function() {
+        p1ChoiceText = "Player 1 failed to burn Player 2!";
+      }, 2000);
+    }
     dmgToP2 = 150;
-    
   } else if (p1Choice == 4 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Fiery Counter!";
     console.log("P1: ", p1MoveType);
