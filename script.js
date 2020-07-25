@@ -1008,7 +1008,10 @@ function interpretCommands() {
     p1ChoiceText = "Player 1 uses Steam Up!";
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
-    p1DmgMult = p1DmgMult * 1.5;
+    p1DmgMult = p1DmgMult * 1.3;
+    setTimeout(function() {
+      p1ChoiceText = "Player 1's attack power multiplied 1.3x!";
+    }, 2000);
   } else if (p1Choice == 6 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Heat Shield!";
     console.log("P1: ", p1MoveType);
