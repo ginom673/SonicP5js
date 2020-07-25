@@ -203,6 +203,10 @@ var p1Frozen = false;
 var p1Blocking = false;
 var p2Blocking = false;
 
+// frozen mystery
+var p1PlatformOnly = false;
+var p2PlatformOnly = false;
+
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -1148,16 +1152,20 @@ function interpretCommands() {
     p2ChoiceText = "Player 2 uses Frozen Mystery!";
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    var frozenMystery = Math.floor(Math.random() * 2);
+    if (frozenMystery == 0) {
+      p1PlatformOnly = true;
+      dmgToP2 = 150;
+      setTimeout(function() {
+        p2ChoiceText = "Player 1 can only move to platforms now!";
+      }, 2000);
+    } else {
+      p2PlatformOnly = true;
+      dmgToP1 = 150;
+      setTimeout(function() {
+        p2ChoiceText = "Player 2 can only ove ";
+      }, 2000);
+    }
   } else if (p2Choice == 6 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Wall!";
     console.log("P1: ", p1MoveType);
