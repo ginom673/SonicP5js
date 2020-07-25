@@ -1163,7 +1163,7 @@ function interpretCommands() {
       p2PlatformOnly = true;
       dmgToP1 = 150;
       setTimeout(function() {
-        p2ChoiceText = "Player 2 can only ove ";
+        p2ChoiceText = "Player 2 can only move to platforms now!";
       }, 2000);
     }
   } else if (p2Choice == 6 && showTimer == false) {
