@@ -1211,6 +1211,7 @@ function interpretCommands() {
     dmgToP2 = 0;
   }
 
+    // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
   damage(2, dmgToP2, 1);
 }
