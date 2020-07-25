@@ -183,7 +183,6 @@ var textBoxHeight = endY - startY;
 var textInterval = textBoxHeight / (numCommands - 1);
 
 // variables for cooldowns
-
 var currentTurn = 0; // once the game starts, currentTurn will be set to 0
 
 // power blast
@@ -362,7 +361,7 @@ function startTimer() {
     restartBtnIsActive = true;
   }
 
-  // game is not over yet
+  // game is not over yet - handle end of turn
   else {
     timerInterval = setInterval(updateTimer, 1000);
     showTimer = true;
