@@ -918,6 +918,9 @@ function interpretCommands() {
 
   var p1Countering = false;
   var p2Countering = false;
+  
+  p1Blocking = false;
+  p2Blocking = false;
 
   // player 1 commands
   if (p1Choice == 1 && showTimer == false) {
@@ -984,6 +987,7 @@ function interpretCommands() {
       p2Burning = true;
       setTimeout(function() {
         p1ChoiceText = "Player 1 burnt Player 2!";
+        dmgToP2 = 50;
       }, 2000);
     } else {
       setTimeout(function() {
@@ -1170,6 +1174,7 @@ function interpretCommands() {
     p2ChoiceText = "Player 2 uses Ice Wall!";
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
+    p2Blocking = true;
   } else if (p2Choice == "I" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Red Platform!";
     console.log("P1: ", p1MoveType);
@@ -1212,13 +1217,17 @@ function interpretCommands() {
   }
 
   // Blocking
-  if (p1Blocking && !p2Blocking) {
+  if (p1Blocking) {
     dmgToP1 = 0;
-  } else if (p2Blocking && !p1Blocking) {
+  } else if (p2Blocking) {
     dmgToP2 = 0;
   }
 
   // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
   damage(2, dmgToP2, 1);
+  
+  // do we set countering / blocking back to false?
+  
+  
 }
