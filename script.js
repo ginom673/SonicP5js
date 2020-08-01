@@ -208,6 +208,7 @@ var p1PlatformOnly = false;
 var p2PlatformOnly = false;
 var platformOnlyTurnSpan = 1;
 var lastFrozenMysteryTurn = 0;
+var frozenMysteryReady = true;
 
 /* SETUP (called at the beginning) */
 function setup() {
@@ -389,14 +390,13 @@ function startTimer() {
     if (currentTurn - lastIcebergCrushTurn > icebergCrushCooldown) {
       icebergCrushReady = true;
     }
-    
+
     // check if platformOnly variables should be updated
-    if (currentTurn - lastFrozenMysteryTurn > platformOnlyTurnSpan)
-    {
+    if (currentTurn - lastFrozenMysteryTurn > platformOnlyTurnSpan) {
       p1PlatformOnly = false;
-      p1PlatformOnly = false;
+      p2PlatformOnly = false;
+      frozenMysteryReady = true;
     }
-    
   }
 }
 
@@ -931,7 +931,7 @@ function interpretCommands() {
 
   p1Blocking = false;
   p2Blocking = false;
-  
+
   p1Frozen = false;
   p2Burning = false;
 
@@ -1199,7 +1199,6 @@ function interpretCommands() {
     console.log("P2: ", p2MoveType);
   }
 
-  
   if (p2Choice == 5 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Frozen Mystery!";
     console.log("P1: ", p1MoveType);
@@ -1218,35 +1217,35 @@ function interpretCommands() {
         p2ChoiceText = "Player 2 can only move to platforms now!";
       }, 2000);
     }
-  
-  // NOTE: we likely need to change how the multi hit moves report multi hits with countering
 
-  // Countering
-  if (p1Countering && !p2Countering && p2MoveType == "melee") {
-    dmgToP2 = dmgToP1;
-    dmgToP1 = 0;
-  } else if (p2Countering && !p1Countering && p1MoveType == "ranged") {
-    dmgToP1 = dmgToP2;
-    dmgToP2 = 0;
-  }
+    // NOTE: we likely need to change how the multi hit moves report multi hits with countering
 
-  // Blocking
-  if (p1Blocking) {
-    dmgToP1 = 0;
-  } else if (p2Blocking) {
-    dmgToP2 = 0;
-  }
+    // Countering
+    if (p1Countering && !p2Countering && p2MoveType == "melee") {
+      dmgToP2 = dmgToP1;
+      dmgToP1 = 0;
+    } else if (p2Countering && !p1Countering && p1MoveType == "ranged") {
+      dmgToP1 = dmgToP2;
+      dmgToP2 = 0;
+    }
 
-  // Burning / Freezing
-  if (p2Burning == true) {
-    dmgToP2 = dmgToP2 + 50;
-  }
-  if (p1Frozen == true) {
-    dmgToP1 = dmgToP1 + 200;
-  }
-    
-  // inflict damage, regardless of damage source
-  damage(1, dmgToP1, 2);
-  damage(2, dmgToP2, 1);
+    // Blocking
+    if (p1Blocking) {
+      dmgToP1 = 0;
+    } else if (p2Blocking) {
+      dmgToP2 = 0;
+    }
 
+    // Burning / Freezing
+    if (p2Burning == true) {
+      dmgToP2 = dmgToP2 + 50;
+    }
+    if (p1Frozen == true) {
+      dmgToP1 = dmgToP1 + 200;
+    }
+
+    // inflict damage, regardless of damage source
+    damage(1, dmgToP1, 2);
+    damage(2, dmgToP2, 1);
+  }
 }
