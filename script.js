@@ -918,9 +918,12 @@ function interpretCommands() {
 
   var p1Countering = false;
   var p2Countering = false;
-  
+
   p1Blocking = false;
   p2Blocking = false;
+  
+  p1Frozen = false;
+  p2Burning = false;
 
   // player 1 commands
   if (p1Choice == 1 && showTimer == false) {
@@ -987,7 +990,6 @@ function interpretCommands() {
       p2Burning = true;
       setTimeout(function() {
         p1ChoiceText = "Player 1 burnt Player 2!";
-        dmgToP2 = 50;
       }, 2000);
     } else {
       setTimeout(function() {
@@ -1223,11 +1225,16 @@ function interpretCommands() {
     dmgToP2 = 0;
   }
 
+  // Burning / Freezing
+  if (p2Burning == true) {
+    dmgToP2 = dmgToP2 + 50;
+  }
+  if (p1Frozen == true) {
+    dmgToP1 = dmgToP1 + 200;
+  }
+
   // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
   damage(2, dmgToP2, 1);
-  
-  // do we set countering / blocking back to false?
-  
-  
+
 }
