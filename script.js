@@ -380,6 +380,8 @@ function startTimer() {
     p2MoveType = undefined;
     p1Choice = undefined;
     p2Choice = undefined;
+    console.log(p1PlatformOnly);
+    console.log(p2PlatformOnly);
 
     // check if power blast cooldown should be reset
     if (currentTurn - lastPowerBlastTurn > powerBlastCooldown) {
@@ -1203,6 +1205,7 @@ function interpretCommands() {
     p2ChoiceText = "Player 2 uses Frozen Mystery!";
     console.log("P1: ", p1MoveType);
     console.log("P2: ", p2MoveType);
+    lastFrozenMysteryTurn = currentTurn - 1;
     var frozenMystery = Math.floor(Math.random() * 2);
     if (frozenMystery == 0) {
       p1PlatformOnly = true;
