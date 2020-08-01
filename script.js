@@ -1210,6 +1210,16 @@ function interpretCommands() {
     dmgToP1 = dmgToP2;
     dmgToP2 = 0;
   }
+  
+  // blocking
+  if (p1Blocking && !p2Blocking)
+    {
+      dmgToP1 = 0;
+    }
+  else if (p2Blocking && !p1Blocking)
+    {
+      dmgToP2 = 
+    }
 
     // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
