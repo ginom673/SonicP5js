@@ -1232,6 +1232,12 @@ function interpretCommands() {
   if (p1Frozen == true) {
     dmgToP1 = dmgToP1 + 200;
   }
+  
+  // Frozen Mystery
+  if (p2PlatformOnly == true)
+  {
+
+  }
 
   // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
