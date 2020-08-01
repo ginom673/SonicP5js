@@ -850,7 +850,7 @@ function keyReleased() {
     p2Choice = 5;
     p2MoveType = "other";
   } else if (keyCode == 187) {
-    p1ChoiceText = "Player 2 Has Decided!";
+    p2ChoiceText = "Player 2 Has Decided!";
     p2Choice = 6;
     p2MoveType = "other";
   } else if (keyCode == 73) {
@@ -1210,18 +1210,15 @@ function interpretCommands() {
     dmgToP1 = dmgToP2;
     dmgToP2 = 0;
   }
-  
-  // blocking
-  if (p1Blocking && !p2Blocking)
-    {
-      dmgToP1 = 0;
-    }
-  else if (p2Blocking && !p1Blocking)
-    {
-      dmgToP2 = 
-    }
 
-    // inflict damage, regardless of damage source
+  // Blocking
+  if (p1Blocking && !p2Blocking) {
+    dmgToP1 = 0;
+  } else if (p2Blocking && !p1Blocking) {
+    dmgToP2 = 0;
+  }
+
+  // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
   damage(2, dmgToP2, 1);
 }
