@@ -206,6 +206,8 @@ var p2Blocking = false;
 // frozen mystery
 var p1PlatformOnly = false;
 var p2PlatformOnly = false;
+var platformOnlyTurnSpan = 1;
+var lastFrozenMysteryTurn = 0;
 
 /* SETUP (called at the beginning) */
 function setup() {
@@ -387,6 +389,14 @@ function startTimer() {
     if (currentTurn - lastIcebergCrushTurn > icebergCrushCooldown) {
       icebergCrushReady = true;
     }
+    
+    // check if platformOnly variables should be updated
+    if (currentTurn - lastFrozenMysteryTurn > platformOnlyTurnSpan)
+    {
+      p1PlatformOnly = false;
+      p1PlatformOnly = false;
+    }
+    
   }
 }
 
@@ -1154,24 +1164,6 @@ function interpretCommands() {
           }, 2000);
         }
       */
-  } else if (p2Choice == 5 && showTimer == false) {
-    p2ChoiceText = "Player 2 uses Frozen Mystery!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
-    var frozenMystery = Math.floor(Math.random() * 2);
-    if (frozenMystery == 0) {
-      p1PlatformOnly = true;
-      dmgToP2 = 150;
-      setTimeout(function() {
-        p2ChoiceText = "Player 1 can only move to platforms now!";
-      }, 2000);
-    } else {
-      p2PlatformOnly = true;
-      dmgToP1 = 150;
-      setTimeout(function() {
-        p2ChoiceText = "Player 2 can only move to platforms now!";
-      }, 2000);
-    }
   } else if (p2Choice == 6 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Wall!";
     console.log("P1: ", p1MoveType);
@@ -1207,6 +1199,26 @@ function interpretCommands() {
     console.log("P2: ", p2MoveType);
   }
 
+  
+  if (p2Choice == 5 && showTimer == false) {
+    p2ChoiceText = "Player 2 uses Frozen Mystery!";
+    console.log("P1: ", p1MoveType);
+    console.log("P2: ", p2MoveType);
+    var frozenMystery = Math.floor(Math.random() * 2);
+    if (frozenMystery == 0) {
+      p1PlatformOnly = true;
+      dmgToP2 = 150;
+      setTimeout(function() {
+        p2ChoiceText = "Player 1 can only move to platforms now!";
+      }, 2000);
+    } else {
+      p2PlatformOnly = true;
+      dmgToP1 = 150;
+      setTimeout(function() {
+        p2ChoiceText = "Player 2 can only move to platforms now!";
+      }, 2000);
+    }
+  
   // NOTE: we likely need to change how the multi hit moves report multi hits with countering
 
   // Countering
@@ -1232,13 +1244,7 @@ function interpretCommands() {
   if (p1Frozen == true) {
     dmgToP1 = dmgToP1 + 200;
   }
-  
-  // Frozen Mystery
-  if (p2PlatformOnly == true)
-  {
-
-  }
-
+    
   // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
   damage(2, dmgToP2, 1);
