@@ -1247,6 +1247,9 @@ function interpretCommands() {
       dmgToP1 = dmgToP1 + 200;
     }
 
+    console.log(p1PlatformOnly);
+    console.log(p2PlatformOnly);
+    
     // inflict damage, regardless of damage source
     damage(1, dmgToP1, 2);
     damage(2, dmgToP2, 1);
