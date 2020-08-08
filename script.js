@@ -1271,8 +1271,8 @@ function interpretCommands() {
     dmgToP1 = dmgToP1 + 200;
   }
 
-  //console.log(p1PlatformOnly);
-  //console.log(p2PlatformOnly);
+  console.log(p1PlatformOnly);
+  console.log(p2PlatformOnly);
 
   console.log(dmgToP1);
   console.log(dmgToP2);
