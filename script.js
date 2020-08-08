@@ -241,6 +241,9 @@ function setup() {
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955"
   );
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
+  
+  // load sfx
+  var takeDamage = loadSound("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704")
 
   // player's command icons:
 
