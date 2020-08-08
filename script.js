@@ -1273,6 +1273,9 @@ function interpretCommands() {
   if (p1Frozen == true) {
     dmgToP1 = dmgToP1 + 200;
   }
+  
+  // Attack Sound
+  if (p2MoveType == "movement" || )
 
   console.log(p1PlatformOnly);
   console.log(p2PlatformOnly);
