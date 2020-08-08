@@ -210,6 +210,9 @@ var platformOnlyTurnSpan = 1;
 var lastFrozenMysteryTurn = 0;
 var frozenMysteryReady = true;
 
+// SFX
+var takeDamage;
+
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -241,9 +244,12 @@ function setup() {
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955"
   );
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
-  
+
   // load sfx
-  var takeDamage = loadSound("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704")
+  soundFormats("mp3")
+  takeDamage = loadSound(
+    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704"
+  );
 
   // player's command icons:
 
@@ -985,8 +991,7 @@ function interpretCommands() {
         p1ChoiceText = "Player 2 dodged it!";
       }, 2000);
     }
-  } 
-  else if (p1Choice == 2 && showTimer == false) {
+  } else if (p1Choice == 2 && showTimer == false) {
     if (powerBlastReady == true) {
       p1ChoiceText = "Player 1 uses Power Blast!";
       dmgToP2 = 200;
@@ -998,8 +1003,7 @@ function interpretCommands() {
     //damage(2, 200, 1);
     powerBlastReady = false;
     lastPowerBlastTurn = currentTurn - 1;
-  } 
-  else if (p1Choice == 3 && showTimer == false) {
+  } else if (p1Choice == 3 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Sword Strike!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1016,8 +1020,7 @@ function interpretCommands() {
       }, 2000);
     }
     dmgToP2 = 150;
-  } 
-  else if (p1Choice == 4 && showTimer == false) {
+  } else if (p1Choice == 4 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Fiery Counter!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1040,8 +1043,7 @@ function interpretCommands() {
           }, 2000);
         }
       */
-  } 
-  else if (p1Choice == 5 && showTimer == false) {
+  } else if (p1Choice == 5 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Steam Up!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1049,42 +1051,36 @@ function interpretCommands() {
     setTimeout(function() {
       p1ChoiceText = "Player 1's attack power multiplied 1.3x!";
     }, 2000);
-  } 
-  else if (p1Choice == 6 && showTimer == false) {
+  } else if (p1Choice == 6 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Heat Shield!";
     p1Blocking = true;
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
-  } 
-  else if (p1Choice == "W" && showTimer == false) {
+  } else if (p1Choice == "W" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Red Platform!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player1X = platformXYs.red[0];
     player1Y = platformXYs.red[1];
-  } 
-  else if (p1Choice == "A" && showTimer == false) {
+  } else if (p1Choice == "A" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Yellow Platform!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player1X = platformXYs.yellow[0];
     player1Y = platformXYs.yellow[1];
-  } 
-  else if (p1Choice == "S" && showTimer == false) {
+  } else if (p1Choice == "S" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Ground!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player1X = platformXYs.ground[0];
     player1Y = platformXYs.ground[1];
-  } 
-  else if (p1Choice == "D" && showTimer == false) {
+  } else if (p1Choice == "D" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Blue Platform!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player1X = platformXYs.blue[0];
     player1Y = platformXYs.blue[1];
-  } 
-  else {
+  } else {
     p1ChoiceText = "Player 1 did not decide!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1132,8 +1128,7 @@ function interpretCommands() {
         p2ChoiceText = "Player 1 dodged it!";
       }, 2000);
     }
-  } 
-  else if (p2Choice == 2 && showTimer == false) {
+  } else if (p2Choice == 2 && showTimer == false) {
     if (icebergCrushReady == true) {
       p2ChoiceText = "Player 2 uses Iceberg Crush!";
       dmgToP1 = 150;
@@ -1144,8 +1139,7 @@ function interpretCommands() {
     //console.log("P2: ", p2MoveType);
     icebergCrushReady = false;
     lastIcebergCrushTurn = currentTurn - 1;
-  } 
-  else if (p2Choice == 3 && showTimer == false) {
+  } else if (p2Choice == 3 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Breath!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1160,8 +1154,7 @@ function interpretCommands() {
         p2ChoiceText = "Player 2 failed to freeze Player 1!";
       }, 2000);
     }
-  } 
-  else if (p2Choice == 4 && showTimer == false) {
+  } else if (p2Choice == 4 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Icy Reflect!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1184,8 +1177,7 @@ function interpretCommands() {
           }, 2000);
         }
       */
-  } 
-  else if (p2Choice == 5 && showTimer == false) {
+  } else if (p2Choice == 5 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Frozen Mystery!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
@@ -1204,50 +1196,41 @@ function interpretCommands() {
         p2ChoiceText = "Player 2 can only move to platforms now!";
       }, 2000);
     }
-
-  }
-  else if (p2Choice == 6 && showTimer == false) {
+  } else if (p2Choice == 6 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Wall!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     p2Blocking = true;
-  } 
-  else if (p2Choice == "I" && showTimer == false) {
+  } else if (p2Choice == "I" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Red Platform!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player2X = platformXYs.red[2];
     player2Y = platformXYs.red[3];
-  } 
-  else if (p2Choice == "J" && showTimer == false) {
+  } else if (p2Choice == "J" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Yellow Platform!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player2X = platformXYs.yellow[2];
     player2Y = platformXYs.yellow[3];
-  } 
-  else if (p2Choice == "K" && showTimer == false) {
+  } else if (p2Choice == "K" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Ground!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player2X = platformXYs.ground[2];
     player2Y = platformXYs.ground[3];
-  } 
-  else if (p2Choice == "L" && showTimer == false) {
+  } else if (p2Choice == "L" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Blue Platform!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     player2X = platformXYs.blue[2];
     player2Y = platformXYs.blue[3];
-  } 
-  else {
+  } else {
     p2ChoiceText = "Player 2 did not decide!";
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
   }
 
-  
-  
   // NOTE: we likely need to change how the multi hit moves report multi hits with countering
 
   // Countering
@@ -1273,9 +1256,18 @@ function interpretCommands() {
   if (p1Frozen == true) {
     dmgToP1 = dmgToP1 + 200;
   }
-  
+
   // Attack Sound
-  if (p2MoveType == "movement" || )
+  if (
+    p1MoveType == "movement" ||
+    p2MoveType == "movement" ||
+    p1Blocking == true ||
+    p2Blocking == true ||
+    p1Countering == true ||
+    p2Countering == true
+  ) {
+    takeDamage.play();
+  }
 
   console.log(p1PlatformOnly);
   console.log(p2PlatformOnly);
@@ -1286,6 +1278,4 @@ function interpretCommands() {
   // inflict damage, regardless of damage source
   damage(1, dmgToP1, 2);
   damage(2, dmgToP2, 1);
-  
-  
 }
