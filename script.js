@@ -329,10 +329,12 @@ function jump() {
 // checks for win/loss conditions,
 // and if no win/loss, awaits player decisions
 function startTimer() {
+  /*
   console.log("current turn: " + currentTurn);
   console.log("pblast ready: " + powerBlastReady);
   console.log("last turn: " + lastPowerBlastTurn);
   console.log("cooldown: " + powerBlastCooldown);
+  */
 
   // check if either player has won, or if it's a draw
 
@@ -380,8 +382,8 @@ function startTimer() {
     p2MoveType = undefined;
     p1Choice = undefined;
     p2Choice = undefined;
-    console.log(p1PlatformOnly);
-    console.log(p2PlatformOnly);
+    //console.log(p1PlatformOnly);
+    //console.log(p2PlatformOnly);
 
     // check if power blast cooldown should be reset
     if (currentTurn - lastPowerBlastTurn > powerBlastCooldown) {
@@ -987,15 +989,15 @@ function interpretCommands() {
     } else {
       p1ChoiceText = "Power Blast is still cooling down!";
     }
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     //damage(2, 200, 1);
     powerBlastReady = false;
     lastPowerBlastTurn = currentTurn - 1;
   } else if (p1Choice == 3 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Sword Strike!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     //damage(2, 150, 1);
     var burn = Math.floor(Math.random() * 3);
     if (burn == 2) {
@@ -1011,8 +1013,8 @@ function interpretCommands() {
     dmgToP2 = 150;
   } else if (p1Choice == 4 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Fiery Counter!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
 
     p1Countering = true;
 
@@ -1034,8 +1036,8 @@ function interpretCommands() {
       */
   } else if (p1Choice == 5 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Steam Up!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     p1DmgMult = p1DmgMult * 1.3;
     setTimeout(function() {
       p1ChoiceText = "Player 1's attack power multiplied 1.3x!";
@@ -1043,43 +1045,43 @@ function interpretCommands() {
   } else if (p1Choice == 6 && showTimer == false) {
     p1ChoiceText = "Player 1 uses Heat Shield!";
     p1Blocking = true;
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
   } else if (p1Choice == "W" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Red Platform!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player1X = platformXYs.red[0];
     player1Y = platformXYs.red[1];
   } else if (p1Choice == "A" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Yellow Platform!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player1X = platformXYs.yellow[0];
     player1Y = platformXYs.yellow[1];
   } else if (p1Choice == "S" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Ground!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player1X = platformXYs.ground[0];
     player1Y = platformXYs.ground[1];
   } else if (p1Choice == "D" && showTimer == false) {
     p1ChoiceText = "Player 1 moves to the Blue Platform!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player1X = platformXYs.blue[0];
     player1Y = platformXYs.blue[1];
   } else {
     p1ChoiceText = "Player 1 did not decide!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
   }
 
   // player 2 commands
   if (p2Choice == 1 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Icicle Toss!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     var icicleToss = Math.floor(Math.random() * 6);
 
     if (icicleToss == 1) {
@@ -1124,14 +1126,14 @@ function interpretCommands() {
     } else {
       p2ChoiceText = "Iceberg Crush is still cooling down!";
     }
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     icebergCrushReady = false;
     lastIcebergCrushTurn = currentTurn - 1;
   } else if (p2Choice == 3 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Breath!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     var freeze = Math.floor(Math.random() * 2);
     if (freeze == 1) {
       p1Frozen = true;
@@ -1145,8 +1147,8 @@ function interpretCommands() {
     }
   } else if (p2Choice == 4 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Icy Reflect!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
 
     p2Countering = true;
 
@@ -1168,43 +1170,43 @@ function interpretCommands() {
       */
   } else if (p2Choice == 6 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Wall!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     p2Blocking = true;
   } else if (p2Choice == "I" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Red Platform!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player2X = platformXYs.red[2];
     player2Y = platformXYs.red[3];
   } else if (p2Choice == "J" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Yellow Platform!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player2X = platformXYs.yellow[2];
     player2Y = platformXYs.yellow[3];
   } else if (p2Choice == "K" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Ground!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player2X = platformXYs.ground[2];
     player2Y = platformXYs.ground[3];
   } else if (p2Choice == "L" && showTimer == false) {
     p2ChoiceText = "Player 2 moves to the Blue Platform!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     player2X = platformXYs.blue[2];
     player2Y = platformXYs.blue[3];
   } else {
     p2ChoiceText = "Player 2 did not decide!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
   }
 
   if (p2Choice == 5 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Frozen Mystery!";
-    console.log("P1: ", p1MoveType);
-    console.log("P2: ", p2MoveType);
+    //console.log("P1: ", p1MoveType);
+    //console.log("P2: ", p2MoveType);
     lastFrozenMysteryTurn = currentTurn - 1;
     var frozenMystery = Math.floor(Math.random() * 2);
     if (frozenMystery == 0) {
@@ -1221,37 +1223,43 @@ function interpretCommands() {
       }, 2000);
     }
 
-    // NOTE: we likely need to change how the multi hit moves report multi hits with countering
-
-    // Countering
-    if (p1Countering && !p2Countering && p2MoveType == "melee") {
-      dmgToP2 = dmgToP1;
-      dmgToP1 = 0;
-    } else if (p2Countering && !p1Countering && p1MoveType == "ranged") {
-      dmgToP1 = dmgToP2;
-      dmgToP2 = 0;
-    }
-
-    // Blocking
-    if (p1Blocking) {
-      dmgToP1 = 0;
-    } else if (p2Blocking) {
-      dmgToP2 = 0;
-    }
-
-    // Burning / Freezing
-    if (p2Burning == true) {
-      dmgToP2 = dmgToP2 + 50;
-    }
-    if (p1Frozen == true) {
-      dmgToP1 = dmgToP1 + 200;
-    }
-
-    console.log(p1PlatformOnly);
-    console.log(p2PlatformOnly);
-    
-    // inflict damage, regardless of damage source
-    damage(1, dmgToP1, 2);
-    damage(2, dmgToP2, 1);
   }
+  
+  // NOTE: we likely need to change how the multi hit moves report multi hits with countering
+
+  // Countering
+  if (p1Countering && !p2Countering && p2MoveType == "melee") {
+    dmgToP2 = dmgToP1;
+    dmgToP1 = 0;
+  } else if (p2Countering && !p1Countering && p1MoveType == "ranged") {
+    dmgToP1 = dmgToP2;
+    dmgToP2 = 0;
+  }
+
+  // Blocking
+  if (p1Blocking) {
+    dmgToP1 = 0;
+  } else if (p2Blocking) {
+    dmgToP2 = 0;
+  }
+
+  // Burning / Freezing
+  if (p2Burning == true) {
+    dmgToP2 = dmgToP2 + 50;
+  }
+  if (p1Frozen == true) {
+    dmgToP1 = dmgToP1 + 200;
+  }
+
+  //console.log(p1PlatformOnly);
+  //console.log(p2PlatformOnly);
+
+  console.log(dmgToP1);
+  console.log(dmgToP2);
+
+  // inflict damage, regardless of damage source
+  damage(1, dmgToP1, 2);
+  damage(2, dmgToP2, 1);
+  
+  
 }
