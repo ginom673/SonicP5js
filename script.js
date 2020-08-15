@@ -1261,8 +1261,12 @@ function interpretCommands() {
   // create a variable called p1Attacking which will be a boolean
   // p1MoveType 
   
+  if (p1MoveType == "ranged" || p1MoveType == "melee" || p2MoveType == "ranged" || p2MoveType == "ranged")
+  {
+    takeDamage.play();
+  }
   
-  
+  /*
   if (
     p1MoveType != "movement" ||
     p2MoveType != "movement" ||
@@ -1275,6 +1279,7 @@ function interpretCommands() {
   ) {
     takeDamage.play();
   }
+  */
   
   /*
   if(p1Attacking || p2Attacking)
