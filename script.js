@@ -1258,6 +1258,11 @@ function interpretCommands() {
   }
 
   // Attack Sound
+  // create a variable called p1Attacking which will be a boolean
+  // p1MoveType 
+  
+  
+  
   if (
     p1MoveType != "movement" ||
     p2MoveType != "movement" ||
@@ -1270,6 +1275,13 @@ function interpretCommands() {
   ) {
     takeDamage.play();
   }
+  
+  /*
+  if(p1Attacking || p2Attacking)
+    {
+      // play sound
+    }
+  */
 
   console.log(p1PlatformOnly);
   console.log(p2PlatformOnly);
