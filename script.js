@@ -246,7 +246,7 @@ function setup() {
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
 
   // load sfx
-  soundFormats("mp3")
+  soundFormats("mp3");
   takeDamage = loadSound(
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704"
   );
@@ -1259,12 +1259,14 @@ function interpretCommands() {
 
   // Attack Sound
   if (
-    p1MoveType == "movement" ||
-    p2MoveType == "movement" ||
-    p1Blocking == true ||
-    p2Blocking == true ||
-    p1Countering == true ||
-    p2Countering == true
+    p1MoveType != "movement" ||
+    p2MoveType != "movement" ||
+    p1Blocking != true ||
+    p2Blocking != true ||
+    p1Countering != true ||
+    p2Countering != true ||
+    p1Choice != undefined ||
+    p2Choice != undefined
   ) {
     takeDamage.play();
   }
