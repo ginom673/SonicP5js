@@ -214,6 +214,16 @@ var frozenMysteryReady = true;
 var takeDamage;
 var gameMusic;
 
+function preload()
+{
+  // load music & sfx
+  soundFormats("mp3", "wav");
+  takeDamage = loadSound(
+    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704"
+  );
+  gameMusic = loadSound("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fremix(2).wav?v=1597516749608");
+}
+
 /* SETUP (called at the beginning) */
 function setup() {
   // set screen and text
@@ -245,13 +255,6 @@ function setup() {
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_ready.png?v=1584811005955"
   );
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
-
-  // load music & sfx
-  soundFormats("mp3");
-  takeDamage = loadSound(
-    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704"
-  );
-  gameMusic = 
 
   // player's command icons:
 
@@ -729,6 +732,7 @@ function mouseClicked() {
     readyButton = undefined;
     readyBtnIsActive = false;
     startTimer();
+    gameMusic.play();
   }
 
   // restart game button
