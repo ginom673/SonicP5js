@@ -947,6 +947,11 @@ function interpretCommands() {
 
   p1Frozen = false;
   p2Burning = false;
+  
+  console.log("currentTurn: " + currentTurn);
+  console.log("PBla"powerBlastReady);
+  console.log(lastPowerBlastTurn);
+  console.log(powerBlastCooldown);
 
   // player 1 commands
   if (p1Choice == 1 && showTimer == false) {
