@@ -743,9 +743,8 @@ function mouseClicked() {
 
 // resetGame: resets game when restart game button is pressed
 function resetGame() {
-  
   location.reload();
-  
+
   /*
   if (restartButton != undefined) {
     restartButton.remove();
@@ -952,7 +951,7 @@ function interpretCommands() {
 
   p1Frozen = false;
   p2Burning = false;
-  
+
   console.log("currentTurn: " + currentTurn);
   console.log("PBlastReady: " + powerBlastReady);
   console.log("lastPBlastTurn: " + lastPowerBlastTurn);
@@ -1269,13 +1268,17 @@ function interpretCommands() {
 
   // Attack Sound
   // create a variable called p1Attacking which will be a boolean
-  // p1MoveType 
-  
-  if (p1MoveType == "ranged" || p1MoveType == "melee" || p2MoveType == "ranged" || p2MoveType == "ranged")
-  {
+  // p1MoveType
+
+  if (
+    p1MoveType == "ranged" ||
+    p1MoveType == "melee" ||
+    p2MoveType == "ranged" ||
+    p2MoveType == "ranged"
+  ) {
     takeDamage.play();
   }
-  
+
   /*
   if (
     p1MoveType != "movement" ||
@@ -1290,7 +1293,7 @@ function interpretCommands() {
     takeDamage.play();
   }
   */
-  
+
   /*
   if(p1Attacking || p2Attacking)
     {
