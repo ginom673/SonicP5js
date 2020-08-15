@@ -743,6 +743,10 @@ function mouseClicked() {
 
 // resetGame: resets game when restart game button is pressed
 function resetGame() {
+  
+  location.reload();
+  
+  /*
   if (restartButton != undefined) {
     restartButton.remove();
   }
@@ -763,6 +767,7 @@ function resetGame() {
   p2Choice = undefined;
   p1DmgMult = 1.0;
   clearInterval(timerInterval);
+  */
 }
 
 // sets up health bar for player 1
@@ -949,9 +954,9 @@ function interpretCommands() {
   p2Burning = false;
   
   console.log("currentTurn: " + currentTurn);
-  console.log("PBla"powerBlastReady);
-  console.log(lastPowerBlastTurn);
-  console.log(powerBlastCooldown);
+  console.log("PBlastReady: " + powerBlastReady);
+  console.log("lastPBlastTurn: " + lastPowerBlastTurn);
+  console.log("PBlastCooldown: " + powerBlastCooldown);
 
   // player 1 commands
   if (p1Choice == 1 && showTimer == false) {
