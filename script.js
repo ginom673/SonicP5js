@@ -210,8 +210,9 @@ var platformOnlyTurnSpan = 1;
 var lastFrozenMysteryTurn = 0;
 var frozenMysteryReady = true;
 
-// SFX
+// Music/SFX
 var takeDamage;
+var gameMusic;
 
 /* SETUP (called at the beginning) */
 function setup() {
@@ -245,11 +246,12 @@ function setup() {
   );
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
 
-  // load sfx
+  // load music & sfx
   soundFormats("mp3");
   takeDamage = loadSound(
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704"
   );
+  gameMusic = 
 
   // player's command icons:
 
