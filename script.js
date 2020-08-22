@@ -213,6 +213,8 @@ var frozenMysteryReady = true;
 // Music/SFX
 var takeDamage;
 var gameMusic;
+var takeFreeze;
+var takeBurn;
 
 function preload() {
   // load music & sfx
@@ -222,6 +224,12 @@ function preload() {
   );
   gameMusic = loadSound(
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fremix(2).wav?v=1597516749608"
+  );
+  takeFreeze = loadSound(
+    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fse_common_freeze.wav?v=1598119363312"
+  );
+  takeBurn = loadSound(
+    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fse_common_fire_s.wav?v=1598119360630"
   );
 }
 
@@ -1283,12 +1291,16 @@ function interpretCommands() {
   // Attack Sound
   // create a variable called p1Attacking which will be a boolean
   // p1MoveType
-
+  if (p2Choice == 3 || p2Choice == 5) 
+    {
+      takeFreeze.play();
+    }
+  else if (p1Choice == 1)
   if (
     p1MoveType == "ranged" ||
     p1MoveType == "melee" ||
     p2MoveType == "ranged" ||
-    p2MoveType == "ranged"
+    p2MoveType == "melee"
   ) {
     takeDamage.play();
   }
