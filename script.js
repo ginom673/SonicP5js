@@ -1207,7 +1207,7 @@ function interpretCommands() {
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     lastFrozenMysteryTurn = currentTurn - 1;
-    var frozenMystery = Math.floor(Math.random() * 201);
+    var frozenMystery = Math.floor(Math.random() * 301);
     dmgToP1 = frozenMystery;
     setTimeout(function() {
       p2ChoiceText = "Player 2 dealt " + frozenMystery + " damage!";
@@ -1291,18 +1291,25 @@ function interpretCommands() {
   // Attack Sound
   // create a variable called p1Attacking which will be a boolean
   // p1MoveType
-  if (p2Choice == 3 || p2Choice == 5) 
-    {
-      takeFreeze.play();
-    }
-  else if (p1Choice == 1)
-  if (
+  //var freezeSound = false;
+  //var burnSound = false;
+  //var damageSound = false;
+  var sounds = [];
+  if (p2Choice == 3 || p2Choice == 5) {
+    
+    //freezeSound = true;
+    //takeFreeze.play();
+  } else if (p1Choice == 1 || p1Choice == 2) {
+    //burnSound = true;
+    //takeBurn.play();
+  } else if (
     p1MoveType == "ranged" ||
     p1MoveType == "melee" ||
     p2MoveType == "ranged" ||
     p2MoveType == "melee"
   ) {
-    takeDamage.play();
+    //damageSound = true;
+    //takeDamage.play();
   }
 
   /*
