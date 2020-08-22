@@ -214,14 +214,15 @@ var frozenMysteryReady = true;
 var takeDamage;
 var gameMusic;
 
-function preload()
-{
+function preload() {
   // load music & sfx
   soundFormats("mp3", "wav");
   takeDamage = loadSound(
     "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2FUndertale%20Sound%20Effect%20-%20Inflicting%20Damage.mp3?v=1596910874704"
   );
-  gameMusic = loadSound("https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fremix(2).wav?v=1597516749608");
+  gameMusic = loadSound(
+    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fremix(2).wav?v=1597516749608"
+  );
 }
 
 /* SETUP (called at the beginning) */
@@ -732,8 +733,8 @@ function mouseClicked() {
     readyButton = undefined;
     readyBtnIsActive = false;
     startTimer();
-    gameMusic.volume(0.5);
-    gameMusic.play();
+    //gameMusic.volume(0.5);
+    //gameMusic.play();
   }
 
   // restart game button
@@ -1198,8 +1199,13 @@ function interpretCommands() {
     //console.log("P1: ", p1MoveType);
     //console.log("P2: ", p2MoveType);
     lastFrozenMysteryTurn = currentTurn - 1;
-    var frozenMystery = Math.floor(Math.random() * 2);
-    if (frozenMystery == 0) {
+    var frozenMystery = Math.floor(Math.random() * 201);
+    dmgToP1 = frozenMystery;
+    setTimeout(function() {
+      p2ChoiceText = "Player 2 dealt " + frozenMystery + " damage!";
+    }, 2000);
+
+    /*if (frozenMystery == 0) {
       p1PlatformOnly = true;
       dmgToP2 = 150;
       setTimeout(function() {
@@ -1212,6 +1218,7 @@ function interpretCommands() {
         p2ChoiceText = "Player 2 can only move to platforms now!";
       }, 2000);
     }
+    */
   } else if (p2Choice == 6 && showTimer == false) {
     p2ChoiceText = "Player 2 uses Ice Wall!";
     //console.log("P1: ", p1MoveType);
