@@ -5,6 +5,9 @@
 
 // ---------- NOTES ----------
 
+// WEBSITE FOR BUTTON IMAGES
+// google da button factory
+
 // it seems that the image position represents the bottom-left corner of the image
 
 // ANIMATION
@@ -1296,17 +1299,25 @@ function interpretCommands() {
   //var damageSound = false;
   var sounds = [];
   if (p2Choice == 3 || p2Choice == 5) {
-    
+    // add takeFreeze to sounds list
+    sounds.push(takeFreeze);
     //freezeSound = true;
     //takeFreeze.play();
-  } else if (p1Choice == 1 || p1Choice == 2) {
+  }
+  if (p1Choice == 1 || p1Choice == 2) {
+    sounds.push(takeBurn);
     //burnSound = true;
     //takeBurn.play();
-  } else if (
-    p1MoveType == "ranged" ||
-    p1MoveType == "melee" ||
-    p2MoveType == "ranged" ||
-    p2MoveType == "melee"
+  }
+  if (
+    p1Choice == 3 ||
+    p1Choice == 4 ||
+    p1Choice == 5 ||
+    p1Choice == 6 ||
+    p2Choice == 1 ||
+    p2Choice == 2 ||
+    p2Choice == 4 ||
+    p2Choice == 6
   ) {
     //damageSound = true;
     //takeDamage.play();
