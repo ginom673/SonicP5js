@@ -34,16 +34,7 @@ var healthPercent2 = 1.0;
 var playerTurn = "P1";
 
 // player positions for each platform
-// platformXYs is an object where each property is a list of coordinates
-// platformXYs.platformName[0] gives the x coordinate for player 1 for this platform
-// platformXYs.platformName[1] gives the y coordinate for player 1 for this platform
-// platformXYs.platformName[2] gives the x coordinate for player 2 for this platform
-// platformXYs.platformName[3] gives the y coordinate for player 2 for this platform
 var platformXYs = {};
-
-// alternatively you can set properties like this
-//platformXYs['ground'] = [450, 293, 1280, 293];
-// you can also set the properties when you create the object
 platformXYs.ground = [450, 325, 1360, 325];
 platformXYs.yellow = [580, 225, 710, 225];
 platformXYs.red = [800, 125, 920, 125];
