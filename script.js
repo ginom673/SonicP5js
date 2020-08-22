@@ -732,6 +732,7 @@ function mouseClicked() {
     readyButton = undefined;
     readyBtnIsActive = false;
     startTimer();
+    gameMusic.volume(0.5);
     gameMusic.play();
   }
 
