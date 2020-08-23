@@ -12,8 +12,9 @@ var jumpImg1;
 var jumpImg2;
 
 // buttons
-var readyButton; // undefined
+var readyButton;
 var restartButton;
+var instructButton;
 
 // attack icons
 var meleeIcon;
@@ -193,6 +194,11 @@ function setup() {
   );
   readyButton.position(midUIMidX - alignSeconds + 30, 800);
 
+  // load instructions button image
+  instructButton = createImg(
+    "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_instructions.png?v=1598212837088"
+  );
+  instructButton.position(midUIMidX - alignSeconds + 5, 650);
   // player's command icons:
 
   // p1 fire throw
@@ -601,9 +607,10 @@ function draw() {
   textFont("Arial");
   stroke("black");
 
-  // draw ready button at start of game
+  // draws the buttons at start of game
   if (!gameStarted) {
     drawReadyButton();
+    drawInstructButton();
   }
 }
 
@@ -617,6 +624,13 @@ function drawReadyButton() {
   }
 }
 
+function drawInstructButton() {
+  if (instructButton == undefined) {
+    instructButton = createImg(
+      "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_instructions.png?v=1598212837088"
+    );
+  }
+}
 // draws the Melee Icon
 function drawMeleeIcon() {
   meleeIcon = createImg(
