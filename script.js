@@ -89,6 +89,13 @@ var buttonWidth2 = 228;
 var buttonHeight2 = 72;
 var restartBtnIsActive = false;
 
+// Instructions Button variables
+var buttonX3 = midUIMidX - alignSeconds + 5;
+var buttonY3 = 650;
+var buttonWidth3 = 236;
+var buttonHeight3 = 74;
+var instructBtnIsActive = false;
+
 // will be set to Ranged, Melee, Other, or Movement
 var p1MoveType;
 var p2MoveType;
@@ -624,11 +631,13 @@ function drawReadyButton() {
   }
 }
 
+// draws the "Instructions" button
 function drawInstructButton() {
   if (instructButton == undefined) {
     instructButton = createImg(
       "https://cdn.glitch.com/3c8bb0ef-34b4-4b1b-8044-7b2c1b6c0326%2Fbutton_instructions.png?v=1598212837088"
     );
+    instructBtnIsActive = true;
   }
 }
 // draws the Melee Icon
@@ -682,6 +691,9 @@ function mouseClicked() {
     readyButton.remove();
     readyButton = undefined;
     readyBtnIsActive = false;
+    instructButton.remove();
+    instructButton = undefined;
+    instructBtnIsActive = false;
     startTimer();
     //gameMusic.volume(0.5);
     //gameMusic.play();
@@ -696,6 +708,17 @@ function mouseClicked() {
     !readyBtnIsActive
   ) {
     resetGame();
+  }
+  
+  // instructions button
+  if (
+    mouseX > buttonX2 &&
+    mouseX < buttonX2 + buttonWidth2 &&
+    mouseY > buttonY2 &&
+    mouseY < buttonY2 + buttonHeight2 &&
+    !readyBtnIsActive
+  ) {
+    
   }
 }
 
