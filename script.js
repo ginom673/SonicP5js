@@ -718,7 +718,7 @@ function mouseClicked() {
     mouseY < buttonY3 + buttonHeight3 &&
     !restartBtnIsActive
   ) {
-    alert("INSTRUCTIONS: After clicking the [Ready!] Button, player 1 must have their left hand near the keys 1, 2, 3, 4, 5, and 6, while player 2 must have their right hand near the keys 7, 8, 9, 0, -, and =. You will have ten seconds to decide a move(). Once both players have decided a move, the moves will play out at the same time");
+    alert("INSTRUCTIONS: After clicking the [Ready!] Button, player 1 must have their left hand near the keys 1, 2, 3, 4, 5, and 6, while player 2 must have their right hand near the keys 7, 8, 9, 0, -, and =. You will have ten seconds to decide a move(See https://docs.google.com/document/d/1dXLuSpYFsjMNiaZ1aTH56RRGxPT25ZKRb0AdpCb-lN4/edit?usp=sharing for more info on moves). You can also decide to go to different platforms if you like. Once both players have decided a move, they will play out at the same time. The first player to decrease the other's health bar wins(there is a small chance that both will decrease, resulting )");
   }
 }
 
