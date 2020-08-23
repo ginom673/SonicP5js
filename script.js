@@ -712,13 +712,13 @@ function mouseClicked() {
   
   // instructions button
   if (
-    mouseX > buttonX2 &&
-    mouseX < buttonX2 + buttonWidth2 &&
-    mouseY > buttonY2 &&
-    mouseY < buttonY2 + buttonHeight2 &&
-    !readyBtnIsActive
+    mouseX > buttonX3 &&
+    mouseX < buttonX3 + buttonWidth3 &&
+    mouseY > buttonY3 &&
+    mouseY < buttonY3 + buttonHeight3 &&
+    !restartBtnIsActive
   ) {
-    
+    alert("INSTRUCTIONS: After clicking the [Ready!] Button, player 1 must have their left hand near the keys 1, 2, 3, 4, 5, and 6, while player 2 must have their right hand near the keys 7, 8, 9, 0, -, and =. You will have ten seconds to decide a move(). Once both players have decided a move, the moves will play out at the same time");
   }
 }
 
