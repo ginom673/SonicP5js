@@ -19,5 +19,5 @@ function setup()
 
 function draw()
 {
-  image(sonicImg, 50, 50);
+  //image(sonicImgIdle, 50, 50);
 }
