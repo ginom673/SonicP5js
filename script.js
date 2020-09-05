@@ -29,8 +29,14 @@ class Player
   
   jump()
   {
+    if (this.onGround == false)
+    {
+      return;
+    }
+    
     this.onGround = false;
     this.vy = 5;
+    
   }
 }
 
@@ -46,13 +52,20 @@ class Player
 // lastly, add code in our jump() function that checks if sonic is NOT onGround
 // if so, return (jump does nothing if we are already in the air)
 
+var sonic;
+
 function setup()
 {
   //createCanvas(1280,721);  
   createCanvas(1152,649);  
   background("#fffff0");
+  
+  
+  
   sonicImgIdle = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Idle.png?v=1599326602917");
   sonicImgIdle.position(100, 500);  
+  
+  sonic = new Player(100, 500, 0, 0, true, "sprite");
 }
 
 function draw()
@@ -66,5 +79,11 @@ function draw()
   //rect(borderWidth/2,borderWidth/2,1280-borderWidth+20,721-borderWidth);
   //rect(0,0,1152,649);
   
-  
-}
+  sonic.y = sonic.y + sonic.vy;
+  sonic.vy = sonic.vy - gravity;
+  if (sonic.y <= groundY)
+  {
+    sonic.vy = 0;
+    sonic.y = groundY;
+  }
+} 
