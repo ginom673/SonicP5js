@@ -4,6 +4,8 @@ body {
   font-family: helvetica, arial, sans-serif;
   margin: 2em;
   background-color: #fffff0;
+  border-style: solid;
+  border-width: 6px;
 }
 
 h1 {
