@@ -36,4 +36,12 @@ function setup()
 function draw()
 {
   //image(sonicImgIdle, 50, 50);
+  
+  
+  var borderWidth = 6;
+  stroke(borderWidth);
+  //rect(borderWidth/2, borderWidth/2, screenWidth - borderWidth, screenHeight - borderWidth)
+  rect(borderWidth/2,borderWidth/2,1152-borderWidth,649-borderWidth);
+  
+  
 }
