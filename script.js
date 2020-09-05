@@ -3,7 +3,7 @@
 var sonicImgIdle;
 
 var groundY = 576;
-var gravity = -0.2;
+var gravity = 0.2;
 
 class Player
 {
@@ -29,13 +29,14 @@ class Player
   
   jump()
   {
+    console.log("jump called");
     if (this.onGround == false)
     {
       return;
     }
     
     this.onGround = false;
-    this.vy = 5;
+    this.vy = -5;
     
   }
 }
@@ -70,7 +71,7 @@ function setup()
 
 function draw()
 {
-  //image(sonicImgIdle, 50, 50);
+  image(sonicImgIdle, sonic.x, sonic.y);
   
   
   var borderWidth = 6;
@@ -80,10 +81,19 @@ function draw()
   //rect(0,0,1152,649);
   
   sonic.y = sonic.y + sonic.vy;
-  sonic.vy = sonic.vy - gravity;
-  if (sonic.y <= groundY)
+  sonic.vy = sonic.vy + gravity;
+  if (sonic.y >= groundY)
   {
     sonic.vy = 0;
     sonic.y = groundY;
+    sonic.onGround = true;
   }
 } 
+
+function keyPressed()
+{
+  if (keyCode == 90)
+  {
+    sonic.jump();
+  }
+}
