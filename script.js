@@ -1,12 +1,12 @@
 // GLOBAL VARIABLES
 
-var sonicImg;
+var sonicImgIdle;
 
 function setup()
 {
-  createCanvas(800,600);  
-  sonicImg = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fsonicdashrun.gif?v=1598730627392");
-  sonicImg.position(100, 100);
+  createCanvas(1280,721);  
+  sonicImgIdle = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Idle.png?v=1599326602917");
+  sonicImgIdle.position(100, 100);
   
 }
 
