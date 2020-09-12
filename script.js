@@ -61,9 +61,10 @@ class Player
 
 class Platform
 {
-  constructor(imgName, x, y, width, height)
+  //constructor(imgName, x, y, width, height)
+  constructor(x, y, width, height)
   {
-    this.imgName = imgName;
+    //this.imgName = imgName;
     this.x = x;
     this.y = y;
     this.width = width;
@@ -126,7 +127,15 @@ function setup()
   createCanvas(1152,649);  
   background("#fffff0");
   
+  fill("#32a83a");
+  // create a platform object using these values
   
+  // let's create a platform object where
+  // the values you gave here for a rectangle
+  // will actually be given directly to the Platform constructor
+  var platform1 = new Platform(0, 600, 1150, 20);
+  fill("#b56d1b");
+  var platform2 = new Platform(0, 620, 1150, 25);
   
   sonicImgIdle = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Idle.png?v=1599326602917");
   sonicImgIdle.position(100, 500);  
@@ -154,7 +163,6 @@ function draw()
     sonic.onGround = true;
   }
   
-  rect(0, 500, 1000, 50);
 } 
 
 function keyPressed()
