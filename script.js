@@ -1,3 +1,13 @@
+// NOTES
+
+// we will basically have a big list of platforms
+// platforms = [];
+// we will have a class for platform too, which means we add platform objects to the platforms list
+// using camera controls, we determine which of the platforms are currently visible
+// and where those platforms are positioned
+// we will constantly be checking how (if at all) Sonic collides with any of the platforms
+
+
 // GLOBAL VARIABLES
 
 var sonicImgIdle;
@@ -41,6 +51,22 @@ class Player
   }
 }
 
+// create a Platform class
+// has properties
+// imageName
+// x
+// y
+// width
+// height
+
+class Platform
+{
+  constructor(imgName, x, y, width, height)
+  {
+    this.imgName = imgName
+  }
+}
+
 // create a variable groundY and set it to sonic's starting position
 // create a variable gravity and set it to -0.2
 // create a function called jump()
@@ -54,6 +80,41 @@ class Player
 // if so, return (jump does nothing if we are already in the air)
 
 var sonic;
+
+// taken from https://stackoverflow.com/questions/29861096/detect-which-side-of-a-rectangle-is-colliding-with-another-rectangle
+function collide(r1,r2)
+{
+  var dx=(r1.x+r1.w/2)-(r2.x+r2.w/2);
+  var dy=(r1.y+r1.h/2)-(r2.y+r2.h/2);
+  var width=(r1.w+r2.w)/2;
+  var height=(r1.h+r2.h)/2;
+  var crossWidth=width*dy;
+  var crossHeight=height*dx;
+  var collision='none';
+  //
+  if(Math.abs(dx)<=width && Math.abs(dy)<=height){
+      if(crossWidth>crossHeight){
+          collision=(crossWidth>(-crossHeight))?'bottom':'left';
+        
+          // this is equivalent to:
+          /*
+          if (crossWidth>(-crossHeight))
+          {
+            collision = 'bottom';
+          }
+          else
+          {
+            collision = 'left';
+          }
+          */
+        
+        
+      }else{
+          collision=(crossWidth>-(crossHeight))?'right':'top';
+      }
+  }
+  return(collision);
+}
 
 function setup()
 {
