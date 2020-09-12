@@ -12,8 +12,8 @@
 
 var sonicImgIdle;
 
-var groundY = 57;
-var gravity = 0.2;
+var groundY = 524;
+var gravity = 0.4;
 
 class Player
 {
@@ -46,7 +46,7 @@ class Player
     }
     
     this.onGround = false;
-    this.vy = -5;
+    this.vy = -10;
     
   }
 }
