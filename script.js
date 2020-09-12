@@ -97,3 +97,8 @@ function keyPressed()
     sonic.jump();
   }
 }
+
+function keyReleased()
+{
+  
+}
