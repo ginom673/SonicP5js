@@ -153,6 +153,8 @@ function draw()
     sonic.y = groundY;
     sonic.onGround = true;
   }
+  
+  rect(0, 500, 1000, 50);
 } 
 
 function keyPressed()
