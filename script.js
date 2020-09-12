@@ -63,7 +63,11 @@ class Platform
 {
   constructor(imgName, x, y, width, height)
   {
-    this.imgName = imgName
+    this.imgName = imgName;
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
   }
 }
 
