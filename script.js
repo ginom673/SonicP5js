@@ -12,7 +12,7 @@
 
 var sonicImgIdle;
 
-var groundY = 576;
+var groundY = 57;
 var gravity = 0.2;
 
 class Player
@@ -147,18 +147,22 @@ function setup()
   // let's create a platform object where
   // the values you gave here for a rectangle
   // will actually be given directly to the Platform constructor
-  platform1 = new Platform(0, 600, 1150, 20);
+  platform1 = new Platform(0, 600, 1150, 20, "#32a83a");
   //fill("#b56d1b");
-  platform2 = new Platform(0, 620, 1150, 25);
+  platform2 = new Platform(0, 620, 1150, 25, "#b56d1b");
   
   sonicImgIdle = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Idle.png?v=1599326602917");
-  sonicImgIdle.position(100, 500);  
+  sonicImgIdle.position(100, 500);
+  sonicImgIdle.remove();
   
   sonic = new Player(100, 500, 0, 0, true, "sprite");
 }
 
 function draw()
 {
+  
+  clear();
+  
   image(sonicImgIdle, sonic.x, sonic.y);
   
   
@@ -177,6 +181,8 @@ function draw()
     sonic.onGround = true;
   }
   
+  platform1.display();
+  platform2.display();
 } 
 
 function keyPressed()
