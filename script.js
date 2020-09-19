@@ -100,6 +100,7 @@ class Platform
     {
       // how do we grab the tile at position i within the tiles list?
       var tile = this.tiles[i];
+      //console.log(i);
       tile.draw();
     }
   }
@@ -121,7 +122,7 @@ var tileDefaultH = 64;
 class Tile
 {  
   
-  constructor(x, y, w, h, color)
+  constructor(x, y, color)
   {
     this.x = x;
     this.y = y;
@@ -216,10 +217,21 @@ function setup()
   
   sonic = new Player(100, 500, 0, 0, true, "sprite");
   
-  tile1 = new Tile(0, 100, 1150, 20, "#FF0000");
-  tile2 = new Tile(0, 100, 1150, 20, "#FF0000");
-  tile3 = new Tile(0, 100, 1150, 20, "#FF0000");
-  tile4 = new Tile(0, 100, 1150, 20, "#FF0000");
+  tile1 = new Tile(0, 524, "#FF0000");
+  tile2 = new Tile(tileDefaultW, 524, "#FF0000");
+  tile3 = new Tile(tileDefaultW * 2, 524, "#FF0000");
+  tile4 = new Tile(tileDefaultW * 3, 524, "#FF0000");
+  tile5 = new Tile(tileDefaultW * 4, 524, "#FF0000");
+  tile6 = new Tile(tileDefaultW * 5, 524, "#FF0000");
+  tile7 = new Tile(tileDefaultW * 6, 524, "#FF0000");
+  
+  platform1.addTile(tile1);
+  platform1.addTile(tile2);
+  platform1.addTile(tile3);
+  platform1.addTile(tile4);
+  platform1.addTile(tile5);
+  platform1.addTile(tile6);
+  platform1.addTile(tile7);
   
 }
 
