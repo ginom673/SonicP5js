@@ -106,6 +106,7 @@ class Tile
   // draws this tile as a rectangle @ (x,y) width w and height h
   draw()
   {
+    noStroke();
     fill(this.color);
     rect(this.x, this.y, this.w, this.h);
   }
@@ -184,7 +185,7 @@ function setup()
   
   sonic = new Player(100, 500, 0, 0, true, "sprite");
   
-  tile1 = new Tile(0, 650, 1150, 20, "#FF0000");
+  tile1 = new Tile(0, 100, 1150, 20, "#FF0000");
 }
 
 function draw()
@@ -214,7 +215,7 @@ function draw()
   platform2.display();
   
   // draw tile1
-  tile1
+  tile1.draw();
 } 
 
 function keyPressed()
