@@ -93,22 +93,25 @@ var tileDefaultH = 64;
 class Tile
 {  
   
-  constructor(x, y, w, h)
+  constructor(x, y, w, h, color)
   {
     this.x = x;
     this.y = y;
     // set this.width, this.height to default width and height
     this.w = tileDefaultW;
     this.h = tileDefaultH;
+    this.color = color;
   }
   
   // draws this tile as a rectangle @ (x,y) width w and height h
   draw()
   {
-    fill()
+    fill(this.color);
     rect(this.x, this.y, this.w, this.h);
   }
 }
+
+var tile1;
 
 // create a variable groundY and set it to sonic's starting position
 // create a variable gravity and set it to -0.2
@@ -180,6 +183,8 @@ function setup()
   sonicImgIdle.remove();
   
   sonic = new Player(100, 500, 0, 0, true, "sprite");
+  
+  tile1 = new Tile(0, 650, 1150, 20, "#FF0000");
 }
 
 function draw()
@@ -207,6 +212,9 @@ function draw()
   
   platform1.display();
   platform2.display();
+  
+  // draw tile1
+  tile1
 } 
 
 function keyPressed()
