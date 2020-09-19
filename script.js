@@ -88,9 +88,24 @@ class Platform
   
   display()
   {
+    /*
     fill(this.fill);
     rect(this.x, this.y, this.width, this.height);
+    */
+    
+    // create a for loop that goes through every Tile in tiles list
+    // and calls that tile's draw() function
+   
+    for (var i = 0; i > this.tiles.length; i++)
+    {
+      function draw()
+      {
+        fill(this.fill);
+    rect(this.x, this.y, this.width, this.height);
+      }
+    }
   }
+  
   addTile(newTile)
   {
     this.tiles.push(newTile);
