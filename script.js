@@ -86,6 +86,11 @@ class Platform
 var platform1;
 var platform2;
 
+class Tile
+{
+  constructor()
+}
+
 // create a variable groundY and set it to sonic's starting position
 // create a variable gravity and set it to -0.2
 // create a function called jump()
