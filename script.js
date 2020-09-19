@@ -88,7 +88,22 @@ var platform2;
 
 class Tile
 {
-  constructor()
+  
+  // create default variables here
+  var defaultW;
+  var defaultH;
+  
+  constructor(x, y)
+  {
+    this.x = x;
+    this.y = y;
+    // constructor takes in x,y variables ... set those up with "this" as we normally do
+    // set this.width, this.height to default width and height
+  }
+  
+  // here, create a function called draw
+  // which calls p5.js rect() function, drawing itself @ (x,y) with this.width, this.height
+  
 }
 
 // create a variable groundY and set it to sonic's starting position
