@@ -72,7 +72,7 @@ class Platform
   
   
   //constructor(imgName, x, y, width, height)
-  constructor(x, y, width, height, fill, tiles)
+  constructor(x, y, width, height, fill)
   {
     //this.imgName = imgName;
     this.x = x;
@@ -96,7 +96,7 @@ class Platform
     // create a for loop that goes through every Tile in tiles list
     // and calls that tile's draw() function
    
-    for (var i = 0; i > this.tiles.length; i++)
+    for (var i = 0; i < this.tiles.length; i++)
     {
       // how do we grab the tile at position i within the tiles list?
       var tile = this.tiles[i];
@@ -204,6 +204,9 @@ function setup()
   // the values you gave here for a rectangle
   // will actually be given directly to the Platform constructor
   platform1 = new Platform(0, 600, 1150, 20, "#32a83a");
+  
+  // platform1.addTile(someTile)
+  
   //fill("#b56d1b");
   platform2 = new Platform(0, 620, 1150, 25, "#b56d1b");
   
@@ -214,6 +217,10 @@ function setup()
   sonic = new Player(100, 500, 0, 0, true, "sprite");
   
   tile1 = new Tile(0, 100, 1150, 20, "#FF0000");
+  tile2 = new Tile(0, 100, 1150, 20, "#FF0000");
+  tile3 = new Tile(0, 100, 1150, 20, "#FF0000");
+  tile4 = new Tile(0, 100, 1150, 20, "#FF0000");
+  
 }
 
 function draw()
