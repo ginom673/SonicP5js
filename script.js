@@ -61,8 +61,18 @@ class Player
 
 class Platform
 {
+  // within the constructor
+  // create a list called tiles
+  // which will be a blank list
+  
+  // then, elsewhere in the class,
+  // create a function called addTile
+  // which takes in a variable called newTile
+  // and adds newTile to tiles
+  
+  
   //constructor(imgName, x, y, width, height)
-  constructor(x, y, width, height, fill)
+  constructor(x, y, width, height, fill, tiles)
   {
     //this.imgName = imgName;
     this.x = x;
@@ -70,6 +80,7 @@ class Platform
     this.width = width;
     this.height = height;
     this.fill = fill;
+    this.tiles = [];
   }
   
   // create a function called display()
@@ -79,6 +90,10 @@ class Platform
   {
     fill(this.fill);
     rect(this.x, this.y, this.width, this.height);
+  }
+  addTile(newTile)
+  {
+    this.tiles.push(newTile);
   }
   
 }
