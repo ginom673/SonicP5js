@@ -98,11 +98,9 @@ class Platform
    
     for (var i = 0; i > this.tiles.length; i++)
     {
-      function draw()
-      {
-        fill(this.fill);
-    rect(this.x, this.y, this.width, this.height);
-      }
+      // how do we grab the tile at position i within the tiles list?
+      var tile = this.tiles[i];
+      tile.draw();
     }
   }
   
