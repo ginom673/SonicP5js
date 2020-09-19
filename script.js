@@ -86,24 +86,28 @@ class Platform
 var platform1;
 var platform2;
 
+// create default variables here
+var tileDefaultW = 64;
+var tileDefaultH = 64;
+
 class Tile
-{
+{  
   
-  // create default variables here
-  var defaultW;
-  var defaultH;
-  
-  constructor(x, y)
+  constructor(x, y, w, h)
   {
     this.x = x;
     this.y = y;
-    // constructor takes in x,y variables ... set those up with "this" as we normally do
     // set this.width, this.height to default width and height
+    this.w = tileDefaultW;
+    this.h = tileDefaultH;
   }
   
-  // here, create a function called draw
-  // which calls p5.js rect() function, drawing itself @ (x,y) with this.width, this.height
-  
+  // draws this tile as a rectangle @ (x,y) width w and height h
+  draw()
+  {
+    fill()
+    rect(this.x, this.y, this.w, this.h);
+  }
 }
 
 // create a variable groundY and set it to sonic's starting position
