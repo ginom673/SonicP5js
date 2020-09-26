@@ -4,7 +4,7 @@
 var sonicImgIdle;
 
 // y position of ground
-var groundY = 500;
+var groundY = 448;
 
 // gravity effect
 var gravity = 0.4;
@@ -37,14 +37,13 @@ class Player
   }
 }
 
-// Platform class
+// Platform class - essentially a sequence of tiles
 class Platform
 {
   
-  //constructor(imgName, x, y, width, height)
+  // Platform constructor
   constructor(x, y, width, height, fill)
   {
-    //this.imgName = imgName;
     this.x = x;
     this.y = y;
     this.width = width;
@@ -53,28 +52,17 @@ class Platform
     this.tiles = [];
   }
   
-  // create a function called display()
-  // which calls the rect function and passes it this platform's x,y,w,h
-  
+  // display this Platform by displaying each of tiles  
   display()
-  {
-    /*
-    fill(this.fill);
-    rect(this.x, this.y, this.width, this.height);
-    */
-    
-    // create a for loop that goes through every Tile in tiles list
-    // and calls that tile's draw() function
-   
+  {   
     for (var i = 0; i < this.tiles.length; i++)
     {
-      // how do we grab the tile at position i within the tiles list?
       var tile = this.tiles[i];
-      //console.log(i);
       tile.draw();
     }
   }
   
+  // adds newTile Tile object to this Platform object's tiles list
   addTile(newTile)
   {
     this.tiles.push(newTile);
@@ -82,44 +70,43 @@ class Platform
   
 }
 
+// global variables for Platform objects
 var platform1;
 var platform2;
 
-// create default variables here
+// controls default Tile size
 var tileDefaultW = 64;
 var tileDefaultH = 64;
 
+// Tile class
 class Tile
 {  
   
+  // Tile constructor
   constructor(x, y, color, imgName)
   {
     this.x = x;
     this.y = y;
-    // set this.width, this.height to default width and height
-    this.w = tileDefaultW;
-    this.h = tileDefaultH;
+    this.w = tileDefaultW; // use default width
+    this.h = tileDefaultH; // use default height
     this.color = color;
     this.imgName = imgName;
     
+    // load image for this Tile
     this.image = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013"); 
     this.image.position(100, 500);
     this.image.remove();
     
   }
   
-  // draws this tile as a rectangle @ (x,y) width w and height h
+  // draws this tile's image @ (x,y)
   draw()
   {
-    /*
-    noStroke();
-    fill(this.color);
-    rect(this.x, this.y, this.w, this.h);
-    */
     image(this.image, this.x, this.y);
   }
 }
 
+// w
 var tile1;
 
 // create a variable groundY and set it to sonic's starting position
@@ -203,6 +190,15 @@ function setup()
   tile5 = new Tile(tileDefaultW * 4, 524, "#FF0000");
   tile6 = new Tile(tileDefaultW * 5, 524, "#FF0000");
   tile7 = new Tile(tileDefaultW * 6, 524, "#FF0000");
+  tile8 = new Tile(tileDefaultW * 7, 524, "#FF0000");
+  tile9 = new Tile(tileDefaultW * 8, 524, "#FF0000");
+  tile10 = new Tile(tileDefaultW * 9, 524, "#FF0000");
+  tile11 = new Tile(tileDefaultW * 10, 524, "#FF0000");
+  tile12 = new Tile(tileDefaultW * 11, 524, "#FF0000");
+  tile13 = new Tile(tileDefaultW * 8, 524, "#FF0000");
+  tile14 = new Tile(tileDefaultW * 9, 524, "#FF0000");
+  tile15 = new Tile(tileDefaultW * 10, 524, "#FF0000");
+  tile16 = new Tile(tileDefaultW * 11, 524, "#FF0000");
   
   platform1.addTile(tile1);
   platform1.addTile(tile2);
@@ -211,6 +207,11 @@ function setup()
   platform1.addTile(tile5);
   platform1.addTile(tile6);
   platform1.addTile(tile7);
+  platform1.addTile(tile8);
+  platform1.addTile(tile9);
+  platform1.addTile(tile10);
+  platform1.addTile(tile11);
+  platform1.addTile(tile12);
   
 }
 
