@@ -132,7 +132,7 @@ class Tile
     this.color = color;
     this.imgName = imgName;
     
-    this.image = createImg("https://cdn.glitch.com/6e344420-09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013"); 
+    this.image = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013"); 
     this.image.position(100, 500);
     this.image.remove();
     
@@ -146,6 +146,7 @@ class Tile
     fill(this.color);
     rect(this.x, this.y, this.w, this.h);
     */
+    image(this.image, this.x, this.y);
   }
 }
 
