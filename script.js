@@ -122,7 +122,7 @@ var tileDefaultH = 64;
 class Tile
 {  
   
-  constructor(x, y, color)
+  constructor(x, y, color, imgName)
   {
     this.x = x;
     this.y = y;
@@ -130,6 +130,7 @@ class Tile
     this.w = tileDefaultW;
     this.h = tileDefaultH;
     this.color = color;
+    this.imgName = imgName;
   }
   
   // draws this tile as a rectangle @ (x,y) width w and height h
