@@ -1,32 +1,19 @@
-// NOTES
-
-// we will basically have a big list of platforms
-// platforms = [];
-// we will have a class for platform too, which means we add platform objects to the platforms list
-// using camera controls, we determine which of the platforms are currently visible
-// and where those platforms are positioned
-// we will constantly be checking how (if at all) Sonic collides with any of the platforms
-
-
 // GLOBAL VARIABLES
 
+// image object for Sonic's idle stance
 var sonicImgIdle;
 
-var groundY = 524;
+// y position of ground
+var groundY = 500;
+
+// gravity effect
 var gravity = 0.4;
 
+// Player class
 class Player
-{
+{  
   
-  // give the Player class the following properties:
-  // x
-  // y
-  // vx
-  // vy
-  // onGround
-  // imageName
-  
-  
+  // Player constructor
   constructor(x, y, vx, vy, onGround, imgName)
   {
     this.x = x;
@@ -39,37 +26,20 @@ class Player
   
   jump()
   {
-    console.log("jump called");
-    if (this.onGround == false)
+    // prevent double-jumping
+    // if player tries to jump while in midair, do nothing
+    if (this.onGround == false) 
     {
       return;
-    }
-    
+    }    
     this.onGround = false;
-    this.vy = -10;
-    
+    this.vy = -10;    
   }
 }
 
-// create a Platform class
-// has properties
-// imageName
-// x
-// y
-// width
-// height
-
+// Platform class
 class Platform
 {
-  // within the constructor
-  // create a list called tiles
-  // which will be a blank list
-  
-  // then, elsewhere in the class,
-  // create a function called addTile
-  // which takes in a variable called newTile
-  // and adds newTile to tiles
-  
   
   //constructor(imgName, x, y, width, height)
   constructor(x, y, width, height, fill)
@@ -224,7 +194,7 @@ function setup()
   sonicImgIdle.position(100, 500);
   sonicImgIdle.remove();
   
-  sonic = new Player(100, 500, 0, 0, true, "sprite");
+  sonic = new Player(100, 400, 0, 0, true, "sprite");
   
   tile1 = new Tile(0, 524, "#FF0000");
   tile2 = new Tile(tileDefaultW, 524, "#FF0000");
