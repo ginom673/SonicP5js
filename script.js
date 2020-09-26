@@ -195,10 +195,10 @@ function setup()
   tile10 = new Tile(tileDefaultW * 9, 524, "#FF0000");
   tile11 = new Tile(tileDefaultW * 10, 524, "#FF0000");
   tile12 = new Tile(tileDefaultW * 11, 524, "#FF0000");
-  tile13 = new Tile(tileDefaultW * 8, 524, "#FF0000");
-  tile14 = new Tile(tileDefaultW * 9, 524, "#FF0000");
-  tile15 = new Tile(tileDefaultW * 10, 524, "#FF0000");
-  tile16 = new Tile(tileDefaultW * 11, 524, "#FF0000");
+  tile13 = new Tile(tileDefaultW * 12, 524, "#FF0000");
+  tile14 = new Tile(tileDefaultW * 13, 524, "#FF0000");
+  tile15 = new Tile(tileDefaultW * 14, 524, "#FF0000");
+  tile16 = new Tile(tileDefaultW * 15, 524, "#FF0000");
   
   platform1.addTile(tile1);
   platform1.addTile(tile2);
@@ -212,6 +212,10 @@ function setup()
   platform1.addTile(tile10);
   platform1.addTile(tile11);
   platform1.addTile(tile12);
+  platform1.addTile(tile13);
+  platform1.addTile(tile14);
+  platform1.addTile(tile15);
+  platform1.addTile(tile16);
   
 }
 
