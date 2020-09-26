@@ -9,6 +9,9 @@ var groundY = 448;
 // gravity effect
 var gravity = 0.4;
 
+// image variable for background
+var background;
+
 // Player class
 class Player
 {  
