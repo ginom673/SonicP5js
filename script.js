@@ -10,7 +10,7 @@ var groundY = 448;
 var gravity = 0.4;
 
 // image variable for background
-var background;
+var background1;
 
 // Player class
 class Player
@@ -167,6 +167,11 @@ function setup()
   createCanvas(1152,649);  
   background("#fffff0");
   
+  background1 = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
+  background1.position(0, 0);
+  //background1.remove();
+  //background1 = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
+  
   //fill("#32a83a");
   // create a platform object using these values
   
@@ -227,8 +232,10 @@ function draw()
   
   clear();
   
-  image(sonicImgIdle, sonic.x, sonic.y);
+  // draw background
+  //image(background1, 0, 0);
   
+  image(sonicImgIdle, sonic.x, sonic.y);  
   
   var borderWidth = 6;
   stroke(borderWidth);
@@ -250,6 +257,8 @@ function draw()
   
   // draw tile1
   tile1.draw();
+  
+  
 } 
 
 function keyPressed()
