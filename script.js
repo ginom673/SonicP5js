@@ -131,6 +131,11 @@ class Tile
     this.h = tileDefaultH;
     this.color = color;
     this.imgName = imgName;
+    
+    sonicImgIdle = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Idle.png?v=1599326602917");
+    sonicImgIdle.position(100, 500);
+    sonicImgIdle.remove();
+    
   }
   
   // draws this tile as a rectangle @ (x,y) width w and height h
@@ -139,6 +144,9 @@ class Tile
     noStroke();
     fill(this.color);
     rect(this.x, this.y, this.w, this.h);
+    
+    
+    
   }
 }
 
