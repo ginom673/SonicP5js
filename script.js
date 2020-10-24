@@ -12,6 +12,8 @@ var gravity = 0.4;
 // image variable for background
 var background1;
 
+var screenWidth = 
+
 // Player class
 class Player
 {  
@@ -166,7 +168,7 @@ function setup()
   //createCanvas(1280,721);  
   createCanvas(1152,649);  
   
-  background("#fffff0");
+  background("#ff0000");
   
   //background1 = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
   //background1.position(38, 38);
@@ -249,9 +251,9 @@ function draw()
   
   var borderWidth = 6;
   stroke(borderWidth);
-  //rect(borderWidth/2, borderWidth/2, screenWidth - borderWidth, screenHeight - borderWidth)
-  //rect(borderWidth/2,borderWidth/2,1280-borderWidth+20,721-borderWidth);
-  //rect(0,0,1152,649);
+  rect(borderWidth/2, borderWidth/2, screenWidth - borderWidth, screenHeight - borderWidth)
+  rect(borderWidth/2,borderWidth/2,1280-borderWidth+20,721-borderWidth);
+  rect(0,0,1152,649);
   
   sonic.y = sonic.y + sonic.vy;
   sonic.vy = sonic.vy + gravity;
