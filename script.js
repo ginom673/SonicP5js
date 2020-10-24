@@ -168,9 +168,10 @@ function setup()
   
   background("#fffff0");
   
-  background1 = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
-  background1.position(38, 38);
-  background1.size(1200, 776);
+  //background1 = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
+  //background1.position(38, 38);
+  //background1.size(1200, 776);
+  
   //background1.remove();
   //background1 = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
   
@@ -209,7 +210,11 @@ function setup()
   tile14 = new Tile(tileDefaultW * 13, 524, "#FF0000");
   tile15 = new Tile(tileDefaultW * 14, 524, "#FF0000");
   tile16 = new Tile(tileDefaultW * 15, 524, "#FF0000");
+  tile17 = new Tile(tileDefaultW * 16, 524, "#FF0000");
+  tile18 = new Tile(tileDefaultW * 17, 524, "#FF0000");
+  tile19 = new Tile(tileDefaultW * 18, 524, "#FF0000");
   
+  /*
   platform1.addTile(tile1);
   platform1.addTile(tile2);
   platform1.addTile(tile3);
@@ -223,9 +228,13 @@ function setup()
   platform1.addTile(tile11);
   platform1.addTile(tile12);
   platform1.addTile(tile13);
-  platform1.addTile(tile14);
+  //platform1.addTile(tile14);
   platform1.addTile(tile15);
-  platform1.addTile(tile16);
+  //platform1.addTile(tile16);
+  */
+  platform1.addTile(tile17);
+  platform1.addTile(tile18);
+  platform1.addTile(tile19);
   
 }
 
