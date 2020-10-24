@@ -217,22 +217,22 @@ function setup()
   var tile20 = new Tile(tileDefaultW * 2, 524, "#FF0000");
   
   platform1.addTile(tile1);
-  //platform1.addTile(tile2);
-  //platform1.addTile(tile3);
-  //platform1.addTile(tile4);
-  //platform1.addTile(tile5);
-  //platform1.addTile(tile6);
-  //platform1.addTile(tile7);
-  //platform1.addTile(tile8);
-  //platform1.addTile(tile9);
-  //platform1.addTile(tile10);
-  //platform1.addTile(tile11);
-  //platform1.addTile(tile12);
-  //platform1.addTile(tile13);
-  //platform1.addTile(tile14);
-  //platform1.addTile(tile15);
-  //platform1.addTile(tile16);
-  //platform1.addTile(tile17);
+  platform1.addTile(tile2);
+  platform1.addTile(tile3);
+  platform1.addTile(tile4);
+  platform1.addTile(tile5);
+  platform1.addTile(tile6);
+  platform1.addTile(tile7);
+  platform1.addTile(tile8);
+  platform1.addTile(tile9);
+  platform1.addTile(tile10);
+  platform1.addTile(tile11);
+  platform1.addTile(tile12);
+  platform1.addTile(tile13);
+  platform1.addTile(tile14);
+  platform1.addTile(tile15);
+  platform1.addTile(tile16);
+  platform1.addTile(tile17);
   platform1.addTile(tile18);
   //  platform1.addTile(tile19);
   
@@ -248,12 +248,12 @@ function draw()
   // draw background
   //image(background1, 0, 0);
   
-  image(sonicImgIdle, sonic.x, sonic.y);  
+  image(sonicImgIdle, sonic.x, sonic.y);
   
   var borderWidth = 6;
   stroke(borderWidth);
   noFill();
-  rect(50, 50, screenWidth - 50, screenHeight - 50);
+  //rect(50, 50, screenWidth - 50, screenHeight - 50);
   //rect(borderWidth/2 - 50, borderWidth/2 + 50, screenWidth - borderWidth, screenHeight - borderWidth)
   //rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
   //rect(0,0,1152,649);
