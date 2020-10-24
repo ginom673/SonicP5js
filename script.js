@@ -194,47 +194,46 @@ function setup()
   
   sonic = new Player(100, 400, 0, 0, true, "sprite");
   
-  tile1 = new Tile(0, 524, "#FF0000");
-  tile2 = new Tile(tileDefaultW, 524, "#FF0000");
-  tile3 = new Tile(tileDefaultW * 2, 524, "#FF0000");
-  tile4 = new Tile(tileDefaultW * 3, 524, "#FF0000");
-  tile5 = new Tile(tileDefaultW * 4, 524, "#FF0000");
-  tile6 = new Tile(tileDefaultW * 5, 524, "#FF0000");
-  tile7 = new Tile(tileDefaultW * 6, 524, "#FF0000");
-  tile8 = new Tile(tileDefaultW * 7, 524, "#FF0000");
-  tile9 = new Tile(tileDefaultW * 8, 524, "#FF0000");
-  tile10 = new Tile(tileDefaultW * 9, 524, "#FF0000");
-  tile11 = new Tile(tileDefaultW * 10, 524, "#FF0000");
-  tile12 = new Tile(tileDefaultW * 11, 524, "#FF0000");
-  tile13 = new Tile(tileDefaultW * 12, 524, "#FF0000");
-  tile14 = new Tile(tileDefaultW * 13, 524, "#FF0000");
-  tile15 = new Tile(tileDefaultW * 14, 524, "#FF0000");
-  tile16 = new Tile(tileDefaultW * 15, 524, "#FF0000");
-  tile17 = new Tile(tileDefaultW * 16, 524, "#FF0000");
-  tile18 = new Tile(tileDefaultW * 17, 524, "#FF0000");
-  tile19 = new Tile(tileDefaultW * 18, 524, "#FF0000");
+  var tile1 = new Tile(0, 524, "#FF0000");
+  var tile2 = new Tile(tileDefaultW, 524, "#FF0000");
+  var tile3 = new Tile(tileDefaultW * 2, 524, "#FF0000");
+  var tile4 = new Tile(tileDefaultW * 3, 524, "#FF0000");
+  var tile5 = new Tile(tileDefaultW * 4, 524, "#FF0000");
+  var tile6 = new Tile(tileDefaultW * 5, 524, "#FF0000");
+  var tile7 = new Tile(tileDefaultW * 6, 524, "#FF0000");
+  var tile8 = new Tile(tileDefaultW * 7, 524, "#FF0000");
+  var tile9 = new Tile(tileDefaultW * 8, 524, "#FF0000");
+  var tile10 = new Tile(tileDefaultW * 9, 524, "#FF0000");
+  var tile11 = new Tile(tileDefaultW * 10, 524, "#FF0000");
+  var tile12 = new Tile(tileDefaultW * 11, 524, "#FF0000");
+  var tile13 = new Tile(tileDefaultW * 12, 524, "#FF0000");
+  var tile14 = new Tile(tileDefaultW * 13, 524, "#FF0000");
+  var tile15 = new Tile(tileDefaultW * 14, 524, "#FF0000");
+  var tile16 = new Tile(tileDefaultW * 15, 524, "#FF0000");
+  var tile17 = new Tile(tileDefaultW * 16, 524, "#FF0000");
+  var tile18 = new Tile(tileDefaultW * 17, 524, "#FF0000");
+  var tile19 = new Tile(tileDefaultW * 18, 524, "#FF0000");
+  var tile20 = new Tile(tileDefaultW * 2, 524, "#FF0000");
   
-  /*
   platform1.addTile(tile1);
-  platform1.addTile(tile2);
-  platform1.addTile(tile3);
-  platform1.addTile(tile4);
-  platform1.addTile(tile5);
-  platform1.addTile(tile6);
-  platform1.addTile(tile7);
-  platform1.addTile(tile8);
-  platform1.addTile(tile9);
-  platform1.addTile(tile10);
-  platform1.addTile(tile11);
-  platform1.addTile(tile12);
-  platform1.addTile(tile13);
+  //platform1.addTile(tile2);
+  //platform1.addTile(tile3);
+  //platform1.addTile(tile4);
+  //platform1.addTile(tile5);
+  //platform1.addTile(tile6);
+  //platform1.addTile(tile7);
+  //platform1.addTile(tile8);
+  //platform1.addTile(tile9);
+  //platform1.addTile(tile10);
+  //platform1.addTile(tile11);
+  //platform1.addTile(tile12);
+  //platform1.addTile(tile13);
   //platform1.addTile(tile14);
-  platform1.addTile(tile15);
+  //platform1.addTile(tile15);
   //platform1.addTile(tile16);
-  */
-  platform1.addTile(tile17);
+  //platform1.addTile(tile17);
   platform1.addTile(tile18);
-  platform1.addTile(tile19);
+  //  platform1.addTile(tile19);
   
 }
 
@@ -264,10 +263,10 @@ function draw()
   }
   
   platform1.display();
-  platform2.display();
+  //platform2.display();
   
   // draw tile1
-  tile1.draw();
+  // tile1.draw();
   
   
 } 
