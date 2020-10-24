@@ -12,8 +12,8 @@ var gravity = 0.4;
 // image variable for background
 var background1;
 
-var screenWidth = 800;
-var screenHeight = 1280;
+var screenWidth = 1200;
+var screenHeight = 640;
 
 // Player class
 class Player
@@ -167,9 +167,7 @@ function collide(r1,r2)
 function setup()
 {
   //createCanvas(1280,721);  
-  createCanvas(1152,649);  
-  
-  background("#ff0000");
+  createCanvas(screenWidth,screenHeight);  
   
   //background1 = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
   //background1.position(38, 38);
@@ -245,6 +243,8 @@ function draw()
   
   clear();
   
+  background("#82ebed");
+  
   // draw background
   //image(background1, 0, 0);
   
@@ -252,9 +252,11 @@ function draw()
   
   var borderWidth = 6;
   stroke(borderWidth);
-  rect(borderWidth/2 - 50, borderWidth/2 + 50, screenWidth - borderWidth, screenHeight - borderWidth)
-  rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
-  rect(0,0,1152,649);
+  noFill();
+  rect(50, 50, screenWidth - 50, screenHeight - 50);
+  //rect(borderWidth/2 - 50, borderWidth/2 + 50, screenWidth - borderWidth, screenHeight - borderWidth)
+  //rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
+  //rect(0,0,1152,649);
   
   sonic.y = sonic.y + sonic.vy;
   sonic.vy = sonic.vy + gravity;
