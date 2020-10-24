@@ -12,7 +12,8 @@ var gravity = 0.4;
 // image variable for background
 var background1;
 
-var screenWidth = 
+var screenWidth = 800;
+var screenHeight = 1280;
 
 // Player class
 class Player
@@ -251,8 +252,8 @@ function draw()
   
   var borderWidth = 6;
   stroke(borderWidth);
-  rect(borderWidth/2, borderWidth/2, screenWidth - borderWidth, screenHeight - borderWidth)
-  rect(borderWidth/2,borderWidth/2,1280-borderWidth+20,721-borderWidth);
+  rect(borderWidth/2 - 50, borderWidth/2 + 50, screenWidth - borderWidth, screenHeight - borderWidth)
+  rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
   rect(0,0,1152,649);
   
   sonic.y = sonic.y + sonic.vy;
