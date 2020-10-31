@@ -50,13 +50,14 @@ class Platform
   // Platform constructor
   // (x,y) is the top-left corner of this platform
   // tileWidth - how many tiles wide/long it is
-  // tileHeight = how many tiles high it is ... this can be < 1, i.e. 0.5
-  constructor(x, y, tileWidth, tileHeight)
+  // tileHeight - how many tiles high it is ... this can be < 1, i.e. 0.5
+  constructor(x, y, tileWidth, tileHeight, tileImgName)
   {
     this.x = x;
     this.y = y;
     this.tileWidth = tileWidth;
     this.tileHeight = tileHeight;
+    this.tileImageName = tileImgName;
     this.tiles = [];
     
     // create a for loop that repeats tileWidth times
@@ -66,7 +67,7 @@ class Platform
       // create a tile object
       // dont worry about its x y properties and stuff yet ... ill help there in a minute
       // then add the newly created tile to tiles
-      var theTile = new Tile(0, 0, 0, 0);
+      var theTile = new Tile(x + (i * tileDefaultW), y, tileImgName);
       this.tiles.push(theTile);
       
     }
@@ -104,13 +105,13 @@ class Tile
 {  
   
   // Tile constructor
-  constructor(x, y, color, imgName)
+  constructor(x, y, imgName)
   {
     this.x = x;
     this.y = y;
     this.w = tileDefaultW; // use default width
     this.h = tileDefaultH; // use default height
-    this.color = color;
+    // this.color = color;
     this.imgName = imgName;
     
     // load image for this Tile
@@ -197,12 +198,12 @@ function setup()
   // let's create a platform object where
   // the values you gave here for a rectangle
   // will actually be given directly to the Platform constructor
-  platform1 = new Platform(0, 600, 1150, 20, "#32a83a");
+  platform1 = new Platform(0, groundY, 20, 1);
   
   // platform1.addTile(someTile)
   
   //fill("#b56d1b");
-  platform2 = new Platform(0, 620, 1150, 25, "#b56d1b");
+  // platform2 = new Platform(0, 620, 1150, 25, "#b56d1b");
   
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   sonicImgNormal.position(100, 500);
@@ -210,6 +211,7 @@ function setup()
   
   sonic = new Player(100, 400, 0, 0, true, "sprite");
   
+  /*
   var tile1 = new Tile(0, 524, "#FF0000");
   var tile2 = new Tile(tileDefaultW, 524, "#FF0000");
   var tile3 = new Tile(tileDefaultW * 2, 524, "#FF0000");
@@ -250,6 +252,7 @@ function setup()
   platform1.addTile(tile17);
   platform1.addTile(tile18);
   //  platform1.addTile(tile19);
+  */
   
 }
 
