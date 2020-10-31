@@ -282,6 +282,14 @@ function keyPressed()
   {
     sonic.jump();
   }
+  else if (keyCode == 39)
+  {
+    sonic.x = sonic.x + 10;
+  }
+  else if (keyCode == 37)
+  {
+    sonic.x = sonic.x - 10;
+  }
 }
 
 function keyReleased()
