@@ -238,6 +238,8 @@ function setup()
   
 }
 
+
+// NOTE FOR MOVEMENT: constantly add sonic's vx to his x
 function draw()
 {
   
@@ -248,7 +250,7 @@ function draw()
   // draw background
   //image(background1, 0, 0);
   
-  image(sonicImgIdle, sonic.x, sonic.y);
+  
   
   var borderWidth = 6;
   stroke(borderWidth);
@@ -273,6 +275,7 @@ function draw()
   // draw tile1
   // tile1.draw();
   
+  image(sonicImgIdle, sonic.x, sonic.y);
   
 } 
 
@@ -284,11 +287,15 @@ function keyPressed()
   }
   else if (keyCode == 39)
   {
-    sonic.x = sonic.x + 10;
+    //sonic.x = sonic.x + 10;
+    // set sonic's vx to 5
+    sonic.vx = 5;
   }
   else if (keyCode == 37)
   {
-    sonic.x = sonic.x - 10;
+    //sonic.x = sonic.x - 10;
+    // set sonic's vx to -5
+    sonic.vx = -5;
   }
 }
 
