@@ -48,14 +48,27 @@ class Platform
 {
   
   // Platform constructor
-  constructor(x, y, width, height, fill)
+  // (x,y) is the top-left corner of this platform
+  // tileWidth - how many tiles wide/long it is
+  // tileHeight = how many tiles high it is ... this can be < 1, i.e. 0.5
+  constructor(x, y, tileWidth, tileHeight)
   {
     this.x = x;
     this.y = y;
-    this.width = width;
-    this.height = height;
-    this.fill = fill;
+    this.tileWidth = tileWidth;
+    this.tileHeight = tileHeight;
     this.tiles = [];
+    
+    // create a for loop that repeats tileWidth times
+    for (var i = 0; i < tileWidth; i++)
+    {
+      // what if i wanted to grab the thing at position i within the tiles list?
+      // create a tile object
+      // dont worry about its x y properties and stuff yet ... ill help there in a minute
+      // then add the newly created tile to tiles
+      
+    }
+    
   }
   
   // display this Platform by displaying each of tiles  
