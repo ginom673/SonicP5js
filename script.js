@@ -66,6 +66,8 @@ class Platform
       // create a tile object
       // dont worry about its x y properties and stuff yet ... ill help there in a minute
       // then add the newly created tile to tiles
+      var theTile = new Tile(0, 0, 0, 0);
+      this.tiles.push(theTile);
       
     }
     
