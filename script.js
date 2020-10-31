@@ -1,10 +1,10 @@
 // GLOBAL VARIABLES
 
 // image object for Sonic's idle stance
-var sonicImgIdle;
+var sonicImgNormal;
 
 // y position of ground
-var groundY = 448;
+var groundY = 484;
 
 // gravity effect
 var gravity = 0.4;
@@ -189,9 +189,9 @@ function setup()
   //fill("#b56d1b");
   platform2 = new Platform(0, 620, 1150, 25, "#b56d1b");
   
-  sonicImgIdle = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Idle.png?v=1599326602917");
-  sonicImgIdle.position(100, 500);
-  sonicImgIdle.remove();
+  sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+  sonicImgNormal.position(100, 500);
+  //sonicImgNormal.remove();
   
   sonic = new Player(100, 400, 0, 0, true, "sprite");
   
@@ -277,7 +277,8 @@ function draw()
   
   sonic.x = sonic.x + sonic.vx;
   
-  image(sonicImgIdle, sonic.x, sonic.y);
+  sonicImgNormal.position(sonic.x, sonic.y);
+  //image(sonicImgNormal, sonic.x, sonic.y);
   
 } 
 
