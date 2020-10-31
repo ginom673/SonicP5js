@@ -275,6 +275,8 @@ function draw()
   // draw tile1
   // tile1.draw();
   
+  sonic.x = sonic.x + sonic.vx;
+  
   image(sonicImgIdle, sonic.x, sonic.y);
   
 } 
@@ -299,7 +301,15 @@ function keyPressed()
   }
 }
 
+// NOTE: set sonic.vx back to 0 if left arrow or right arrow key was just released
 function keyReleased()
 {
-  
+  if (keyCode == 39)
+  {
+    sonic.vx = 0;
+  }
+  else if (keyCode == 37)
+  {
+    sonic.vx = 0;
+  }
 }
