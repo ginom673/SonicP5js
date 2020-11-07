@@ -20,7 +20,7 @@ class Player
 {  
   
   // Player constructor
-  constructor(x, y, vx, vy, onGround, imgName)
+  constructor(x, y, vx, vy, onGround, imgName, w, h)
   {
     this.x = x;
     this.y = y;
@@ -28,6 +28,8 @@ class Player
     this.vy = vy;
     this.onGround = onGround;
     this.imgName = imgName;
+    this.w = w;
+    this.h = h;
   }
   
   jump()
