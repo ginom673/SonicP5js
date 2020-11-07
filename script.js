@@ -117,7 +117,7 @@ var platform2;
 
 // controls default Tile size
 var tileDefaultW = 128;
-var tileDefaultH = 1000;
+var tileDefaultH = 128;
 
 // Tile class
 class Tile
@@ -215,7 +215,7 @@ function setup()
   sonicImgNormal.position(100, 500);
   //sonicImgNormal.remove();
   
-  sonic = new Player(100, 200, 0, 0, true, "sprite", 64, 72);
+  sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);
   
   /*
   var tile1 = new Tile(0, 524, "#FF0000");
@@ -291,13 +291,17 @@ function draw()
   
   // console.log(collide(sonic,tile1));
   
-  sonic.y = sonic.y + sonic.vy;
-  sonic.vy = sonic.vy + gravity;
+  
   if (collisionStatus)
   {
     sonic.vy = 0;
     // sonic.y = groundY;
     sonic.onGround = true;
+  }
+  else
+  {
+    sonic.y = sonic.y + sonic.vy;
+    sonic.vy = sonic.vy + gravity;
   }
   
   platform1.display();
@@ -349,3 +353,4 @@ function keyReleased()
     sonic.vx = 0;
   }
 }
+
