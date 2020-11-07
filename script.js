@@ -43,6 +43,21 @@ class Player
     this.onGround = false;
     this.vy = -10;    
   }
+  
+  checkPlatformCollision()
+  {
+    for (var i=0; i < platform1.length; i++)
+    {
+      var collisionStatus = collide(sonic, i);
+      
+      if (collisionStatus == 'none')
+      {
+        this.onGround = true;
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 // Platform class - essentially a sequence of tiles
