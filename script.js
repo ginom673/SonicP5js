@@ -291,18 +291,15 @@ function draw()
   
   // console.log(collide(sonic,tile1));
   
-  
+  sonic.y = sonic.y + sonic.vy;
+  sonic.vy = sonic.vy + gravity;
   if (collisionStatus)
   {
     sonic.vy = 0;
     // sonic.y = groundY;
     sonic.onGround = true;
   }
-  else
-  {
-    sonic.y = sonic.y + sonic.vy;
-    sonic.vy = sonic.vy + gravity;
-  }
+  
   
   platform1.display();
   //platform2.display();
@@ -318,6 +315,12 @@ function draw()
   
   sonicImgNormal.position(sonic.x, sonic.y);
   //image(sonicImgNormal, sonic.x, sonic.y);
+  
+  
+  // draw hitboxes for debugging
+  noFill();
+  rect(sonic.x, sonic.y, sonic.w, sonic.h);
+  
   
 } 
 
