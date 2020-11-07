@@ -46,11 +46,10 @@ class Player
   
   checkPlatformCollision()
   {
-    for (var i=0; i < platform1.length; i++)
+    for (var i=0; i < platform1.tiles.length; i++)
     {
-      var collisionStatus = collide(sonic, i);
-      
-      if (collisionStatus == 'none')
+      var collisionStatus = collide(sonic, platform1.tiles[i]);      
+      if (collisionStatus != 'none')
       {
         this.onGround = true;
         return true;
@@ -161,6 +160,8 @@ var tile1;
 // if so, return (jump does nothing if we are already in the air)
 
 var sonic;
+
+
 
 // taken from https://stackoverflow.com/questions/29861096/detect-which-side-of-a-rectangle-is-colliding-with-another-rectangle
 function collide(r1,r2)
@@ -294,6 +295,8 @@ function draw()
   //rect(borderWidth/2 - 50, borderWidth/2 + 50, screenWidth - borderWidth, screenHeight - borderWidth)
   //rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
   //rect(0,0,1152,649);
+  
+  checkPlatformCollision()
   
   sonic.y = sonic.y + sonic.vy;
   sonic.vy = sonic.vy + gravity;
