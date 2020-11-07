@@ -48,7 +48,8 @@ class Player
   {
     for (var i=0; i < platform1.tiles.length; i++)
     {
-      var collisionStatus = collide(sonic, platform1.tiles[i]);      
+      var collisionStatus = collide(sonic, platform1.tiles[i]);
+      console.log(collisionStatus);
       if (collisionStatus != 'none')
       {
         this.onGround = true;
@@ -173,30 +174,17 @@ function collide(r1,r2)
   var crossWidth=width*dy;
   var crossHeight=height*dx;
   var collision='none';
-  //
   if(Math.abs(dx)<=width && Math.abs(dy)<=height){
       if(crossWidth>crossHeight){
-          collision=(crossWidth>(-crossHeight))?'bottom':'left';
-        
-          // this is equivalent to:
-          /*
-          if (crossWidth>(-crossHeight))
-          {
-            collision = 'bottom';
-          }
-          else
-          {
-            collision = 'left';
-          }
-          */
-        
-        
+          collision=(crossWidth>(-crossHeight))?'bottom':'left';        
       }else{
           collision=(crossWidth>-(crossHeight))?'right':'top';
       }
   }
   return(collision);
 }
+
+var tile1;
 
 function setup()
 {
@@ -210,13 +198,17 @@ function setup()
   //background1.remove();
   //background1 = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_background_loop.gif?v=1601145979742");
   
+  
+  tile1 = new Tile(0, 524, "#FF0000");
+  
+  
   //fill("#32a83a");
   // create a platform object using these values
   
   // let's create a platform object where
   // the values you gave here for a rectangle
   // will actually be given directly to the Platform constructor
-  platform1 = new Platform(0, groundY, 20, 1);
+  // platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
   
   // platform1.addTile(someTile)
   
@@ -227,7 +219,7 @@ function setup()
   sonicImgNormal.position(100, 500);
   //sonicImgNormal.remove();
   
-  sonic = new Player(100, 400, 0, 0, true, "sprite");
+  sonic = new Player(100, 400, 0, 0, true, "sprite", 64);
   
   /*
   var tile1 = new Tile(0, 524, "#FF0000");
@@ -296,23 +288,29 @@ function draw()
   //rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
   //rect(0,0,1152,649);
   
-  var collisionStatus = sonic.checkPlatformCollision();
-  console.log(collisionStatus);
+  // var collisionStatus = sonic.checkPlatformCollision();
+  // console.log(collisionStatus);
+  
+  console.log(collide(sonic,tile1));
   
   sonic.y = sonic.y + sonic.vy;
   sonic.vy = sonic.vy + gravity;
-  if (collisionStatus)
+  if (false)
   {
     sonic.vy = 0;
     sonic.y = groundY;
     sonic.onGround = true;
   }
   
-  platform1.display();
+  //platform1.display();
   //platform2.display();
   
   // draw tile1
-  // tile1.draw();
+  console.log(tile1);
+  console.log(sonic.w);
+  console.log(sonic.h);
+  tile1.draw();
+  alert("pause");
   
   sonic.x = sonic.x + sonic.vx;
   
