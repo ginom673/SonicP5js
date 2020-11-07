@@ -296,11 +296,12 @@ function draw()
   //rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
   //rect(0,0,1152,649);
   
-  checkPlatformCollision()
+  var collisionStatus = sonic.checkPlatformCollision();
+  console.log(collisionStatus);
   
   sonic.y = sonic.y + sonic.vy;
   sonic.vy = sonic.vy + gravity;
-  if (sonic.y >= groundY)
+  if (collisionStatus)
   {
     sonic.vy = 0;
     sonic.y = groundY;
