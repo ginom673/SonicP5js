@@ -43,7 +43,9 @@ class Player
       return;
     }    
     this.onGround = false;
-    this.vy = -20;    
+    this.vy = -10;
+    // set sonic's y to itself minus 10
+    this.y = this.y - 10;
   }
   
   checkPlatformCollision()
@@ -54,6 +56,7 @@ class Player
       // console.log(collisionStatus);
       if (collisionStatus != 'none')
       {
+        console.log(collisionStatus);
         this.onGround = true;
         return true;
       }
@@ -288,7 +291,7 @@ function draw()
   // console.log(platform1.tiles[0].h);
   
   var collisionStatus = sonic.checkPlatformCollision();
-  // console.log(collisionStatus);
+  console.log(collisionStatus);
   
   // console.log(collide(sonic,tile1));
   
