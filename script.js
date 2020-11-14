@@ -144,9 +144,12 @@ class Tile
   }
   
   // draws this tile's image @ (x,y)
+  // NOTE: we have a "sloppy workaround" here that draws the tile @ (x, y+20) so the image
+  // more properly aligns with where the collision is happening
+  // this is a sloppy fix to the "gap" bug
   draw()
   {
-    image(this.image, this.x, this.y);
+    image(this.image, this.x, this.y - 20);
   }
 }
 
@@ -291,14 +294,19 @@ function draw()
   // console.log(platform1.tiles[0].h);
   
   // update sonic position and speed
-  sonic.y = sonic.y + sonic.vy;
-  sonic.vy = sonic.vy + gravity;
+  if(!sonic.onGround)
+  {
+    
+    sonic.y = sonic.y + sonic.vy;
+    
+  }
   sonic.x = sonic.x + sonic.vx;
   
   // collisions
   var collisionStatus = sonic.checkPlatformCollision();  
   if (collisionStatus)
   {
+    console.log("stopped falling because collision");
     sonic.vy = 0;
     //sonic.y = groundY;
     sonic.onGround = true;
