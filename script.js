@@ -56,7 +56,7 @@ class Player
       // console.log(collisionStatus);
       if (collisionStatus != 'none')
       {
-        console.log(collisionStatus);
+        // console.log(collisionStatus);
         this.onGround = true;
         return true;
       }
@@ -137,9 +137,9 @@ class Tile
     this.imgName = imgName;
     
     // load image for this Tile
-    this.image = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013"); 
-    this.image.position(100, 500);
-    this.image.remove();
+    this.image = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013"); 
+    // this.image.position(100, 500);
+    // this.image.remove();
     
   }
   
@@ -290,13 +290,13 @@ function draw()
   
   // console.log(platform1.tiles[0].h);
   
-  var collisionStatus = sonic.checkPlatformCollision();
-  console.log(collisionStatus);
-  
-  // console.log(collide(sonic,tile1));
-  
+  // update sonic position and speed
   sonic.y = sonic.y + sonic.vy;
   sonic.vy = sonic.vy + gravity;
+  sonic.x = sonic.x + sonic.vx;
+  
+  // collisions
+  var collisionStatus = sonic.checkPlatformCollision();  
   if (collisionStatus)
   {
     sonic.vy = 0;
@@ -304,7 +304,7 @@ function draw()
     sonic.onGround = true;
   }
   
-  
+  // display platforms
   platform1.display();
   //platform2.display();
   
@@ -315,13 +315,11 @@ function draw()
   // tile1.draw();
   // alert("pause");
   
-  sonic.x = sonic.x + sonic.vx;
   
-  sonicImgNormal.position(sonic.x, sonic.y, "fixed");
-  sonicImgNormal.x = sonic.x;
-  sonicImgNormal.y = sonic.y;
-  //image(sonicImgNormal, sonic.x, sonic.y);
   
+  // draw sonic image
+  sonicImgNormal.position(sonic.x, sonic.y);  
+  //image(sonicImgNormal, sonic.x, sonic.y);  
   
   // draw sonic hitbox for debugging
   // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
@@ -341,8 +339,8 @@ function draw()
   
   // sonic's (x,y): (100, 440)
   // mouseX Y @ top left of image: (70, 400)
-  console.log(sonic.x);
-  console.log(sonic.y);
+  // console.log(sonic.x);
+  // console.log(sonic.y);
   
   
 } 
