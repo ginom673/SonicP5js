@@ -57,6 +57,8 @@ class Player
       if (collisionStatus != 'none')
       {
         // console.log(collisionStatus);
+        // sloppy workaround - set sonic's y based on the tile's y position that we collided with
+        this.y = platform1.tiles[i].y - this.h;
         this.onGround = true;
         return true;
       }
@@ -149,7 +151,7 @@ class Tile
   // this is a sloppy fix to the "gap" bug
   draw()
   {
-    image(this.image, this.x, this.y - 20);
+    image(this.image, this.x, this.y - 35);
   }
 }
 
@@ -281,8 +283,6 @@ function draw()
   // draw background
   //image(background1, 0, 0);
   
-  
-  
   var borderWidth = 6;
   stroke(borderWidth);
   noFill();
@@ -296,9 +296,8 @@ function draw()
   // update sonic position and speed
   if(!sonic.onGround)
   {
-    
+    sonic.vy = sonic.vy + gravity;          
     sonic.y = sonic.y + sonic.vy;
-    
   }
   sonic.x = sonic.x + sonic.vx;
   
