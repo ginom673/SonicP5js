@@ -313,13 +313,16 @@ function draw()
   
   sonic.x = sonic.x + sonic.vx;
   
-  sonicImgNormal.position(sonic.x, sonic.y);
+  sonicImgNormal.position(sonic.x, sonic.y, 'fixed');
   //image(sonicImgNormal, sonic.x, sonic.y);
   
   
   // draw hitboxes for debugging
   noFill();
   rect(sonic.x, sonic.y, sonic.w, sonic.h);
+  
+  console.log(sonic.x);
+  console.log(sonic.y);
   
   
 } 
@@ -357,3 +360,7 @@ function keyReleased()
   }
 }
 
+function mouseReleased()
+{
+  alert(mouseX + " " + mouseY);
+}
