@@ -43,7 +43,7 @@ class Player
       return;
     }    
     this.onGround = false;
-    this.vy = -10;    
+    this.vy = -20;    
   }
   
   checkPlatformCollision()
@@ -297,7 +297,7 @@ function draw()
   if (collisionStatus)
   {
     sonic.vy = 0;
-    // sonic.y = groundY;
+    //sonic.y = groundY;
     sonic.onGround = true;
   }
   
@@ -332,6 +332,7 @@ function draw()
     // grab the tile @ position i within platform1.tiles list
     // and store it into a variable called currentTile
     var currentTile = platform1.tiles[i];
+    rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
   }
   
   
@@ -376,7 +377,9 @@ function keyReleased()
   }
 }
 
+/*
 function mouseReleased()
 {
   alert(mouseX + " " + mouseY);
 }
+*/
