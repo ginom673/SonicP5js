@@ -211,9 +211,9 @@ function setup()
   //fill("#b56d1b");
   // platform2 = new Platform(0, 620, 1150, 25, "#b56d1b");
   
-  sonicImgNormal = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
-  //sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
-  //sonicImgNormal.position(100, 500);
+  // sonicImgNormal = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+  sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+  sonicImgNormal.position(100, 500);
   //sonicImgNormal.remove();
   
   sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);
@@ -314,20 +314,31 @@ function draw()
   
   sonic.x = sonic.x + sonic.vx;
   
-  //sonicImgNormal.position(sonic.x, sonic.y, "fixed");
+  sonicImgNormal.position(sonic.x, sonic.y, "fixed");
   sonicImgNormal.x = sonic.x;
   sonicImgNormal.y = sonic.y;
-  image(sonicImgNormal, sonic.x, sonic.y);
+  //image(sonicImgNormal, sonic.x, sonic.y);
   
   
-  // draw hitboxes for debugging
+  // draw sonic hitbox for debugging
+  // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
   noFill();
-  rect(sonic.x, sonic.y, sonic.w, sonic.h);
+  rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
+  
+  // draw the tile hitboxes for debugging
+  // go through platform1.tiles list
+  for (var i = 0; i < platform1.tiles.length; i++)
+  {
+    // grab the tile @ position i within platform1.tiles list
+    // and store it into a variable called currentTile
+    var currentTile = platform1.tiles[i];
+  }
+  
   
   // sonic's (x,y): (100, 440)
   // mouseX Y @ top left of image: (70, 400)
-  // console.log(sonic.x);
-  // console.log(sonic.y);
+  console.log(sonic.x);
+  console.log(sonic.y);
   
   
 } 
