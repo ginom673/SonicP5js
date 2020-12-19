@@ -1,5 +1,8 @@
 // GLOBAL VARIABLES
 
+// developerMode determines whether or not we display hitboxes and statistics
+var developerMode = true;
+
 // image object for Sonic's idle stance
 var sonicImgNormal;
 
@@ -208,14 +211,6 @@ function draw()
   stroke(borderWidth);
   noFill();
   
-  // update sonic position and speed
-  if(!sonic.onGround)
-  {
-    sonic.vy = sonic.vy + gravity;          
-    sonic.y = sonic.y + sonic.vy;
-  }
-  sonic.x = sonic.x + sonic.vx;
-  
   // collisions
   var collisionStatus = sonic.checkPlatformCollisions();  
   if (collisionStatus)
@@ -230,6 +225,14 @@ function draw()
     sonic.onGround = false;
   }
   
+  // update sonic position and speed
+  if(!sonic.onGround)
+  {
+    sonic.vy = sonic.vy + gravity;          
+    sonic.y = sonic.y + sonic.vy;
+  }
+  sonic.x = sonic.x + sonic.vx;
+  
   // display platforms
   for (var i=0; i < platforms.length; i++)
   {
@@ -241,19 +244,38 @@ function draw()
   
   // draw sonic hitbox for debugging
   // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
-  //noFill();
-  //rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
+  if (developerMode)
+  {
+    noFill();
+    rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
+  }
+  
   
   // draw the tile hitboxes for debugging
   // LATER: this should go through ALL of platforms, not just platform1
   // go through platform1.tiles list
-  /*
-  for (var i = 0; i < platform1.tiles.length; i++)
+  
+  if (developerMode)
   {
-    var currentTile = platform1.tiles[i];
-    rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
-  }  
-  */
+    
+    
+    // lets say we have 5 platforms
+    // and each platform has 10 tiles
+    for (var i = 0; i < platforms.length; i++)
+    {
+      for (var j = 0; j < platforms[i].tiles.length; j++)
+      {
+  
+        var currentTile = platforms[i].tiles[j];
+        rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
+      }
+    }
+    
+      
+  }
+  
+  
+  
   
 } 
 
