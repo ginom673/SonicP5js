@@ -62,7 +62,8 @@ class Player
       if (collisionStatus != 'none')
       {
         // sloppy workaround - set sonic's y based on the tile's y position that we collided with
-        this.y = platform.tiles[i].y - this.h;
+        // NOTE: commenting this out seems to produce different collision effects
+        // this.y = platform.tiles[i].y - this.h;
         this.onGround = true;
         return collisionStatus;
       }
@@ -246,6 +247,7 @@ function draw()
   sonic.x = sonic.x + sonic.vx;
   collisions = sonic.checkPlatformCollisions();
   // console.log(collisions);
+  // NOTE: unable to fall off cliff because left/right collisions here
   if (collisions.includes('left') || collisions.includes('right'))
   {
     console.log("triggered");
