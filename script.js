@@ -64,10 +64,10 @@ class Player
         // sloppy workaround - set sonic's y based on the tile's y position that we collided with
         this.y = platform.tiles[i].y - this.h;
         this.onGround = true;
-        return true;
+        return collisionStatus;
       }
     }
-    return false;
+    return 'none';
   }
   
   // this checks collision between Sonic and ALL of the platforms
@@ -80,10 +80,10 @@ class Player
       var collisionStatus = sonic.checkPlatformCollision(platforms[i]);
       if (collisionStatus != 'none')
       {
-        return true;
+        return collisionStatus;
       }
     }
-    return false;
+    return 'none';
   }  
   
 }
@@ -218,7 +218,8 @@ function draw()
   
   // collisions
   var collisionStatus = sonic.checkPlatformCollisions();  
-  if (collisionStatus)
+  // NOTE: later we probably need to change this to collisionStatus == "top"
+  if (collisionStatus != 'none')
   {
     console.log("stopped falling because collision");
     sonic.vy = 0;
@@ -230,7 +231,7 @@ function draw()
     sonic.onGround = false;
   }
   
-  // update sonic position and speed
+  // if in air, update sonic position and speed
   if(!sonic.onGround)
   {
     sonic.vy = sonic.vy + gravity;          
