@@ -77,8 +77,13 @@ class Player
     for (var i=0; i < platforms.length; i++)
     {
       // console.log(platforms[i]);
-      sonic.checkPlatformCollision(platforms[i]);
+      var collisionStatus = sonic.checkPlatformCollision(platforms[i]);
+      if (collisionStatus != 'none')
+      {
+        return true;
+      }
     }
+    return false;
   }  
   
 }
@@ -274,11 +279,11 @@ function draw()
     // sonic.vx
     // sonic.vy
     // sonic.onGround
-    text("x: " + sonic.x, 1000, 100);
-    text("y: " + sonic.y, 1000, 125);
-    text(sonic.vx, 1000, 150);
-    text(sonic.vy, 1000, 200);
-    text("onGround: " + sonic.onGround, 1000, 225);
+    text("x: " + sonic.x.toFixed(2), 1000, 100);
+    text("y: " + sonic.y.toFixed(2), 1000, 125);
+    text("vx: " + sonic.vx.toFixed(2), 1000, 150);
+    text("vy: " + sonic.vy.toFixed(2), 1000, 175);
+    text("onGround: " + sonic.onGround, 1000, 200);
     //text("blah", 1000, 100)
     
   }
