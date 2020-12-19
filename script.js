@@ -16,6 +16,9 @@ var background1;
 var screenWidth = 1200;
 var screenHeight = 640;
 
+// platform list
+var platforms = [platform1];
+
 // Player class
 class Player
 {  
@@ -48,7 +51,20 @@ class Player
     this.y = this.y - 10;
   }
   
-  checkPlatformCollision()
+  // this checks collision between Sonic and ALL of the platforms
+  checkPlatformsCollision()
+  {
+    // write a for loop that goes through every platform in platforms
+    // and hands that to checkPlatformCollision
+    
+    for (var i=0; i < platforms.length; i++)
+    {
+      checkPlatformCollision(platforms[i]);
+    }
+  }
+  
+  // this checks collision between Sonic and ONE of the platforms
+  checkPlatformCollision(platform)
   {
     for (var i=0; i < platform1.tiles.length; i++)
     {
@@ -65,6 +81,7 @@ class Player
     }
     return false;
   }
+  
 }
 
 // Platform class - essentially a sequence of tiles
