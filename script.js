@@ -17,7 +17,7 @@ var screenWidth = 1200;
 var screenHeight = 640;
 
 // platform list
-var platforms = [platform1];
+var platforms = [];
 
 // Player class
 class Player
@@ -69,10 +69,11 @@ class Player
   
   // this checks collision between Sonic and ALL of the platforms
   // sonic.checkPlatformsCollision()
-  checkPlatformsCollision()
+  checkPlatformCollisions()
   {    
     for (var i=0; i < platforms.length; i++)
     {
+      // console.log(platforms[i]);
       sonic.checkPlatformCollision(platforms[i]);
     }
   }  
@@ -85,10 +86,11 @@ class Platform
   
   // Platform constructor
   // (x,y) is the top-left corner of this platform
-  // tileWidth - how many tiles wide/long it is
-  // tileHeight - how many tiles high it is ... this can be < 1, i.e. 0.5
+  // tileWidth - how many tiles wide/long it is 
+  // (UNUSED) tileHeight - how many tiles high it is ... this can be < 1, i.e. 0.5
   constructor(x, y, tileWidth, tileHeight, tileImgName)
   {
+    // setup properties
     this.x = x;
     this.y = y;
     this.tileWidth = tileWidth;
@@ -101,7 +103,10 @@ class Platform
     {
       var theTile = new Tile(x + (i * tileDefaultW), y, tileImgName);
       this.tiles.push(theTile);      
-    }    
+    }
+    
+    // add this to platforms list
+    platforms.push(this);
   }
   
   // display this Platform by displaying each of tiles  
@@ -185,6 +190,7 @@ function setup()
 {
   createCanvas(screenWidth,screenHeight);
   platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");    
+  platform2 = new Platform(0, groundY - 50, 2, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   sonicImgNormal.position(100, 500);  
   sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);    
@@ -219,6 +225,10 @@ function draw()
     //sonic.y = groundY;
     sonic.onGround = true;
   }
+  else
+  {
+    sonic.onGround = false;
+  }
   
   // display platforms
   for (var i=0; i < platforms.length; i++)
@@ -231,8 +241,8 @@ function draw()
   
   // draw sonic hitbox for debugging
   // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
-  noFill();
-  rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
+  //noFill();
+  //rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
   
   // draw the tile hitboxes for debugging
   // LATER: this should go through ALL of platforms, not just platform1
