@@ -51,18 +51,6 @@ class Player
     this.y = this.y - 10;
   }
   
-  // this checks collision between Sonic and ALL of the platforms
-  checkPlatformsCollision()
-  {
-    // write a for loop that goes through every platform in platforms
-    // and hands that to checkPlatformCollision
-    
-    for (var i=0; i < platforms.length; i++)
-    {
-      checkPlatformCollision(platforms[i]);
-    }
-  }
-  
   // this checks collision between Sonic and ONE of the platforms
   checkPlatformCollision(platform)
   {
@@ -81,6 +69,19 @@ class Player
     }
     return false;
   }
+  
+  // this checks collision between Sonic and ALL of the platforms
+  checkPlatformsCollision()
+  {
+    // write a for loop that goes through every platform in platforms
+    // and hands that to checkPlatformCollision
+    
+    for (var i=0; i < platforms.length; i++)
+    {
+      sonic.checkPlatformCollision(platforms[i]);
+    }
+  }
+  
   
 }
 
@@ -319,7 +320,7 @@ function draw()
   sonic.x = sonic.x + sonic.vx;
   
   // collisions
-  var collisionStatus = sonic.checkPlatformCollision();  
+  var collisionStatus = sonic.checkPlatformCollisions();  
   if (collisionStatus)
   {
     console.log("stopped falling because collision");
