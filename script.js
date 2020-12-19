@@ -53,13 +53,13 @@ class Player
   // this checks collision between Sonic and ONE of the platforms
   checkPlatformCollision(platform)
   {
-    for (var i=0; i < platform1.tiles.length; i++)
+    for (var i=0; i < platform.tiles.length; i++)
     {
-      var collisionStatus = collide(sonic, platform1.tiles[i]);
+      var collisionStatus = collide(sonic, platform.tiles[i]);
       if (collisionStatus != 'none')
       {
         // sloppy workaround - set sonic's y based on the tile's y position that we collided with
-        this.y = platform1.tiles[i].y - this.h;
+        this.y = platform.tiles[i].y - this.h;
         this.onGround = true;
         return true;
       }
@@ -68,17 +68,14 @@ class Player
   }
   
   // this checks collision between Sonic and ALL of the platforms
+  // sonic.checkPlatformsCollision()
   checkPlatformsCollision()
-  {
-    // write a for loop that goes through every platform in platforms
-    // and hands that to checkPlatformCollision
-    
+  {    
     for (var i=0; i < platforms.length; i++)
     {
       sonic.checkPlatformCollision(platforms[i]);
     }
-  }
-  
+  }  
   
 }
 
@@ -102,10 +99,6 @@ class Platform
     // create a for loop that repeats tileWidth times
     for (var i = 0; i < tileWidth; i++)
     {
-      // what if i wanted to grab the thing at position i within the tiles list?
-      // create a tile object
-      // dont worry about its x y properties and stuff yet ... ill help there in a minute
-      // then add the newly created tile to tiles
       var theTile = new Tile(x + (i * tileDefaultW), y, tileImgName);
       this.tiles.push(theTile);      
     }    
@@ -148,14 +141,10 @@ class Tile
     this.y = y;
     this.w = tileDefaultW; // use default width
     this.h = tileDefaultH; // use default height
-    // this.color = color;
     this.imgName = imgName;
     
     // load image for this Tile
-    this.image = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013"); 
-    // this.image.position(100, 500);
-    // this.image.remove();
-    
+    this.image = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");     
   }
   
   // draws this tile's image @ (x,y)
@@ -194,21 +183,12 @@ var tile1;
 
 function setup()
 {
-  //createCanvas(1280,721);  
   createCanvas(screenWidth,screenHeight);
-  platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
-  
-  
-  // sonicImgNormal = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+  platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");    
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
-  sonicImgNormal.position(100, 500);
-  //sonicImgNormal.remove();
-  
-  sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);
-  
-  
+  sonicImgNormal.position(100, 500);  
+  sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);    
 }
-
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
 function draw()
@@ -241,15 +221,13 @@ function draw()
   }
   
   // display platforms
-  platform1.display();
-  //platform2.display();
-  
-  
-
+  for (var i=0; i < platforms.length; i++)
+  {
+    platforms[i].display();
+  }
   
   // draw sonic image
   sonicImgNormal.position(sonic.x, sonic.y);  
-  //image(sonicImgNormal, sonic.x, sonic.y);  
   
   // draw sonic hitbox for debugging
   // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
@@ -257,21 +235,15 @@ function draw()
   rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
   
   // draw the tile hitboxes for debugging
+  // LATER: this should go through ALL of platforms, not just platform1
   // go through platform1.tiles list
+  /*
   for (var i = 0; i < platform1.tiles.length; i++)
   {
-    // grab the tile @ position i within platform1.tiles list
-    // and store it into a variable called currentTile
     var currentTile = platform1.tiles[i];
     rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
-  }
-  
-  
-  // sonic's (x,y): (100, 440)
-  // mouseX Y @ top left of image: (70, 400)
-  // console.log(sonic.x);
-  // console.log(sonic.y);
-  
+  }  
+  */
   
 } 
 
@@ -283,14 +255,10 @@ function keyPressed()
   }
   else if (keyCode == 39)
   {
-    //sonic.x = sonic.x + 10;
-    // set sonic's vx to 5
     sonic.vx = 5;
   }
   else if (keyCode == 37)
   {
-    //sonic.x = sonic.x - 10;
-    // set sonic's vx to -5
     sonic.vx = -5;
   }
 }
