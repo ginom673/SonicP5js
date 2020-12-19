@@ -250,32 +250,38 @@ function draw()
     rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
   }
   
-  
   // draw the tile hitboxes for debugging
-  // LATER: this should go through ALL of platforms, not just platform1
-  // go through platform1.tiles list
-  
   if (developerMode)
-  {
-    
-    
-    // lets say we have 5 platforms
-    // and each platform has 10 tiles
+  {   
     for (var i = 0; i < platforms.length; i++)
     {
       for (var j = 0; j < platforms[i].tiles.length; j++)
-      {
-  
+      {  
         var currentTile = platforms[i].tiles[j];
         rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
       }
-    }
+    }    
+  }  
+  
+  // display statistics for debugging
+  if(developerMode)
+  {
+    fill(0, 0, 0);
+    textSize(24);
+    // use the text function to display:
+    // sonic.x
+    // sonic.y
+    // sonic.vx
+    // sonic.vy
+    // sonic.onGround
+    text("x: " + sonic.x, 1000, 100);
+    text("y: " + sonic.y, 1000, 125);
+    text(sonic.vx, 1000, 150);
+    text(sonic.vy, 1000, 200);
+    text("onGround: " + sonic.onGround, 1000, 225);
+    //text("blah", 1000, 100)
     
-      
   }
-  
-  
-  
   
 } 
 
