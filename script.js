@@ -74,16 +74,17 @@ class Player
   // sonic.checkPlatformsCollision()
   checkPlatformCollisions()
   {    
+    var collisions = [];
     for (var i=0; i < platforms.length; i++)
     {
       // console.log(platforms[i]);
       var collisionStatus = sonic.checkPlatformCollision(platforms[i]);
       if (collisionStatus != 'none')
       {
-        return collisionStatus;
+        collisions.push(collisionStatus);
       }
     }
-    return 'none';
+    return collisions;
   }  
   
 }
@@ -217,9 +218,11 @@ function draw()
   noFill();
   
   // collisions
-  var collisionStatus = sonic.checkPlatformCollisions();  
-  // NOTE: later we probably need to change this to collisionStatus == "top"
-  if (collisionStatus != 'none')
+  var collisions = sonic.checkPlatformCollisions();  
+  console.log(collisions);
+  // NOTE: later we probably need to change this to collisionStatus == "top" or something
+  // NOTE: would collisions == [] work?
+  if (collisions.length == 0)
   {
     console.log("stopped falling because collision");
     sonic.vy = 0;
@@ -231,13 +234,20 @@ function draw()
     sonic.onGround = false;
   }
   
-  // if in air, update sonic position and speed
+  // if in air, update sonic vertical position and speed
   if(!sonic.onGround)
   {
     sonic.vy = sonic.vy + gravity;          
     sonic.y = sonic.y + sonic.vy;
   }
+  
+  // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
+  collisions = sonic.checkPlatformCollisions();
+  if (collisions.includes('left') || collisions.includes('right'))
+  {
+    sonic.x = sonic.x - sonic.vx;
+  }
   
   // display platforms
   for (var i=0; i < platforms.length; i++)
