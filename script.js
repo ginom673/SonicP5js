@@ -79,6 +79,7 @@ class Player
     {
       // console.log(platforms[i]);
       var collisionStatus = sonic.checkPlatformCollision(platforms[i]);
+      // console.log(collisionStatus);
       if (collisionStatus != 'none')
       {
         collisions.push(collisionStatus);
@@ -219,12 +220,12 @@ function draw()
   
   // collisions
   var collisions = sonic.checkPlatformCollisions();  
-  console.log(collisions);
+  //console.log(collisions);
   // NOTE: later we probably need to change this to collisionStatus == "top" or something
   // NOTE: would collisions == [] work?
-  if (collisions.length == 0)
+  if (collisions.length >= 1)
   {
-    console.log("stopped falling because collision");
+    // console.log("stopped falling because collision");
     sonic.vy = 0;
     //sonic.y = groundY;
     sonic.onGround = true;
@@ -244,8 +245,10 @@ function draw()
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
   collisions = sonic.checkPlatformCollisions();
+  // console.log(collisions);
   if (collisions.includes('left') || collisions.includes('right'))
   {
+    console.log("triggered");
     sonic.x = sonic.x - sonic.vx;
   }
   
