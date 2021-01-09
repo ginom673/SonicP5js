@@ -54,9 +54,10 @@ class Player
   }
   
   // this checks collision between Sonic and ONE of the platforms
+  // NOTE: if the game is slowing down, consider not adding the "none" collision case to the tileCollisions list
   checkPlatformCollision(platform)
   {
-    var collisions = [];
+    var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
     {
       var collisionStatus = collide(sonic, platform.tiles[i]);
@@ -75,41 +76,35 @@ class Player
         this.y = platform.tiles[i].y - this.h;
         this.vy = 0;
         this.onGround = true;
-        collisions.push(collisionStatus);
       }
       else if (collisionStatus == 'bottom')
       {
         this.vy = 0;
-        collisions.push(collisionStatus);
       }
       else if (collisionStatus == 'left')
       {
         this.vx = 0;
-        collisions.push(collisionStatus);
       }
       else if (collisionStatus == 'right')
       {
-        this.vx = 0;
-        collisions.push(collisionStatus);
-      }          
+        this.vx = 0;  
+      }
+      tileCollisions.push(collisionStatus);      
     }
-    return collisions;
+    return tileCollisions;
   }
   
   // this checks collision between Sonic and ALL of the platforms
   // sonic.checkPlatformsCollision()
   checkPlatformCollisions()
   {    
-    var collisions = [];
+    var platformCollisions = [];
     for (var i=0; i < platforms.length; i++)
     {
-      var collisionStatus = sonic.checkPlatformCollision(platforms[i]);
-      if (collisionStatus != 'none')
-      {
-        collisions.push(collisionStatus);
-      }
+      var tileCollisions = sonic.checkPlatformCollision(platforms[i]);
+      platformCollisions.push(tileCollisions);
     }
-    return collisions;
+    return platformCollisions;
   }  
   
 }
@@ -247,11 +242,22 @@ function draw()
   //console.log(collisions);
   // NOTE: later we probably need to change this to collisionStatus == "top" or something
   // NOTE: would collisions == [] work?
+  /*
   if (collisions.length == 0)
   {
     sonic.onGround = false;
   }
-  
+  */
+  // write a for loop that goes through every item in collisions
+  for (var i=0; i < collisions.length; i++)
+  {
+    // grab the tileCollisions list @ position i within collisions
+    
+    var tileCollisions = collisions[i];
+    
+    for (var i=0; i < tileCollisions)
+    
+  }
   // if in air, update sonic vertical position and speed
   if(!sonic.onGround)
   {
