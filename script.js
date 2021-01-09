@@ -59,6 +59,7 @@ class Player
     for (var i=0; i < platform.tiles.length; i++)
     {
       var collisionStatus = collide(sonic, platform.tiles[i]);
+      /*
       if (collisionStatus != 'none')
       {
         // sloppy workaround - set sonic's y based on the tile's y position that we collided with
@@ -67,18 +68,30 @@ class Player
         this.onGround = true;
         return collisionStatus;
       }
-      // write four if statements 
-      // one checking if collisionStatus is top
-      // another for bottom, left, right
+      */
       if (collisionStatus == 'top')
       {
-        
+        console.log("top collision");
+        this.y = platform.tiles[i].y - this.h;
+        this.onGround = true;
       }
       else if (collisionStatus == 'bottom')
       {
-        
+        this.vy = 0;
       }
-      else if 
+      else if (collisionStatus == 'left')
+      {
+        this.vx = 0;
+      }
+      else if (collisionStatus == 'right')
+      {
+        this.vx = 0;
+      }
+      // else case handles collisionStatus == "none"
+      else
+      {
+        this.onGround = false;
+      }
       
     }
     return 'none';
@@ -265,14 +278,17 @@ function draw()
   
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
-  collisions = sonic.checkPlatformCollisions();
+  //collisions = sonic.checkPlatformCollisions();
+  sonic.checkPlatformCollisions();
   // console.log(collisions);
   // NOTE: unable to fall off cliff because left/right collisions here
+  /*
   if (collisions.includes('left') || collisions.includes('right'))
   {
     console.log("triggered");
     sonic.x = sonic.x - sonic.vx;
   }
+  */
   
   // display platforms
   for (var i=0; i < platforms.length; i++)
