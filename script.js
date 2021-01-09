@@ -166,6 +166,12 @@ var platform2;
 var tileDefaultW = 128;
 var tileDefaultH = 128;
 
+// variables that control the offset for the tiles
+// there is a bug with an unknown cause that is making the hitboxes innacurate
+// this is a simple fix to that
+var tileHorizontalOffset = -35;
+var tileVerticalOffset = -35;
+
 // Tile class
 class Tile
 {  
@@ -189,7 +195,7 @@ class Tile
   // this is a sloppy fix to the "gap" bug
   draw()
   {
-    image(this.image, this.x, this.y - 35);
+    image(this.image, this.x + tileHorizontalOffset, this.y + tileVerticalOffset);
   }
 }
 
@@ -221,7 +227,7 @@ function setup()
 {
   createCanvas(screenWidth,screenHeight);
   platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");    
-  platform2 = new Platform(0, groundY - 50, 2, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
+  platform2 = new Platform(200, groundY - 50, 2, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   sonicImgNormal.position(100, 500);  
   sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);    
@@ -306,17 +312,16 @@ function draw()
   // draw sonic image
   sonicImgNormal.position(sonic.x, sonic.y);  
   
-  // draw sonic hitbox for debugging
-  // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
+  
   if (developerMode)
   {
+    
+    // draw sonic hitbox for debugging
+    // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
     noFill();
     rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
-  }
-  
-  // draw the tile hitboxes for debugging
-  if (developerMode)
-  {   
+    
+    // draw the tile hitboxes for debugging
     for (var i = 0; i < platforms.length; i++)
     {
       for (var j = 0; j < platforms[i].tiles.length; j++)
@@ -324,12 +329,9 @@ function draw()
         var currentTile = platforms[i].tiles[j];
         rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
       }
-    }    
-  }  
-  
-  // display statistics for debugging
-  if(developerMode)
-  {
+    }
+    
+    // display statistics for debugging
     fill(0, 0, 0);
     textSize(24);
     // use the text function to display:
@@ -344,6 +346,18 @@ function draw()
     text("vy: " + sonic.vy.toFixed(2), 1000, 175);
     text("onGround: " + sonic.onGround, 1000, 200);
     //text("blah", 1000, 100)
+  }
+  
+  
+  if (developerMode)
+  {   
+    
+  }  
+  
+  
+  if(developerMode)
+  {
+    
     
   }
   
