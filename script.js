@@ -56,9 +56,16 @@ class Player
   // this checks collision between Sonic and ONE of the platforms
   checkPlatformCollision(platform)
   {
+    console.log(platform.tiles.length);
     for (var i=0; i < platform.tiles.length; i++)
     {
+      // console.log(i);
       var collisionStatus = collide(sonic, platform.tiles[i]);
+      if (i != 0)
+      {
+        // console.log("i: " + i + " status: " + collisionStatus);
+        console.log("blah");;
+      }
       /*
       if (collisionStatus != 'none')
       {
@@ -71,8 +78,9 @@ class Player
       */
       if (collisionStatus == 'top')
       {
-        console.log("top collision");
+        // console.log("top collision");
         this.y = platform.tiles[i].y - this.h;
+        this.vy = 0;
         this.onGround = true;
       }
       else if (collisionStatus == 'bottom')
@@ -87,12 +95,7 @@ class Player
       {
         this.vx = 0;
       }
-      // else case handles collisionStatus == "none"
-      else
-      {
-        this.onGround = false;
-      }
-      
+      return collisionStatus;      
     }
     return 'none';
   }
@@ -104,20 +107,13 @@ class Player
     var collisions = [];
     for (var i=0; i < platforms.length; i++)
     {
-      
-      sonic.checkPlatformCollision(platforms[i]);
-      
-      /*
-      // console.log(platforms[i]);
       var collisionStatus = sonic.checkPlatformCollision(platforms[i]);
-      // console.log(collisionStatus);
       if (collisionStatus != 'none')
       {
         collisions.push(collisionStatus);
       }
-      */
     }
-    // return collisions;
+    return collisions;
   }  
   
 }
@@ -251,23 +247,14 @@ function draw()
   noFill();
   
   // collisions
-  /*
   var collisions = sonic.checkPlatformCollisions();  
   //console.log(collisions);
   // NOTE: later we probably need to change this to collisionStatus == "top" or something
   // NOTE: would collisions == [] work?
-  if (collisions.length >= 1)
-  {
-    // console.log("stopped falling because collision");
-    sonic.vy = 0;
-    //sonic.y = groundY;
-    sonic.onGround = true;
-  }
-  else
+  if (collisions.length == 0)
   {
     sonic.onGround = false;
   }
-  */
   
   // if in air, update sonic vertical position and speed
   if(!sonic.onGround)
