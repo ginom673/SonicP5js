@@ -83,10 +83,12 @@ class Player
       }
       else if (collisionStatus == 'left')
       {
+        console.log("left");
         this.vx = 0;
       }
       else if (collisionStatus == 'right')
       {
+        console.log("right");
         this.vx = 0;  
       }
       tileCollisions.push(collisionStatus);      
@@ -248,16 +250,32 @@ function draw()
     sonic.onGround = false;
   }
   */
-  // write a for loop that goes through every item in collisions
+  
+  // create a boolean variable called collideAny
+  var collided = false;
   for (var i=0; i < collisions.length; i++)
   {
-    // grab the tileCollisions list @ position i within collisions
     
     var tileCollisions = collisions[i];
     
-    for (var i=0; i < tileCollisions)
-    
+    for (var j=0; j < tileCollisions.length; j++)
+    {
+      // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
+      var collisionStatus = tileCollisions[j];
+      // if collisionStatus is not none, set collided to true
+      if (collisionStatus != 'none')
+      {
+        collided = true;
+      }
+    }    
   }
+  
+  // if collided is false, set onGround to false
+  if (!collided)
+  {
+    sonic.onGround = false;
+  }
+  
   // if in air, update sonic vertical position and speed
   if(!sonic.onGround)
   {
