@@ -56,16 +56,10 @@ class Player
   // this checks collision between Sonic and ONE of the platforms
   checkPlatformCollision(platform)
   {
-    console.log(platform.tiles.length);
+    var collisions = [];
     for (var i=0; i < platform.tiles.length; i++)
     {
-      // console.log(i);
       var collisionStatus = collide(sonic, platform.tiles[i]);
-      if (i != 0)
-      {
-        // console.log("i: " + i + " status: " + collisionStatus);
-        console.log("blah");;
-      }
       /*
       if (collisionStatus != 'none')
       {
@@ -78,26 +72,28 @@ class Player
       */
       if (collisionStatus == 'top')
       {
-        // console.log("top collision");
         this.y = platform.tiles[i].y - this.h;
         this.vy = 0;
         this.onGround = true;
+        collisions.push(collisionStatus);
       }
       else if (collisionStatus == 'bottom')
       {
         this.vy = 0;
+        collisions.push(collisionStatus);
       }
       else if (collisionStatus == 'left')
       {
         this.vx = 0;
+        collisions.push(collisionStatus);
       }
       else if (collisionStatus == 'right')
       {
         this.vx = 0;
-      }
-      return collisionStatus;      
+        collisions.push(collisionStatus);
+      }          
     }
-    return 'none';
+    return collisions;
   }
   
   // this checks collision between Sonic and ALL of the platforms
