@@ -81,12 +81,12 @@ class Player
       {
         this.vy = 0;
       }
-      else if (collisionStatus == 'left')
+      else if (collisionStatus == 'left' && this.vx > 0)
       {
         console.log("left");
         this.vx = 0;
       }
-      else if (collisionStatus == 'right')
+      else if (collisionStatus == 'right' && this.vx < 0)
       {
         console.log("right");
         this.vx = 0;  
@@ -312,7 +312,7 @@ function draw()
   // draw sonic image
   sonicImgNormal.position(sonic.x, sonic.y);  
   
-  
+  // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
   {
     
@@ -327,39 +327,20 @@ function draw()
       for (var j = 0; j < platforms[i].tiles.length; j++)
       {  
         var currentTile = platforms[i].tiles[j];
-        rect(currentTile.x, currentTile.y, currentTile.w, currentTile.h);
+        rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
       }
     }
     
     // display statistics for debugging
     fill(0, 0, 0);
     textSize(24);
-    // use the text function to display:
-    // sonic.x
-    // sonic.y
-    // sonic.vx
-    // sonic.vy
-    // sonic.onGround
     text("x: " + sonic.x.toFixed(2), 1000, 100);
     text("y: " + sonic.y.toFixed(2), 1000, 125);
     text("vx: " + sonic.vx.toFixed(2), 1000, 150);
     text("vy: " + sonic.vy.toFixed(2), 1000, 175);
     text("onGround: " + sonic.onGround, 1000, 200);
-    //text("blah", 1000, 100)
   }
-  
-  
-  if (developerMode)
-  {   
-    
-  }  
-  
-  
-  if(developerMode)
-  {
-    
-    
-  }
+
   
 } 
 
