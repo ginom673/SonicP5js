@@ -303,6 +303,15 @@ function draw()
   }
   */
   
+  // autoscroll platforms
+  for (var i=0; i < platforms.length; i++)
+  {
+    for (var j=0; j < platforms[i].tiles.length; j++)
+    {
+      platforms[i].tiles[j]
+    }
+  }
+  
   // display platforms
   for (var i=0; i < platforms.length; i++)
   {
