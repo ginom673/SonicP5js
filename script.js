@@ -120,21 +120,24 @@ class Platform
   
   // Platform constructor
   // (x,y) is the top-left corner of this platform
-  // tileWidth - how many tiles wide/long it is 
-  // (UNUSED) tileHeight - how many tiles high it is ... this can be < 1, i.e. 0.5
-  constructor(x, y, tileWidth, tileHeight, tileImgName)
+  // tilesLong - how many tiles wide/long it is 
+  // (UNUSED) tilesHigh - how many tiles high it is ... this can be < 1, i.e. 0.5
+  constructor(x, y, tilesLong, tilesHigh, tileImgName)
   {
     // setup properties
     this.x = x;
     this.y = y;
-    this.tileWidth = tileWidth;
-    this.tileHeight = tileHeight;
+    this.tilesLong = tilesLong;
+    this.tilesHigh = tilesHigh;
     this.tileImageName = tileImgName;
     this.tiles = [];
     
     // create a for loop that repeats tileWidth times
-    for (var i = 0; i < tileWidth; i++)
+    for (var i = 0; i < tilesLong; i++)
     {
+      
+      // add an if statement
+      
       var theTile = new Tile(x + (i * tileDefaultW), y, tileImgName);
       this.tiles.push(theTile);      
     }
@@ -167,8 +170,10 @@ var platform2;
 var platform3;
 
 // controls default Tile size
+/*
 var tileDefaultW = 128;
 var tileDefaultH = 128;
+*/
 
 // variables that control the offset for the tiles
 // there is a bug with an unknown cause that is making the hitboxes innacurate
@@ -181,16 +186,16 @@ class Tile
 {  
   
   // Tile constructor
-  constructor(x, y, imgName)
+  constructor(x, y, w, h, imgName)
   {
     this.x = x;
     this.y = y;
-    this.w = tileDefaultW; // use default width
-    this.h = tileDefaultH; // use default height
+    this.w = w; 
+    this.h = h; 
     this.imgName = imgName;
     
     // load image for this Tile
-    this.image = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");     
+    this.image = loadImage(imgName);     
   }
   
   // draws this tile's image @ (x,y)
@@ -230,7 +235,13 @@ var tile1;
 function setup()
 {
   createCanvas(screenWidth,screenHeight);
-  platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");    
+  
+  
+  // tile name ---> "green hill ground"
+  // "green hill float"
+  // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
+  
+  platform1 = new Platform(0, groundY, 20, 1, "");    
   platform2 = new Platform(200, groundY - 50, 2, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
   platform3 = new Platform(1000, groundY - 100, 1, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
