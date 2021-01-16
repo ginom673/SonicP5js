@@ -31,21 +31,44 @@ var maxFallSpeed = 15;
 // max flying speed
 var maxFlySpeed = -15;
 
+// motobug enemy
+var motobug;
+
 // Character class
 class Character
 {  
   
   // Character constructor
-  constructor(x, y, vx, vy, onGround, imgName, w, h)
+  constructor(x, y, vx, vy, onGround, imgName, w, h, isGif)
   {
     this.x = x;
     this.y = y;
     this.vx = vx;
     this.vy = vy;
     this.onGround = onGround;
+    this.isGif = isGif;
+    /*  
+    // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+    // sonicImgNormal.position(100, 500);  
+    */
     this.imgName = imgName;
+    this.img = createImg(imgName);
+    this.img.position(x,y);
     this.w = w;
     this.h = h;
+  }
+  
+  // used by draw() to display character
+  display()
+  {
+    if(this.isGif)
+    {
+      this.img.position(this.x, this.y);      
+    }
+    else
+    {
+      image(this.image, this.x, this.y);
+    }    
   }
   
   // jump
@@ -262,8 +285,8 @@ function setup()
   platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
-  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72);
-  motobug = new Character(50, 2000, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58);
+  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
+  motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, true);
 }
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
@@ -356,12 +379,13 @@ function draw()
   }
   */
   
-  // autoscroll platforms
+  // autoscroll platforms and enemies
   for (var i=0; i < platforms.length; i++)
   {
     for (var j=0; j < platforms[i].tiles.length; j++)
     {
       platforms[i].tiles[j].x = platforms[i].tiles[j].x - autoscrollRate;
+      motobug.x = motobug.x - autoscrollRate;
     }
   }
   
@@ -372,7 +396,9 @@ function draw()
   }
   
   // draw sonic image
-  sonicImgNormal.position(sonic.x, sonic.y);  
+  sonic.display();
+  motobug.display();
+  //sonicImgNormal.position(sonic.x, sonic.y);  
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
