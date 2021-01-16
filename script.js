@@ -51,9 +51,9 @@ class Player
       return;
     }    
     this.onGround = false;
-    this.vy = -10;
+    this.vy = -12;
     // set sonic's y to itself minus 10
-    this.y = this.y - 10;
+    this.y = this.y + this.vy;
   }
   
   // this checks collision between Sonic and ONE of the platforms
@@ -137,8 +137,19 @@ class Platform
     {
       
       // add an if statement
+      if(tileImgName == "flat ground")
+      {
+        var theTile = new Tile(x + (i * 128), y, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
+      }  
+      else if(tileImgName == "floating platform")
+      {
+        var theTile = new Tile(x + (i * 128), y, 128, 60, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
+      }
+      else
+      {
+        console.log("Unrecognized tile name: " + tileImgName)
+      }      
       
-      var theTile = new Tile(x + (i * tileDefaultW), y, tileImgName);
       this.tiles.push(theTile);      
     }
     
@@ -241,9 +252,9 @@ function setup()
   // "green hill float"
   // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
   
-  platform1 = new Platform(0, groundY, 20, 1, "");    
-  platform2 = new Platform(200, groundY - 50, 2, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
-  platform3 = new Platform(1000, groundY - 100, 1, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
+  platform1 = new Platform(0, groundY, 20, 1, "flat ground");    
+  platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
+  platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   sonicImgNormal.position(100, 500);  
   sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);    
@@ -276,10 +287,8 @@ function draw()
   // create a boolean variable called collideAny
   var collided = false;
   for (var i=0; i < collisions.length; i++)
-  {
-    
-    var tileCollisions = collisions[i];
-    
+  {    
+    var tileCollisions = collisions[i];    
     for (var j=0; j < tileCollisions.length; j++)
     {
       // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
@@ -301,7 +310,8 @@ function draw()
   // if in air, update sonic vertical position and speed
   if(!sonic.onGround)
   {
-    sonic.vy = sonic.vy + gravity;          
+    sonic.vy = sonic.vy + gravity;
+    if(sonic.vy >)
     sonic.y = sonic.y + sonic.vy;
   }
   
@@ -313,7 +323,6 @@ function draw()
   {
     if(collisions[i].includes("left"))
     {
-      console.log("asdf");
       sonic.x = sonic.x - autoscrollRate;
     }
   }
