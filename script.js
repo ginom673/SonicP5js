@@ -296,12 +296,18 @@ function draw()
   
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
-  console.log(collisions);
-  if(collisions.includes("left"))
+  // console.log(collisions);
+  // add a for loop that goes through all platforms in collisions lists
+  for (var i=0; i < collisions.length; i++)
   {
-    console.log("asdf");
-    sonic.x = sonic.x - autoscrollRate;
+    if(collisions[i].includes("left"))
+    {
+      console.log("asdf");
+      sonic.x = sonic.x - autoscrollRate;
+    }
   }
+  
+  
   // drag sonic by auto scroll rate
   
   
