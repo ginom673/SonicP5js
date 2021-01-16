@@ -22,6 +22,9 @@ var screenHeight = 640;
 // platform list
 var platforms = [];
 
+// platform autoscrolling rate
+var autoscrollRate = 5;
+
 // Player class
 class Player
 {  
@@ -293,8 +296,15 @@ function draw()
   
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
+  if(collisions.includes("left"))
+  {
+
+  }
+  // drag sonic by auto scroll rate
+  
+  
   //collisions = sonic.checkPlatformCollisions();
-  sonic.checkPlatformCollisions();
+  //sonic.checkPlatformCollisions();
   // console.log(collisions);
   // NOTE: unable to fall off cliff because left/right collisions here
   /*
@@ -310,7 +320,7 @@ function draw()
   {
     for (var j=0; j < platforms[i].tiles.length; j++)
     {
-      platforms[i].tiles[j].x = platforms[i].tiles[j].x - 5;
+      platforms[i].tiles[j].x = platforms[i].tiles[j].x - autoscrollRate;
     }
   }
   
