@@ -25,11 +25,17 @@ var platforms = [];
 // platform autoscrolling rate
 var autoscrollRate = 5;
 
-// Player class
-class Player
+// max falling speed
+var maxFallSpeed = 15;
+
+// max flying speed
+var maxFlySpeed = -15;
+
+// Character class
+class Character
 {  
   
-  // Player constructor
+  // Character constructor
   constructor(x, y, vx, vy, onGround, imgName, w, h)
   {
     this.x = x;
@@ -45,7 +51,7 @@ class Player
   // jump
   jump()
   {
-    // prevent double-jumping; if player tries to jump while in midair, do nothing
+    // prevent double-jumping; if character tries to jump while in midair, do nothing
     if (this.onGround == false) 
     {
       return;
@@ -245,8 +251,7 @@ var tile1;
 
 function setup()
 {
-  createCanvas(screenWidth,screenHeight);
-  
+  createCanvas(screenWidth,screenHeight);  
   
   // tile name ---> "green hill ground"
   // "green hill float"
@@ -255,9 +260,10 @@ function setup()
   platform1 = new Platform(0, groundY, 20, 1, "flat ground");    
   platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
   platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
-  sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
-  sonicImgNormal.position(100, 500);  
-  sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);    
+  // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+  // sonicImgNormal.position(100, 500);  
+  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72);
+  motobug = new Character(50, 2000, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58);
 }
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
@@ -311,7 +317,14 @@ function draw()
   if(!sonic.onGround)
   {
     sonic.vy = sonic.vy + gravity;
-    if(sonic.vy >)
+    if(sonic.vy > maxFallSpeed)
+    {
+      sonic.vy = maxFallSpeed;
+    }
+    if(sonic.vy < maxFlySpeed)
+    {
+      sonic.vy = maxFlySpeed;
+    }
     sonic.y = sonic.y + sonic.vy;
   }
   
