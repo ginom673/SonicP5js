@@ -296,9 +296,11 @@ function draw()
   
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
+  console.log(collisions);
   if(collisions.includes("left"))
   {
-
+    console.log("asdf");
+    sonic.x = sonic.x - autoscrollRate;
   }
   // drag sonic by auto scroll rate
   
