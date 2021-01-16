@@ -308,7 +308,7 @@ function draw()
   {
     for (var j=0; j < platforms[i].tiles.length; j++)
     {
-      platforms[i].tiles[j]
+      platforms[i].tiles[j].x = platforms[i].tiles[j].x - 5;
     }
   }
   
