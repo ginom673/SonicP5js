@@ -161,6 +161,7 @@ class Platform
 // global variables for Platform objects
 var platform1;
 var platform2;
+var platform3;
 
 // controls default Tile size
 var tileDefaultW = 128;
@@ -228,6 +229,7 @@ function setup()
   createCanvas(screenWidth,screenHeight);
   platform1 = new Platform(0, groundY, 20, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");    
   platform2 = new Platform(200, groundY - 50, 2, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
+  platform3 = new Platform(1000, groundY - 100, 1, 1, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
   sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   sonicImgNormal.position(100, 500);  
   sonic = new Player(100, 200, 0, 0, false, "sprite", 64, 72);    
