@@ -91,15 +91,19 @@ class Character
   {
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
-    {
-      
-      
-      if(platform.tileImgName == "tile 1")
-      {        
-        var adjustedHitbox = platform.tiles[i];
-        adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
-        adjustedHitbox.h = adjustedHitbox.h/2;         
-        var collisionStatus = collide(sonic, adjustedHitbox);    
+    {    
+      if(platform.tileImageName == "tile 1")
+      {
+        // var adjustedHitbox = platform.tiles[i];
+        // adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
+        // adjustedHitbox.h = adjustedHitbox.h/2; 
+        var originalY = platform.tiles[i].y;
+        var originalH = platform.tiles[i].h; 
+        platform.tiles[i].y = platform.tiles[i].y + platform.tiles[i].h/2;
+        platform.tiles[i].h = platform.tiles[i].h/2;
+        var collisionStatus = collide(sonic, platform.tiles[i]);    
+        platform.tiles[i].y = originalY;
+        platform.tiles[i].h = originalH;
       }
       else
       {
@@ -298,10 +302,10 @@ function setup()
   // "green hill float"
   // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
   
-  // platform1 = new Platform(0, groundY, 20, 1, "flat ground");    
-  // platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
-  // platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
-  platform4 = new Platform(2014, groundY - 256, 1, 1, "tile 1");
+  platform1 = new Platform(0, groundY, 20, 1, "flat ground");    
+  platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
+  platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
+  platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
   sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
@@ -441,16 +445,19 @@ function draw()
         if(platforms[i].tileImageName == "tile 1")
         {
           // console.log("tile 1");
-          var adjustedHitbox = platforms[i].tiles[j];
+          /*var adjustedHitbox = platforms[i].tiles[j];
           adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
-          adjustedHitbox.h = adjustedHitbox.h/2;    
-          rect(adjustedHitbox.x + tileHorizontalOffset, adjustedHitbox.y + tileVerticalOffset, adjustedHitbox.w, adjustedHitbox.h);
+          adjustedHitbox.h = adjustedHitbox.h/2;
+          */
+          rect(platforms[i].tiles[j].x + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
+          /*
           if(!reported)
           {
             console.log(adjustedHitbox);
             console.log(platforms[i].tiles[j]);          
             reported = true;    
           }
+          */
 
         }
         else
@@ -464,6 +471,8 @@ function draw()
     
     // display statistics for debugging
     fill(0, 0, 0);
+    stroke(0,0,0);
+    strokeWeight(1);
     textSize(24);
     text("x: " + sonic.x.toFixed(2), 1000, 100);
     text("y: " + sonic.y.toFixed(2), 1000, 125);
