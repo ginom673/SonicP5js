@@ -39,6 +39,7 @@ class Character
 {  
   
   // Character constructor
+  // constructor(x, y, w, h, hx, hy, hw, hh, onGround, 
   constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   {
     this.x = x;
@@ -194,15 +195,15 @@ class Platform
       // add an if statement
       if(tileImgName == "flat ground")
       {
-        var theTile = new Tile(x + (i * 128), y, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
+        var theTile = new Tile(x + (i * 128), y, 128, 128, x + (i * 128), y, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
       }  
       else if(tileImgName == "floating platform")
       {
-        var theTile = new Tile(x + (i * 128), y, 128, 60, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
+        var theTile = new Tile(x + (i * 128), y, 128, 60, x + (i * 128), y, 128, 60, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
       }
       else if(tileImgName == "tile 1")
       {
-        var theTile = new Tile(x + (i * 514), y, 514, 512, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
+        var theTile = new Tile(x + (i * 514), y, 514, 512, x + (i * 514), y + 256, 514, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
       }
       else
       {
@@ -321,8 +322,8 @@ function setup()
   platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
-  sonic = new Character(100, 200, 0, 0, false, 64, 72 "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
-  motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, true);
+  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, 200, 64, 72, true);
+  motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
 }
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
