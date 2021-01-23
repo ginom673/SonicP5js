@@ -92,7 +92,21 @@ class Character
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
     {
-      var collisionStatus = collide(sonic, platform.tiles[i]);
+      
+      
+      if(platform.tileImgName == "tile 1")
+      {
+        
+        var adjustedHitbox = platform.tiles[i];
+        adjustedHitbox.
+        
+        var collisionStatus = collide(sonic, platform.tiles[i]);    
+      }
+      else
+      {
+        var collisionStatus = collide(sonic, platform.tiles[i]);    
+      }
+      
       /*
       if (collisionStatus != 'none')
       {
@@ -176,7 +190,7 @@ class Platform
       }
       else if(tileImgName == "tile 1")
       {
-        var theTile = new Tile()
+        var theTile = new Tile(x + (i * 514), y, 514, 512, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
       }
       else
       {
@@ -288,7 +302,7 @@ function setup()
   platform1 = new Platform(0, groundY, 20, 1, "flat ground");    
   platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
   platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
-  platform4 = new Platform(2014, groundY, 1, 1, "tile 1");
+  platform4 = new Platform(2014, groundY - 256, 1, 1, "tile 1");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
   sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
