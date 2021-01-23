@@ -174,6 +174,10 @@ class Platform
       {
         var theTile = new Tile(x + (i * 128), y, 128, 60, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
       }
+      else if(tileImgName == "tile 1")
+      {
+        var theTile = new Tile()
+      }
       else
       {
         console.log("Unrecognized tile name: " + tileImgName)
@@ -208,6 +212,7 @@ class Platform
 var platform1;
 var platform2;
 var platform3;
+var platform4;
 
 // controls default Tile size
 /*
@@ -283,11 +288,12 @@ function setup()
   platform1 = new Platform(0, groundY, 20, 1, "flat ground");    
   platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
   platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
+  platform4 = new Platform(2014, groundY, 1, 1, "tile 1");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
   sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, true);
-}
+}1
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
 function draw()
