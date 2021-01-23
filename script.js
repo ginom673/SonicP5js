@@ -39,7 +39,7 @@ class Character
 {  
   
   // Character constructor
-  constructor(x, y, vx, vy, onGround, imgName, w, h, isGif)
+  constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   {
     this.x = x;
     this.y = y;
@@ -47,6 +47,10 @@ class Character
     this.vy = vy;
     this.onGround = onGround;
     this.isGif = isGif;
+    this.hx = hx;
+    this.hy = hy;
+    this.hw = hw;
+    this.hh = hh;
     /*  
     // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
     // sonicImgNormal.position(100, 500);  
@@ -91,7 +95,11 @@ class Character
   {
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
-    {    
+    {  
+      
+      var collisionStatus = collide(sonic, platform.tiles[i]);
+      
+      /*
       if(platform.tileImageName == "tile 1")
       {
         // var adjustedHitbox = platform.tiles[i];
@@ -109,6 +117,7 @@ class Character
       {
         var collisionStatus = collide(sonic, platform.tiles[i]);    
       }
+      */
       
       /*
       if (collisionStatus != 'none')
@@ -248,12 +257,16 @@ class Tile
 {  
   
   // Tile constructor
-  constructor(x, y, w, h, imgName)
+  constructor(x, y, w, h, hx, hy, hw, hh, imgName)
   {
     this.x = x;
     this.y = y;
     this.w = w; 
-    this.h = h; 
+    this.h = h;
+    this.hx = hx;
+    this.hy = hy;
+    this.hw = hw; 
+    this.hh = hh;
     this.imgName = imgName;
     
     // load image for this Tile
@@ -275,10 +288,10 @@ var sonic;
 // taken from https://stackoverflow.com/questions/29861096/detect-which-side-of-a-rectangle-is-colliding-with-another-rectangle
 function collide(r1,r2)
 {
-  var dx=(r1.x+r1.w/2)-(r2.x+r2.w/2);
-  var dy=(r1.y+r1.h/2)-(r2.y+r2.h/2);
-  var width=(r1.w+r2.w)/2;
-  var height=(r1.h+r2.h)/2;
+  var dx=(r1.hx+r1.hw/2)-(r2.hx+r2.hw/2);
+  var dy=(r1.hy+r1.hh/2)-(r2.hy+r2.hh/2);
+  var width=(r1.hw+r2.hw)/2;
+  var height=(r1.hh+r2.hh)/2;
   var crossWidth=width*dy;
   var crossHeight=height*dx;
   var collision='none';
@@ -308,9 +321,9 @@ function setup()
   platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
-  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
+  sonic = new Character(100, 200, 0, 0, false, 64, 72 "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, true);
-}1
+}
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
 var reported = false; // debugging
