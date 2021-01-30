@@ -388,10 +388,14 @@ function draw()
       sonic.vy = maxFlySpeed;
     }
     sonic.y = sonic.y + sonic.vy;
+    sonic.hy = sonic.hy + sonic.vy;
   }
   
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
+  // update hbx by vx
+  sonic.hx = sonic.hx + sonic.vx;
+  
   // console.log(collisions);
   // add a for loop that goes through all platforms in collisions lists
   for (var i=0; i < collisions.length; i++)
@@ -399,6 +403,7 @@ function draw()
     if(collisions[i].includes("left"))
     {
       sonic.x = sonic.x - autoscrollRate;
+      sonic.hx = sonic.hx - autoscrollRate;
     }
   }
   
