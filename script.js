@@ -152,7 +152,6 @@ class Character
       }
       tileCollisions.push(collisionStatus);      
     }
-    console.log(tileCollisions);
     return tileCollisions;
   }
   
@@ -396,7 +395,7 @@ function draw()
   // update hbx by vx
   sonic.hx = sonic.hx + sonic.vx;
   
-  // console.log(collisions);
+  console.log(collisions);
   // add a for loop that goes through all platforms in collisions lists
   for (var i=0; i < collisions.length; i++)
   {
@@ -471,7 +470,8 @@ function draw()
           adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
           adjustedHitbox.h = adjustedHitbox.h/2;
           */
-          // rect(platforms[i].tiles[j].hx + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
+          // rect(platforms[i].tiles[j].x + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
+          rect(platforms[i].tiles[j].hx + tileHorizontalOffset, platforms[i].tiles[j].hy + tileVerticalOffset, platforms[i].tiles[j].hw, platforms[i].tiles[j].hh);
           /*
           if(!reported)
           {
@@ -485,6 +485,7 @@ function draw()
         else
         {
           // rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
+          rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
         }     
         
         
