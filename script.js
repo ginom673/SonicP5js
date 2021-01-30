@@ -14,6 +14,7 @@ var gravity = 0.4;
 
 // image variable for background
 var background1;
+var bg;
 
 // screen dimensions
 var screenWidth = 1200;
@@ -86,7 +87,7 @@ class Character
     }    
     this.onGround = false;
     this.vy = -12;
-    // set sonic's y to itself minus 10
+    // initial change in position to get us off ground, avoiding immediate collision detection with tile we are on
     this.y = this.y + this.vy;
   }
   
@@ -142,12 +143,12 @@ class Character
       }
       else if (collisionStatus == 'left' && this.vx > 0)
       {
-        console.log("left");
+        // console.log("left");
         this.vx = 0;
       }
       else if (collisionStatus == 'right' && this.vx < 0)
       {
-        console.log("right");
+        // console.log("right");
         this.vx = 0;  
       }
       tileCollisions.push(collisionStatus);      
@@ -312,6 +313,8 @@ function setup()
 {
   createCanvas(screenWidth,screenHeight);  
   
+  bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
+  
   // tile name ---> "green hill ground"
   // "green hill float"
   // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
@@ -322,7 +325,7 @@ function setup()
   platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
   // sonicImgNormal.position(100, 500);  
-  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, 200, 64, 72, true);
+  sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, , 64, 72, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
 }
 
@@ -333,8 +336,8 @@ function draw()
   
   clear();
   
-  background("#82ebed");
-  
+  //background("#82ebed");
+  background(bg);
   var borderWidth = 6;
   stroke(borderWidth);
   noFill();
@@ -395,8 +398,9 @@ function draw()
   // update hbx by vx
   sonic.hx = sonic.hx + sonic.vx;
   
-  console.log(collisions);
+  // console.log(collisions);
   // add a for loop that goes through all platforms in collisions lists
+  // NOTE: if we collide with two platforms from the left, wouldn't this cause us to scoot to the left too fast?
   for (var i=0; i < collisions.length; i++)
   {
     if(collisions[i].includes("left"))
@@ -451,8 +455,10 @@ function draw()
     
     // draw sonic hitbox for debugging
     // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
+    // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
     noFill();
-    rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
+    // rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
+    rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
     
     // draw the tile hitboxes for debugging
     stroke(255,0,0);
