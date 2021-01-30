@@ -152,6 +152,7 @@ class Character
       }
       tileCollisions.push(collisionStatus);      
     }
+    console.log(tileCollisions);
     return tileCollisions;
   }
   
