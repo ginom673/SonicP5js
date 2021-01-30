@@ -429,7 +429,9 @@ function draw()
     for (var j=0; j < platforms[i].tiles.length; j++)
     {
       platforms[i].tiles[j].x = platforms[i].tiles[j].x - autoscrollRate;
+      platforms[i].tiles[j].hx = platforms[i].tiles[j].hx - autoscrollRate;
       motobug.x = motobug.x - autoscrollRate;
+      motobug.hx = motobug.hx - autoscrollRate;
     }
   }
   
@@ -469,7 +471,7 @@ function draw()
           adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
           adjustedHitbox.h = adjustedHitbox.h/2;
           */
-          rect(platforms[i].tiles[j].x + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
+          // rect(platforms[i].tiles[j].hx + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
           /*
           if(!reported)
           {
@@ -482,7 +484,7 @@ function draw()
         }
         else
         {
-          rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
+          // rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
         }     
         
         
