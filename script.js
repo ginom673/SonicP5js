@@ -352,7 +352,7 @@ function setup()
   // character constructor template
   // constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   // sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, 180, 64, 72, true);
-  sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
+sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 20, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   finishLine = new Obstacle(2000, groundY - 64, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2F59c351cb9c3fc.jpg?v=1613848214467");
 }
@@ -498,24 +498,24 @@ function draw()
       for (var j = 0; j < platforms[i].tiles.length; j++)
       {  
         var currentTile = platforms[i].tiles[j];
-        // console.log(platforms[i]);        
+        rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
+        // console.log(platforms[i]);
+        
+        /*
         if(platforms[i].tileImageName == "tile 1")
         {
           // console.log("tile 1");
           /*var adjustedHitbox = platforms[i].tiles[j];
           adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
           adjustedHitbox.h = adjustedHitbox.h/2;
-          */
           // rect(platforms[i].tiles[j].x + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
           rect(platforms[i].tiles[j].hx + tileHorizontalOffset, platforms[i].tiles[j].hy + tileVerticalOffset, platforms[i].tiles[j].hw, platforms[i].tiles[j].hh);
-          /*
           if(!reported)
           {
             console.log(adjustedHitbox);
             console.log(platforms[i].tiles[j]);          
             reported = true;    
           }
-          */
 
         }
         else
@@ -523,7 +523,7 @@ function draw()
           // rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
           rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
         }     
-        
+        */
         
       }
     }
