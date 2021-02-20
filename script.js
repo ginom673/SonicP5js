@@ -35,6 +35,8 @@ var maxFlySpeed = -15;
 // motobug enemy
 var motobug;
 
+var finishLine;
+
 // Character class
 class Character
 {  
@@ -180,7 +182,15 @@ class Obstacle
     this.w = w;
     this.h = h;
     this.imgName = imgName;
+    
+    this.image = loadImage(imgName);
   }
+  
+  display()
+  {
+    image(this.image, this.x, this.y);  
+  }
+  
 }
 
 // Platform class - essentially a sequence of tiles
@@ -341,7 +351,7 @@ function setup()
   // character constructor template
   // constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   // sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, 180, 64, 72, true);
-  sonic = new Character(100, groundY + 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY + 72, 64, 72, true);
+  sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY + 72, 64, 72, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   finishLine = new Obstacle(2000, groundY - 64, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2F59c351cb9c3fc.jpg?v=1613848214467");
 }
@@ -464,6 +474,8 @@ function draw()
   // draw sonic image
   sonic.display();
   motobug.display();
+  finishLine.display();
+  
   //sonicImgNormal.position(sonic.x, sonic.y);  
   
   // display certain information in "developerMode" i.e. hitboxes, stats
@@ -524,7 +536,10 @@ function draw()
     text("y: " + sonic.y.toFixed(2), 1000, 125);
     text("vx: " + sonic.vx.toFixed(2), 1000, 150);
     text("vy: " + sonic.vy.toFixed(2), 1000, 175);
-    text("onGround: " + sonic.onGround, 1000, 200);
+    text("onGround: " + sonic.onGround, 1000, 200);   
+    
+    
+    
   }
 
   
