@@ -171,6 +171,18 @@ class Character
   
 }
 
+class Obstacle
+{
+  constructor(x, y, w, h, imgName)
+  {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.imgName = imgName;
+  }
+}
+
 // Platform class - essentially a sequence of tiles
 class Platform
 {
