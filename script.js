@@ -91,6 +91,7 @@ class Character
     this.vy = -12;
     // initial change in position to get us off ground, avoiding immediate collision detection with tile we are on
     this.y = this.y + this.vy;
+    this.hy = this.hy + this.vy;
   }
   
   // this checks collision between Sonic and ONE of the platforms
@@ -145,12 +146,12 @@ class Character
       }
       else if (collisionStatus == 'left' && this.vx > 0)
       {
-        // console.log("left");
+        alert("left");
         this.vx = 0;
       }
       else if (collisionStatus == 'right' && this.vx < 0)
       {
-        // console.log("right");
+        alert("right");
         this.vx = 0;  
       }
       tileCollisions.push(collisionStatus);      
@@ -351,7 +352,7 @@ function setup()
   // character constructor template
   // constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   // sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, 180, 64, 72, true);
-  sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY + 72, 64, 72, true);
+  sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   finishLine = new Obstacle(2000, groundY - 64, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2F59c351cb9c3fc.jpg?v=1613848214467");
 }
