@@ -530,10 +530,11 @@ function draw()
     }
     
     // display statistics for debugging
-    fill(0, 0, 0);
+    fill(150, 150, 150);
     stroke(0,0,0);
-    strokeWeight(1);
+    strokeWeight(3);
     textSize(24);
+    strokeWeight(1);
     text("x: " + sonic.x.toFixed(2), 1000, 100);
     text("y: " + sonic.y.toFixed(2), 1000, 125);
     text("vx: " + sonic.vx.toFixed(2), 1000, 150);
