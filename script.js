@@ -64,6 +64,16 @@ class Character
     this.img.position(x,y);
     this.w = w;
     this.h = h;
+    
+    // whether or not character is considered living
+    this.isAlive = true;
+    
+    // whether or not this character uses collisions
+    this.hitboxActive = true;
+    
+    // whether or not this character's image should be displayed
+    // (the Character object could be hidden but still interactable)
+    this.visible = true;
   }
   
   // used by draw() to display character
@@ -426,6 +436,8 @@ function draw()
   sonic.x = sonic.x + sonic.vx;
   // update hbx by vx
   sonic.hx = sonic.hx + sonic.vx;
+  
+  
   
   // console.log(collisions);
   // add a for loop that goes through all platforms in collisions lists
