@@ -108,6 +108,7 @@ class Character
   // NOTE: if the game is slowing down, consider not adding the "none" collision case to the tileCollisions list
   checkPlatformCollision(platform)
   {
+    
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
     {  
@@ -174,6 +175,9 @@ class Character
   // sonic.checkPlatformsCollision()
   checkPlatformCollisions()
   {    
+    
+    
+    
     var platformCollisions = [];
     for (var i=0; i < platforms.length; i++)
     {
@@ -432,6 +436,17 @@ function draw()
     sonic.hy = sonic.hy + sonic.vy;
   }
   
+  // add an if statement that checks if sonic's y is >= screenHeight
+  // if so alert "im ded"
+  if (sonic.y >= screenHeight)
+  {
+    alert("im ded lol so u suck @ dis game. git rekt m8.");
+    
+    // play sound effect (later)
+    // swap image (later)
+    sonic.hitboxActive = false;
+    sonic.vy = -5;
+  }
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
   // update hbx by vx
@@ -501,7 +516,11 @@ function draw()
     // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
     noFill();
     // rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
-    rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
+    if (sonic.hitboxActive)
+    {
+      rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
+    }
+    
     
     // draw the tile hitboxes for debugging
     stroke(255,0,0);
