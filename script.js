@@ -41,6 +41,9 @@ var finishLine;
 // sounds
 var deathNoise;
 
+// sonic death image
+var sonicDeathImage;
+
 // Character class
 class Character
 {  
@@ -85,8 +88,7 @@ class Character
   {
     
     if (!this.visible)
-    {
-      this.img.remove();
+    {         
       return;
     }
     
@@ -96,8 +98,9 @@ class Character
     }
     else
     {
-      image(this.image, this.x, this.y);
-    }    
+      image(this.img, this.x, this.y);
+    }  
+    
   }
   
   // jump
@@ -391,6 +394,9 @@ function setup()
   sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   finishLine = new Obstacle(2000, groundY - 64, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2F59c351cb9c3fc.jpg?v=1613848214467");
+  
+  sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
+  console.log(sonicDeathImage);
 }
 
 // NOTE FOR MOVEMENT: constantly add sonic's vx to his x
@@ -478,8 +484,9 @@ function draw()
       // reload sonic.img property
       // set sonic.w to the width of new image
       // set sonic.h to height of new image
+      sonic.img.remove();
       sonic.imgName = "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212";
-      sonic.img = loadImage(sonic.imgName);
+      sonic.img = sonicDeathImage;
       sonic.isGif = false;
       sonic.w = 66;
       sonic.h = 80;
