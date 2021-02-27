@@ -462,6 +462,7 @@ function draw()
       sonic.isAlive = false;
       sonic.hitboxActive = false;
       sonic.vy = -20;
+      sonic.vx = 0;
     }
     else
     {
@@ -603,6 +604,13 @@ function draw()
 
 function keyPressed()
 {
+  
+  // ignore keys if dead
+  if (!sonic.isAlive)
+  {
+    return;
+  }
+  
   if (keyCode == 90)
   {
     sonic.jump();
@@ -620,6 +628,13 @@ function keyPressed()
 // NOTE: set sonic.vx back to 0 if left arrow or right arrow key was just released
 function keyReleased()
 {
+  
+  // ignore keys if dead
+  if (!sonic.isAlive)
+  {
+    return;
+  }
+  
   if (keyCode == 39)
   {
     sonic.vx = 0;
