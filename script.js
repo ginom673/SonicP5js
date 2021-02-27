@@ -474,6 +474,15 @@ function draw()
       sonic.vy = -20;
       sonic.vx = 0;
       deathNoise.play();
+      // set sonic.imgname to the link for the image
+      // reload sonic.img property
+      // set sonic.w to the width of new image
+      // set sonic.h to height of new image
+      sonic.imgName = "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212";
+      sonic.img = loadImage(sonic.imgName);
+      sonic.isGif = false;
+      sonic.w = 66;
+      sonic.h = 80;
     }
     else
     {
