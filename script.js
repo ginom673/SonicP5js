@@ -79,6 +79,13 @@ class Character
   // used by draw() to display character
   display()
   {
+    
+    if (!this.visible)
+    {
+      this.img = undefined;
+      return;
+    }
+    
     if(this.isGif)
     {
       this.img.position(this.x, this.y);      
@@ -158,12 +165,12 @@ class Character
       }
       else if (collisionStatus == 'left' && this.vx > 0)
       {
-        alert("left");
+        // alert("left");
         this.vx = 0;
       }
       else if (collisionStatus == 'right' && this.vx < 0)
       {
-        alert("right");
+        // alert("right");
         this.vx = 0;  
       }
       tileCollisions.push(collisionStatus);      
@@ -176,12 +183,16 @@ class Character
   checkPlatformCollisions()
   {    
     
-    
+    // if hitBoxActive is false, return
+    if (!this.hitboxActive)
+    {
+      return [];
+    }
     
     var platformCollisions = [];
     for (var i=0; i < platforms.length; i++)
     {
-      var tileCollisions = sonic.checkPlatformCollision(platforms[i]);
+      var tileCollisions = this.checkPlatformCollision(platforms[i]);
       platformCollisions.push(tileCollisions);
     }
     return platformCollisions;
@@ -440,12 +451,23 @@ function draw()
   // if so alert "im ded"
   if (sonic.y >= screenHeight)
   {
-    alert("im ded lol so u suck @ dis game. git rekt m8.");
+    // alert("im ded lol so u suck @ dis game. git rekt m8.");
     
     // play sound effect (later)
     // swap image (later)
-    sonic.hitboxActive = false;
-    sonic.vy = -5;
+    
+    
+    if(sonic.isAlive) 
+    {
+      sonic.isAlive = false;
+      sonic.hitboxActive = false;
+      sonic.vy = -20;
+    }
+    else
+    {
+      sonic.visible = false;
+    }
+    
   }
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
