@@ -26,7 +26,7 @@ var screenHeight = 640;
 var platforms = [];
 
 // platform autoscrolling rate
-var autoscrollRate = 5;
+var autoscrollRate = 0;
 
 // max falling speed
 var maxFallSpeed = 15;
@@ -125,12 +125,17 @@ class Character
     this.h = 60;
     this.hw = 60;
     this.hh = 60;
+    this.hx = this.x;
+    this.hy = this.y;
     
     this.onGround = false;
     this.vy = -12;
     // initial change in position to get us off ground, avoiding immediate collision detection with tile we are on
     this.y = this.y + this.vy;
     this.hy = this.hy + this.vy;
+    
+    sonicImgRun.hide();
+    sonicImgJump.show();
   }
   
   // this checks collision between Sonic and ONE of the platforms
@@ -185,6 +190,10 @@ class Character
         this.h = 72;
         this.hw = 64;
         this.hh = 72;
+        this.hx = this.x;
+        this.hy = this.y;
+        sonicImgJump.hide();
+        sonicImgRun.show();
       }
       else if (collisionStatus == 'bottom')
       {
