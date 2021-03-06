@@ -1,3 +1,5 @@
+// BUG: hitbox is slightly off when we jump
+
 // GLOBAL VARIABLES
 
 // developerMode determines whether or not we display hitboxes and statistics
@@ -26,7 +28,7 @@ var screenHeight = 640;
 var platforms = [];
 
 // platform autoscrolling rate
-var autoscrollRate = 0;
+var autoscrollRate = 5;
 
 // max falling speed
 var maxFallSpeed = 15;
@@ -42,6 +44,7 @@ var finishLine;
 
 // sounds
 var deathNoise;
+var jumpSound;
 
 // sonic death image
 var sonicDeathImage;
@@ -127,6 +130,8 @@ class Character
     this.hh = 60;
     this.hx = this.x;
     this.hy = this.y;
+    
+    jumpSound.play();
     
     this.onGround = false;
     this.vy = -12;
@@ -398,6 +403,7 @@ function preload()
 {
   soundFormats('wav');
   deathNoise = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FDeath_Noise.wav?v=1614451645973");
+  jumpSound = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FJump.wav?v=1615058718554");
   
   bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
   
