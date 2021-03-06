@@ -45,8 +45,8 @@ var deathNoise;
 var sonicDeathImage;
 
 // world width/height
-var worldWidth;
-var worldHeight;
+var worldWidth = 2528;
+var worldHeight = screenHeight;
 
 // Character class
 class Character
@@ -373,13 +373,16 @@ function preload()
 {
   soundFormats('wav');
   deathNoise = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FDeath_Noise.wav?v=1614451645973");
+  
+  bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
+  bg.resize(2528, screenHeight);
 }
 
 function setup()
 {
   createCanvas(screenWidth,screenHeight);  
   
-  bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
+  
   
   // tile name ---> "green hill ground"
   // "green hill float"
@@ -410,8 +413,11 @@ function draw()
   
   clear();
   
-  //background("#82ebed");
-  background(bg);
+  background("#82ebed");
+  //background(bg);
+  image(bg, 0, 0);
+  
+  
   var borderWidth = 6;
   stroke(borderWidth);
   noFill();
