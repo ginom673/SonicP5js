@@ -542,8 +542,7 @@ function draw()
   // update sonic horizontal position
   sonic.x = sonic.x + sonic.vx;
   // update hbx by vx
-  sonic.hx = sonic.hx + sonic.vx;
-  
+  sonic.hx = sonic.hx + sonic.vx; 
   
   
   // console.log(collisions);
