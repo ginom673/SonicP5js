@@ -44,6 +44,10 @@ var deathNoise;
 // sonic death image
 var sonicDeathImage;
 
+// world width/height
+var worldWidth;
+var worldHeight;
+
 // Character class
 class Character
 {  
