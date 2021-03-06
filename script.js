@@ -71,10 +71,6 @@ class Character
     this.hy = hy;
     this.hw = hw;
     this.hh = hh;
-    /*  
-    // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
-    // sonicImgNormal.position(100, 500);  
-    */
     this.imgName = imgName;
     this.img = createImg(imgName);
     this.img.position(x,y);
@@ -135,12 +131,33 @@ class Character
     
     this.onGround = false;
     this.vy = -12;
+    
     // initial change in position to get us off ground, avoiding immediate collision detection with tile we are on
     this.y = this.y + this.vy;
     this.hy = this.hy + this.vy;
     
     sonicImgRun.hide();
     sonicImgJump.show();
+  }
+  
+  // this checks collision between Sonic and ALL of the platforms
+  // sonic.checkPlatformsCollision()
+  checkPlatformCollisions()
+  {    
+    
+    // if hitBoxActive is false, return
+    if (!this.hitboxActive)
+    {
+      return [];
+    }
+    
+    var platformCollisions = [];
+    for (var i=0; i < platforms.length; i++)
+    {
+      var tileCollisions = this.checkPlatformCollision(platforms[i]);
+      platformCollisions.push(tileCollisions);
+    }
+    return platformCollisions;
   }
   
   // this checks collision between Sonic and ONE of the platforms
@@ -217,26 +234,6 @@ class Character
       tileCollisions.push(collisionStatus);      
     }
     return tileCollisions;
-  }
-  
-  // this checks collision between Sonic and ALL of the platforms
-  // sonic.checkPlatformsCollision()
-  checkPlatformCollisions()
-  {    
-    
-    // if hitBoxActive is false, return
-    if (!this.hitboxActive)
-    {
-      return [];
-    }
-    
-    var platformCollisions = [];
-    for (var i=0; i < platforms.length; i++)
-    {
-      var tileCollisions = this.checkPlatformCollision(platforms[i]);
-      platformCollisions.push(tileCollisions);
-    }
-    return platformCollisions;
   }  
   
 }
