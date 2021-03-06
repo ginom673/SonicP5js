@@ -15,6 +15,7 @@ var gravity = 0.4;
 // image variable for background
 var background1;
 var bg;
+var bgX = 0;
 
 // screen dimensions
 var screenWidth = 1200;
@@ -375,14 +376,14 @@ function preload()
   deathNoise = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FDeath_Noise.wav?v=1614451645973");
   
   bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
-  bg.resize(2528, screenHeight);
+  
 }
 
 function setup()
 {
   createCanvas(screenWidth,screenHeight);  
   
-  
+  bg.resize(2528, screenHeight);
   
   // tile name ---> "green hill ground"
   // "green hill float"
@@ -415,8 +416,10 @@ function draw()
   
   background("#82ebed");
   //background(bg);
-  image(bg, 0, 0);
+  image(bg, bgX, 0);
   
+  // scroll background to left
+  bgX = bgX - (autoscrollRate * 0.4);
   
   var borderWidth = 6;
   stroke(borderWidth);
