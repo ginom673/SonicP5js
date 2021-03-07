@@ -297,6 +297,10 @@ class Platform
       {
         var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid.png?v=1615096007687");
       }
+      else if(tileImgName == "tile 2")
+      {
+        var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile2.png?v=1615097317124");
+      }
       else
       {
         console.log("Unrecognized tile name: " + tileImgName)
@@ -418,9 +422,9 @@ function setup()
   // "green hill float"
   // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
   
-  platform1 = new Platform(0, groundY - 276, 3, 1, "tile 1");    
-  platform2 = new Platform(1542, groundY - 276, 1, 1, "semi solid");
-  //platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
+  platform1 = new Platform(0, groundY - 276, 2, 1, "tile 1");    
+  platform2 = new Platform(1028, groundY - 276, 1, 1, "semi solid");
+  platform3 = new Platform(1540, groundY - 276, 1, 1, "tile 2");
   //platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   
   // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
