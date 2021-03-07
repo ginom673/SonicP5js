@@ -130,7 +130,7 @@ class Character
     jumpSound.play();
     
     this.onGround = false;
-    this.vy = -12;
+    this.vy = -14;
     
     // initial change in position to get us off ground, avoiding immediate collision detection with tile we are on
     this.y = this.y + this.vy;
@@ -293,6 +293,10 @@ class Platform
       {
         var theTile = new Tile(x + (i * 514), y, 514, 512, x + (i * 514), y + 256, 514, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
       }
+      else if(tileImgName == "semi solid")
+      {
+        var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid.png?v=1615096007687");
+      }
       else
       {
         console.log("Unrecognized tile name: " + tileImgName)
@@ -415,7 +419,7 @@ function setup()
   // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
   
   platform1 = new Platform(0, groundY - 276, 3, 1, "tile 1");    
-  //platform2 = new Platform(200, groundY - 50, 2, 1, "flat ground");
+  platform2 = new Platform(1542, groundY - 276, 1, 1, "semi solid");
   //platform3 = new Platform(1500, groundY - 150, 1, 1, "floating platform");
   //platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   
