@@ -3,7 +3,7 @@
 // GLOBAL VARIABLES
 
 // developerMode determines whether or not we display hitboxes and statistics
-var developerMode = false;
+var developerMode = true;
 
 // image object for Sonic's run/jump stance
 var sonicImgRun;
@@ -611,6 +611,8 @@ function draw()
     // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
     // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
     noFill();
+    strokeWeight(3);
+    stroke(255,255,0);
     // rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
     if (sonic.hitboxActive)
     {
@@ -619,7 +621,7 @@ function draw()
     
     
     // draw the tile hitboxes for debugging
-    stroke(255,0,0);
+    stroke(0,255,255);
     strokeWeight(5);
     for (var i = 0; i < platforms.length; i++)
     {
