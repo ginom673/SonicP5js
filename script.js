@@ -216,21 +216,22 @@ class Character
         this.hy = this.y;
         sonicImgJump.hide();
         sonicImgRun.show();
-      }
+      }      
+      else if(platform.tiles[i].imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373")
+      {
+        continue;
+      }            
       else if (collisionStatus == 'bottom')
       {
-        if(!imgName)
         this.vy = 0;
       }
       else if (collisionStatus == 'left' && this.vx > 0)
       {
-        // alert("left");
         this.vx = 0;
       }
       else if (collisionStatus == 'right' && this.vx < 0)
       {
-        // alert("right");
-        this.vx = 0;  
+        this.vx = 0;
       }
       tileCollisions.push(collisionStatus);      
     }
@@ -573,6 +574,7 @@ function draw()
   {
     if(collisions[i].includes("left"))
     {
+      // console.log("drag");
       sonic.x = sonic.x - autoscrollRate;
       sonic.hx = sonic.hx - autoscrollRate;
     }
