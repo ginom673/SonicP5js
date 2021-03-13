@@ -58,3 +58,44 @@ platform1.addTile(tile18);
 //rect(borderWidth/2 - 50, borderWidth/2 + 50, screenWidth - borderWidth, screenHeight - borderWidth)
 //rect(borderWidth/2 + 50,borderWidth/2 - 50,1280-borderWidth+20,721-borderWidth);
 //rect(0,0,1152,649);
+
+
+
+
+/*
+if(platform.tileImageName == "tile 1")
+{
+  // var adjustedHitbox = platform.tiles[i];
+  // adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
+  // adjustedHitbox.h = adjustedHitbox.h/2; 
+  var originalY = platform.tiles[i].y;
+  var originalH = platform.tiles[i].h; 
+  platform.tiles[i].y = platform.tiles[i].y + platform.tiles[i].h/2;
+  platform.tiles[i].h = platform.tiles[i].h/2;
+  var collisionStatus = collide(sonic, platform.tiles[i]);    
+  platform.tiles[i].y = originalY;
+  platform.tiles[i].h = originalH;
+}
+else
+{
+  var collisionStatus = collide(sonic, platform.tiles[i]);    
+}
+*/
+
+/*
+if (collisionStatus != 'none')
+{
+  // sloppy workaround - set sonic's y based on the tile's y position that we collided with
+  // NOTE: commenting this out seems to produce different collision effects
+  this.y = platform.tiles[i].y - this.h;
+  this.onGround = true;
+  return collisionStatus;
+}
+*/
+
+
+// controls default Tile size
+/*
+var tileDefaultW = 128;
+var tileDefaultH = 128;
+*/
