@@ -303,11 +303,11 @@ class Platform
       }
       else if(tileImgName == "semi solid 1")
       {
-        var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
+        var theTile = new Tile(x + (i * 512), y + 256, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
       }
       else if(tileImgName == "semi solid 2")
       {
-        var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 192, 512, 192, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373")
+        var theTile = new Tile(x + (i * 512), y + 256, 512, 512, x + (i * 512), y, 512, 192, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373")
       }
       else
       {
@@ -432,7 +432,9 @@ function setup()
   
   platform1 = new Platform(0, groundY - 276, 2, 1, "tile 1");    
   platform2 = new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
-  platform3 = new Platform(1028, groundY - 540, 1, 1, "semi solid 2");
+  // platform2 = new Platform(1028, groundY, 1, 1, "semi solid 1");
+  // platform3 = new Platform(1028, groundY - 540, 1, 1, "semi solid 2");
+  platform3 = new Platform(1028, groundY - 520, 1, 1, "semi solid 2");
   platform4 = new Platform(1540, groundY - 276, 1, 1, "tile 2");
   //platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
   
