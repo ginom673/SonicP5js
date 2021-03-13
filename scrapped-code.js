@@ -99,3 +99,67 @@ if (collisionStatus != 'none')
 var tileDefaultW = 128;
 var tileDefaultH = 128;
 */
+
+
+// tile name ---> "green hill ground"
+// "green hill float"
+// image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
+
+// sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
+// sonicImgNormal.position(100, 500);  
+
+
+/*
+        if(platforms[i].tileImageName == "tile 1")
+        {
+          // console.log("tile 1");
+          /*var adjustedHitbox = platforms[i].tiles[j];
+          adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
+          adjustedHitbox.h = adjustedHitbox.h/2;
+          // rect(platforms[i].tiles[j].x + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
+          rect(platforms[i].tiles[j].hx + tileHorizontalOffset, platforms[i].tiles[j].hy + tileVerticalOffset, platforms[i].tiles[j].hw, platforms[i].tiles[j].hh);
+          if(!reported)
+          {
+            console.log(adjustedHitbox);
+            console.log(platforms[i].tiles[j]);          
+            reported = true;    
+          }
+
+        }
+        else
+        {
+          // rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
+          rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
+        }     
+        */
+
+//console.log(collisions);
+// NOTE: later we probably need to change this to collisionStatus == "top" or something
+// NOTE: would collisions == [] work?
+/*
+if (collisions.length == 0)
+{
+  sonic.onGround = false;
+}
+*/
+
+
+    // set sonic.imgname to the link for the image
+    // reload sonic.img property
+    // set sonic.w to the width of new image
+    // set sonic.h to height of new image
+
+//collisions = sonic.checkPlatformCollisions();
+//sonic.checkPlatformCollisions();
+// console.log(collisions);
+// NOTE: unable to fall off cliff because left/right collisions here
+/*
+if (collisions.includes('left') || collisions.includes('right'))
+{
+  console.log("triggered");
+  sonic.x = sonic.x - sonic.vx;
+}
+*/
+
+
+  //sonicImgNormal.position(sonic.x, sonic.y);  

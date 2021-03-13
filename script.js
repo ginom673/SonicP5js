@@ -1,7 +1,9 @@
+// NOTE: later restructuring by function would be nice
+
 // BUG: hitbox is slightly off when we jump
 
-var tile1;
-
+// preload is called at beginning of project to load assets
+// preload is before setup which is before draw
 function preload()
 {
   soundFormats('wav');
@@ -10,72 +12,64 @@ function preload()
   bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");  
 }
 
+// setup is called at beginning of project (AFTER preload though) for additional setup
+// setup is after preload, before draw
 function setup()
 {
+  
+  // set up screen dimensions
   createCanvas(screenWidth,screenHeight);  
   
+  // background is stretched to be larger than screen
   bg.resize(2528, screenHeight);
   
-  // tile name ---> "green hill ground"
-  // "green hill float"
-  // image name ---> https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013
-  
+  // load platforms
   platform1 = new Platform(0, groundY - 276, 2, 1, "tile 1");    
   platform2 = new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
-  // platform2 = new Platform(1028, groundY, 1, 1, "semi solid 1");
-  // platform3 = new Platform(1028, groundY - 540, 1, 1, "semi solid 2");
   platform3 = new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
-  platform4 = new Platform(1540, groundY - 276, 1, 1, "tile 2");
-  //platform4 = new Platform(2014, groundY - 276, 1, 1, "tile 1");
+  platform4 = new Platform(1540, groundY - 276, 1, 1, "tile 2");  
   
-  // sonicImgNormal = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172");
-  // sonicImgNormal.position(100, 500);  
-  
-  // character constructor template
-  // constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
-  // sonic = new Character(100, 200, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, 180, 64, 72, true);
+  // create sonic
   sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
   sonicImgRun = sonic.img;
   sonicImgJump = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Jump.gif?v=1615057119037");
   
+  // create motobug
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
+  
+  // create finish line
   finishLine = new Obstacle(2000, groundY - 64, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2F59c351cb9c3fc.jpg?v=1613848214467");
   
+  // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
-  console.log(sonicDeathImage);
+  
 }
 
-// NOTE FOR MOVEMENT: constantly add sonic's vx to his x
-var reported = false; // debugging
+// draw is called constantly to render everythong on screen
 function draw()
 {
   
+  // wipe screen before redrawing
   clear();
   
+  // background color
   background("#82ebed");
-  //background(bg);
+  
+  // background image
   image(bg, bgX, 0);
   
   // scroll background to left
   bgX = bgX - (autoscrollRate * 0.4);
   
+  // stroke and fill
   var borderWidth = 6;
   stroke(borderWidth);
   noFill();
   
-  // collisions
-  var collisions = sonic.checkPlatformCollisions();  
-  //console.log(collisions);
-  // NOTE: later we probably need to change this to collisionStatus == "top" or something
-  // NOTE: would collisions == [] work?
-  /*
-  if (collisions.length == 0)
-  {
-    sonic.onGround = false;
-  }
-  */
+  // collisions list
+  var collisions = sonic.checkPlatformCollisions();    
   
-  // create a boolean variable called collideAny
+  // check if sonic collided with any platforms at all to update onGround
   var collided = false;
   for (var i=0; i < collisions.length; i++)
   {    
@@ -91,8 +85,6 @@ function draw()
       }
     }    
   }
-  
-  // if collided is false, set onGround to false
   if (!collided)
   {
     sonic.onGround = false;
@@ -114,16 +106,12 @@ function draw()
     sonic.hy = sonic.hy + sonic.vy;
   }
   
-  // add an if statement that checks if sonic's y is >= screenHeight
-  // if so alert "im ded"
+  // sonic dying
   if (sonic.y >= screenHeight)
   {
-    // alert("im ded lol so u suck @ dis game. git rekt m8.");
-    
+    // alert("im ded lol so u suck @ dis game. git rekt m8.");  
     // play sound effect (later)
-    // swap image (later)
-    
-    
+    // swap image (later)        
     if(sonic.isAlive) 
     {
       sonic.isAlive = false;
@@ -131,10 +119,6 @@ function draw()
       sonic.vy = -20;
       sonic.vx = 0;
       deathNoise.play();
-      // set sonic.imgname to the link for the image
-      // reload sonic.img property
-      // set sonic.w to the width of new image
-      // set sonic.h to height of new image
       sonic.img.remove();
       sonic.imgName = "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212";
       sonic.img = sonicDeathImage;
@@ -149,40 +133,19 @@ function draw()
     
   }
   
-  // update sonic horizontal position
+  // update sonic and hitbox horizontal position
   sonic.x = sonic.x + sonic.vx;
-  // update hbx by vx
-  sonic.hx = sonic.hx + sonic.vx; 
+  sonic.hx = sonic.hx + sonic.vx;   
   
-  
-  // console.log(collisions);
-  // add a for loop that goes through all platforms in collisions lists
-  // NOTE: if we collide with two platforms from the left, wouldn't this cause us to scoot to the left too fast?
+  // check if sonic should be dragged with auto scroll if not moving on left side of a platform
   for (var i=0; i < collisions.length; i++)
   {
     if(collisions[i].includes("left"))
     {
-      // console.log("drag");
       sonic.x = sonic.x - autoscrollRate;
       sonic.hx = sonic.hx - autoscrollRate;
     }
-  }
-  
-  
-  // drag sonic by auto scroll rate
-  
-  
-  //collisions = sonic.checkPlatformCollisions();
-  //sonic.checkPlatformCollisions();
-  // console.log(collisions);
-  // NOTE: unable to fall off cliff because left/right collisions here
-  /*
-  if (collisions.includes('left') || collisions.includes('right'))
-  {
-    console.log("triggered");
-    sonic.x = sonic.x - sonic.vx;
-  }
-  */
+  }  
   
   // autoscroll platforms and enemies
   for (var i=0; i < platforms.length; i++)
@@ -217,10 +180,12 @@ function draw()
   {
     sonic.img.hide(); 
   }
-  motobug.display();
-  finishLine.display();
   
-  //sonicImgNormal.position(sonic.x, sonic.y);  
+  // draw motobug
+  motobug.display();
+
+  // draw finish line
+  finishLine.display();
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
@@ -232,13 +197,11 @@ function draw()
     noFill();
     strokeWeight(3);
     stroke(255,255,0);
-    // rect(sonic.x - sonic.w/2, sonic.y - sonic.h/2, sonic.w, sonic.h);
     if (sonic.hitboxActive)
     {
       rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
     }
-    
-    
+        
     // draw the tile hitboxes for debugging
     stroke(0,255,255);
     strokeWeight(5);
@@ -248,32 +211,6 @@ function draw()
       {  
         var currentTile = platforms[i].tiles[j];
         rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
-        // console.log(platforms[i]);
-        
-        /*
-        if(platforms[i].tileImageName == "tile 1")
-        {
-          // console.log("tile 1");
-          /*var adjustedHitbox = platforms[i].tiles[j];
-          adjustedHitbox.y = adjustedHitbox.y + adjustedHitbox.h/2;
-          adjustedHitbox.h = adjustedHitbox.h/2;
-          // rect(platforms[i].tiles[j].x + tileHorizontalOffset, platforms[i].tiles[j].y + platforms[i].tiles[j].h/2 + tileVerticalOffset, platforms[i].tiles[j].w, platforms[i].tiles[j].h/2);
-          rect(platforms[i].tiles[j].hx + tileHorizontalOffset, platforms[i].tiles[j].hy + tileVerticalOffset, platforms[i].tiles[j].hw, platforms[i].tiles[j].hh);
-          if(!reported)
-          {
-            console.log(adjustedHitbox);
-            console.log(platforms[i].tiles[j]);          
-            reported = true;    
-          }
-
-        }
-        else
-        {
-          // rect(currentTile.x + tileHorizontalOffset, currentTile.y + tileVerticalOffset, currentTile.w, currentTile.h);
-          rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
-        }     
-        */
-        
       }
     }
     
@@ -287,12 +224,8 @@ function draw()
     text("y: " + sonic.y.toFixed(2), 1000, 125);
     text("vx: " + sonic.vx.toFixed(2), 1000, 150);
     text("vy: " + sonic.vy.toFixed(2), 1000, 175);
-    text("onGround: " + sonic.onGround, 1000, 200);   
-    
-    
-    
+    text("onGround: " + sonic.onGround, 1000, 200);     
   }
-
   
 } 
 
