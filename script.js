@@ -203,6 +203,12 @@ class Character
       */
       if (collisionStatus == 'top')
       {
+        
+        if(platform.tiles[i].imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373" && sonic.vy <= 0)
+        {
+          continue;
+        }
+        
         this.y = platform.tiles[i].hy - this.hh;
         this.hy = platform.tiles[i].hy - this.hh;
         this.vy = 0;
@@ -615,7 +621,15 @@ function draw()
   }
   
   // draw sonic image
-  sonic.display();
+  if (sonic.isAlive && sonic.x > 0 && sonic.x < screenWidth && sonic.y > 0 && sonic.y < screenHeight)
+  {
+    sonic.img.show();
+    sonic.display();
+  }
+  else if(sonic.isAlive)
+  {
+    sonic.img.hide(); 
+  }
   motobug.display();
   finishLine.display();
   
