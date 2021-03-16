@@ -31,7 +31,7 @@ class Character
   }
   
   // used by draw() to display character
-  display()
+    display()
   {
     
     if (!this.visible)
