@@ -134,13 +134,38 @@ function draw()
   }
   
   // update the position and speed of sonic (also update hitbox position)
+  var speedDirection = 0;
+  if(sonic.vx < 0)
+  {
+    speedDirection = -1;
+  }
+  else if(sonic.vx > 0)
+  {
+    speedDirection = 1;
+  }
   sonic.vx = sonic.vx + sonic.ax;
+  if(speedDirection == -1 && sonic.vx > 0)
+  {
+    sonic.vx = 0;
+    sonic.ax = 0;
+  }
+  if(speedDirection == 1 && sonic.vx < 0)
+  {
+    sonic.vx = 0;
+    sonic.ax = 0;
+  }
+  
+  
+  
   if(sonic.vx < maxSpeedX * -1)
   {
-    sonic.vx = 
+    sonic.vx = maxSpeedX * -1;
   }
-  sonic.x = sonic.x + sonic.vx;
-  
+  if(sonic.vx > maxSpeedX)
+  {
+    sonic.vx = maxSpeedX;
+  }
+  sonic.x = sonic.x + sonic.vx;  
   sonic.hx = sonic.hx + sonic.vx;   
   
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
@@ -235,11 +260,12 @@ function draw()
     strokeWeight(1);
     text("x: " + sonic.x.toFixed(2), 1000, 75);
     text("y: " + sonic.y.toFixed(2), 1000, 100);
-    text("vx: " + sonic.vx.toFixed(2), 1000, 125);
+    text("vx: " + sonic.vx.toFixed(2), 1000, 125);x
     text("vy: " + sonic.vy.toFixed(2), 1000, 150);
     text("onGround: " + sonic.onGround, 1000, 175);
     text("hx: " + sonic.hx.toFixed(2), 1000, 200);
     text("hy: " + sonic.hy.toFixed(2), 1000, 225);
+    text("ax: " + sonic.ax.toFixed(2), 1000, 250);
   }
   
 } 
@@ -281,12 +307,12 @@ function keyReleased()
   
   if (keyCode == 39)
   {
-    sonic.vx = 0;
+    // sonic.vx = 0;
     sonic.ax = -1;
   }
   else if (keyCode == 37)
   {
-    sonic.vx = 0;
+    // sonic.vx = 0;
     sonic.ax = 1;
   }
 }
