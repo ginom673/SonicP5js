@@ -1,3 +1,4 @@
+// Characters objects are any game obje
 class Character
 {  
   
@@ -31,14 +32,14 @@ class Character
   }
   
   // used by draw() to display character
-    display()
+  display()
   {
-    
+
     if (!this.visible)
     {         
       return;
     }
-    
+
     if(this.isGif)
     {
       this.img.position(this.x, this.y);      
@@ -47,7 +48,7 @@ class Character
     {
       image(this.img, this.x, this.y);
     }  
-    
+
   }
   
   // jump
