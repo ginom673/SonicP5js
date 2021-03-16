@@ -38,7 +38,7 @@ var maxFlySpeed = -15;
 var motobug;
 
 // finish line
-var finishLine;
+var goalRing;
 
 // sounds
 var deathNoise;

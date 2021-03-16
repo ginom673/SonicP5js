@@ -38,7 +38,7 @@ function setup()
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   
   // create finish line
-  finishLine = new Obstacle(2000, groundY - 64, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2F59c351cb9c3fc.jpg?v=1613848214467");
+  goalRing = new Obstacle(2000, groundY - 128, 16, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357");
   
   // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
@@ -185,7 +185,7 @@ function draw()
   motobug.display();
 
   // draw finish line
-  finishLine.display();
+  goalRing.display();
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
