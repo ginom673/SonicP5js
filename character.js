@@ -1,4 +1,4 @@
-// Characters objects are any game obje
+// Characters objects are any game objects that do move ... animate objects
 class Character
 {  
   

@@ -1,4 +1,4 @@
-// Obstacle is any game object besides a platform that does not move
+// Obstacle is any game object besides a platform that does not move (inanimate objects)
 // unlike platforms, you do not land on obstacles
 class Obstacle
 {
@@ -57,19 +57,35 @@ class Obstacle
   */
   
   
-  constructor(x, y, w, h, imgName)
+  constructor(x, y, w, h, imgName, hx, hy, hw, hh)
   {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
+    this.hx = hx;
+    this.hy = hy;
+    this.hw = hw;
+    this.hh = hh;
     this.imgName = imgName;    
     this.image = loadImage(imgName);
   }
   
   display()
   {
-    image(this.image, this.x, this.y);  
+    if (!this.visible)
+    {         
+      return;
+    }
+
+    if(this.isGif)
+    {
+      this.img.position(this.x, this.y);      
+    }
+    else
+    {
+      image(this.img, this.x, this.y);
+    }
   }
   
 }
