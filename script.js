@@ -200,6 +200,8 @@ function draw()
     if (sonic.hitboxActive)
     {
       rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
+      // console.log(sonic.hx);
+      // rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);
     }
         
     // draw the tile hitboxes for debugging
@@ -214,17 +216,22 @@ function draw()
       }
     }
     
+    // display goal ring hitbox
+    rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
+     
     // display statistics for debugging
     fill(150, 150, 150);
     stroke(0,0,0);
     strokeWeight(3);
     textSize(24);
     strokeWeight(1);
-    text("x: " + sonic.x.toFixed(2), 1000, 100);
-    text("y: " + sonic.y.toFixed(2), 1000, 125);
-    text("vx: " + sonic.vx.toFixed(2), 1000, 150);
-    text("vy: " + sonic.vy.toFixed(2), 1000, 175);
-    text("onGround: " + sonic.onGround, 1000, 200);     
+    text("x: " + sonic.x.toFixed(2), 1000, 75);
+    text("y: " + sonic.y.toFixed(2), 1000, 100);
+    text("vx: " + sonic.vx.toFixed(2), 1000, 125);
+    text("vy: " + sonic.vy.toFixed(2), 1000, 150);
+    text("onGround: " + sonic.onGround, 1000, 175);
+    text("hx: " + sonic.hx.toFixed(2), 1000, 200);
+    text("hy: " + sonic.hy.toFixed(2), 1000, 225);
   }
   
 } 

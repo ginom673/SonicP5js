@@ -16,7 +16,7 @@ class Obstacle
     this.isGif = isGif;
     this.imgName = imgName;    
     this.image = createImg(imgName);
-    this.image.position(x,y);
+    // this.image.position(x,y);
     this.visible = true;
     this.hitboxActive = true;
   }
