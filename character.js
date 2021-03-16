@@ -8,6 +8,7 @@ class Character
     this.y = y;
     this.vx = vx;
     this.vy = vy;
+    this.ax = 0;
     this.onGround = onGround;
     this.isGif = isGif;
     this.hx = hx;
@@ -15,7 +16,8 @@ class Character
     this.hw = hw;
     this.hh = hh;
     this.imgName = imgName;
-    this.img = createImg(imgName);
+    this.img = createImg(imgName); 
+    
     // this.img.position(x,y);
     this.w = w;
     this.h = h;

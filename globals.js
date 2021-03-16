@@ -28,11 +28,15 @@ var platforms = [];
 // platform autoscrolling rate
 var autoscrollRate = 5;
 
-// max falling speed
+// max falling speed for any character
 var maxFallSpeed = 15;
 
-// max flying speed
+// max flying speed for any character
 var maxFlySpeed = -15;
+
+// max horizontal movement speed for any character
+// this is in absolute value, meaning the fastest we could go left is -1 * maxSpeedX
+var maxSpeedX = 5;
 
 // motobug enemy
 var motobug;

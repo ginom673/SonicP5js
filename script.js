@@ -133,8 +133,14 @@ function draw()
     
   }
   
-  // update sonic and hitbox horizontal position
+  // update the position and speed of sonic (also update hitbox position)
+  sonic.vx = sonic.vx + sonic.ax;
+  if(sonic.vx < maxSpeedX * -1)
+  {
+    sonic.vx = 
+  }
   sonic.x = sonic.x + sonic.vx;
+  
   sonic.hx = sonic.hx + sonic.vx;   
   
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
@@ -147,7 +153,7 @@ function draw()
     }
   }  
   
-  // autoscroll platforms and enemies
+  // autoscroll platforms, enemies, and obstacles
   for (var i=0; i < platforms.length; i++)
   {
     for (var j=0; j < platforms[i].tiles.length; j++)
@@ -158,6 +164,8 @@ function draw()
       motobug.hx = motobug.hx - autoscrollRate;
     }
   }
+  goalRing.x = goalRing.x - autoscrollRate;
+  goalRing.hx = goalRing.hx - autoscrollRate;
   
   // display platforms
   for (var i=0; i < platforms.length; i++)
@@ -251,11 +259,13 @@ function keyPressed()
   }
   else if (keyCode == 39)
   {
-    sonic.vx = 5;
+    // sonic.vx = 5;
+    sonic.ax = 1;
   }
   else if (keyCode == 37)
   {
-    sonic.vx = -5;
+    // sonic.vx = -5;
+    sonic.ax = -1;
   }
 }
 
@@ -272,10 +282,12 @@ function keyReleased()
   if (keyCode == 39)
   {
     sonic.vx = 0;
+    sonic.ax = -1;
   }
   else if (keyCode == 37)
   {
     sonic.vx = 0;
+    sonic.ax = 1;
   }
 }
 
