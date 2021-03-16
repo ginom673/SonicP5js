@@ -144,12 +144,12 @@ function draw()
     speedDirection = 1;
   }
   sonic.vx = sonic.vx + sonic.ax;
-  if(speedDirection == -1 && sonic.vx > 0)
+  if(speedDirection == -1 && sonic.vx >= 0)
   {
     sonic.vx = 0;
     sonic.ax = 0;
   }
-  if(speedDirection == 1 && sonic.vx < 0)
+  if(speedDirection == 1 && sonic.vx <= 0)
   {
     sonic.vx = 0;
     sonic.ax = 0;
@@ -260,7 +260,7 @@ function draw()
     strokeWeight(1);
     text("x: " + sonic.x.toFixed(2), 1000, 75);
     text("y: " + sonic.y.toFixed(2), 1000, 100);
-    text("vx: " + sonic.vx.toFixed(2), 1000, 125);x
+    text("vx: " + sonic.vx.toFixed(2), 1000, 125);
     text("vy: " + sonic.vy.toFixed(2), 1000, 150);
     text("onGround: " + sonic.onGround, 1000, 175);
     text("hx: " + sonic.hx.toFixed(2), 1000, 200);
@@ -286,12 +286,12 @@ function keyPressed()
   else if (keyCode == 39)
   {
     // sonic.vx = 5;
-    sonic.ax = 1;
+    sonic.ax = 0.2;
   }
   else if (keyCode == 37)
   {
     // sonic.vx = -5;
-    sonic.ax = -1;
+    sonic.ax = -0.2;
   }
 }
 
@@ -308,12 +308,12 @@ function keyReleased()
   if (keyCode == 39)
   {
     // sonic.vx = 0;
-    sonic.ax = -1;
+    sonic.ax = -0.25;
   }
   else if (keyCode == 37)
   {
     // sonic.vx = 0;
-    sonic.ax = 1;
+    sonic.ax = 0.25;
   }
 }
 
