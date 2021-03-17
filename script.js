@@ -38,7 +38,7 @@ function setup()
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   
   // create goal ring (AKA finish line)
-  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 800, groundY - 128, 128, 128, true);
+  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
   
   // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
@@ -224,8 +224,40 @@ function draw()
     }
   }  
   
-  // detect if sonic reaches goal
+  // draw goal ring (finish line)
+  if (goalRing.x > 0 && goalRing.x < screenWidth - 80 && goalRing.y > 0 && goalRing.y < screenHeight)
+  {
+    goalRing.image.show();
+    goalRing.display();     
+  }
+  else
+  {
+    goalRing.image.hide();
+  }
   
+  // draw sonic image
+  // the show / hide here cause the image to go away when we are off screen
+  // the sonic.isAlive checks make sure that we do not call show() or hide() if sonic.img is a gif
+  if (sonic.x > 0 && sonic.x < screenWidth && sonic.y > 0 && sonic.y < screenHeight)
+  {
+    if(sonic.isAlive)
+    {
+      sonic.img.show();
+    }    
+    sonic.display();
+  }
+  else if(sonic.isAlive)
+  {
+    sonic.img.hide(); 
+  }
+  
+  // detect if sonic reaches goalRing (AKA finish line)
+  if (collide(sonic, goalRing) != "none")
+  {
+    sonic.img.hide();
+    goalRing.image.hide();
+    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
+  }
   
   // autoscroll platforms, enemies, and obstacles
   for (var i=0; i < platforms.length; i++)
@@ -247,29 +279,8 @@ function draw()
     platforms[i].display();
   }
   
-  // draw sonic image
-  // the show / hide here cause the image to go away when we are off screen
-  // the sonic.isAlive checks make sure that we do not call show() or hide() if sonic.img is a gif
-  if (sonic.x > 0 && sonic.x < screenWidth && sonic.y > 0 && sonic.y < screenHeight)
-  {
-    if(sonic.isAlive)
-    {
-      sonic.img.show();
-    }    
-    sonic.display();
-  }
-  else if(sonic.isAlive)
-  {
-    sonic.img.hide(); 
-  }
-  
   // draw motobug
-  motobug.display();
-
-  // draw finish line
-  goalRing.display();
-  
-  
+  motobug.display(); 
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
