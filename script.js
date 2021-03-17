@@ -134,6 +134,7 @@ function draw()
   }
   
   // update the position and speed of sonic (also update hitbox position)
+  /*
   var speedDirection = 0;
   if(sonic.vx < 0)
   {
@@ -153,6 +154,55 @@ function draw()
   {
     sonic.vx = 0;
     sonic.ax = 0;
+  }
+  */
+  
+  // identify current direction before adjusting speed by acceleration (this is used by deacceleration case below)
+  var speedDirection = 0;
+  if(sonic.vx < 0)
+  {
+    speedDirection = -1;
+  }
+  else if(sonic.vx > 0)
+  {
+    speedDirection = 1;
+  }
+  
+  // adjust speed based on acceleration (if any)
+  sonic.vx = sonic.vx + sonic.ax;
+  
+  // accelerating - increase speed (in either direction) until reaches max  
+  if(sonic.accelerationStatus == 1)
+  {
+    if(sonic.vx < maxSpeed * -1)
+    {
+      sonic.vx = maxSpeed * -1;
+    }
+    if(sonic.vx > maxSpeed)
+    {
+      sonic.vx = maxSpeed;
+    }
+  }
+  // deaccelerating - decrease speed (in either direction) until reaches 0
+  else if(sonic.accelerationStatus == -1)
+  {
+    if(speedDirection == -1 && sonic.vx >= 0)
+    {
+      sonic.vx = 0;
+      sonic.ax = 0;
+      sonic.accelerationStatus = 0;
+    }
+    if(speedDirection == 1 && sonic.vx <= 0)
+    {
+      sonic.vx = 0;
+      sonic.ax = 0;
+      sonic.accelerationStatus = 0;
+    }
+  }
+  // neither accelerating or deaccelerating - do nothing
+  else
+  {
+    continue;
   }
   
   
@@ -287,11 +337,13 @@ function keyPressed()
   {
     // sonic.vx = 5;
     sonic.ax = 0.2;
+    sonic.accelerationStatus = 1;
   }
   else if (keyCode == 37)
   {
     // sonic.vx = -5;
     sonic.ax = -0.2;
+    sonic.accelerationStatus = 1;
   }
 }
 
@@ -309,11 +361,13 @@ function keyReleased()
   {
     // sonic.vx = 0;
     sonic.ax = -0.25;
+    sonic.accelerationStatus = 0;
   }
   else if (keyCode == 37)
   {
     // sonic.vx = 0;
     sonic.ax = 0.25;
+    sonic.accelerationStatus = 0;
   }
 }
 

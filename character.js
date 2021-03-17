@@ -31,6 +31,11 @@ class Character
     // whether or not this character's image should be displayed
     // (the Character object could be hidden but still interactable)
     this.visible = true;
+    
+    // -1 means deaccelerating, 0 means no acceleration or deacceleration, 1 means accelerating
+    this.accelerationStatus = 0;
+    
+    
   }
   
   // used by draw() to display character
