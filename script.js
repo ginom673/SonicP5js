@@ -1,6 +1,7 @@
 // NOTE: later restructuring by function would be nice
 
 // BUG: hitbox is slightly off when we jump
+// BUG: acceleration bug ... sonic continues going right/left when you press both arrow keys at nearly the same time
 
 // preload is called at beginning of project to load assets
 // preload is before setup which is before draw
