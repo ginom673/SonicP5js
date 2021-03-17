@@ -38,7 +38,7 @@ function setup()
   motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   
   // create goal ring (AKA finish line)
-  goalRing = new Obstacle(800, groundY - 128, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 800, groundY - 128, 128, 128, true);
+  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 800, groundY - 128, 128, 128, true);
   
   // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
@@ -118,6 +118,8 @@ function draw()
       sonic.hitboxActive = false;
       sonic.vy = -20;
       sonic.vx = 0;
+      sonic.ax = 0;
+      sonic.accelerationStatus = 0;
       deathNoise.play();
       sonic.img.remove();
       sonic.imgName = "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212";
@@ -222,6 +224,9 @@ function draw()
     }
   }  
   
+  // detect if sonic reaches goal
+  
+  
   // autoscroll platforms, enemies, and obstacles
   for (var i=0; i < platforms.length; i++)
   {
@@ -263,6 +268,8 @@ function draw()
 
   // draw finish line
   goalRing.display();
+  
+  
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
@@ -355,13 +362,29 @@ function keyReleased()
   if (keyCode == 39)
   {
     // sonic.vx = 0;
-    sonic.ax = -0.25;
+    // sonic.ax = -0.25;
+    if(sonic.vx > 0)
+    {
+      sonic.ax = -0.25;
+    }
+    else
+    {
+      sonic.ax = 0.25;
+    }
     sonic.accelerationStatus = -1;
   }
   else if (keyCode == 37)
   {
     // sonic.vx = 0;
-    sonic.ax = 0.25;
+    // sonic.ax = 0.25;
+    if(sonic.vx > 0)
+    {
+      sonic.ax = -0.25;
+    }
+    else
+    {
+      sonic.ax = 0.25;
+    }
     sonic.accelerationStatus = -1;
   }
 }
