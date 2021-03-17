@@ -53,7 +53,7 @@ function draw()
   clear();
   
   // background color
-  background("#82ebed");
+  background("#2404b4");
   
   // background image
   image(bg, bgX, 0);
@@ -174,13 +174,13 @@ function draw()
   // accelerating - increase speed (in either direction) until reaches max  
   if(sonic.accelerationStatus == 1)
   {
-    if(sonic.vx < maxSpeed * -1)
+    if(sonic.vx < maxSpeedX * -1)
     {
-      sonic.vx = maxSpeed * -1;
+      sonic.vx = maxSpeedX * -1;
     }
-    if(sonic.vx > maxSpeed)
+    if(sonic.vx > maxSpeedX)
     {
-      sonic.vx = maxSpeed;
+      sonic.vx = maxSpeedX;
     }
   }
   // deaccelerating - decrease speed (in either direction) until reaches 0
@@ -198,13 +198,7 @@ function draw()
       sonic.ax = 0;
       sonic.accelerationStatus = 0;
     }
-  }
-  // neither accelerating or deaccelerating - do nothing
-  else
-  {
-    continue;
-  }
-  
+  }  
   
   
   if(sonic.vx < maxSpeedX * -1)
@@ -308,14 +302,15 @@ function draw()
     strokeWeight(3);
     textSize(24);
     strokeWeight(1);
-    text("x: " + sonic.x.toFixed(2), 1000, 75);
-    text("y: " + sonic.y.toFixed(2), 1000, 100);
-    text("vx: " + sonic.vx.toFixed(2), 1000, 125);
-    text("vy: " + sonic.vy.toFixed(2), 1000, 150);
-    text("onGround: " + sonic.onGround, 1000, 175);
-    text("hx: " + sonic.hx.toFixed(2), 1000, 200);
-    text("hy: " + sonic.hy.toFixed(2), 1000, 225);
-    text("ax: " + sonic.ax.toFixed(2), 1000, 250);
+    text("x: " + sonic.x.toFixed(2), 950, 75);
+    text("y: " + sonic.y.toFixed(2), 950, 100);
+    text("vx: " + sonic.vx.toFixed(2), 950, 125);
+    text("vy: " + sonic.vy.toFixed(2), 950, 150);
+    text("onGround: " + sonic.onGround, 950, 175);
+    text("hx: " + sonic.hx.toFixed(2), 950, 200);
+    text("hy: " + sonic.hy.toFixed(2), 950, 225);
+    text("ax: " + sonic.ax.toFixed(2), 950, 250);
+    text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
   }
   
 } 
@@ -361,13 +356,13 @@ function keyReleased()
   {
     // sonic.vx = 0;
     sonic.ax = -0.25;
-    sonic.accelerationStatus = 0;
+    sonic.accelerationStatus = -1;
   }
   else if (keyCode == 37)
   {
     // sonic.vx = 0;
     sonic.ax = 0.25;
-    sonic.accelerationStatus = 0;
+    sonic.accelerationStatus = -1;
   }
 }
 
