@@ -263,10 +263,15 @@ function draw()
   // autoscroll platforms, enemies, and obstacles
   for (var i=0; i < platforms.length; i++)
   {
-    for (var j=0; j < platforms[i].tiles.length; j++)
+    var platform = platforms[i]
+    for (var j=0; j < .tiles.length; j++)
     {
       platforms[i].tiles[j].x = platforms[i].tiles[j].x - autoscrollRate;
       platforms[i].tiles[j].hx = platforms[i].tiles[j].hx - autoscrollRate;
+      
+      // for loop that goes through platforms[i].tiles[j].slopes.length
+      for (var k = 0; k < platforms[i].tiles[i])
+      
       motobug.x = motobug.x - autoscrollRate;
       motobug.hx = motobug.hx - autoscrollRate;
     }
@@ -290,6 +295,7 @@ function draw()
     // draw sonic hitbox for debugging
     // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
     // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
+    /*
     noFill();
     strokeWeight(3);
     stroke(255,255,0);
@@ -299,6 +305,7 @@ function draw()
       // console.log(sonic.hx);
       // rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);
     }
+    */
         
     // draw the tile hitboxes for debugging
     stroke(0,255,255);
@@ -308,12 +315,20 @@ function draw()
       for (var j = 0; j < platforms[i].tiles.length; j++)
       {  
         var currentTile = platforms[i].tiles[j];
-        rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
+        // rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
+        
+        // for loop here that goes through each line object in currentTile's slopes list
+        for (var k = 0; k < currentTile.slopes.length; k++)
+        {
+          console.log(l);
+          var l = currentTile.slopes[k];
+          line(l.p1.x, l.p1.y, l.p2.x, l.p2.y);
+        }
       }
     }
     
     // display goal ring hitbox
-    rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
+    // rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
      
     // display statistics for debugging
     fill(150, 150, 150);
@@ -431,12 +446,8 @@ function collide(r1,r2)
 
 /*
 determines if a line intersects a rectangle
-p1 - first point of line
-p2 - second point of line
-(rx, ry) - top-left corner of rectangle
-rw - rectangle width
-rh - rectangle height
 */
+  
 function line_intersects_rect(l, r)
 {      
   
@@ -495,13 +506,13 @@ function line_intersects_line(l1, l2)
 {
   
     var x1 = l1.p1.x;
-    var y1 = l1.p1.x;
+    var y1 = l1.p1.y;
     var x2 = l1.p2.x;
-    var y2 = l1.p2.x;
+    var y2 = l1.p2.y;
     var x3 = l2.p1.x;
-    var y3 = l2.p1.x;
+    var y3 = l2.p1.y;
     var x4 = l2.p2.x;
-    var y4 = l2.p2.x;
+    var y4 = l2.p2.y;
   
     var q = (y1 - y3) * (x4 - x3) - (x1 - x3) * (y4 - y3);
     var d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
@@ -518,15 +529,12 @@ function line_intersects_line(l1, l2)
     }
     return true;
 }
+             
 /*
 determines if a rectangle contains a given point
-(rx,ry) - top left corner of rectangle
-rw - rectangle width
-rh - rectangle height
-(x,y) - given point 
 */
-function rect_contains(rx, ry, rw, rh, x, y)
+function rect_contains(r, x, y)
 {
-  return x > rx && x < rx + rw && y < ry && y > ry - rh;
+  return x > r.x && x < r.x + r.w && y < r.y && y > r.y - r.h;
 }
   
