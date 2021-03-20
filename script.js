@@ -427,3 +427,81 @@ function collide(r1,r2)
   }
   return(collision);
 }
+
+
+/*
+determines if a line intersects a rectangle
+(x1, y1) - first point of line
+(x2, y2) - second point of line
+(rx, ry) - top-left corner of rectangle
+rw - rectangle width
+rh - rectangle height
+*/
+function line_intersects_rect(x1, y1, x2, y2, rx, ry, rw, rh)
+{  
+  // check if top line of rectangle intersects given line
+  var a = line_intersects_line(x1, y1, x2, y2, rx, ry, rx + rw, ry);
+  if (a)
+  {
+    return true;
+  }
+  // check if right line of rectangle intersects given line
+  var b = line_intersects_line(x1, y1, x2, y2, rx + rw, ry, rx + rw, ry + rh);
+  if (b)
+  {
+    return true;
+  }
+  // check if bottom line of rectangle intersects given line
+  var c = line_intersects_line(x1, y1, x2, y2, rx + rw, ry + rh, rx, ry + rh);
+  if (c)
+  {
+    return true;
+  }
+  // check if left line of rectangle intersects given line
+  var d = line_intersects_line(x1, y1, x2, y2, rx, ry + rh, rx, ry);
+  if (d)
+  {
+    return true;
+  }
+  // check if rectangle contains first point
+  var e = rect_contains(rx, ry, rw, rh, x1, y1);
+  
+  // check if rectangle contains second point
+  var f = rect_contains(rx, ry, rw, rh, x2, y2);
+  
+  // a, b, c, d, e and f are all booleans 
+  return e && f;
+  // return a or b or c or d or (e and f)
+}
+/*
+determines if two lines intersect
+(x1, y1) - first point of first line
+(x2, y2) - second point of first line
+(x3, y3) - first point of second line
+(x4, y4) - second point of second line
+*/
+function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
+{
+    q = (y1 - y3) * (x4 - x3) - (x1 - x3) * (y4 - y3)
+    d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3)
+    if (d == 0):
+      return False
+    r = q / d
+    q = (y1 - y3) * (x2 - x1) - (x1 - x3) * (y2 - y1)
+    s = q / d
+    if(r < 0 or r > 1 or s < 0 or s > 1):
+        return False
+    return True
+}
+/*
+determines if a rectangle contains a given point
+(rx,ry) - top left corner of rectangle
+rw - rectangle width
+rh - rectangle height
+(x,y) - given point 
+*/
+function rect_contains(rx, ry, rw, rh, x, y)
+{
+  return x > rx && x < rx + rw && y < ry && y > ry - rh;
+}
+  
