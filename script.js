@@ -96,7 +96,23 @@ function draw()
   // then for loop that goes throguh the slopes of that tile
   for (var i = 0; i < platforms.length; i++)
   {
-    for (var j = 0; j < )
+    var platform = platforms[i];
+    for (var j = 0; j < platform.tiles.length; j++)
+    {
+      var tile = platform.tiles[j];   
+      for (var k = 0; k < tile.slopes.length; k++)
+      {
+        var line = tile.slopes[k];
+        if (line_intersects_rect(line, sonic))
+        {
+          
+          
+          var slope = (line.p2.y - line.p1.y) / (line.p2.x - line.p1.x);
+          
+          sonic.land();
+        }
+      }
+    }
   }
   
   // if in air, update sonic vertical position and speed

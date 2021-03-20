@@ -90,6 +90,25 @@ class Character
     sonicImgJump.show();
   }
   
+  land(newY)
+  {
+    this.y = newY;
+    this.hy = newY;
+    // this.y = platform.tiles[i].hy - this.hh;
+    // this.hy = platform.tiles[i].hy - this.hh;
+    this.vy = 0;
+    this.onGround = true;
+    this.img = sonicImgRun;
+    this.w = 64;
+    this.h = 72;
+    this.hw = 64;
+    this.hh = 72;
+    this.hx = this.x;
+    this.hy = this.y;
+    sonicImgJump.hide();
+    sonicImgRun.show();
+  }
+  
   // this checks collision between Sonic and ALL of the platforms
   checkPlatformCollisions()
   {        
@@ -121,19 +140,7 @@ class Character
         {
           continue;
         }
-        this.y = platform.tiles[i].hy - this.hh;
-        this.hy = platform.tiles[i].hy - this.hh;
-        this.vy = 0;
-        this.onGround = true;
-        this.img = sonicImgRun;
-        this.w = 64;
-        this.h = 72;
-        this.hw = 64;
-        this.hh = 72;
-        this.hx = this.x;
-        this.hy = this.y;
-        sonicImgJump.hide();
-        sonicImgRun.show();
+        this.land(platform.tiles[i].hy - this.hh);
       }      
       else if(platform.tiles[i].imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373")
       {
