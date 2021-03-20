@@ -1,4 +1,4 @@
-class Line
+class Line2D
 {
 
   constructor(p1, p2)

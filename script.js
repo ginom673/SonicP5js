@@ -102,14 +102,14 @@ function draw()
       var tile = platform.tiles[j];   
       for (var k = 0; k < tile.slopes.length; k++)
       {
-        var line = tile.slopes[k];
-        if (line_intersects_rect(line, sonic))
+        var myLine = tile.slopes[k];
+        if (line_intersects_rect(myLine, sonic))
         {
-          
-          
-          var slope = (line.p2.y - line.p1.y) / (line.p2.x - line.p1.x);
-          
-          sonic.land();
+          var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
+          var dx = sonic.x - myLine.p1.x;
+          var dy = slope * dx;
+          var endY = myLine.p1.y + dy;
+          sonic.land(endY);
         }
       }
     }
@@ -533,9 +533,11 @@ function line_intersects_rect(l, r)
 /*
 determines if two lines intersect
 */
-function line_intersects_line(l1, l2)
+function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
+// function line_intersects_line(l1, l2)
 {
   
+    /*
     var x1 = l1.p1.x;
     var y1 = l1.p1.y;
     var x2 = l1.p2.x;
@@ -544,6 +546,7 @@ function line_intersects_line(l1, l2)
     var y3 = l2.p1.y;
     var x4 = l2.p2.x;
     var y4 = l2.p2.y;
+    */
   
     var q = (y1 - y3) * (x4 - x3) - (x1 - x3) * (y4 - y3);
     var d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
