@@ -431,14 +431,28 @@ function collide(r1,r2)
 
 /*
 determines if a line intersects a rectangle
-(x1, y1) - first point of line
-(x2, y2) - second point of line
+p1 - first point of line
+p2 - second point of line
 (rx, ry) - top-left corner of rectangle
 rw - rectangle width
 rh - rectangle height
 */
-function line_intersects_rect(x1, y1, x2, y2, rx, ry, rw, rh)
-{  
+function line_intersects_rect(l, r)
+{      
+  
+  var rx = r.x;
+  var ry = r.y;
+  var rw = r.w;
+  var rh = r.h;
+  
+  var p1 = l.p1;
+  var p2 = l.p2;
+  
+  var x1 = p1.x;
+  var y1 = p1.y;
+  var x2 = p2.x;
+  var y2 = p2.y;
+  
   // check if top line of rectangle intersects given line
   var a = line_intersects_line(x1, y1, x2, y2, rx, ry, rx + rw, ry);
   if (a)
@@ -473,15 +487,22 @@ function line_intersects_rect(x1, y1, x2, y2, rx, ry, rw, rh)
   return e && f;
   // return a or b or c or d or (e and f)
 }
+
 /*
 determines if two lines intersect
-(x1, y1) - first point of first line
-(x2, y2) - second point of first line
-(x3, y3) - first point of second line
-(x4, y4) - second point of second line
 */
-function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
+function line_intersects_line(l1, l2)
 {
+  
+    var x1 = l1.p1.x;
+    var y1 = l1.p1.x;
+    var x2 = l1.p2.x;
+    var y2 = l1.p2.x;
+    var x3 = l2.p1.x;
+    var y3 = l2.p1.x;
+    var x4 = l2.p2.x;
+    var y4 = l2.p2.x;
+  
     var q = (y1 - y3) * (x4 - x3) - (x1 - x3) * (y4 - y3);
     var d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
     if (d == 0)

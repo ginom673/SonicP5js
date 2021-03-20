@@ -30,6 +30,9 @@ class Tile
     if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765")
     {
       // add points to slopes
+      var line = new Line(new Point(50,50), new Point(100,100));
+      
+      
     }
     
   }
