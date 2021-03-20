@@ -91,6 +91,14 @@ function draw()
     sonic.onGround = false;
   }
   
+  // write for loop that goes through platforms list
+  // then for loop that goes through the tile sof a platform
+  // then for loop that goes throguh the slopes of that tile
+  for (var i = 0; i < platforms.length; i++)
+  {
+    for (var j = 0; j < )
+  }
+  
   // if in air, update sonic vertical position and speed
   if(!sonic.onGround)
   {
@@ -260,22 +268,30 @@ function draw()
     alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
   }
   
-  // autoscroll platforms, enemies, and obstacles
+  // autoscroll platforms and slopes
   for (var i=0; i < platforms.length; i++)
   {
-    var platform = platforms[i]
-    for (var j=0; j < .tiles.length; j++)
+    var platform = platforms[i];
+    for (var j=0; j < platform.tiles.length; j++)
     {
-      platforms[i].tiles[j].x = platforms[i].tiles[j].x - autoscrollRate;
-      platforms[i].tiles[j].hx = platforms[i].tiles[j].hx - autoscrollRate;
+      var tile = platform.tiles[j];      
+      tile.x = tile.x - autoscrollRate;
+      tile.hx = tile.hx - autoscrollRate;      
+      for (var k = 0; k < tile.slopes.length; k++)
+      {
+        var l = tile.slopes[k];
+        l.p1.x = l.p1.x - autoscrollRate;
+        l.p2.x = l.p2.x - autoscrollRate;
+      }      
       
-      // for loop that goes through platforms[i].tiles[j].slopes.length
-      for (var k = 0; k < platforms[i].tiles[i])
-      
-      motobug.x = motobug.x - autoscrollRate;
-      motobug.hx = motobug.hx - autoscrollRate;
     }
   }
+    
+  // autoscroll enemies
+  motobug.x = motobug.x - autoscrollRate;
+  motobug.hx = motobug.hx - autoscrollRate;
+  
+  // autoscroll goal
   goalRing.x = goalRing.x - autoscrollRate;
   goalRing.hx = goalRing.hx - autoscrollRate;
   
@@ -295,7 +311,6 @@ function draw()
     // draw sonic hitbox for debugging
     // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
     // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
-    /*
     noFill();
     strokeWeight(3);
     stroke(255,255,0);
@@ -305,7 +320,6 @@ function draw()
       // console.log(sonic.hx);
       // rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);
     }
-    */
         
     // draw the tile hitboxes for debugging
     stroke(0,255,255);
@@ -315,12 +329,13 @@ function draw()
       for (var j = 0; j < platforms[i].tiles.length; j++)
       {  
         var currentTile = platforms[i].tiles[j];
-        // rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
+        stroke(0,255,255);
+        rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
         
         // for loop here that goes through each line object in currentTile's slopes list
         for (var k = 0; k < currentTile.slopes.length; k++)
         {
-          console.log(l);
+          stroke(255, 0, 0);
           var l = currentTile.slopes[k];
           line(l.p1.x, l.p1.y, l.p2.x, l.p2.y);
         }
@@ -328,7 +343,7 @@ function draw()
     }
     
     // display goal ring hitbox
-    // rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
+    rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
      
     // display statistics for debugging
     fill(150, 150, 150);

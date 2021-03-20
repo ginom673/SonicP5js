@@ -30,7 +30,7 @@ class Tile
     if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765")
     {
       // add points to slopes
-      var line = new Line(new Point(this.x,this.y-20), new Point(this.x + this.w, this.y-20));     
+      var line = new Line(new Point(this.x + tileHorizontalOffset,this.y + tileVerticalOffset), new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset));
       this.slopes.push(line);
     }
     

@@ -42,7 +42,7 @@ class Platform
       }
       else if(tileImgName == "semi solid 1")
       {
-        var theTile = new Tile(x + (i * 512), y + 256, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
+        var theTile = new Tile(x + (i * 512), y + 256, 512, 512, x + (i * 512), y + 276, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
       }
       else if(tileImgName == "semi solid 2")
       {
