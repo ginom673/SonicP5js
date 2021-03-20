@@ -114,6 +114,11 @@ class Character
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
     {  
+      
+      
+      
+      
+      
       var collisionStatus = collide(sonic, platform.tiles[i]);
       if (collisionStatus == 'top')
       {

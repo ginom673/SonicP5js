@@ -22,7 +22,16 @@ class Tile
     this.imgName = imgName;
     
     // load image for this Tile
-    this.image = loadImage(imgName);     
+    this.image = loadImage(imgName);
+     
+    // any additional lines included for collision detections
+    this.slopes = [];   
+    
+    if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765")
+    {
+      // add points to slopes
+    }
+    
   }
   
   // draws this tile's image @ (x,y)

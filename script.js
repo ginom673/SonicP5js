@@ -482,16 +482,20 @@ determines if two lines intersect
 */
 function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
 {
-    q = (y1 - y3) * (x4 - x3) - (x1 - x3) * (y4 - y3)
-    d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3)
-    if (d == 0):
-      return False
-    r = q / d
-    q = (y1 - y3) * (x2 - x1) - (x1 - x3) * (y2 - y1)
-    s = q / d
-    if(r < 0 or r > 1 or s < 0 or s > 1):
-        return False
-    return True
+    var q = (y1 - y3) * (x4 - x3) - (x1 - x3) * (y4 - y3);
+    var d = (x2 - x1) * (y4 - y3) - (y2 - y1) * (x4 - x3);
+    if (d == 0)
+    {
+      return false;
+    }
+    var r = q / d;
+    q = (y1 - y3) * (x2 - x1) - (x1 - x3) * (y2 - y1);
+    var s = q / d;
+    if(r < 0 || r > 1 || s < 0 || s > 1)
+    {
+        return false;
+    }
+    return true;
 }
 /*
 determines if a rectangle contains a given point
