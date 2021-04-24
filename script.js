@@ -106,9 +106,13 @@ function draw()
         if (line_intersects_rect(myLine, sonic))
         {
           var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
+          alert(slope); // 0
           var dx = sonic.x - myLine.p1.x;
+          alert(dx); // -63
           var dy = slope * dx;
+          alert(dy); // 0
           var endY = myLine.p1.y + dy;
+          alert(endY); // 429
           sonic.land(endY);
         }
       }

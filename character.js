@@ -93,7 +93,6 @@ class Character
   land(newY)
   {
     this.y = newY;
-    this.hy = newY;
     // this.y = platform.tiles[i].hy - this.hh;
     // this.hy = platform.tiles[i].hy - this.hh;
     this.vy = 0;
