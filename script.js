@@ -103,7 +103,14 @@ function draw()
       var tile = platform.tiles[j];   
       for (var k = 0; k < tile.slopes.length; k++)
       {
+        
         var myLine = tile.slopes[k];
+        
+        if (myLine == ignoredSlope)
+        {
+          continue;
+        }
+        
         if (line_intersects_rect(myLine, sonic))
         {
           
@@ -127,6 +134,12 @@ function draw()
   if (!collideAnySlopes)
   {
     currentSlope = undefined;
+  }
+  
+  // if sonic is falling, we don't need an ignoredSlope, so reset it
+  if (sonic.vy > 0)
+  {
+    ignoredSlope = undefined;
   }
   
   // if in air, update sonic vertical position and speed

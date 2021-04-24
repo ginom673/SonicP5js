@@ -75,22 +75,26 @@ class Character
     this.hw = 60;
     this.hh = 60;
     this.hx = this.x;
-    this.hy = this.y;
+    this.hy = this.y;    
+    sonicImgRun.hide();
+    sonicImgJump.show();    
     
+    // play jump sound effect
     jumpSound.play();
     
+    // flag not on ground
     this.onGround = false;
+    
+    // initial jump speed
     this.vy = -14;
     
     // initial change in position to get us off ground, avoiding immediate collision detection with tile we are on
     this.y = this.y + this.vy;
     this.hy = this.hy + this.vy;
     
-    sonicImgRun.hide();
-    sonicImgJump.show();
-    
     // setup ignoredSlope and currentSlope
-    
+    ignoredSlope = currentSlope;
+    currentSlope = undefined;
     
   }
   
