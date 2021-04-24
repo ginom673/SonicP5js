@@ -89,6 +89,9 @@ class Character
     sonicImgRun.hide();
     sonicImgJump.show();
     
+    // setup ignoredSlope and currentSlope
+    
+    
   }
   
   land(newY)

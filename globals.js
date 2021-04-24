@@ -1,7 +1,7 @@
 // GLOBAL VARIABLES
 
 // developerMode determines whether or not we display hitboxes and statistics
-var developerMode = true;
+var developerMode = false;
 
 // image object for Sonic's run/jump stance
 var sonicImgRun;
@@ -63,3 +63,10 @@ var platform4;
 
 // our boi
 var sonic;
+
+// what slope we are currently on - used to setup ignoredSlope after a jump
+var currentSlope;
+
+// what slope we ignore after jumping - fixes a bug where sonic is locked onto slope when trying to jump
+var ignoredSlope;
+

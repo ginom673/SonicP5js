@@ -94,6 +94,7 @@ function draw()
   // write for loop that goes through platforms list
   // then for loop that goes through the tile sof a platform
   // then for loop that goes throguh the slopes of that tile
+  var collideAnySlopes = false;
   for (var i = 0; i < platforms.length; i++)
   {
     var platform = platforms[i];
@@ -105,18 +106,27 @@ function draw()
         var myLine = tile.slopes[k];
         if (line_intersects_rect(myLine, sonic))
         {
+          
+          // calculate sonic's position along slope
           var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
-          //alert(slope); // 0
           var dx = sonic.x - myLine.p1.x;
-          //alert(dx); // -63
           var dy = slope * dx;
-          //alert(dy); // 0
           var endY = myLine.p1.y + dy;
-          //alert(endY); // 429
           sonic.land(endY - sonic.h / 2);
+          
+          // update currentSlope and collideAnySlope variables        
+          currentSlope = myLine;
+          collideAnySlopes = true;
+          
         }
       }
     }
+  }
+  
+  // if we didn't collide with any slopes, set currentSlope to undefined
+  if (!collideAnySlopes)
+  {
+    currentSlope = undefined;
   }
   
   // if in air, update sonic vertical position and speed
