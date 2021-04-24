@@ -95,6 +95,7 @@ function draw()
   // then for loop that goes through the tile sof a platform
   // then for loop that goes throguh the slopes of that tile
   var collideAnySlopes = false;
+  var sonicMidX = sonic.x + sonic.w / 2;
   for (var i = 0; i < platforms.length; i++)
   {
     var platform = platforms[i];
@@ -106,11 +107,19 @@ function draw()
         
         var myLine = tile.slopes[k];
         
+        // ignore ignoredslope
         if (myLine == ignoredSlope)
         {
           continue;
         }
         
+        // ignore this slope if sonicMidX is beyond the line
+        if (sonicMidX < myLine.p1.x || sonicMidX > myLine.p2.x)
+        {
+          continue;
+        }
+        
+        // sonic collides with this slope
         if (line_intersects_rect(myLine, sonic))
         {
           
