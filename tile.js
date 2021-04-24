@@ -30,8 +30,10 @@ class Tile
     if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765")
     {
       // add points to slopes
-      var line = new Line2D(new Point(this.x + tileHorizontalOffset,this.y + tileVerticalOffset), new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset));
+      var line = new Line2D(new Point(this.x + tileHorizontalOffset, this.y + tileVerticalOffset - 2), new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 10));
+      var line2 = new Line2D(new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 10), new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2));
       this.slopes.push(line);
+      this.slopes.push(line2);
     }
     
   }
