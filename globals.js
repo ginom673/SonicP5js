@@ -1,7 +1,7 @@
 // GLOBAL VARIABLES
 
 // developerMode determines whether or not we display hitboxes and statistics
-var developerMode = false;
+var developerMode = true;
 
 // image object for Sonic's run/jump stance
 var sonicImgRun;

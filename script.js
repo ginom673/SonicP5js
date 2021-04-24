@@ -409,6 +409,13 @@ function keyPressed()
     sonic.ax = -0.2;
     sonic.accelerationStatus = 1;
   }
+  
+  // F9 for debug mode
+  if(keyCode == 120)
+  {
+    developerMode = !developerMode;
+  }
+  
 }
 
 // NOTE: set sonic.vx back to 0 if left arrow or right arrow key was just released
