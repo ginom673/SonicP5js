@@ -162,4 +162,9 @@ if (collisions.includes('left') || collisions.includes('right'))
 */
 
 
-  //sonicImgNormal.position(sonic.x, sonic.y);  
+//sonicImgNormal.position(sonic.x, sonic.y);  
+
+
+
+// this.y = platform.tiles[i].hy - this.hh;
+// this.hy = platform.tiles[i].hy - this.hh;

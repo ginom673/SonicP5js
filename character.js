@@ -4,25 +4,29 @@ class Character
   
   constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   {
+    
+    // character physics attributes
     this.x = x;
     this.y = y;
+    this.w = w;
+    this.h = h;    
     this.vx = vx;
     this.vy = vy;
     this.ax = 0;
     this.onGround = onGround;
-    this.isGif = isGif;
+    
+    // character hitbox attributes
     this.hx = hx;
     this.hy = hy;
     this.hw = hw;
     this.hh = hh;
+    
+    // character image attributes
+    this.isGif = isGif;
     this.imgName = imgName;
     this.img = createImg(imgName); 
     
-    // this.img.position(x,y);
-    this.w = w;
-    this.h = h;
-    
-    // whether or not character is considered living
+    // alive or not
     this.isAlive = true;
     
     // whether or not this character uses collisions
@@ -35,13 +39,12 @@ class Character
     // -1 means deaccelerating, 0 means no acceleration or deacceleration, 1 means accelerating
     this.accelerationStatus = 0;
     
-    
   }
   
   // used by draw() to display character
   display()
   {
-
+    
     if (!this.visible)
     {         
       return;
@@ -61,6 +64,7 @@ class Character
   // jump
   jump()
   {
+    
     // prevent double-jumping; if character tries to jump while in midair, do nothing
     if (this.onGround == false) 
     {
@@ -98,11 +102,10 @@ class Character
     
   }
   
+  // land
   land(newY)
   {
     this.y = newY;
-    // this.y = platform.tiles[i].hy - this.hh;
-    // this.hy = platform.tiles[i].hy - this.hh;
     this.vy = 0;
     this.onGround = true;
     this.img = sonicImgRun;
