@@ -197,6 +197,12 @@ function draw()
     
   }
   
+  // sonic dies if running into motobug
+  if (collide(sonic,motobug) != "none")
+  {
+    motobug.isAlive = false;
+  }
+  
   // update the position and speed of sonic (also update hitbox position)
   /*
   var speedDirection = 0;
@@ -359,15 +365,14 @@ function draw()
   }
   
   // draw motobug
-  if (motobug.x > 0 && motobug.x < screenWidth - 80 && motobug.y > 0 && motobug.y < screenHeight)
+  if (motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
   {
-    motobug.image.show();
+    motobug.img.show();
     motobug.display();     
   }
   else
   {
-    console.log(motobug.image);
-    motobug.image.hide();
+    motobug.img.hide();
   }
   
   // display certain information in "developerMode" i.e. hitboxes, stats
@@ -514,6 +519,8 @@ function mouseReleased()
   alert(mouseX + " " + mouseY);
 }
 */
+
+
 
 // taken from https://stackoverflow.com/questions/29861096/detect-which-side-of-a-rectangle-is-colliding-with-another-rectangle
 function collide(r1,r2)
