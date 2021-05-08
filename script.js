@@ -9,7 +9,8 @@ function preload()
 {
   soundFormats('wav');
   deathNoise = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FDeath_Noise.wav?v=1614451645973");
-  jumpSound = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FJump.wav?v=1615058718554");  
+  jumpSound = loadSound("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FJump.wav?v=1615058718554");
+  breakNoise = loadSound("https://cdn.glitch.com/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7%2FSonic_Break.wav?v=1620498192001");
   bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");  
 }
 
@@ -22,7 +23,24 @@ function setup()
   createCanvas(screenWidth,screenHeight);  
   
   // background is stretched to be larger than screen
-  bg.resize(2528, screenHeight);
+  bg.resize(2528, screenHeight);  
+  
+  // setup platforms
+  setupPlatforms();  
+  
+  // setup Sonic
+  setupSonic();
+  
+  // setup enemies
+  setupEnemies();  
+  
+  // create goal ring (AKA finish line)
+  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
+  
+}
+
+function setupPlatforms()
+{
   
   // load platforms
   platform1 = new Platform(0, groundY - 276, 2, 1, "tile 1");    
@@ -30,21 +48,26 @@ function setup()
   platform3 = new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
   platform4 = new Platform(1540, groundY - 276, 1, 1, "tile 2");  
   
+}
+
+function setupSonic()
+{
+  
   // create sonic
   sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
   sonicImgRun = sonic.img;
   sonicImgJump = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Jump.gif?v=1615057119037");
   
-  // create motobug
-  motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, groundY - 72, 80, 58, true);
-  motobug.vx = -2;
-  
-  // create goal ring (AKA finish line)
-  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
-  
   // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
   
+}
+
+function setupEnemies()
+{
+  // create motobug
+  motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, groundY - 72, 80, 58, true);
+  motobug.vx = -2;
 }
 
 // draw is called constantly to render everythong on screen
@@ -201,6 +224,8 @@ function draw()
   if (collide(sonic,motobug) != "none")
   {
     motobug.isAlive = false;
+    motobug.img.hide();
+    breakNoise.play();
   }
   
   // update the position and speed of sonic (also update hitbox position)
@@ -367,14 +392,11 @@ function draw()
     platforms[i].display();
   }
   
-  // draw motobug
-  if (motobug.isAlive)
+  // draw motobug if they are alive and on screen
+  if (motobug.isAlive && motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
   {
-    if (motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
-    {
     motobug.img.show();
-    motobug.display();     
-    }
+    motobug.display();
   }
   else
   {
@@ -397,7 +419,7 @@ function draw()
     }
     
     // draw motobug hitbox for debugging
-    if (motobug.hitboxActive)
+    if (motobug.isAlive && motobug.hitboxActive)
     {
       rect(motobug.hx - motobug.w/2, motobug.hy - motobug.h/2, motobug.hw, motobug.hh);
     }

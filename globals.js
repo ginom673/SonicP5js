@@ -47,6 +47,7 @@ var goalRing;
 // sounds
 var deathNoise;
 var jumpSound;
+var breakNoise;
 
 // sonic death image
 var sonicDeathImage;
