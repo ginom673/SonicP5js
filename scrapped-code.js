@@ -171,3 +171,27 @@ if (collisions.includes('left') || collisions.includes('right'))
 
 // console.log(sonic.hx);
 // rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);
+
+// update the position and speed of sonic (also update hitbox position)
+/*
+var speedDirection = 0;
+if(sonic.vx < 0)
+{
+  speedDirection = -1;
+}
+else if(sonic.vx > 0)
+{
+  speedDirection = 1;
+}
+sonic.vx = sonic.vx + sonic.ax;
+if(speedDirection == -1 && sonic.vx >= 0)
+{
+  sonic.vx = 0;
+  sonic.ax = 0;
+}
+if(speedDirection == 1 && sonic.vx <= 0)
+{
+  sonic.vx = 0;
+  sonic.ax = 0;
+}
+*/

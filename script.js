@@ -91,83 +91,8 @@ function draw()
   stroke(borderWidth);
   noFill();
   
-  // collisions list
-  var collisions = sonic.checkPlatformCollisions();    
-  
-  // check if sonic collided with any platforms at all to update onGround
-  var collided = false;
-  for (var i=0; i < collisions.length; i++)
-  {    
-    var tileCollisions = collisions[i];    
-    for (var j=0; j < tileCollisions.length; j++)
-    {
-      // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
-      var collisionStatus = tileCollisions[j];
-      // if collisionStatus is not none, set collided to true
-      if (collisionStatus != 'none')
-      {
-        collided = true;
-      }
-    }    
-  }
-  if (!collided)
-  {
-    sonic.onGround = false;
-  }
-  
-  // write for loop that goes through platforms list
-  // then for loop that goes through the tile sof a platform
-  // then for loop that goes throguh the slopes of that tile
-  var collideAnySlopes = false;
-  var sonicMidX = sonic.x + sonic.w / 2;
-  for (var i = 0; i < platforms.length; i++)
-  {
-    var platform = platforms[i];
-    for (var j = 0; j < platform.tiles.length; j++)
-    {
-      var tile = platform.tiles[j];   
-      for (var k = 0; k < tile.slopes.length; k++)
-      {
-        
-        var myLine = tile.slopes[k];
-        
-        // ignore ignoredslope
-        if (myLine == ignoredSlope)
-        {
-          continue;
-        }
-        
-        // ignore this slope if sonicMidX is beyond the line
-        if (sonicMidX < myLine.p1.x || sonicMidX > myLine.p2.x)
-        {
-          continue;
-        }
-        
-        // sonic collides with this slope
-        if (line_intersects_rect(myLine, sonic))
-        {
-          
-          // calculate sonic's position along slope
-          var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
-          var dx = sonic.x - myLine.p1.x;
-          var dy = slope * dx;
-          var endY = myLine.p1.y + dy;
-          sonic.land(endY - sonic.h / 2);
-          
-          // update currentSlope and collideAnySlope variables        
-          currentSlope = myLine;
-          collideAnySlopes = true;
-          
-        }
-      }
-    }
-  }
-  
-  // if we didn't collide with any slopes, set currentSlope to undefined
-  if (!collideAnySlopes)
-  {
-    currentSlope = undefined;
-  }
+  // handle sonic platform collisions
+  sonicCollisions();
   
   // if sonic is falling, we don't need an ignoredSlope, so reset it
   if (sonic.vy > 0)
@@ -221,36 +146,12 @@ function draw()
   }
   
   // sonic dies if running into motobug
-  if (collide(sonic,motobug) != "none")
+  if (collide(sonic,motobug) != "none" && motobug.isAlive)
   {
     motobug.isAlive = false;
     motobug.img.hide();
     breakNoise.play();
   }
-  
-  // update the position and speed of sonic (also update hitbox position)
-  /*
-  var speedDirection = 0;
-  if(sonic.vx < 0)
-  {
-    speedDirection = -1;
-  }
-  else if(sonic.vx > 0)
-  {
-    speedDirection = 1;
-  }
-  sonic.vx = sonic.vx + sonic.ax;
-  if(speedDirection == -1 && sonic.vx >= 0)
-  {
-    sonic.vx = 0;
-    sonic.ax = 0;
-  }
-  if(speedDirection == 1 && sonic.vx <= 0)
-  {
-    sonic.vx = 0;
-    sonic.ax = 0;
-  }
-  */
   
   // identify current direction before adjusting speed by acceleration (this is used by deacceleration case below)
   var speedDirection = 0;
@@ -313,16 +214,6 @@ function draw()
     motobug.x = motobug.x + motobug.vx;  
     motobug.hx = motobug.hx + motobug.vx;
   }
-  
-  // check if sonic should be dragged with auto scroll if not moving on left side of a platform
-  for (var i=0; i < collisions.length; i++)
-  {
-    if(collisions[i].includes("left"))
-    {
-      sonic.x = sonic.x - autoscrollRate;
-      sonic.hx = sonic.hx - autoscrollRate;
-    }
-  }  
   
   // draw goal ring (finish line)
   if (goalRing.x > 0 && goalRing.x < screenWidth - 80 && goalRing.y > 0 && goalRing.y < screenHeight)
@@ -465,7 +356,103 @@ function draw()
     text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
   }
   
-} 
+}
+
+// handles sonic's collisions with platforms and enemies
+function sonicCollisions()
+{
+  
+  // get collisions list
+  var collisions = sonic.checkPlatformCollisions();    
+  
+  // handle platform collisions
+  var collided = false;
+  for (var i=0; i < collisions.length; i++)
+  {    
+    var tileCollisions = collisions[i];    
+    for (var j=0; j < tileCollisions.length; j++)
+    {
+      // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
+      var collisionStatus = tileCollisions[j];
+      // if collisionStatus is not none, set collided to true
+      if (collisionStatus != 'none')
+      {
+        collided = true;
+      }
+    }    
+  }
+  if (!collided)
+  {
+    sonic.onGround = false;
+  }
+  
+  // handle slope collisions
+  var collideAnySlopes = false;
+  var sonicMidX = sonic.x + sonic.w / 2;
+  for (var i = 0; i < platforms.length; i++)
+  {
+    var platform = platforms[i];
+    for (var j = 0; j < platform.tiles.length; j++)
+    {
+      var tile = platform.tiles[j];   
+      for (var k = 0; k < tile.slopes.length; k++)
+      {
+        
+        var myLine = tile.slopes[k];
+        
+        // ignore ignoredslope
+        if (myLine == ignoredSlope)
+        {
+          continue;
+        }
+        
+        // ignore this slope if sonicMidX is beyond the line
+        if (sonicMidX < myLine.p1.x || sonicMidX > myLine.p2.x)
+        {
+          continue;
+        }
+        
+        // sonic collides with this slope
+        if (line_intersects_rect(myLine, sonic))
+        {
+          
+          // calculate sonic's position along slope
+          var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
+          var dx = sonic.x - myLine.p1.x;
+          var dy = slope * dx;
+          var endY = myLine.p1.y + dy;
+          sonic.land(endY - sonic.h / 2);
+          
+          // update currentSlope and collideAnySlope variables        
+          currentSlope = myLine;
+          collideAnySlopes = true;
+          
+        }
+      }
+    }
+  }  
+  // if we didn't collide with any slopes, set currentSlope to undefined
+  if (!collideAnySlopes)
+  {
+    currentSlope = undefined;
+  }
+  
+  // check if sonic should be dragged with auto scroll if not moving on left side of a platform
+  for (var i=0; i < collisions.length; i++)
+  {
+    if(collisions[i].includes("left"))
+    {
+      sonic.x = sonic.x - autoscrollRate;
+      sonic.hx = sonic.hx - autoscrollRate;
+    }
+  }  
+  
+}
+
+function updateSonic()
+{
+  
+}
 
 function keyPressed()
 {
