@@ -168,3 +168,6 @@ if (collisions.includes('left') || collisions.includes('right'))
 
 // this.y = platform.tiles[i].hy - this.hh;
 // this.hy = platform.tiles[i].hy - this.hh;
+
+// console.log(sonic.hx);
+// rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);

@@ -36,7 +36,8 @@ function setup()
   sonicImgJump = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Jump.gif?v=1615057119037");
   
   // create motobug
-  motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
+  motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, groundY - 72, 80, 58, true);
+  motobug.vx = -2;
   
   // create goal ring (AKA finish line)
   goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
@@ -273,8 +274,12 @@ function draw()
     sonic.vx = maxSpeedX;
   }
   sonic.x = sonic.x + sonic.vx;  
-  sonic.hx = sonic.hx + sonic.vx;   
+  sonic.hx = sonic.hx + sonic.vx; 
   
+  // move enemy (motobug)
+  motobug.x = motobug.x + motobug.vx;  
+  motobug.hx = motobug.hx + motobug.vx;
+
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
   for (var i=0; i < collisions.length; i++)
   {
@@ -354,7 +359,16 @@ function draw()
   }
   
   // draw motobug
-  motobug.display(); 
+  if (motobug.x > 0 && motobug.x < screenWidth - 80 && motobug.y > 0 && motobug.y < screenHeight)
+  {
+    motobug.image.show();
+    motobug.display();     
+  }
+  else
+  {
+    console.log(motobug.image);
+    motobug.image.hide();
+  }
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
@@ -369,8 +383,6 @@ function draw()
     if (sonic.hitboxActive)
     {
       rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
-      // console.log(sonic.hx);
-      // rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);
     }
     
     // draw motobug hitbox for debugging
