@@ -122,6 +122,21 @@ class Character
     sonicImgRun.show();
   }
   
+  spin()
+  {
+    
+    // change to jumping image, and update w/h and hitbox accordingly
+    this.img = sonicImgJump;    
+    this.w = 60;
+    this.h = 60;
+    this.hw = 60;
+    this.hh = 60;
+    this.hx = this.x;
+    this.hy = this.y;    
+    sonicImgRun.hide();
+    sonicImgJump.show();
+  }
+  
   // this checks collision between Sonic and ALL of the platforms
   checkPlatformCollisions()
   {        

@@ -265,7 +265,6 @@ function draw()
         l.p1.x = l.p1.x - autoscrollRate;
         l.p2.x = l.p2.x - autoscrollRate;
       }      
-      
     }
   }
     
@@ -466,6 +465,7 @@ function keyPressed()
   if (keyCode == 90)
   {
     sonic.jump();
+    sonic.status = "jumping";
   }
   else if (keyCode == 39)
   {
@@ -484,6 +484,12 @@ function keyPressed()
   if(keyCode == 120)
   {
     developerMode = !developerMode;
+  }
+  
+  // down for spindash
+  if(keyCode == 40)
+  {
+    sonic.status = "spindash";
   }
   
 }
