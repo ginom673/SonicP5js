@@ -283,9 +283,12 @@ function draw()
   sonic.hx = sonic.hx + sonic.vx; 
   
   // move enemy (motobug)
-  motobug.x = motobug.x + motobug.vx;  
-  motobug.hx = motobug.hx + motobug.vx;
-
+  if (motobug.isAlive)
+  {
+    motobug.x = motobug.x + motobug.vx;  
+    motobug.hx = motobug.hx + motobug.vx;
+  }
+  
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
   for (var i=0; i < collisions.length; i++)
   {
@@ -365,10 +368,13 @@ function draw()
   }
   
   // draw motobug
-  if (motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
+  if (motobug.isAlive)
   {
+    if (motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
+    {
     motobug.img.show();
     motobug.display();     
+    }
   }
   else
   {
