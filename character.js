@@ -39,6 +39,9 @@ class Character
     // -1 means deaccelerating, 0 means no acceleration or deacceleration, 1 means accelerating
     this.accelerationStatus = 0;
     
+    // current status
+    this.status = "running";
+    
   }
   
   // used by draw() to display character

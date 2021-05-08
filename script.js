@@ -372,6 +372,12 @@ function draw()
       // console.log(sonic.hx);
       // rect(sonic.hx, sonic.hy, sonic.hw, sonic.hh);
     }
+    
+    // draw motobug hitbox for debugging
+    if (motobug.hitboxActive)
+    {
+      rect(motobug.hx - motobug.w/2, motobug.hy - motobug.h/2, motobug.hw, motobug.hh);
+    }
         
     // draw the tile hitboxes for debugging
     stroke(0,255,255);
