@@ -27,7 +27,7 @@ function setup()
   // load platforms
   platform1 = new Platform(0, groundY - 276, 2, 1, "tile 1");    
   platform2 = new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
-  // platform3 = new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
+  platform3 = new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
   platform4 = new Platform(1540, groundY - 276, 1, 1, "tile 2");  
   
   // create sonic
@@ -36,7 +36,7 @@ function setup()
   sonicImgJump = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Jump.gif?v=1615057119037");
   
   // create motobug
-  motobug = new Character(2000, 50, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
+  motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, 50, 80, 58, true);
   
   // create goal ring (AKA finish line)
   goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
