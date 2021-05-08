@@ -465,7 +465,6 @@ function keyPressed()
   if (keyCode == 90)
   {
     sonic.jump();
-    sonic.status = "jumping";
   }
   else if (keyCode == 39)
   {
@@ -489,7 +488,7 @@ function keyPressed()
   // down for spindash
   if(keyCode == 40)
   {
-    sonic.status = "spindash";
+    sonic.spin();
   }
   
 }

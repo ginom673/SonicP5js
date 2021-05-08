@@ -75,7 +75,8 @@ class Character
     }
     
     // NOTE: this assumes that Sonic is the only jumping Character object
-    // change sonic's image
+    // change to jumping image, and update w/h and hitbox accordingly
+    this.status = "jumping";
     this.img = sonicImgJump;    
     this.w = 60;
     this.h = 60;
@@ -107,10 +108,20 @@ class Character
   
   // land
   land(newY)
-  {
+  {    
+    
+    // update physics variables
     this.y = newY;
     this.vy = 0;
     this.onGround = true;
+    
+    // dont change image if we are spindashing
+    if(this.status == "spindash")
+    {
+      return;
+    }
+    
+    // change to running image, and update w/h and hitbox accordingly
     this.img = sonicImgRun;
     this.w = 64;
     this.h = 72;
@@ -120,10 +131,14 @@ class Character
     this.hy = this.y;
     sonicImgJump.hide();
     sonicImgRun.show();
+    
   }
   
   spin()
   {
+    
+    
+    this.status = "spindash";
     
     // change to jumping image, and update w/h and hitbox accordingly
     this.img = sonicImgJump;    
@@ -135,6 +150,7 @@ class Character
     this.hy = this.y;    
     sonicImgRun.hide();
     sonicImgJump.show();
+    
   }
   
   // this checks collision between Sonic and ALL of the platforms
