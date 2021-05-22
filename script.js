@@ -124,19 +124,7 @@ function draw()
     // swap image (later)        
     if(sonic.isAlive) 
     {
-      sonic.isAlive = false;
-      sonic.hitboxActive = false;
-      sonic.vy = -20;
-      sonic.vx = 0;
-      sonic.ax = 0;
-      sonic.accelerationStatus = 0;
-      deathNoise.play();
-      sonic.img.remove();
-      sonic.imgName = "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212";
-      sonic.img = sonicDeathImage;
-      sonic.isGif = false;
-      sonic.w = 66;
-      sonic.h = 80;
+      sonic.die();
     }
     else
     {
@@ -145,12 +133,25 @@ function draw()
     
   }
   
-  // sonic dies if running into motobug
+  // sonic - motobug collision
+  // if sonic is running, sonic takes damage
+  // if sonic is jumping or spindashing, motobug takes damage
   if (collide(sonic,motobug) != "none" && motobug.isAlive)
   {
-    motobug.isAlive = false;
-    motobug.img.hide();
-    breakNoise.play();
+    
+    // add an if statement that checks if sonic's status is running
+    if (sonic.status == "running")
+    {
+      
+    }
+    else
+    {
+      motobug.isAlive = false;
+      motobug.img.hide();
+      breakNoise.play();
+    }
+    
+    
   }
   
   // identify current direction before adjusting speed by acceleration (this is used by deacceleration case below)

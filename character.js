@@ -207,4 +207,22 @@ class Character
     return tileCollisions;
   }  
   
+  // updates sonic properties and image
+  die()
+  {
+    sonic.isAlive = false;
+    sonic.hitboxActive = false;
+    sonic.vy = -20;
+    sonic.vx = 0;
+    sonic.ax = 0;
+    sonic.accelerationStatus = 0;
+    deathNoise.play();
+    sonic.img.remove();
+    sonic.imgName = "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212";
+    sonic.img = sonicDeathImage;
+    sonic.isGif = false;
+    sonic.w = 66;
+    sonic.h = 80;
+  }
+  
 }
