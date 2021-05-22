@@ -1,5 +1,7 @@
 // NOTE: later restructuring by function would be nice
 
+// NOTE: later add code to terminate spindash after a certain amount of time ... this code may need to consider our current state before getting out of spindash
+
 // BUG: hitbox is slightly off when we jump
 // BUG: acceleration bug ... sonic continues going right/left when you press both arrow keys at nearly the same time
 
@@ -136,7 +138,7 @@ function draw()
   // sonic - motobug collision
   // if sonic is running, sonic takes damage
   // if sonic is jumping or spindashing, motobug takes damage
-  if (collide(sonic,motobug) != "none" && motobug.isAlive)
+  if (collide(sonic,motobug) != "none" && motobug.isAlive && sonic.isAlive)
   {
     
     // add an if statement that checks if sonic's status is running
@@ -227,6 +229,12 @@ function draw()
     goalRing.image.hide();
   }
   
+  // display platforms
+  for (var i=0; i < platforms.length; i++)
+  {
+    platforms[i].display();
+  }
+  
   // draw sonic image
   // the show / hide here cause the image to go away when we are off screen
   // the sonic.isAlive checks make sure that we do not call show() or hide() if sonic.img is a gif
@@ -244,7 +252,7 @@ function draw()
   }
   
   // detect if sonic reaches goalRing (AKA finish line)
-  if (collide(sonic, goalRing) != "none")
+  if (collide(sonic, goalRing) != "none" && sonic.isAlive)
   {
     sonic.img.hide();
     goalRing.image.hide();
@@ -276,12 +284,6 @@ function draw()
   // autoscroll goal
   goalRing.x = goalRing.x - autoscrollRate;
   goalRing.hx = goalRing.hx - autoscrollRate;
-  
-  // display platforms
-  for (var i=0; i < platforms.length; i++)
-  {
-    platforms[i].display();
-  }
   
   // draw motobug if they are alive and on screen
   if (motobug.isAlive && motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
