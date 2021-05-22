@@ -131,6 +131,7 @@ class Character
     this.hy = this.y;
     sonicImgJump.hide();
     sonicImgRun.show();
+    this.status
     
   }
   

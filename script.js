@@ -142,7 +142,7 @@ function draw()
     // add an if statement that checks if sonic's status is running
     if (sonic.status == "running")
     {
-      
+      sonic.die();
     }
     else
     {
@@ -248,7 +248,7 @@ function draw()
   {
     sonic.img.hide();
     goalRing.image.hide();
-    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
+    //alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
   }
   
   // autoscroll platforms and slopes
@@ -354,6 +354,7 @@ function draw()
     text("hy: " + sonic.hy.toFixed(2), 950, 225);
     text("ax: " + sonic.ax.toFixed(2), 950, 250);
     text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
+    text("status: " + sonic.status, 950, 300);
   }
   
 }
