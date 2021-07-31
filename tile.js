@@ -24,12 +24,18 @@ class Tile
     // load image for this Tile
     this.image = loadImage(imgName);
      
-    // any additional lines included for collision detections
+    // any additional lines included for collision detections; adds points to slopes    
     this.slopes = [];   
     
     if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765")
-    {
-      // add points to slopes
+    {      
+      var line = new Line2D(new Point(this.x + tileHorizontalOffset, this.y + tileVerticalOffset - 2), new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20));
+      var line2 = new Line2D(new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20), new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2));
+      this.slopes.push(line);
+      this.slopes.push(line2);
+    }
+    if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205")
+    {      
       var line = new Line2D(new Point(this.x + tileHorizontalOffset, this.y + tileVerticalOffset - 2), new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20));
       var line2 = new Line2D(new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20), new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2));
       this.slopes.push(line);

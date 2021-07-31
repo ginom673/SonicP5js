@@ -45,10 +45,11 @@ function setupPlatforms()
 {
   
   // load platforms
-  platform1 = new Platform(0, groundY - 276, 2, 1, "tile 1");    
-  platform2 = new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
-  platform3 = new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
-  platform4 = new Platform(1540, groundY - 276, 1, 1, "tile 2");  
+  new Platform(0, groundY - 276, 2, 1, "tile 1");    
+  new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
+  new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
+  new Platform(1540, groundY - 276, 1, 1, "tile 2");  
+  new Platform(2052, groundY - 276, 1, 1, "slope 1");
   
 }
 
@@ -437,6 +438,7 @@ function sonicCollisions()
       }
     }
   }  
+  
   // if we didn't collide with any slopes, set currentSlope to undefined
   if (!collideAnySlopes)
   {
