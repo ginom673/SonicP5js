@@ -48,6 +48,10 @@ class Platform
       {
         var theTile = new Tile(x + (i * 512) - 60, y + 256, 512, 512, x + (i * 512), y + 320, 380, 180, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373")
       }
+      else if(tileImgName == "slope 1")
+      {
+        var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205");
+      }
       else
       {
         console.log("Unrecognized tile name: " + tileImgName)
