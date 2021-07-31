@@ -251,14 +251,15 @@ function draw()
     sonic.img.hide(); 
   }
   
+  
   // detect if sonic reaches goalRing (AKA finish line)
   if (collide(sonic, goalRing) != "none" && sonic.isAlive)
   {
     sonic.img.hide();
     goalRing.image.hide();
-    //alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
+    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
     
-    
+    resetGame();
   }
   
   // autoscroll platforms and slopes
@@ -666,3 +667,27 @@ function rect_contains(r, x, y)
   return x > r.x && x < r.x + r.w && y < r.y && y > r.y - r.h;
 }
   
+
+function resetGame()
+{
+  
+  platforms = [];
+  
+  
+  motobug.img.hide();
+  
+  
+  
+  // setup platforms
+  setupPlatforms();  
+  
+  // setup Sonic
+  setupSonic();
+  
+  // setup enemies
+  setupEnemies();  
+  
+  // create goal ring (AKA finish line)
+  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+
+}
