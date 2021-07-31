@@ -257,6 +257,8 @@ function draw()
     sonic.img.hide();
     goalRing.image.hide();
     //alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
+    
+    
   }
   
   // autoscroll platforms and slopes
