@@ -667,24 +667,30 @@ function rect_contains(r, x, y)
   return x > r.x && x < r.x + r.w && y < r.y && y > r.y - r.h;
 }
   
-
+// resets game
 function resetGame()
 {
   
-  platforms = [];
+  // reset platforms
+  platforms = [];  
   
-  
+  // hide old motobug image (otherwise it will linger for some reason)
   motobug.img.hide();
+ 
+  // reset background
+  bgX = 0;
   
+  // reset slope variables
+  currentSlope = undefined;
+  ignoredSlope = undefined;
   
-  
-  // setup platforms
+  // reset platforms
   setupPlatforms();  
   
-  // setup Sonic
+  // reset Sonic
   setupSonic();
   
-  // setup enemies
+  // reset enemies
   setupEnemies();  
   
   // create goal ring (AKA finish line)
