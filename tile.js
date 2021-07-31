@@ -35,11 +35,20 @@ class Tile
       this.slopes.push(line2);
     }
     if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205")
-    {      
-      var line = new Line2D(new Point(this.x + tileHorizontalOffset, this.y + tileVerticalOffset - 2), new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20));
-      var line2 = new Line2D(new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20), new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2));
+    { 
+      var line1start = new Point(this.x + tileHorizontalOffset, this.y + tileVerticalOffset - 80);
+      var line2start = new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20);
+      var line3start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
+      var line4start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
+      var line4end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);      
+      var line = new Line2D(line1start, line2start);
+      var line2 = new Line2D(line2start, line3start);
+      var line3 = new Line2D(line3start, line4start);
+      var line4 = new Line2D(line4start, line4end);
       this.slopes.push(line);
       this.slopes.push(line2);
+      this.slopes.push(line3);
+      this.slopes.push(line4);
     }
     
   }
