@@ -549,8 +549,6 @@ function mouseReleased()
 }
 */
 
-
-
 // taken from https://stackoverflow.com/questions/29861096/detect-which-side-of-a-rectangle-is-colliding-with-another-rectangle
 function collide(r1,r2)
 {
