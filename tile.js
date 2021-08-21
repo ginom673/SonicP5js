@@ -36,8 +36,8 @@ class Tile
     }
     if(imgName == "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205")
     { 
-      var line1start = new Point(this.x + tileHorizontalOffset, this.y + tileVerticalOffset + 240);
-      var line2start = new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 20);
+      var line1start = new Point(this.x + tileHorizontalOffset + 25, this.y + tileVerticalOffset + 255);
+      var line2start = new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 300);
       var line3start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
       var line4start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
       var line4end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);      
