@@ -39,15 +39,15 @@ class Tile
       var line1start = new Point(this.x + tileHorizontalOffset + 25, this.y + tileVerticalOffset + 255);
       var line2start = new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 300);
       var line3start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
-      var line4start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
+      var line4start = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 25);
       var line4end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);      
       var line = new Line2D(line1start, line2start);
       var line2 = new Line2D(line2start, line3start);
       var line3 = new Line2D(line3start, line4start);
       var line4 = new Line2D(line4start, line4end);
       this.slopes.push(line);
-      /*
       this.slopes.push(line2);
+      /*
       this.slopes.push(line3);
       this.slopes.push(line4);
       */
