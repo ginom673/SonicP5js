@@ -45,24 +45,25 @@ class Tile
       var line1end = new Point(this.x + this.w / 2 + tileHorizontalOffset, this.y + tileVerticalOffset + 300);
       
       var line2start = JSON.parse(JSON.stringify(line1end));
-      var line2end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);
+      var line2end = new Point(this.x + this.w + tileHorizontalOffset - 75, this.y + tileVerticalOffset + 375);
       
       var line3start = JSON.parse(JSON.stringify(line2end));
-      var line3end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 25);
-      
+      var line3end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset + 375);
+      /*
       var line4start = JSON.parse(JSON.stringify(line3end));
-      var line4end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset - 2);     
-      
+      var line4end = new Point(this.x + this.w + tileHorizontalOffset, this.y + tileVerticalOffset + 300);     
+      */
       var line = new Line2D(line1start, line1end);
       var line2 = new Line2D(line2start, line2end);
       var line3 = new Line2D(line3start, line3end);
-      var line4 = new Line2D(line4start, line4end);
+      //var line4 = new Line2D(line4start, line4end);
+      
       this.slopes.push(line);
-      this.slopes.push(line2);
-      /*
+      this.slopes.push(line2);      
       this.slopes.push(line3);
-      this.slopes.push(line4);
-      */
+      
+      //this.slopes.push(line4);
+      
     }
     
   }
