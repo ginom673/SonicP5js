@@ -73,6 +73,14 @@ function setupEnemies()
   motobug.vx = -2;
 }
 
+function setupRings()
+{
+  var ring = new Obstacle(1750, groundY - 256, 32, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+    
+  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+    
+}
+
 // draw is called constantly to render everythong on screen
 function draw()
 {

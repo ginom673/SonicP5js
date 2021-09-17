@@ -44,6 +44,9 @@ var motobug;
 // finish line
 var goalRing;
 
+// rings
+var rings = [];
+
 // sounds
 var deathNoise;
 var jumpSound;
