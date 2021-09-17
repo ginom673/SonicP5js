@@ -71,3 +71,4 @@ var currentSlope;
 // what slope we ignore after jumping - fixes a bug where sonic is locked onto slope when trying to jump
 var ignoredSlope;
 
+var ringCount = 0;  
