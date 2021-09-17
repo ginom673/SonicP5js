@@ -36,6 +36,9 @@ function setup()
   // setup enemies
   setupEnemies();  
   
+  // setup rings
+  setupRings();
+  
   // create goal ring (AKA finish line)
   goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
   
@@ -75,9 +78,9 @@ function setupEnemies()
 
 function setupRings()
 {
-  var ring = new Obstacle(1750, groundY - 256, 32, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+  var ring = new Obstacle(400, groundY - 72, 32, 32, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FRing.gif?v=1615927238069", 400, groundY - 72, 32, 32, true);  
     
-  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+  // goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
     
 }
 
@@ -258,16 +261,14 @@ function draw()
   else if(sonic.isAlive)
   {
     sonic.img.hide(); 
-  }
-  
+  }  
   
   // detect if sonic reaches goalRing (AKA finish line)
   if (collide(sonic, goalRing) != "none" && sonic.isAlive)
   {
     sonic.img.hide();
     goalRing.image.hide();
-    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");
-    
+    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");    
     resetGame();
   }
   
@@ -296,6 +297,26 @@ function draw()
   // autoscroll goal
   goalRing.x = goalRing.x - autoscrollRate;
   goalRing.hx = goalRing.hx - autoscrollRate;
+  
+  // autoscroll rings
+  // write a for loop that goes through rings list
+  for (var i=0; i < rings.length; i++)
+  {
+    var currentRing = rings[i];
+    currentRing.x = currentRing.x - autoscrollRate;
+    currentRing.hx = currentRing.hx - autoscrollRate;
+    
+    if (currentRing.x > 0 && currentRing.x < screenWidth && currentRing.y > 0 && currentRing.y < screenHeight)
+    {
+      currentRing.image.show();
+      currentRing.display();     
+    }
+    else
+    {
+      currentRing.image.hide();
+    }
+    
+  }  
   
   // draw motobug if they are alive and on screen
   if (motobug.isAlive && motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
@@ -369,6 +390,7 @@ function draw()
     text("ax: " + sonic.ax.toFixed(2), 950, 250);
     text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
     text("status: " + sonic.status, 950, 300);
+    
   }
   
 }
@@ -700,6 +722,9 @@ function resetGame()
   
   // reset enemies
   setupEnemies();  
+  
+  // reset rings
+  setupRings();
   
   // create goal ring (AKA finish line)
   goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
