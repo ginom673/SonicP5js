@@ -373,7 +373,11 @@ function draw()
     rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
     
     // display ring hitboxes
-    for (var i=0; i < rings.length)
+    for (var i=0; i < rings.length; i++)
+    {
+      var currentRing = rings[i];
+      rect(currentRing.hx - currentRing.w, currentRing.hy - currentRing.h, currentRing.hw, currentRing.hh);
+    }
     
      
     // display statistics for debugging
