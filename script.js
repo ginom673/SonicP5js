@@ -78,10 +78,8 @@ function setupEnemies()
 
 function setupRings()
 {
-  var ring = new Obstacle(400, groundY - 72, 32, 32, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FRing.gif?v=1615927238069", 400, groundY - 72, 32, 32, true);  
-    
-  // goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
-    
+  var ring = new Obstacle(400, groundY - 72, 32, 32, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FRing.gif?v=1615927238069", 400, groundY - 72, 32, 32, true);          
+  rings.push(ring);
 }
 
 // draw is called constantly to render everythong on screen
@@ -373,6 +371,10 @@ function draw()
     
     // display goal ring hitbox
     rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
+    
+    // display ring hitboxes
+    for (var i=0; i < rings.length)
+    
      
     // display statistics for debugging
     fill(150, 150, 150);
