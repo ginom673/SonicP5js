@@ -585,6 +585,10 @@ function mouseReleased()
 }
 */
 
+// this function determines if any two rectangles (r1, r2) "collide" in the sense that the rectangles overlap AT ALL
+// each variable, r1 and r2, simply needs to be an object with hx, hy, hw, hh properties (for hitboxes)
+// any object (be it an obstacle, platform, character, whatever) will suffice as long as it has those properties
+// the function returns "bottom", "left", "right", "top", or "none", indicating what side of r2 that r1 collided with (not sure which way it is though??? r1 or r2)
 // taken from https://stackoverflow.com/questions/29861096/detect-which-side-of-a-rectangle-is-colliding-with-another-rectangle
 function collide(r1,r2)
 {
