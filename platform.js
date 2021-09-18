@@ -81,3 +81,21 @@ class Platform
   }
   
 }
+
+// load platforms
+function setupPlatforms()
+{  
+  new Platform(0, groundY - 276, 2, 1, "tile 1");    
+  new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
+  new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
+  new Platform(1540, groundY - 276, 1, 1, "tile 2");  
+  new Platform(2052, groundY - 276, 1, 1, "slope 1");  
+}
+
+function drawPlatforms()
+{
+  for (var i=0; i < platforms.length; i++)
+  {
+    platforms[i].display();
+  }
+}

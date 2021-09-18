@@ -1,3 +1,5 @@
+NOTE: in general, we seem to check for collisions, then draw, then autoscroll ... it would be good to keep that order standardized
+
 NOTE: later add code to terminate spindash after a certain amount of time ... this code may need to consider our current state before getting out of spindash
 
 BUG: hitbox is slightly off when we jump

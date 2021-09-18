@@ -21,7 +21,7 @@ function setup()
   bg.resize(2528, screenHeight);  
   
   // setup platforms
-  setupPlatforms();  
+  setupPlatforms();
   
   // setup Sonic
   setupSonic();
@@ -37,44 +37,6 @@ function setup()
   
 }
 
-function setupPlatforms()
-{
-  
-  // load platforms
-  new Platform(0, groundY - 276, 2, 1, "tile 1");    
-  new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
-  new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
-  new Platform(1540, groundY - 276, 1, 1, "tile 2");  
-  new Platform(2052, groundY - 276, 1, 1, "slope 1");
-  
-}
-
-function setupSonic()
-{
-  
-  // create sonic
-  sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
-  sonicImgRun = sonic.img;
-  sonicImgJump = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Jump.gif?v=1615057119037");
-  
-  // load sonic death image
-  sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
-  
-}
-
-function setupEnemies()
-{
-  // create motobug
-  motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, groundY - 72, 80, 58, true);
-  motobug.vx = -2;
-}
-
-function setupRings()
-{
-  var ring = new Obstacle(400, groundY - 72, 32, 32, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FRing.gif?v=1615927238069", 400, groundY - 72, 32, 32, true);          
-  rings.push(ring);
-}
-
 // draw is called constantly to render everythong on screen
 function draw()
 {
@@ -82,176 +44,25 @@ function draw()
   // wipe screen before redrawing
   clear();
   
-  // background color
-  background("#2404b4");
-  
-  // background image
-  image(bg, bgX, 0);
-  
-  // scroll background to left
-  bgX = bgX - (autoscrollRate * 0.4);
-  
   // stroke and fill
   var borderWidth = 6;
   stroke(borderWidth);
   noFill();
   
-  // handle sonic platform collisions
-  sonicCollisions();
+  // update sonic
+  updateSonic();
   
-  // if sonic is falling, we don't need an ignoredSlope, so reset it
-  if (sonic.vy > 0)
-  {
-    ignoredSlope = undefined;
-  }
-  
-  // if in air, update sonic vertical position and speed
-  if(!sonic.onGround)
-  {
-    sonic.vy = sonic.vy + gravity;
-    if(sonic.vy > maxFallSpeed)
-    {
-      sonic.vy = maxFallSpeed;
-    }
-    if(sonic.vy < maxFlySpeed)
-    {
-      sonic.vy = maxFlySpeed;
-    }
-    sonic.y = sonic.y + sonic.vy;
-    sonic.hy = sonic.hy + sonic.vy;
-  }
-  
-  // sonic dying
-  if (sonic.y >= screenHeight)
-  {
-    // alert("im ded lol so u suck @ dis game. git rekt m8.");  
-    // play sound effect (later)
-    // swap image (later)        
-    if(sonic.isAlive) 
-    {
-      sonic.die();
-    }
-    else
-    {
-      sonic.visible = false;
-    }
-    
-  }
-  
-  // sonic-motobug collision
-  // if sonic is running, sonic takes damage
-  // if sonic is jumping or spindashing, motobug takes damage
-  if (collide(sonic,motobug) != "none" && motobug.isAlive && sonic.isAlive)
-  {
-    
-    // add an if statement that checks if sonic's status is running
-    if (sonic.status == "running")
-    {
-      sonic.die();
-    }
-    else
-    {
-      motobug.isAlive = false;
-      motobug.img.hide();
-      breakNoise.play();
-    }
-    
-    
-  }
-  
-  // identify current direction before adjusting speed by acceleration (this is used by deacceleration case below)
-  var speedDirection = 0;
-  if(sonic.vx < 0)
-  {
-    speedDirection = -1;
-  }
-  else if(sonic.vx > 0)
-  {
-    speedDirection = 1;
-  }
-  
-  // adjust speed based on acceleration (if any)
-  sonic.vx = sonic.vx + sonic.ax;
-  
-  // accelerating - increase speed (in either direction) until reaches max  
-  if(sonic.accelerationStatus == 1)
-  {
-    if(sonic.vx < maxSpeedX * -1)
-    {
-      sonic.vx = maxSpeedX * -1;
-    }
-    if(sonic.vx > maxSpeedX)
-    {
-      sonic.vx = maxSpeedX;
-    }
-  }
-  // deaccelerating - decrease speed (in either direction) until reaches 0
-  else if(sonic.accelerationStatus == -1)
-  {
-    if(speedDirection == -1 && sonic.vx >= 0)
-    {
-      sonic.vx = 0;
-      sonic.ax = 0;
-      sonic.accelerationStatus = 0;
-    }
-    if(speedDirection == 1 && sonic.vx <= 0)
-    {
-      sonic.vx = 0;
-      sonic.ax = 0;
-      sonic.accelerationStatus = 0;
-    }
-  }    
-  
-  if(sonic.vx < maxSpeedX * -1)
-  {
-    sonic.vx = maxSpeedX * -1;
-  }
-  if(sonic.vx > maxSpeedX)
-  {
-    sonic.vx = maxSpeedX;
-  }
-  sonic.x = sonic.x + sonic.vx;  
-  sonic.hx = sonic.hx + sonic.vx; 
-  
-  // move enemy (motobug)
-  if (motobug.isAlive)
-  {
-    motobug.x = motobug.x + motobug.vx;  
-    motobug.hx = motobug.hx + motobug.vx;
-  }
+  // update enemy (motobug)
+  updateEnemies();  
   
   // draw goal ring (finish line)
-  if (goalRing.x > 0 && goalRing.x < screenWidth - 80 && goalRing.y > 0 && goalRing.y < screenHeight)
-  {
-    goalRing.image.show();
-    goalRing.display();     
-  }
-  else
-  {
-    goalRing.image.hide();
-  }
+  drawGoalRing();
   
   // display platforms
-  for (var i=0; i < platforms.length; i++)
-  {
-    platforms[i].display();
-  }
+  drawPlatforms();
   
   // draw sonic image
-  // the show / hide here cause the image to go away when we are off screen
-  // the sonic.isAlive checks make sure that we do not call show() or hide() if sonic.img is a gif
-  if (sonic.x > 0 && sonic.x < screenWidth && sonic.y > 0 && sonic.y < screenHeight)
-  {
-    if(sonic.isAlive)
-    {
-      sonic.img.show();
-    }    
-    sonic.display();
-  }
-  else if(sonic.isAlive)
-  {
-    sonic.img.hide(); 
-  }  
+  drawSonic();
   
   // detect if sonic reaches goalRing (AKA finish line)
   if (collide(sonic, goalRing) != "none" && sonic.isAlive)
@@ -290,6 +101,8 @@ function draw()
     }
   }
     
+  
+  
   // autoscroll enemies
   motobug.x = motobug.x - autoscrollRate;
   motobug.hx = motobug.hx - autoscrollRate;
@@ -400,6 +213,25 @@ function draw()
     
   }
   
+}
+
+// draw background
+function drawBG()
+{
+  
+  // background color
+  background("#2404b4");
+  
+  // background image
+  image(bg, bgX, 0);
+  
+}
+
+
+// autoscroll background
+function autoscrollBG()
+{
+  bgX = bgX - (autoscrollRate * 0.4);
 }
 
 // handles sonic's collisions with platforms and enemies
