@@ -64,153 +64,28 @@ function draw()
   // draw sonic image
   drawSonic();
   
-  // detect if sonic reaches goalRing (AKA finish line)
-  if (collide(sonic, goalRing) != "none" && sonic.isAlive)
-  {
-    sonic.img.hide();
-    goalRing.image.hide();
-    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");    
-    resetGame();
-  }
-  
-  // detect if sonic picks up any rings
-  for (var i=0; i < rings.length; i++)
-  {
-    var ring = rings[i];
-    if (collide(sonic, ring) != "none" && sonic.isAlive)
-    {
-      ringCount++;
-    }
-  }
+  // draw rings
+  drawRings();
   
   // autoscroll platforms and slopes
-  for (var i=0; i < platforms.length; i++)
-  {
-    var platform = platforms[i];
-    for (var j=0; j < platform.tiles.length; j++)
-    {
-      var tile = platform.tiles[j];      
-      tile.x = tile.x - autoscrollRate;
-      tile.hx = tile.hx - autoscrollRate;      
-      for (var k = 0; k < tile.slopes.length; k++)
-      {
-        var l = tile.slopes[k];
-        l.p1.x = l.p1.x - autoscrollRate;
-        l.p2.x = l.p2.x - autoscrollRate;
-      }      
-    }
-  }
-    
-  
+  autoscrollPlatforms(); 
   
   // autoscroll enemies
-  motobug.x = motobug.x - autoscrollRate;
-  motobug.hx = motobug.hx - autoscrollRate;
+  autoscrollEnemies();
   
   // autoscroll goal
-  goalRing.x = goalRing.x - autoscrollRate;
-  goalRing.hx = goalRing.hx - autoscrollRate;
+  autoscrollGoalRing();
   
-  // draw and autoscroll rings
-  // write a for loop that goes through rings list
-  for (var i=0; i < rings.length; i++)
-  {
-    var currentRing = rings[i];
-    currentRing.x = currentRing.x - autoscrollRate;
-    currentRing.hx = currentRing.hx - autoscrollRate;
-    
-    if (currentRing.x > 0 && currentRing.x < screenWidth && currentRing.y > 0 && currentRing.y < screenHeight)
-    {
-      currentRing.image.show();
-      currentRing.display();     
-    }
-    else
-    {
-      currentRing.image.hide();
-    }
-    
-  }  
+  // autoscroll rings
+  autoscrollRings();
   
-  // draw motobug if they are alive and on screen
-  if (motobug.isAlive && motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
-  {
-    motobug.img.show();
-    motobug.display();
-  }
-  else
-  {
-    motobug.img.hide();
-  }
+  // draw enemies
+  drawEnemies();
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
-  {
-    
-    // draw sonic hitbox for debugging
-    // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
-    // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
-    noFill();
-    strokeWeight(3);
-    stroke(255,255,0);
-    if (sonic.hitboxActive)
-    {
-      rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
-    }
-    
-    // draw motobug hitbox for debugging
-    if (motobug.isAlive && motobug.hitboxActive)
-    {
-      rect(motobug.hx - motobug.w/2, motobug.hy - motobug.h/2, motobug.hw, motobug.hh);
-    }
-        
-    // draw the tile hitboxes for debugging
-    stroke(0,255,255);
-    strokeWeight(5);
-    for (var i = 0; i < platforms.length; i++)
-    {
-      for (var j = 0; j < platforms[i].tiles.length; j++)
-      {  
-        var currentTile = platforms[i].tiles[j];
-        stroke(0,255,255);
-        rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
-        
-        // for loop here that goes through each line object in currentTile's slopes list
-        for (var k = 0; k < currentTile.slopes.length; k++)
-        {
-          stroke(255, 0, 0);
-          var l = currentTile.slopes[k];
-          line(l.p1.x, l.p1.y, l.p2.x, l.p2.y);
-        }
-      }
-    }
-    
-    // display goal ring hitbox
-    rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
-    
-    // display ring hitboxes
-    for (var i=0; i < rings.length; i++)
-    {
-      var currentRing = rings[i];
-      rect(currentRing.hx - currentRing.w, currentRing.hy - currentRing.h, currentRing.hw, currentRing.hh);
-    }    
-     
-    // display statistics for debugging
-    fill(150, 150, 150);
-    stroke(0,0,0);
-    strokeWeight(3);
-    textSize(24);
-    strokeWeight(1);
-    text("x: " + sonic.x.toFixed(2), 950, 75);
-    text("y: " + sonic.y.toFixed(2), 950, 100);
-    text("vx: " + sonic.vx.toFixed(2), 950, 125);
-    text("vy: " + sonic.vy.toFixed(2), 950, 150);
-    text("onGround: " + sonic.onGround, 950, 175);
-    text("hx: " + sonic.hx.toFixed(2), 950, 200);
-    text("hy: " + sonic.hy.toFixed(2), 950, 225);
-    text("ax: " + sonic.ax.toFixed(2), 950, 250);
-    text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
-    text("status: " + sonic.status, 950, 300);
-    
+  {    
+    drawDebug();
   }
   
 }
@@ -226,7 +101,6 @@ function drawBG()
   image(bg, bgX, 0);
   
 }
-
 
 // autoscroll background
 function autoscrollBG()
@@ -333,11 +207,6 @@ function sonicCollisions()
   
 }
 
-function updateSonic()
-{
-  
-}
-
 function keyPressed()
 {
   
@@ -347,19 +216,22 @@ function keyPressed()
     return;
   }
   
+  // Z for jump
   if (keyCode == 90)
   {
     sonic.jump();
   }
+  
+  // right arrow
   else if (keyCode == 39)
   {
-    // sonic.vx = 5;
     sonic.ax = 0.2;
     sonic.accelerationStatus = 1;
   }
+  
+  // left arrow
   else if (keyCode == 37)
   {
-    // sonic.vx = -5;
     sonic.ax = -0.2;
     sonic.accelerationStatus = 1;
   }
@@ -388,10 +260,9 @@ function keyReleased()
     return;
   }
   
+  // right arrow
   if (keyCode == 39)
   {
-    // sonic.vx = 0;
-    // sonic.ax = -0.25;
     if(sonic.vx > 0)
     {
       sonic.ax = -0.25;
@@ -402,6 +273,8 @@ function keyReleased()
     }
     sonic.accelerationStatus = -1;
   }
+  
+  // left arrow
   else if (keyCode == 37)
   {
     // sonic.vx = 0;
@@ -578,5 +451,76 @@ function resetGame()
   
   // create goal ring (AKA finish line)
   goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+  
 
+}
+
+function drawDebug()
+{
+  
+  // draw sonic hitbox for debugging
+  // shift the rectangle and draw it at sonic.x - (sonic.w/2), sonic.y - (sonic.h/2)
+  // NOTE: why did we originally subtract by w/2, h/2? sonic's (x,y) is top-left corner of rectangle
+  noFill();
+  strokeWeight(3);
+  stroke(255,255,0);
+  if (sonic.hitboxActive)
+  {
+    rect(sonic.hx - sonic.w/2, sonic.hy - sonic.h/2, sonic.hw, sonic.hh);
+  }
+
+  // draw motobug hitbox for debugging
+  if (motobug.isAlive && motobug.hitboxActive)
+  {
+    rect(motobug.hx - motobug.w/2, motobug.hy - motobug.h/2, motobug.hw, motobug.hh);
+  }
+
+  // draw the tile hitboxes for debugging
+  stroke(0,255,255);
+  strokeWeight(5);
+  for (var i = 0; i < platforms.length; i++)
+  {
+    for (var j = 0; j < platforms[i].tiles.length; j++)
+    {  
+      var currentTile = platforms[i].tiles[j];
+      stroke(0,255,255);
+      rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
+
+      // for loop here that goes through each line object in currentTile's slopes list
+      for (var k = 0; k < currentTile.slopes.length; k++)
+      {
+        stroke(255, 0, 0);
+        var l = currentTile.slopes[k];
+        line(l.p1.x, l.p1.y, l.p2.x, l.p2.y);
+      }
+    }
+  }
+
+  // display goal ring hitbox
+  rect(goalRing.hx - goalRing.w/4, goalRing.hy - goalRing.h/4, goalRing.hw, goalRing.hh);
+
+  // display ring hitboxes
+  for (var i=0; i < rings.length; i++)
+  {
+    var currentRing = rings[i];
+    rect(currentRing.hx - currentRing.w, currentRing.hy - currentRing.h, currentRing.hw, currentRing.hh);
+  }    
+
+  // display statistics for debugging
+  fill(150, 150, 150);
+  stroke(0,0,0);
+  strokeWeight(3);
+  textSize(24);
+  strokeWeight(1);
+  text("x: " + sonic.x.toFixed(2), 950, 75);
+  text("y: " + sonic.y.toFixed(2), 950, 100);
+  text("vx: " + sonic.vx.toFixed(2), 950, 125);
+  text("vy: " + sonic.vy.toFixed(2), 950, 150);
+  text("onGround: " + sonic.onGround, 950, 175);
+  text("hx: " + sonic.hx.toFixed(2), 950, 200);
+  text("hy: " + sonic.hy.toFixed(2), 950, 225);
+  text("ax: " + sonic.ax.toFixed(2), 950, 250);
+  text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
+  text("status: " + sonic.status, 950, 300);
+  
 }

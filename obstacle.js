@@ -58,3 +58,36 @@ function drawGoalRing()
     goalRing.image.hide();
   }
 }
+
+function autoscrollGoalRing()
+{
+  goalRing.x = goalRing.x - autoscrollRate;
+  goalRing.hx = goalRing.hx - autoscrollRate;
+}
+
+function drawRings()
+{
+  for (var i=0; i < rings.length; i++)
+  {
+    var currentRing = rings[i];    
+    if (currentRing.x > 0 && currentRing.x < screenWidth && currentRing.y > 0 && currentRing.y < screenHeight)
+    {
+      currentRing.image.show();
+      currentRing.display();     
+    }
+    else
+    {
+      currentRing.image.hide();
+    }    
+  }  
+}
+
+function autoscrollRings()
+{
+  for (var i=0; i < rings.length; i++)
+  {
+    var currentRing = rings[i];    
+    currentRing.x = currentRing.x - autoscrollRate;
+    currentRing.hx = currentRing.hx - autoscrollRate;
+  }
+}

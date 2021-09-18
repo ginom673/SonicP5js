@@ -99,3 +99,23 @@ function drawPlatforms()
     platforms[i].display();
   }
 }
+
+function autoscrollPlatforms()
+{
+  for (var i=0; i < platforms.length; i++)
+  {
+    var platform = platforms[i];
+    for (var j=0; j < platform.tiles.length; j++)
+    {
+      var tile = platform.tiles[j];      
+      tile.x = tile.x - autoscrollRate;
+      tile.hx = tile.hx - autoscrollRate;      
+      for (var k = 0; k < tile.slopes.length; k++)
+      {
+        var l = tile.slopes[k];
+        l.p1.x = l.p1.x - autoscrollRate;
+        l.p2.x = l.p2.x - autoscrollRate;
+      }      
+    }
+  }
+}

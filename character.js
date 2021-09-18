@@ -368,6 +368,25 @@ function updateSonic()
   sonic.x = sonic.x + sonic.vx;  
   sonic.hx = sonic.hx + sonic.vx; 
   
+  // detect if sonic reaches goalRing (AKA finish line)
+  if (collide(sonic, goalRing) != "none" && sonic.isAlive)
+  {
+    sonic.img.hide();
+    goalRing.image.hide();
+    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");    
+    resetGame();
+  }
+  
+  // detect if sonic picks up any rings
+  for (var i=0; i < rings.length; i++)
+  {
+    var ring = rings[i];
+    if (collide(sonic, ring) != "none" && sonic.isAlive)
+    {
+      ringCount++;
+    }
+  }
+  
   
 }
 
@@ -397,4 +416,23 @@ function drawSonic()
   {
     sonic.img.hide(); 
   }  
+}
+
+function autoscrollEnemies()
+{
+  motobug.x = motobug.x - autoscrollRate;
+  motobug.hx = motobug.hx - autoscrollRate;
+}
+
+function drawEnemies()
+{
+  if (motobug.isAlive && motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
+  {
+    motobug.img.show();
+    motobug.display();
+  }
+  else
+  {
+    motobug.img.hide();
+  }
 }
