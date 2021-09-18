@@ -207,8 +207,7 @@ function draw()
       sonic.ax = 0;
       sonic.accelerationStatus = 0;
     }
-  }  
-  
+  }    
   
   if(sonic.vx < maxSpeedX * -1)
   {
@@ -270,6 +269,13 @@ function draw()
     resetGame();
   }
   
+  // detect if sonic picks up any rings
+  for (var i=0; i < rings.length; i++)
+  {
+    
+    if (collide(sonic, ring) != "none")
+  }
+  
   // autoscroll platforms and slopes
   for (var i=0; i < platforms.length; i++)
   {
@@ -296,7 +302,7 @@ function draw()
   goalRing.x = goalRing.x - autoscrollRate;
   goalRing.hx = goalRing.hx - autoscrollRate;
   
-  // autoscroll rings
+  // draw and autoscroll rings
   // write a for loop that goes through rings list
   for (var i=0; i < rings.length; i++)
   {
@@ -377,8 +383,7 @@ function draw()
     {
       var currentRing = rings[i];
       rect(currentRing.hx - currentRing.w, currentRing.hy - currentRing.h, currentRing.hw, currentRing.hh);
-    }
-    
+    }    
      
     // display statistics for debugging
     fill(150, 150, 150);
@@ -404,6 +409,13 @@ function draw()
 // handles sonic's collisions with platforms and enemies
 function sonicCollisions()
 {
+  
+  // check if sonic is not alive, if that is true, return
+  
+  if (!sonic.isAlive)
+  {
+    return;
+  }
   
   // get collisions list
   var collisions = sonic.checkPlatformCollisions();    
