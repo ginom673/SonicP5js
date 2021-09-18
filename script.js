@@ -1,10 +1,3 @@
-// NOTE: later restructuring by function would be nice
-
-// NOTE: later add code to terminate spindash after a certain amount of time ... this code may need to consider our current state before getting out of spindash
-
-// BUG: hitbox is slightly off when we jump
-// BUG: acceleration bug ... sonic continues going right/left when you press both arrow keys at nearly the same time
-
 // preload is called at beginning of project to load assets
 // preload is before setup which is before draw
 function preload()
@@ -145,7 +138,7 @@ function draw()
     
   }
   
-  // sonic - motobug collision
+  // sonic-motobug collision
   // if sonic is running, sonic takes damage
   // if sonic is jumping or spindashing, motobug takes damage
   if (collide(sonic,motobug) != "none" && motobug.isAlive && sonic.isAlive)
@@ -272,8 +265,11 @@ function draw()
   // detect if sonic picks up any rings
   for (var i=0; i < rings.length; i++)
   {
-    
-    if (collide(sonic, ring) != "none")
+    var ring = rings[i];
+    if (collide(sonic, ring) != "none" && sonic.isAlive)
+    {
+      ringCount++;
+    }
   }
   
   // autoscroll platforms and slopes

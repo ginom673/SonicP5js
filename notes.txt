@@ -1,0 +1,5 @@
+NOTE: later add code to terminate spindash after a certain amount of time ... this code may need to consider our current state before getting out of spindash
+
+BUG: hitbox is slightly off when we jump
+BUG: acceleration bug ... sonic continues going right/left when you press both arrow keys at nearly the same time
+BUG: something was strange with slopes ... entering/leaving, acceleration, something like that
