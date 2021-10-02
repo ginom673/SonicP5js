@@ -37,7 +37,8 @@ function setup()
   
 }
 
-// draw is called constantly to render everythong on screen
+// draw is called constantly to render everything on screen
+// typically it seems that the order we fall is - update, draw, autoscroll
 function draw()
 {
   
@@ -55,20 +56,29 @@ function draw()
   // update enemy (motobug)
   updateEnemies();  
   
-  // draw goal ring (finish line)
-  drawGoalRing();
-  
-  // display platforms
-  drawPlatforms();
+  // draw background
+  drawBG();
   
   // draw sonic image
   drawSonic();
   
+  // draw enemies
+  drawEnemies();
+  
+  // draw goal ring (finish line)
+  drawGoalRing();
+  
+  // display platforms
+  drawPlatforms(); 
+  
   // draw rings
   drawRings();
   
-  // autoscroll platforms and slopes
-  autoscrollPlatforms(); 
+  // display certain information in "developerMode" i.e. hitboxes, stats
+  if (developerMode)
+  {    
+    drawDebug();
+  }
   
   // autoscroll enemies
   autoscrollEnemies();
@@ -76,17 +86,11 @@ function draw()
   // autoscroll goal
   autoscrollGoalRing();
   
+  // autoscroll platforms and slopes
+  autoscrollPlatforms();  
+  
   // autoscroll rings
   autoscrollRings();
-  
-  // draw enemies
-  drawEnemies();
-  
-  // display certain information in "developerMode" i.e. hitboxes, stats
-  if (developerMode)
-  {    
-    drawDebug();
-  }
   
 }
 
