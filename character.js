@@ -69,7 +69,7 @@ class Character
   {
     
     // prevent double-jumping; if character tries to jump while in midair, do nothing
-    if (this.onGround == false) 
+    if (!this.onGround) 
     {
       return;
     }
@@ -143,6 +143,12 @@ class Character
   spin()
   {
     
+    // prevent spin dashing while in mid-air
+    if (!this.onGround) 
+    {
+      return;
+    }
+    
     // change status
     this.status = "spindash";
     
@@ -160,7 +166,7 @@ class Character
     this.hy = this.y;   
     
     // stop spin dashing after 
-    stopSpinTimeoutsetTimeout(sonic.stopSpin, spinDuration);
+    stopSpinTimeout = setTimeout(sonic.stopSpin, spinDuration);
     
   }
   
@@ -238,6 +244,7 @@ class Character
   
   stopSpin()
   {
+    clearTimeout(stopSpinTimeout);
     sonic.startRun();
   }
   
@@ -402,6 +409,11 @@ function updateSonic()
     }
   }
   
+  // if sonic is currently in mid-air, prevent spin dash from timing out
+  if (!sonic.onGround)
+  {
+    clearTimeout(stopSpinTimeout);
+  }
   
 }
 
