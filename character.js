@@ -113,10 +113,6 @@ class Character
   land(newY)
   {    
     
-    
-    
-    console.log("land");
-    
     // update physics variables
     this.y = newY;
     this.vy = 0;
@@ -150,6 +146,8 @@ class Character
   spin()
   {
     
+    console.log("spin");
+    
     // prevent spin dashing while in mid-air
     if (!this.onGround) 
     {
@@ -173,7 +171,8 @@ class Character
     this.hy = this.y;   
     
     // stop spin dashing after 
-    stopSpinTimeout = setTimeout(sonic.stopSpin, spinDuration);
+    stopSpinTimeout = setTimeout(sonic.stopSpin, 100);
+    console.log("triggered stopSpinTimeout");
     
   }
   
@@ -252,10 +251,19 @@ class Character
   stopSpin()
   {
     
+    console.log("stopSpin");
     
+    
+    // if sonic is mid-air when the spin would time out, simply "check back later" to see if we are on the ground
+    if (!sonic.onGround)
+    {
+      stopSpinTimeout = setTimeout(sonic.stopSpin, 1000);
+      return;
+    }
     
     clearTimeout(stopSpinTimeout);
     sonic.startRun();
+    
   }
   
 }
@@ -420,10 +428,12 @@ function updateSonic()
   }
   
   // if sonic is currently in mid-air, prevent spin dash from timing out
+  /*
   if (!sonic.onGround)
   {
     clearTimeout(stopSpinTimeout);
   }
+  */
   
 }
 
