@@ -148,6 +148,9 @@ class Character
     
     console.log("spin");
     
+    // reset stopSpinTimeout
+    clearTimeout(stopSpinTimeout);
+    
     // prevent spin dashing while in mid-air
     if (!this.onGround) 
     {
@@ -171,7 +174,7 @@ class Character
     this.hy = this.y;   
     
     // stop spin dashing after 
-    stopSpinTimeout = setTimeout(sonic.stopSpin, 100);
+    stopSpinTimeout = setTimeout(sonic.stopSpin, spinDuration);
     console.log("triggered stopSpinTimeout");
     
   }
@@ -253,11 +256,10 @@ class Character
     
     console.log("stopSpin");
     
-    
     // if sonic is mid-air when the spin would time out, simply "check back later" to see if we are on the ground
     if (!sonic.onGround)
     {
-      stopSpinTimeout = setTimeout(sonic.stopSpin, 1000);
+      stopSpinTimeout = setTimeout(sonic.stopSpin, 50);
       return;
     }
     
