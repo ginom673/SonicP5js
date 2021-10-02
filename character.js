@@ -121,7 +121,13 @@ class Character
       return;
     }
     
-    // change to running image, and update w/h and hitbox accordingly
+    sonic.startRun();
+    
+  }
+  
+  // change to running image, and update w/h and hitbox accordingly
+  startRun()
+  {
     this.img = sonicImgRun;
     this.w = 64;
     this.h = 72;
@@ -132,7 +138,6 @@ class Character
     sonicImgJump.hide();
     sonicImgRun.show();
     this.status = "running";
-    
   }
   
   spin()
@@ -155,8 +160,7 @@ class Character
     this.hy = this.y;   
     
     // stop spin dashing after 
-    setTimeout(, spinDurration)
-    
+    stopSpinTimeoutsetTimeout(sonic.stopSpin, spinDuration);
     
   }
   
@@ -234,7 +238,7 @@ class Character
   
   stopSpin()
   {
-    
+    sonic.startRun();
   }
   
 }
