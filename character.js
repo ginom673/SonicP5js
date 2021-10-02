@@ -424,7 +424,8 @@ function updateSonic()
   {
     sonic.img.hide();
     goalRing.image.hide();
-    alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");    
+    // alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");    
+    goalRingSound.play();
     resetGame();
   }
   
@@ -435,16 +436,11 @@ function updateSonic()
     if (collide(sonic, ring) != "none" && sonic.isAlive)
     {
       ringCount++;
+      ring.image.hide();
+      rings.splice(i, 1);
+      ringGetSound.play();
     }
   }
-  
-  // if sonic is currently in mid-air, prevent spin dash from timing out
-  /*
-  if (!sonic.onGround)
-  {
-    clearTimeout(stopSpinTimeout);
-  }
-  */
   
 }
 
