@@ -51,6 +51,7 @@ var rings = [];
 var deathNoise;
 var jumpSound;
 var breakNoise;
+var spindashSound;
 
 // sonic death image
 var sonicDeathImage;

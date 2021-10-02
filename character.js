@@ -148,6 +148,12 @@ class Character
     
     console.log("spin");
     
+    // don't do anything if we are already spinning
+    if (sonic.status == "spindash")
+    {
+      return;
+    }
+    
     // reset stopSpinTimeout
     clearTimeout(stopSpinTimeout);
     
@@ -176,6 +182,9 @@ class Character
     // stop spin dashing after 
     stopSpinTimeout = setTimeout(sonic.stopSpin, spinDuration);
     console.log("triggered stopSpinTimeout");
+    
+    // play spin sound effect
+    spindashSound.play();
     
   }
   

@@ -7,3 +7,7 @@ BUG: acceleration bug ... sonic continues going right/left when you press both a
 BUG: something was strange with slopes ... entering/leaving, acceleration, something like that
 
 NOTE: what should we do if sonic goes off-screen ...? do we just prevent this or cause a death or what?
+
+NOTE: want to adjust spindash hitbox
+
+NOTE: why is onGround status alternating between true and false when on the top platform?
