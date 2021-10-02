@@ -74,6 +74,9 @@ class Character
       return;
     }
     
+    // if we jump, stop spin dashing (this correctly cancels the spindash timeout)
+    sonic.stopSpin();
+    
     // NOTE: this assumes that Sonic is the only jumping Character object
     // change to jumping image, and update w/h and hitbox accordingly
     this.status = "jumping";
@@ -109,6 +112,10 @@ class Character
   // land
   land(newY)
   {    
+    
+    
+    
+    console.log("land");
     
     // update physics variables
     this.y = newY;
@@ -244,6 +251,9 @@ class Character
   
   stopSpin()
   {
+    
+    
+    
     clearTimeout(stopSpinTimeout);
     sonic.startRun();
   }
