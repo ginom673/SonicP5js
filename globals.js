@@ -74,4 +74,15 @@ var currentSlope;
 // what slope we ignore after jumping - fixes a bug where sonic is locked onto slope when trying to jump
 var ignoredSlope;
 
+// number of rings player currently has (NOT the total amount they've ever earned)
+// rings are converted into score points at the end of the goal
 var ringCount = 0;  
+
+// you earn score for destroying enemies, and for rings you still have by the end of the stage
+var score = 0;
+
+// the amount of time that a full (uninterrupted) spin dash lasts (in milliseconds, ms)
+var spinDuration = 1000;
+
+// timeout interval for spinning (this timeout is cancelled if the spin ends earlier than the timeout expects)
+var stopSpinTimeout;

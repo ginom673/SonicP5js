@@ -138,19 +138,25 @@ class Character
   spin()
   {
     
-    
+    // change status
     this.status = "spindash";
     
-    // change to jumping image, and update w/h and hitbox accordingly
-    this.img = sonicImgJump;    
+    // change to jumping image
+    this.img = sonicImgJump;  
+    sonicImgRun.hide();
+    sonicImgJump.show();
+    
+    // update w/h and hitbox accordingly
     this.w = 60;
     this.h = 60;
     this.hw = 60;
     this.hh = 60;
     this.hx = this.x;
-    this.hy = this.y;    
-    sonicImgRun.hide();
-    sonicImgJump.show();
+    this.hy = this.y;   
+    
+    // stop spin dashing after 
+    setTimeout(, spinDurration)
+    
     
   }
   
@@ -224,6 +230,11 @@ class Character
     sonic.isGif = false;
     sonic.w = 66;
     sonic.h = 80;
+  }
+  
+  stopSpin()
+  {
+    
   }
   
 }
