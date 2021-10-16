@@ -54,6 +54,12 @@ function draw()
   stroke(borderWidth);
   noFill();
   
+  // drop shadow
+  drawingContext.shadowOffsetX = 5;
+  drawingContext.shadowOffsetY = -5;
+  drawingContext.shadowBlur = 10;
+  drawingContext.shadowColor = 'black';
+  
   // update sonic
   updateSonic();
   
@@ -77,6 +83,14 @@ function draw()
   
   // draw rings
   drawRings();
+  
+  // draw ring text
+  fill(255, 240, 0);
+  stroke(0,0,0);
+  strokeWeight(3);
+  textSize(24);
+  strokeWeight(1);
+  text("RING  " + ringCount, 100, 75);
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
