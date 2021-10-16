@@ -54,13 +54,6 @@ function draw()
   stroke(borderWidth);
   noFill();
   
-  // drop shadow
-  /*
-  drawingContext.shadowOffsetX = 5;
-  drawingContext.shadowOffsetY = -5;
-  drawingContext.shadowBlur = 10;
-  drawingContext.shadowColor = 'black';
-  */
   // update sonic
   updateSonic();
   
@@ -85,6 +78,12 @@ function draw()
   // draw rings
   drawRings();
   
+  // draw shadows for ring and score text
+  drawingContext.shadowOffsetX = 5;
+  drawingContext.shadowOffsetY = -5;
+  drawingContext.shadowBlur = 10;
+  drawingContext.shadowColor = 'black';
+  
   // draw ring text
   fill(255, 240, 0);
   stroke(0,0,0);
@@ -93,8 +92,18 @@ function draw()
   strokeWeight(1);
   text("RING  " + ringCount, 100, 100);
   
-  //draw score text
+  // draw score text
   text("SCORE  " + score, 100, 75);
+  
+  // turn off shadows for ring and score text
+  // drop shadow
+  if(!shadowsEnabled)
+  {
+    drawingContext.shadowOffsetX = 0;
+    drawingContext.shadowOffsetY = 0;
+    drawingContext.shadowBlur = 0;
+    drawingContext.shadowColor = undefined;    
+  }  
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
