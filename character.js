@@ -360,6 +360,7 @@ function updateSonic()
       motobug.isAlive = false;
       motobug.img.hide();
       breakNoise.play();
+      score = score + 100;
     }
     
     
@@ -426,6 +427,8 @@ function updateSonic()
     goalRing.image.hide();
     // alert("You won! Or did you... ( ͡° ͜ʖ ͡°)");    
     goalRingSound.play();
+    score = score + (ringCount * 100);
+    ringCount = 0;
     resetGame();
   }
   
