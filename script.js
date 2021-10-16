@@ -55,11 +55,12 @@ function draw()
   noFill();
   
   // drop shadow
+  /*
   drawingContext.shadowOffsetX = 5;
   drawingContext.shadowOffsetY = -5;
   drawingContext.shadowBlur = 10;
   drawingContext.shadowColor = 'black';
-  
+  */
   // update sonic
   updateSonic();
   
@@ -90,7 +91,10 @@ function draw()
   strokeWeight(3);
   textSize(24);
   strokeWeight(1);
-  text("RING  " + ringCount, 100, 75);
+  text("RING  " + ringCount, 100, 100);
+  
+  //draw score text
+  text("SCORE  " + score, 100, 75);
   
   // display certain information in "developerMode" i.e. hitboxes, stats
   if (developerMode)
