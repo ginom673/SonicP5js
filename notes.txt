@@ -11,3 +11,5 @@ NOTE: what should we do if sonic goes off-screen ...? do we just prevent this or
 NOTE: want to adjust spindash hitbox
 
 NOTE: why is onGround status alternating between true and false when on the top platform?
+
+REFERENCE: for tinting an image: https://p5js.org/reference/#/p5/tint
