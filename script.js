@@ -37,7 +37,7 @@ function setup()
   setupRings();
   
   // create goal ring (AKA finish line)
-  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);
+  goalRing = new Obstacle(2816, groundY - 128, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 2816, groundY - 128, 128, 128, true);
   
 }
 
@@ -485,7 +485,7 @@ function resetGame()
   setupRings();
   
   // create goal ring (AKA finish line)
-  goalRing = new Obstacle(1750, groundY - 256, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 1750, groundY - 256, 128, 128, true);  
+  goalRing = new Obstacle(2816, groundY - 128, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 2816, groundY - 128, 128, 128, true);
   
 
 }
