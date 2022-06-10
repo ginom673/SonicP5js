@@ -20,6 +20,7 @@ class Platform
     {
       
       // add an if statement
+      // Tile structure: x,y,w,h,hx,hy,hw,hh,imgName
       if(tileImgName == "flat ground")
       {
         var theTile = new Tile(x + (i * 128), y, 128, 128, x + (i * 128), y, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
@@ -51,6 +52,10 @@ class Platform
       else if(tileImgName == "slope 1")
       {
         var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 448, 512, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205");
+      }
+      else if(tileImgName == "low flat tile")
+      {
+        var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 380, 512, 128, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
       }
       else
       {
@@ -88,8 +93,9 @@ function setupPlatforms()
   new Platform(0, groundY - 276, 2, 1, "tile 1");    
   new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
   new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
-  new Platform(1540, groundY - 276, 1, 1, "tile 2");  
-  new Platform(2052, groundY - 276, 1, 1, "slope 1");  
+  new Platform(1540, groundY - 276, 1, 1, "tile 2");
+  new Platform(2052, groundY - 276, 1, 1, "slope 1");
+  new Platform(2564, groundY - 276, 1, 1, "low flat tile");
 }
 
 function drawPlatforms()
