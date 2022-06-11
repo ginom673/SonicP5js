@@ -42,6 +42,9 @@ class Character
     // current status
     this.status = "running";
     
+    // Super
+    this.super = false;
+    
   }
   
   // used by draw() to display character
@@ -80,16 +83,32 @@ class Character
     // NOTE: this assumes that Sonic is the only jumping Character object
     // change to jumping image, and update w/h and hitbox accordingly
     this.status = "jumping";
-    this.img = sonicImgJump;    
     this.w = 60;
     this.h = 60;
     this.hw = 60;
     this.hh = 60;
     this.hx = this.x;
-    this.hy = this.y;    
-    sonicImgRun.hide();
-    sonicImgJump.show();
-    sonicImgTransform.hide();
+    this.hy = this.y;
+    
+    if (sonic.super == true)
+    {
+      this.img = sonicImgSJump;
+      sonicImgRun.hide();
+      sonicImgJump.hide();
+      sonicImgTransform.hide();
+      sonicImgSRun.hide();
+      sonicImgSJump.show();
+    }
+    else
+    {
+      this.img = sonicImgJump;    
+      sonicImgRun.hide();
+      sonicImgJump.show();
+      sonicImgTransform.hide();
+      sonicImgSRun.hide();
+      sonicImgSJump.hide();
+    }
+    
     
     // play jump sound effect
     jumpSound.play();
@@ -168,9 +187,25 @@ class Character
     this.status = "spindash";
     
     // change to jumping image
-    this.img = sonicImgJump;  
-    sonicImgRun.hide();
-    sonicImgJump.show();
+    if (sonic.super == true)
+    {
+      this.img = sonicImgSJump;
+      sonicImgRun.hide();
+      sonicImgJump.hide();
+      sonicImgTransform.hide();
+      sonicImgSRun.hide();
+      sonicImgSJump.show();
+    }
+    else
+    {
+      this.img = sonicImgJump;  
+      sonicImgRun.hide();
+      sonicImgJump.show();
+      sonicImgTransform.hide();
+      sonicImgSRun.hide();
+      sonicImgSJump.hide();
+    }
+    
     
     // update w/h and hitbox accordingly
     this.w = 60;
@@ -287,8 +322,11 @@ class Character
     sonicImgRun.hide();
     sonicImgJump.hide();
     sonicImgTransform.show();
+    sonicImgSRun.hide();
+    sonicImgSJump.hide();
     transformSound.play();
     transformTimeout = setTimeout(sonic.superRun, 400);
+    this.super = true;
     
     
   }
@@ -306,6 +344,7 @@ class Character
     sonicImgTransform.hide();
     sonicImgSRun.show();
     this.status = "sRunning";
+    this.super = true;
   }
   
 }
