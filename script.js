@@ -290,6 +290,12 @@ function keyPressed()
     sonic.transform();
   }
   
+  // R for automatic reset
+  if(keyCode == 82)
+  {
+    resetGame();
+  }
+  
   
 }
 
@@ -494,6 +500,8 @@ function resetGame()
   
   // create goal ring (AKA finish line)
   goalRing = new Obstacle(2816, groundY - 128, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGoal_Ring.gif?v=1615926793357", 2816, groundY - 128, 128, 128, true);
+  
+  autoscrollRate = 5;
   
 
 }

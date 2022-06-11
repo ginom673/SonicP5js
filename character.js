@@ -315,20 +315,25 @@ class Character
   transform()
   {
     console.log("transform");
-    this.status = "transform";
     
-    // change to transform image
-    this.img = sonicImgTransform;  
-    sonicImgRun.hide();
-    sonicImgJump.hide();
-    sonicImgTransform.show();
-    sonicImgSRun.hide();
-    sonicImgSJump.hide();
-    transformSound.play();
-    transformTimeout = setTimeout(sonic.superRun, 400);
-    this.super = true;
-    
-    
+    if (sonic.super == true)
+    {
+      return;
+    }
+    else
+    {
+      // change to transform image
+      this.img = sonicImgTransform;  
+      sonicImgRun.hide();
+      sonicImgJump.hide();
+      sonicImgTransform.show();
+      sonicImgSRun.hide();
+      sonicImgSJump.hide();
+      transformSound.play();
+      transformTimeout = setTimeout(sonic.superRun, 400);
+      this.super = true;
+      autoscrollRate = 7.5
+    }
   }
   superRun()
   {
@@ -363,6 +368,9 @@ function setupSonic()
   
   // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");
+  sonicImgTransform.hide();
+  sonicImgSRun.hide();
+  sonicImgSJump.hide();
   
 }
 
