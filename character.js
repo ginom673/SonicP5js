@@ -88,7 +88,8 @@ class Character
     this.hx = this.x;
     this.hy = this.y;    
     sonicImgRun.hide();
-    sonicImgJump.show();    
+    sonicImgJump.show();
+    sonicImgTransform.hide();
     
     // play jump sound effect
     jumpSound.play();
@@ -278,6 +279,7 @@ class Character
   }
   transform()
   {
+    console.log("transform");
     this.status = "transform";
     
     // change to transform image
@@ -285,22 +287,25 @@ class Character
     sonicImgRun.hide();
     sonicImgJump.hide();
     sonicImgTransform.show();
-    transformTimeout
+    transformSound.play();
+    transformTimeout = setTimeout(sonic.superRun, 400);
     
     
   }
   superRun()
   {
-    this.img = sonicImgRun;
-    this.w = 64;
+    this.img = sonicImgSRun;
+    this.w = 74;
     this.h = 72;
-    this.hw = 64;
+    this.hw = 74;
     this.hh = 72;
     this.hx = this.x;
     this.hy = this.y;
     sonicImgJump.hide();
-    sonicImgRun.show();
-    this.status = "running";
+    sonicImgRun.hide();
+    sonicImgTransform.hide();
+    sonicImgSRun.show();
+    this.status = "sRunning";
   }
   
 }

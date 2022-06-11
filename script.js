@@ -278,11 +278,18 @@ function keyPressed()
     developerMode = !developerMode;
   }
   
-  // down for spindash
-  if(keyCode == 40)
+  // down/X for spindash
+  if(keyCode == 40 || keyCode == 88)
   {
     sonic.spin();
   }
+  
+  // S for super transform
+  if(keyCode == 83)
+  {
+    sonic.transform();
+  }
+  
   
 }
 
