@@ -276,6 +276,16 @@ class Character
     sonic.startRun();
     
   }
+  transform()
+  {
+    this.status = "transform";
+    
+    // change to transform image
+    this.img = sonicImgTransform;  
+    sonicImgRun.hide();
+    sonicImgJump.hide();
+    sonicImgTransform.show();
+  }
   
 }
 
@@ -286,6 +296,10 @@ function setupSonic()
   sonic = new Character(100, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 72, 64, 72, true);
   sonicImgRun = sonic.img;
   sonicImgJump = createImg("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Jump.gif?v=1615057119037");
+  // super sonic
+  sonicImgTransform = createImg("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Super_Sonic_Transform.gif?v=1654969479490");
+  sonicImgSRun = createImg("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Super_Sonic_Run.gif?v=1654968911165");
+  sonicImgSJump = createImg("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Super_Sonic_Jump.gif?v=1654969801764");
   
   // load sonic death image
   sonicDeathImage = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Death.png?v=1614455168212");

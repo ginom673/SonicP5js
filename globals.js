@@ -54,6 +54,7 @@ var breakNoise;
 var spindashSound;
 var goalRingSound;
 var ringGetSound;
+var transformSound;
 
 // sonic death image
 var sonicDeathImage;
