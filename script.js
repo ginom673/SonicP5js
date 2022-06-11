@@ -10,7 +10,7 @@ function preload()
   spindashSound.setVolume(0.1);
   goalRingSound = loadSound("https://cdn.glitch.com/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7%2FGiant_Ring_Enter.wav?v=1633200668684");
   ringGetSound = loadSound("https://cdn.glitch.com/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7%2FRing_Get.wav?v=1631917855174");
-  
+  transformSound = loadSound("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/S3K_9F.wav?v=1654970477900");
   bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
 }
 

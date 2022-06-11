@@ -285,6 +285,22 @@ class Character
     sonicImgRun.hide();
     sonicImgJump.hide();
     sonicImgTransform.show();
+    transformTimeout
+    
+    
+  }
+  superRun()
+  {
+    this.img = sonicImgRun;
+    this.w = 64;
+    this.h = 72;
+    this.hw = 64;
+    this.hh = 72;
+    this.hx = this.x;
+    this.hy = this.y;
+    sonicImgJump.hide();
+    sonicImgRun.show();
+    this.status = "running";
   }
   
 }

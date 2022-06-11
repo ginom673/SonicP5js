@@ -91,5 +91,7 @@ var spinDuration = 1000;
 // timeout interval for spinning (this timeout is cancelled if the spin ends earlier than the timeout expects)
 var stopSpinTimeout;
 
+var transformTimeout;
+
 // whether or not shadows are enabled (for performance purposes)
 var shadowsEnabled = false;
