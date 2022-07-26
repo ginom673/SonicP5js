@@ -16,20 +16,62 @@ class Platform
     this.tiles = [];
     
     // check if the tileImg they are requesting works with the tilesLong and tilesHigh amounts they are requesting
-    
-    
-    
-    for loop
-      for loop
-        
-    
+    // ...        
     
     // create a for loop that repeats tileWidth times
     for (var i = 0; i < tilesLong; i++)
     {
       
-      for(...)
-          // 
+      for(var j = 0; j < tilesHigh; i++)
+      {
+        if(tileImgName == "flat ground")
+        {
+          var theTile = new Tile(x + (i * 128), y, 128, 128, x + (i * 128), y, 128, 128, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2Fgreen_hill_ground_flat.png?v=1601140825013");
+        }  
+        else if(tileImgName == "floating platform")
+        {
+          var theTile = new Tile(x + (i * 128), y, 128, 60, x + (i * 128), y, 128, 60, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Floating_Platform_1.png?v=1610821946600");
+        }
+        else if(tileImgName == "tile 1")
+        {
+          var theTile = new Tile(x + (i * 514), y, 514, 512, x + (i * 514), y + 256, 514, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
+        }
+        else if(tileImgName == "semi solid")
+        {
+          var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid.png?v=1615096007687");
+        }
+        else if(tileImgName == "tile 2")
+        {
+          var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 256, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile2.png?v=1615097317124");
+        }
+        else if(tileImgName == "semi solid 1")
+        {
+          var theTile = new Tile(x + (i * 512), y + 256, 512, 512, x + (i * 512), y + 276, 512, 256, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
+        }
+        else if(tileImgName == "semi solid 2")
+        {
+          var theTile = new Tile(x + (i * 512) - 60, y + 256, 512, 512, x + (i * 512), y + 320, 380, 180, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373")
+        }
+        else if(tileImgName == "slope 1")
+        {
+          var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 448, 512, 64, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205");
+        }
+        else if(tileImgName == "low flat tile")
+        {
+          var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 380, 512, 128, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
+        }
+        else if(tileImgName == "wall")
+        {
+          var theTile = new Tile(x + (i * 512), y, 136, 72, x + (i * 512), y, 136, 72, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Wall.png?v=1654894542890");
+        }
+        else
+        {
+          console.log("Unrecognized tile name: " + tileImgName)
+        }      
+      
+        this.tiles.push(theTile);
+      }
+      
       
       // add an if statement
       // Tile structure: x,y,w,h,hx,hy,hw,hh,imgName
