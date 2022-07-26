@@ -158,7 +158,7 @@ function setupPlatforms()
   new Platform(1540, groundY - 276, 1, 1, "tile 2");
   new Platform(2052, groundY - 276, 1, 1, "slope 1");
   new Platform(2564, groundY - 276, 1, 1, "low flat tile");
-  new Platform(3076, groundY + 128, 1, 10, "wall");
+  new Platform(3076, 0, 1, 10, "wall");
 }
 
 function drawPlatforms()
