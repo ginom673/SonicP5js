@@ -153,17 +153,7 @@ class Character
   {
     if (sonic.super == true)
     {
-      this.img = sonicImgRun;
-      this.w = 64;
-      this.h = 72;
-      this.hw = 64;
-      this.hh = 72;
-      this.hx = this.x;
-      this.hy = this.y;
-      sonicImgJump.hide();
-      sonicImgRun.hide();
-      sonic
-      this.status = "running";
+      sonic.superRun();
     }
     else
     {
@@ -176,6 +166,8 @@ class Character
       this.hy = this.y;
       sonicImgJump.hide();
       sonicImgRun.show();
+      sonicImgSJump.hide();
+      sonicImgSRun.hide();
       this.status = "running";
     }
   }
@@ -340,16 +332,20 @@ class Character
     else
     {
       // change to transform image
+      sonic.jump();
+      this.vy = -4;
       this.img = sonicImgTransform;  
       sonicImgRun.hide();
       sonicImgJump.hide();
-      sonicImgTransform.show();
+      transformTimeout = setTimeout(sonicImgTransform.show, 400);
+      clearTimeout(transformTimeout);
       sonicImgSRun.hide();
       sonicImgSJump.hide();
       transformSound.play();
       transformTimeout = setTimeout(sonic.superRun, 400);
+      clearTimeout(transformTimeout);
       this.super = true;
-      autoscrollRate = 7.5
+      autoscrollRate = 7.5;
     }
   }
   superRun()
