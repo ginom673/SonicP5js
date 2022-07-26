@@ -4,7 +4,7 @@ class Platform
 
   // (x,y) is the top-left corner of this platform
   // tilesLong - how many tiles wide/long it is 
-  // (UNUSED) tilesHigh - how many tiles high it is ... this can be < 1, i.e. 0.5
+  // (UNUSED) tilesHigh - how many tiles high it is
   constructor(x, y, tilesLong, tilesHigh, tileImgName)
   {
     // setup properties
@@ -15,9 +15,21 @@ class Platform
     this.tileImageName = tileImgName;
     this.tiles = [];
     
+    // check if the tileImg they are requesting works with the tilesLong and tilesHigh amounts they are requesting
+    
+    
+    
+    for loop
+      for loop
+        
+    
+    
     // create a for loop that repeats tileWidth times
     for (var i = 0; i < tilesLong; i++)
     {
+      
+      for(...)
+          // 
       
       // add an if statement
       // Tile structure: x,y,w,h,hx,hy,hw,hh,imgName
@@ -59,15 +71,19 @@ class Platform
       }
       else if(tileImgName == "wall")
       {
-        var theTile = new Tile(x + (i * 512), y, 136, 72, x + (i * 512), y + 380, 136, 72, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Wall.png?v=1654894542890");
+        var theTile = new Tile(x + (i * 512), y, 136, 72, x + (i * 512), y, 136, 72, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Wall.png?v=1654894542890");
       }
       else
       {
         console.log("Unrecognized tile name: " + tileImgName)
       }      
       
-      this.tiles.push(theTile);      
+      this.tiles.push(theTile);  
+      
+      
+      
     }
+    
     
     // add this to platforms list
     platforms.push(this);
@@ -100,7 +116,7 @@ function setupPlatforms()
   new Platform(1540, groundY - 276, 1, 1, "tile 2");
   new Platform(2052, groundY - 276, 1, 1, "slope 1");
   new Platform(2564, groundY - 276, 1, 1, "low flat tile");
-  new Platform(3076, groundY - 500, 1, 10, "wall");
+  new Platform(3076, groundY + 128, 1, 10, "wall");
 }
 
 function drawPlatforms()
