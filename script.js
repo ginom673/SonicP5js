@@ -12,6 +12,7 @@ function preload()
   ringGetSound = loadSound("https://cdn.glitch.com/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7%2FRing_Get.wav?v=1631917855174");
   transformSound = loadSound("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/S3K_9F.wav?v=1654970477900");
   bg = loadImage("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Zone_Background.png?v=1612035845018");
+  sonicHUD = loadFont("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/sonic-hud-globalspaced-1-1.ttf?v=1658872555294");
 }
 
 // setup is called at beginning of project (AFTER preload though) for additional setup
@@ -94,6 +95,7 @@ function draw()
   text("RING  " + ringCount, 100, 100);
   
   // draw score text
+  textFont(sonicHUD);
   text("SCORE  " + score, 100, 75);
   
   // turn off shadows for ring and score text
