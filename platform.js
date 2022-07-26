@@ -57,6 +57,10 @@ class Platform
       {
         var theTile = new Tile(x + (i * 512), y, 512, 512, x + (i * 512), y + 380, 512, 128, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
       }
+      else if(tileImgName == "wall")
+      {
+        var theTile = new Tile(x + (i * 512), y, 136, 72, x + (i * 512), y + 380, 136, 72, "https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Wall.png?v=1654894542890");
+      }
       else
       {
         console.log("Unrecognized tile name: " + tileImgName)
@@ -96,6 +100,7 @@ function setupPlatforms()
   new Platform(1540, groundY - 276, 1, 1, "tile 2");
   new Platform(2052, groundY - 276, 1, 1, "slope 1");
   new Platform(2564, groundY - 276, 1, 1, "low flat tile");
+  new Platform(3076, groundY - 500, 1, 10, "wall");
 }
 
 function drawPlatforms()
