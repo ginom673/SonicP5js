@@ -333,6 +333,7 @@ class Character
     {
       // change to transform image
       sonic.jump();
+      jumpSound.stop();
       this.vy = -4;
       this.img = sonicImgTransform;  
       sonicImgRun.hide();
@@ -341,11 +342,15 @@ class Character
       clearTimeout(transformTimeout);
       sonicImgSRun.hide();
       sonicImgSJump.hide();
+      
       transformSound.play();
       transformTimeout = setTimeout(sonic.superRun, 400);
       clearTimeout(transformTimeout);
       this.super = true;
-      autoscrollRate = 7.5;
+      autoscrollRate = 0;
+      setTimeout(function(){
+        autoscrollRate = 7.5;
+      }, 400);
     }
   }
   superRun()
@@ -358,6 +363,7 @@ class Character
     this.hx = this.x;
     this.hy = this.y;
     sonicImgJump.hide();
+    sonicImgSJump.hide();
     sonicImgRun.hide();
     sonicImgTransform.hide();
     sonicImgSRun.show();
