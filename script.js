@@ -21,7 +21,7 @@ function setup()
 {
   
   // set up screen dimensions
-  createCanvas(screenWidth,screenHeight);  
+  createCanvas(screenWidth,screenHeight);
   
   // background is stretched to be larger than screen
   bg.resize(2528, screenHeight);  
