@@ -79,179 +79,177 @@ function drawGame()
   // autoscroll rings
   autoscrollRings();
 
-  }
-
 }
 
 // draw background
 function drawBG()
 {
 
-// background color
-background("#2792da");
+  // background color
+  background("#2792da");
 
-// background image
-image(bg, bgX, 0);
+  // background image
+  image(bg, bgX, 0);
 
 }
 
 // autoscroll background
 function autoscrollBG()
 {
-bgX = bgX - (autoscrollRate * 0.4);
+  bgX = bgX - (autoscrollRate * 0.4);
 }
 
 // handles sonic's collisions with platforms and enemies
 function sonicCollisions()
 {
 
-// check if sonic is not alive, if that is true, return
+  // check if sonic is not alive, if that is true, return
 
-if (!sonic.isAlive)
-{
-  return;
-}
-
-// get collisions list
-var collisions = sonic.checkPlatformCollisions();    
-
-// handle platform collisions
-var collided = false;
-for (var i=0; i < collisions.length; i++)
-{    
-  var tileCollisions = collisions[i];    
-  for (var j=0; j < tileCollisions.length; j++)
+  if (!sonic.isAlive)
   {
-    // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
-    var collisionStatus = tileCollisions[j];
-    // if collisionStatus is not none, set collided to true
-    if (collisionStatus != 'none')
-    {
-      collided = true;
-    }
-  }    
-}
-if (!collided)
-{
-  sonic.onGround = false;
-}
-
-// handle slope collisions
-var collideAnySlopes = false;
-var sonicMidX = sonic.x + sonic.w / 2;
-for (var i = 0; i < platforms.length; i++)
-{
-  var platform = platforms[i];
-  for (var j = 0; j < platform.tiles.length; j++)
-  {
-    var tile = platform.tiles[j];   
-    for (var k = 0; k < tile.slopes.length; k++)
-    {
-
-      var myLine = tile.slopes[k];
-
-      // ignore ignoredslope
-      if (myLine == ignoredSlope)
-      {
-        continue;
-      }
-
-      // ignore this slope if sonicMidX is beyond the line
-      if (sonicMidX < myLine.p1.x || sonicMidX > myLine.p2.x)
-      {
-        continue;
-      }
-
-      // sonic collides with this slope
-      if (line_intersects_rect(myLine, sonic))
-      {
-
-        // calculate sonic's position along slope
-        var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
-        var dx = sonic.x - myLine.p1.x;
-        var dy = slope * dx;
-        var endY = myLine.p1.y + dy;
-        sonic.land(endY - sonic.h / 2);
-
-        // update currentSlope and collideAnySlope variables        
-        currentSlope = myLine;
-        collideAnySlopes = true;
-
-      }
-    }
+    return;
   }
-}  
 
-// if we didn't collide with any slopes, set currentSlope to undefined
-if (!collideAnySlopes)
-{
-  currentSlope = undefined;
-}
+  // get collisions list
+  var collisions = sonic.checkPlatformCollisions();    
 
-// check if sonic should be dragged with auto scroll if not moving on left side of a platform
-for (var i=0; i < collisions.length; i++)
-{
-  if(collisions[i].includes("left"))
-  {
-    sonic.x = sonic.x - autoscrollRate;
-    sonic.hx = sonic.hx - autoscrollRate;
+  // handle platform collisions
+  var collided = false;
+  for (var i=0; i < collisions.length; i++)
+  {    
+    var tileCollisions = collisions[i];    
+    for (var j=0; j < tileCollisions.length; j++)
+    {
+      // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
+      var collisionStatus = tileCollisions[j];
+      // if collisionStatus is not none, set collided to true
+      if (collisionStatus != 'none')
+      {
+        collided = true;
+      }
+    }    
   }
-}  
+  if (!collided)
+  {
+    sonic.onGround = false;
+  }
+
+  // handle slope collisions
+  var collideAnySlopes = false;
+  var sonicMidX = sonic.x + sonic.w / 2;
+  for (var i = 0; i < platforms.length; i++)
+  {
+    var platform = platforms[i];
+    for (var j = 0; j < platform.tiles.length; j++)
+    {
+      var tile = platform.tiles[j];   
+      for (var k = 0; k < tile.slopes.length; k++)
+      {
+
+        var myLine = tile.slopes[k];
+
+        // ignore ignoredslope
+        if (myLine == ignoredSlope)
+        {
+          continue;
+        }
+
+        // ignore this slope if sonicMidX is beyond the line
+        if (sonicMidX < myLine.p1.x || sonicMidX > myLine.p2.x)
+        {
+          continue;
+        }
+
+        // sonic collides with this slope
+        if (line_intersects_rect(myLine, sonic))
+        {
+
+          // calculate sonic's position along slope
+          var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
+          var dx = sonic.x - myLine.p1.x;
+          var dy = slope * dx;
+          var endY = myLine.p1.y + dy;
+          sonic.land(endY - sonic.h / 2);
+
+          // update currentSlope and collideAnySlope variables        
+          currentSlope = myLine;
+          collideAnySlopes = true;
+
+        }
+      }
+    }
+  }  
+
+  // if we didn't collide with any slopes, set currentSlope to undefined
+  if (!collideAnySlopes)
+  {
+    currentSlope = undefined;
+  }
+
+  // check if sonic should be dragged with auto scroll if not moving on left side of a platform
+  for (var i=0; i < collisions.length; i++)
+  {
+    if(collisions[i].includes("left"))
+    {
+      sonic.x = sonic.x - autoscrollRate;
+      sonic.hx = sonic.hx - autoscrollRate;
+    }
+  }  
 
 }
 
-function keyPressed()
+function keyPressedGame()
 {
 
-// ignore keys if dead
-if (!sonic.isAlive)
-{
-  return;
-}
+  // ignore keys if dead
+  if (!sonic.isAlive)
+  {
+    return;
+  }
 
-// Z for jump
-if (keyCode == 90)
-{
-  sonic.jump();
-}
+  // Z for jump
+  if (keyCode == 90)
+  {
+    sonic.jump();
+  }
 
-// right arrow
-else if (keyCode == 39)
-{
-  sonic.ax = 0.2;
-  sonic.accelerationStatus = 1;
-}
+  // right arrow
+  else if (keyCode == 39)
+  {
+    sonic.ax = 0.2;
+    sonic.accelerationStatus = 1;
+  }
 
-// left arrow
-else if (keyCode == 37)
-{
-  sonic.ax = -0.2;
-  sonic.accelerationStatus = 1;
-}
+  // left arrow
+  else if (keyCode == 37)
+  {
+    sonic.ax = -0.2;
+    sonic.accelerationStatus = 1;
+  }
 
-// F9 for debug mode
-if(keyCode == 120)
-{
-  developerMode = !developerMode;
-}
+  // F9 for debug mode
+  if(keyCode == 120)
+  {
+    developerMode = !developerMode;
+  }
 
-// down/X for spindash
-if(keyCode == 40 || keyCode == 88)
-{
-  sonic.spin();
-}
+  // down/X for spindash
+  if(keyCode == 40 || keyCode == 88)
+  {
+    sonic.spin();
+  }
 
-// S for super transform
-if(keyCode == 83)
-{
-  sonic.transform();
-}
+  // S for super transform
+  if(keyCode == 83)
+  {
+    sonic.transform();
+  }
 
-// R for automatic reset
-if(keyCode == 82)
-{
-  resetGame();
-}
+  // R for automatic reset
+  if(keyCode == 82)
+  {
+    resetGame();
+  }
 
 
 }

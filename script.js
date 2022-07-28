@@ -61,11 +61,32 @@ function draw()
 // handles the mouse being pressed down
 function mousePressed()
 {
-  mousePressedDrawing();
+  if (drawingMode == true)
+  {
+    mousePressedDrawing();
+  }
 }
 
 // handles the mouse being pressed down
 function mouseReleased()
 {
-  mouseReleasedDrawing();
+  if (drawingMode == true)
+  {
+    mouseReleasedDrawing();
+  }
+}
+
+function keyPressed()
+{
+  if (drawingMode == false)
+  {
+    keyPressedGame();
+  }
+}
+function keyReleased()
+{
+  if (drawingMode == false)
+  {
+    keyReleasedGame();
+  }
 }
