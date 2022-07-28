@@ -48,6 +48,14 @@ function setup()
 function draw()
 {
   
+  if (drawingMode == true)
+  {
+    
+  }
+  else
+  {
+    
+  }
   // wipe screen before redrawing
   clear();
   
