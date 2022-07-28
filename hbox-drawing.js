@@ -1,0 +1,8 @@
+function mousePressedDrawing()
+{
+  
+}
+function mouseReleasedDrawing()
+{
+  
+}

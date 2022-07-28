@@ -3,6 +3,9 @@
 // developerMode determines whether or not we display hitboxes and statistics
 var developerMode = false;
 
+// whether or not we are in "drawing mode" (to draw hitboxes of tiles)
+var drawingMode = true;
+
 // image object for Sonic's run/jump stance
 var sonicImgRun;
 var sonicImgJump;

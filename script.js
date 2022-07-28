@@ -342,6 +342,18 @@ function keyReleased()
   }
 }
 
+// handles the mouse being pressed down
+function mousePressed()
+{
+  mousePressedDrawing();
+}
+
+// handles the mouse being pressed down
+function mouseReleased()
+{
+  mouseReleasedDrawing();
+}
+
 /*
 function mouseReleased()
 {
