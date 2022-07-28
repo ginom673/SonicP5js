@@ -120,9 +120,7 @@ class Platform
         console.log("Unrecognized tile name: " + tileImgName)
       }      
       
-      this.tiles.push(theTile);  
-      
-      
+      this.tiles.push(theTile);       
       
     }
     
