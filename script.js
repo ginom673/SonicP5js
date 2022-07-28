@@ -133,7 +133,7 @@ function drawBG()
 {
   
   // background color
-  background("#2404b4");
+  background("#2792da");
   
   // background image
   image(bg, bgX, 0);
