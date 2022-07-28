@@ -10,7 +10,14 @@ function setupDrawing()
 function drawDrawing()
 {
   
+  // clear drawings so we dont see the "trailing effect" of the line we are forming
   clear();
+  
+  // set hitbox color to red
+  stroke(255,0,0);
+  
+  // set hitbox line thickness
+  strokeWeight(2);
   
   // draw the image we are creating hitboxes for
   image(slopeTile, 50, 50);
@@ -33,7 +40,10 @@ function drawDrawing()
 
 function mousePressedDrawing()
 {
-  startPoint = new Point(mouseX, mouseY);
+  if(startPoint == undefined)
+  {
+    startPoint = new Point(mouseX, mouseY);    
+  }  
 }
 
 function mouseReleasedDrawing()
@@ -41,5 +51,5 @@ function mouseReleasedDrawing()
   var endPoint = new Point(mouseX, mouseY);
   var newLine = new Line2D(startPoint, endPoint);
   lines.push(newLine);
-  startPoint = undefined;
+  startPoint = endPoint;
 }
