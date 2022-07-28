@@ -1,9 +1,6 @@
 var slopeTile;
-// startX, startY, endX, endY
-var startX;
-var startY;
-var endX;
-var endY;
+var startPoint;
+var lines = [];
 
 function setupDrawing()
 {
@@ -12,16 +9,37 @@ function setupDrawing()
 
 function drawDrawing()
 {
+  
+  clear();
+  
+  // draw the image we are creating hitboxes for
   image(slopeTile, 50, 50);
+  
+  // draw the line they are currently forming (if any)
+  if(startPoint != undefined)
+  {
+    line(startPoint.x, startPoint.y, mouseX, mouseY);    
+  }
+  
+  // draw all lines they have already formed
+  for (var i=0; i < lines.length; i++)
+  {
+    var theLine = lines[i];
+    line(theLine.p1.x, theLine.p1.y, theLine.p2.x, theLine.p2.y);
+  }
+  
 }
 
 
 function mousePressedDrawing()
 {
-  
+  startPoint = new Point(mouseX, mouseY);
 }
 
 function mouseReleasedDrawing()
 {
-  
+  var endPoint = new Point(mouseX, mouseY);
+  var newLine = new Line2D(startPoint, endPoint);
+  lines.push(newLine);
+  startPoint = undefined;
 }
