@@ -52,7 +52,12 @@ function mouseReleasedDrawing()
   lines.push(newLine);
   startPoint = endPoint;
 }
+
 function keyReleasedDrawing()
 {
-  
+  if (keyCode == 32)
+  {
+    drawingDone = true;
+    console.log("Drawing is marked as done");
+  }
 }

@@ -80,7 +80,7 @@ function keyPressed()
   }
   else
   {
-    
+    //keyPressedDrawing();
   }
 }
 function keyReleased()
@@ -91,6 +91,6 @@ function keyReleased()
   }
   else
   {
-    
+    keyReleasedDrawing();
   }
 }
