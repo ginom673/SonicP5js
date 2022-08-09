@@ -5,7 +5,6 @@ var developerMode = false;
 
 // whether or not we are in "drawing mode" (to draw hitboxes of tiles)
 var drawingMode = true;
-var drawingDone;
 
 // image object for Sonic's run/jump stance
 var sonicImgRun;

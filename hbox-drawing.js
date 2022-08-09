@@ -1,7 +1,7 @@
 var slopeTile;
 var startPoint;
 var lines = [];
-
+var imageIndex = 0;
 
 var imageNames = [];
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
@@ -65,8 +65,15 @@ function keyReleasedDrawing()
 {
   if (keyCode == 32)
   {
-    drawingDone = true;
+    nextDrawing();
     console.log("Drawing is marked as done");
   }
 }
 
+function nextDrawing()
+{
+  imageIndex = imageIndex + 1;
+  slopeTile = loadImage(imageNames[imageIndex]);
+  lines = [];
+  startPoint = undefined;
+}
