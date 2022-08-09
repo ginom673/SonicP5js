@@ -37,7 +37,6 @@ function drawDrawing()
   
 }
 
-
 function mousePressedDrawing()
 {
   if(startPoint == undefined)
@@ -52,4 +51,8 @@ function mouseReleasedDrawing()
   var newLine = new Line2D(startPoint, endPoint);
   lines.push(newLine);
   startPoint = endPoint;
+}
+function keyReleasedDrawing()
+{
+  
 }

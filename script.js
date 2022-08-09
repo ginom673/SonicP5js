@@ -53,6 +53,10 @@ function mousePressed()
   {
     mousePressedDrawing();
   }
+  else
+  {
+    //mousePressedGame();
+  }
 }
 
 // handles the mouse being pressed down
@@ -62,6 +66,10 @@ function mouseReleased()
   {
     mouseReleasedDrawing();
   }
+  else
+  {
+    //mouseReleasedGame();
+  }
 }
 
 function keyPressed()
@@ -70,11 +78,19 @@ function keyPressed()
   {
     keyPressedGame();
   }
+  else
+  {
+    
+  }
 }
 function keyReleased()
 {
   if (drawingMode == false)
   {
     keyReleasedGame();
+  }
+  else
+  {
+    
   }
 }
