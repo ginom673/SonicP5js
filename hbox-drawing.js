@@ -10,14 +10,32 @@ imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FG
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373");
 imageNames.push("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
 
+var tileData = {};
+
 /*
 
-highScores = {}
-highScores['CHXIMusic'] = 100000000
-highScores['Nate4844'] = 2
-highScores['Sonic'] = 647238346910234
+// how to create dictionaries in javascript:
+// https://pietschsoft.com/post/2015/09/05/javascript-basics-how-to-create-a-dictionary-with-keyvalue-pairs
+
+DICTIONARY QUICK SUMMARY
+
+used to associate some data (key) with some other data (value)
+especially good for associating names with data 
+(i.e. usernames with high scores; enemy names with rewarded point values)
+
+(here, usernames are keys, and point values are the values)
+var highScores = {};
+highScores['CHXIMusic'] = 100000000;
+highScores['Nate4844'] = 2;
+highScores['Sonic'] = 647238346910234;
+
+(here, enemy names are keys, and their reward points are the values)
+pointValues['motobug'] = 2;
+pointValues['crabmeat'] = 50;
+pointValies['robotnik'] = 2000;
 
 */
+
 
 function setupDrawing()
 {
@@ -82,10 +100,17 @@ function keyReleasedDrawing()
 
 function nextDrawing()
 {
+  
+  // create an entry in the tileData dictionary
+  // where this tile's image name is the key
+  // and lines is the value
+  
+  
   imageIndex = imageIndex + 1;
   slopeTile = loadImage(imageNames[imageIndex]);
   lines = [];
   startPoint = undefined;
+  
 }
 
 // create a function called writeLine
