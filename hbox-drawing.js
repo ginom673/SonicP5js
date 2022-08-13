@@ -29,6 +29,7 @@ function drawDrawing()
   
   // draw the image we are creating hitboxes for
   image(slopeTile, 50, 50);
+  slopeTile.resize(1)
   
   // draw the line they are currently forming (if any)
   if(startPoint != undefined)
