@@ -10,6 +10,15 @@ imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FG
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373");
 imageNames.push("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
 
+/*
+
+highScores = {}
+highScores['CHXIMusic'] = 100000000
+highScores['Nate4844'] = 2
+highScores['Sonic'] = 647238346910234
+
+*/
+
 function setupDrawing()
 {
   slopeTile = loadImage(imageNames[0]);
@@ -28,7 +37,7 @@ function drawDrawing()
   strokeWeight(2);
   
   // draw the image we are creating hitboxes for
-  image(slopeTile, 50, 50);
+  image(slopeTile, 0, 0);
   
   // draw the line they are currently forming (if any)
   if(startPoint != undefined)
@@ -83,5 +92,5 @@ function nextDrawing()
 // inside this function, create a new Line2D object, giving it two points with made up data (for now)
 function writeLine(newLine)
 {
-  new Line2D(new Point(0, 0), new Point(0, 0));
+  console.log("new Line2D(new Point(" + newLine.p1.x + ", " + newLine.p1.y + "), new Point(" + newLine.p2.x + ", " + newLine.p2.y + "))");
 }
