@@ -58,6 +58,7 @@ function mouseReleasedDrawing()
   var endPoint = new Point(mouseX, mouseY);
   var newLine = new Line2D(startPoint, endPoint);
   lines.push(newLine);
+  writeLine(newLine);
   startPoint = endPoint;
 }
 
@@ -80,8 +81,7 @@ function nextDrawing()
 
 // create a function called writeLine
 // inside this function, create a new Line2D object, giving it two points with made up data (for now)
-
-function writeLine()
+function writeLine(newLine)
 {
-  var line = new Line2D(new Point(0, 0), new Point(0, 0));
+  new Line2D(new Point(0, 0), new Point(0, 0));
 }
