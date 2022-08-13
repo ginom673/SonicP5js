@@ -29,7 +29,6 @@ function drawDrawing()
   
   // draw the image we are creating hitboxes for
   image(slopeTile, 50, 50);
-  slopeTile.resize(1)
   
   // draw the line they are currently forming (if any)
   if(startPoint != undefined)
@@ -77,4 +76,12 @@ function nextDrawing()
   slopeTile = loadImage(imageNames[imageIndex]);
   lines = [];
   startPoint = undefined;
+}
+
+// create a function called writeLine
+// inside this function, create a new Line2D object, giving it two points with made up data (for now)
+
+function writeLine()
+{
+  var line = new Line2D(new Point(0, 0), new Point(0, 0));
 }
