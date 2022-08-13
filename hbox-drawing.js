@@ -101,11 +101,11 @@ function keyReleasedDrawing()
 function nextDrawing()
 {
   
-  // create an entry in the tileData dictionary
-  // where this tile's image name is the key
-  // and lines is the value
+  // associate the image name of the tile (that we just finished drawing on) with its list of points
+  var currentImageName = imageNames[imageIndex];
+  tileData[currentImageName] = lines;
   
-  
+  // advance to next drawing
   imageIndex = imageIndex + 1;
   slopeTile = loadImage(imageNames[imageIndex]);
   lines = [];
