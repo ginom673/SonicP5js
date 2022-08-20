@@ -519,6 +519,10 @@ function drawDebug()
       
       // NEW HITBOX CODE
       // fetch the lines associated with this tile
+      // NOTE: this is offset by a bit ... we are assuming that (currentTile.x, currentTile.y) represents the top left corner of the currentTile
+      //       and that the line data specify offsets from that top-left corner
+      //       it is possible that (currentTile.x, currentTile.y) do not actually represent the top left corner of the currentTile as we expect
+      //       maybe this has something to do with autoscrolling / camera controls?
       var tileLines = tileData[currentTile.imgName];
       for (var k = 0; k < tileLines.length; k++)
       {
