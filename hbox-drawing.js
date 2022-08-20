@@ -7,13 +7,11 @@ var imageIndex = 0;
 // if you don't want to draw lines for that tile, simply comment it out
 // if you are trying to draw lines for a new tile, you'll probably want to comment out the previous ones, then add the new one to imageNames
 var imageNames = [];
-/*
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373");
 imageNames.push("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
-*/
 
 var tileData = {};
 
@@ -113,10 +111,14 @@ function nextDrawing()
   console.log("currentTileLines = [];");
   
   // advance to next drawing
-  imageIndex = imageIndex + 1;
-  slopeTile = loadImage(imageNames[imageIndex]);
-  lines = [];
-  startPoint = undefined;
+  // check if imageIndex equals the last valid index of imageNames
+  if(imageIndex == imageNames.length - 1)
+  {
+    imageIndex = imageIndex + 1;
+    slopeTile = loadImage(imageNames[imageIndex]);
+    lines = [];
+    startPoint = undefined;
+  }
   
 }
 
@@ -168,5 +170,40 @@ function initTileHitboxes()
   currentTileLines.push(new Line2D(new Point(0, 511), new Point(1, 256)));
   
   // platform 3
+  currentTileLines.push(new Line2D(new Point(0, 6), new Point(0, 6)));
+  currentTileLines.push(new Line2D(new Point(0, 6), new Point(33, 4)));
+  currentTileLines.push(new Line2D(new Point(33, 4), new Point(91, 6)));
+  currentTileLines.push(new Line2D(new Point(91, 6), new Point(178, 20)));
+  currentTileLines.push(new Line2D(new Point(178, 20), new Point(243, 24)));
+  currentTileLines.push(new Line2D(new Point(243, 24), new Point(306, 21)));
+  currentTileLines.push(new Line2D(new Point(306, 21), new Point(377, 15)));
+  currentTileLines.push(new Line2D(new Point(377, 15), new Point(433, 8)));
+  currentTileLines.push(new Line2D(new Point(433, 8), new Point(511, 7)));
+  currentTileLines.push(new Line2D(new Point(511, 7), new Point(511, 263)));
+  currentTileLines.push(new Line2D(new Point(511, 263), new Point(0, 264)));
+  currentTileLines.push(new Line2D(new Point(0, 264), new Point(0, 6)));
+  
+  // platform 4
+  currentTileLines.push(new Line2D(new Point(63, 71), new Point(63, 71)));
+  currentTileLines.push(new Line2D(new Point(63, 71), new Point(75, 61)));
+  currentTileLines.push(new Line2D(new Point(75, 61), new Point(439, 61)));
+  currentTileLines.push(new Line2D(new Point(439, 61), new Point(447, 72)));
+  currentTileLines.push(new Line2D(new Point(447, 72), new Point(447, 86)));
+  currentTileLines.push(new Line2D(new Point(447, 86), new Point(440, 92)));
+  currentTileLines.push(new Line2D(new Point(440, 92), new Point(73, 90)));
+  currentTileLines.push(new Line2D(new Point(73, 90), new Point(64, 85)));
+  currentTileLines.push(new Line2D(new Point(64, 85), new Point(63, 72)));
+  
+  // platform 5
+  currentTileLines.push(new Line2D(new Point(0, 396), new Point(0, 396)));
+  currentTileLines.push(new Line2D(new Point(0, 396), new Point(113, 383)));
+  currentTileLines.push(new Line2D(new Point(113, 383), new Point(172, 383)));
+  currentTileLines.push(new Line2D(new Point(172, 383), new Point(220, 384)));
+  currentTileLines.push(new Line2D(new Point(220, 384), new Point(316, 396)));
+  currentTileLines.push(new Line2D(new Point(316, 396), new Point(396, 395)));
+  currentTileLines.push(new Line2D(new Point(396, 395), new Point(511, 381)));
+  currentTileLines.push(new Line2D(new Point(511, 381), new Point(512, 510)));
+  currentTileLines.push(new Line2D(new Point(512, 510), new Point(0, 512)));
+  currentTileLines.push(new Line2D(new Point(0, 512), new Point(1, 396)));
   
 }
