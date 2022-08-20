@@ -37,6 +37,17 @@ pointValues['motobug'] = 2;
 pointValues['crabmeat'] = 50;
 pointValies['robotnik'] = 2000;
 
+
+myList[0] = "haha"; // modifies the data associated with index 0
+myDict['blah'] = "superman"; // modifies the data associated with key "blah"
+
+myList[0]; // accesses the data at index 0
+myDict['blah']; // accesses the value associated with key "blah"
+
+to store into a variable:
+var item = myList[0];
+var value = myDict['blah'];
+
 */
 
 

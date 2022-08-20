@@ -504,6 +504,7 @@ function drawDebug()
       var currentTile = platforms[i].tiles[j];
       stroke(0,255,255);
       
+      // OLD HITBOX CODE
       /*
       rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
 
@@ -516,9 +517,15 @@ function drawDebug()
       }
       */
       
-      // use 
-      currentTile.imgName
-      
+      // NEW HITBOX CODE
+      // fetch the lines associated with this tile
+      var tileLines = tileData[currentTile.imgName];
+      for (var k = 0; k < tileLines.length; k++)
+      {
+        stroke(255, 0, 0);
+        var l = tileLines[k];
+        line(currentTile.x + l.p1.x, currentTile.y + l.p1.y, currentTile.x + l.p2.x, currentTile.y + l.p2.y);
+      }
       
     }
   }
