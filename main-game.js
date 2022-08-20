@@ -503,6 +503,8 @@ function drawDebug()
     {  
       var currentTile = platforms[i].tiles[j];
       stroke(0,255,255);
+      
+      /*
       rect(currentTile.hx + tileHorizontalOffset, currentTile.hy + tileVerticalOffset, currentTile.hw, currentTile.hh);
 
       // for loop here that goes through each line object in currentTile's slopes list
@@ -512,6 +514,12 @@ function drawDebug()
         var l = currentTile.slopes[k];
         line(l.p1.x, l.p1.y, l.p2.x, l.p2.y);
       }
+      */
+      
+      // use 
+      currentTile.imgName
+      
+      
     }
   }
 

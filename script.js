@@ -29,6 +29,9 @@ function setup()
   // set up drawing mode assets
   setupDrawing();
   
+  // initialize the tile hitbox data
+  initTileData();
+  
 }
 
 // draw is called constantly to render everything on screen

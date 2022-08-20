@@ -27,8 +27,8 @@ especially good for associating names with data
 (i.e. usernames with high scores; enemy names with rewarded point values)
 
 (here, usernames are keys, and point values are the values)
-var highScores = {};
-highScores['CHXIMusic'] = 100000000;
+var highScores = {}; // creates a dictionary
+highScores['CHXIMusic'] = 100000000; // adds a new key-value pairing (aka "entry") in the dictionary
 highScores['Nate4844'] = 2;
 highScores['Sonic'] = 647238346910234;
 
@@ -138,11 +138,12 @@ function writeLine(newLine)
   console.log("currentTileLines.push(new Line2D(new Point(" + newLine.p1.x + ", " + newLine.p1.y + "), new Point(" + newLine.p2.x + ", " + newLine.p2.y + ")));");
 }
 
-// initTileHitboxes will initialize the hitboxes of all the tiles
-// this is where are the copy-pasted lines from writeLine will go!
+// initTileData will initialize the tileData dictionary which contains the hitbox data (lines) of all the tiles
+// this is where all the copy-pasted lines from writeLine will go!
 // NOTE: might be a good idea to manually ensure first point of first line and last point of last line match
-function initTileHitboxes()
+function initTileData()
 {
+  
   var currentTileLines = [];
   // COPY ALL OF THE CODE THAT GOT CONSOLE.LOG'D HERE
   
