@@ -4,13 +4,16 @@ var lines = [];
 var imageIndex = 0;
 
 // this list contains the image file name URLs for every tile that we are trying to draw hitbox lines for
-// if you don't want to draw lines for that tile, simply ...
+// if you don't want to draw lines for that tile, simply comment it out
+// if you are trying to draw lines for a new tile, you'll probably want to comment out the previous ones, then add the new one to imageNames
 var imageNames = [];
+/*
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373");
 imageNames.push("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
+*/
 
 var tileData = {};
 
@@ -135,4 +138,16 @@ function initTileHitboxes()
 {
   var currentTileLines = [];
   // COPY ALL OF THE CODE THAT GOT CONSOLE.LOG'D HERE
+  currentTileLines.push(new Line2D(new Point(0, 256), new Point(0, 256)));
+  currentTileLines.push(new Line2D(new Point(0, 256), new Point(34, 255)));
+  currentTileLines.push(new Line2D(new Point(34, 255), new Point(130, 268)));
+  currentTileLines.push(new Line2D(new Point(130, 268), new Point(227, 258)));
+  currentTileLines.push(new Line2D(new Point(227, 258), new Point(266, 255)));
+  currentTileLines.push(new Line2D(new Point(266, 255), new Point(338, 263)));
+  currentTileLines.push(new Line2D(new Point(338, 263), new Point(419, 268)));
+  currentTileLines.push(new Line2D(new Point(419, 268), new Point(513, 257)));
+  currentTileLines.push(new Line2D(new Point(513, 257), new Point(513, 511)));
+  currentTileLines.push(new Line2D(new Point(513, 511), new Point(0, 511)));
+  currentTileLines.push(new Line2D(new Point(0, 511), new Point(1, 257)));
+  
 }
