@@ -113,9 +113,15 @@ function nextDrawing()
   
 }
 
-// create a function called writeLine
-// inside this function, create a new Line2D object, giving it two points with made up data (for now)
+// writeLine is some JANKY code
+// the goal of this function is to write 
 function writeLine(newLine)
 {
   console.log("new Line2D(new Point(" + newLine.p1.x + ", " + newLine.p1.y + "), new Point(" + newLine.p2.x + ", " + newLine.p2.y + "))");
+}
+
+// 
+function initTileHitboxes()
+{
+  
 }
