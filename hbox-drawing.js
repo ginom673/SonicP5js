@@ -134,10 +134,12 @@ function writeLine(newLine)
 
 // initTileHitboxes will initialize the hitboxes of all the tiles
 // this is where are the copy-pasted lines from writeLine will go!
+// NOTE: might be a good idea to manually ensure first point of first line and last point of last line match
 function initTileHitboxes()
 {
   var currentTileLines = [];
   // COPY ALL OF THE CODE THAT GOT CONSOLE.LOG'D HERE
+  // platform 1
   currentTileLines.push(new Line2D(new Point(0, 256), new Point(0, 256)));
   currentTileLines.push(new Line2D(new Point(0, 256), new Point(34, 255)));
   currentTileLines.push(new Line2D(new Point(34, 255), new Point(130, 268)));
@@ -148,6 +150,23 @@ function initTileHitboxes()
   currentTileLines.push(new Line2D(new Point(419, 268), new Point(513, 257)));
   currentTileLines.push(new Line2D(new Point(513, 257), new Point(513, 511)));
   currentTileLines.push(new Line2D(new Point(513, 511), new Point(0, 511)));
-  currentTileLines.push(new Line2D(new Point(0, 511), new Point(1, 257)));
+  currentTileLines.push(new Line2D(new Point(0, 511), new Point(0, 256)));
+  
+  // platform 2
+  currentTileLines.push(new Line2D(new Point(0, 255), new Point(0, 255)));
+  currentTileLines.push(new Line2D(new Point(0, 255), new Point(64, 251)));
+  currentTileLines.push(new Line2D(new Point(64, 251), new Point(89, 253)));
+  currentTileLines.push(new Line2D(new Point(89, 253), new Point(135, 264)));
+  currentTileLines.push(new Line2D(new Point(135, 264), new Point(193, 279)));
+  currentTileLines.push(new Line2D(new Point(193, 279), new Point(236, 291)));
+  currentTileLines.push(new Line2D(new Point(236, 291), new Point(358, 353)));
+  currentTileLines.push(new Line2D(new Point(358, 353), new Point(429, 370)));
+  currentTileLines.push(new Line2D(new Point(429, 370), new Point(475, 382)));
+  currentTileLines.push(new Line2D(new Point(475, 382), new Point(512, 384)));
+  currentTileLines.push(new Line2D(new Point(512, 384), new Point(511, 510)));
+  currentTileLines.push(new Line2D(new Point(511, 510), new Point(0, 511)));
+  currentTileLines.push(new Line2D(new Point(0, 511), new Point(1, 256)));
+  
+  // platform 3
   
 }
