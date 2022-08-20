@@ -3,6 +3,8 @@ var startPoint;
 var lines = [];
 var imageIndex = 0;
 
+// this list contains the image file name URLs for every tile that we are trying to draw hitbox lines for
+// if you don't want to draw lines for that tile, simply ...
 var imageNames = [];
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205");
@@ -104,6 +106,8 @@ function nextDrawing()
   // associate the image name of the tile (that we just finished drawing on) with its list of points
   var currentImageName = imageNames[imageIndex];
   tileData[currentImageName] = lines;
+  console.log("tileData[currentImageName] = currentTileLines;");
+  console.log("currentTileLines = [];");
   
   // advance to next drawing
   imageIndex = imageIndex + 1;
@@ -112,8 +116,6 @@ function nextDrawing()
   startPoint = undefined;
   
 }
-
-var currentTileHitboxes = [];
 
 // writeLine is some JANKY code
 // the goal of this function is to console.log() some text which can be copy-pasted back into this file as legitimate code
@@ -124,18 +126,13 @@ var currentTileHitboxes = [];
 // that will later be loaded into the tileData dictionary
 function writeLine(newLine)
 {
-  
-  // step 2 - modify this console.log() string code so that the new Line2D() created here will be added to the currentTileHitboxes list
-  var writtenLine = "new Line2D(new Point(" + newLine.p1.x + ", " + newLine.p1.y + "), new Point(" + newLine.p2.x + ", " + newLine.p2.y + "))";
-  console.log(writtenLine);
-  currentTileHitboxes.push(writtenLine);
+  console.log("currentTileLines.push(new Line2D(new Point(" + newLine.p1.x + ", " + newLine.p1.y + "), new Point(" + newLine.p2.x + ", " + newLine.p2.y + ")));");
 }
 
 // initTileHitboxes will initialize the hitboxes of all the tiles
 // this is where are the copy-pasted lines from writeLine will go!
 function initTileHitboxes()
 {
-  
-  // step 1 - create a blank list here called currentTileHitboxes
-  
+  var currentTileLines = [];
+  // COPY ALL OF THE CODE THAT GOT CONSOLE.LOG'D HERE
 }
