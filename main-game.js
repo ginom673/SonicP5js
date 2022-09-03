@@ -156,6 +156,7 @@ function sonicCollisions()
   }
 
   // handle slope collisions
+  collidedTiles = [];
   var collideAnySlopes = false;
   var sonicMidX = sonic.x + sonic.w / 2;
   for (var i = 0; i < platforms.length; i++)
@@ -184,10 +185,7 @@ function sonicCollisions()
         // where its x is l.p2.x - 35
         // and its y is l.p2.y - 35
         
-        new Point(l.p1.x - 35, l.p1.y - 35);
-        new Point(l.p2.x - 35, l.p2.y - 35);
-        
-        
+        var adjustedLine = new Line2D(new Point(l.p1.x - 35, l.p1.y - 35), new Point(l.p2.x - 35, l.p2.y - 35));       
     
         // the hitboxes of the lines are offset for some reason, so adjust the line    
         /*
@@ -200,30 +198,34 @@ function sonicCollisions()
         */
         
         // ignore ignoredslope
-        if (l == ignoredSlope)
+        if (adjustedLine == ignoredSlope)
         {
           continue;
         }
 
         // ignore this slope if sonicMidX is beyond the line
-        if (sonicMidX < l.x1 || sonicMidX > l.x2)
+        if (sonicMidX < adjustedLine.p1.x || sonicMidX > adjustedLine.p2.x)
         {
           continue;
         }
 
         // sonic collides with this slope
-        if (line_intersects_rect(l, sonic))
+        if (line_intersects_rect(adjustedLine, sonic))
         {
+          
+          // add this tile to collidedTiles (for debugging)
+          if(collidedTiles.contains(tile))
+          collidedTiles.push(tile);
 
           // calculate sonic's position along slope
-          var slope = (l.y2 - l.y1) / (l.x2 - l.x1);
-          var dx = sonic.x - l.x1;
+          var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.y - adjustedLine.p1.x);
+          var dx = sonic.x - adjustedLine.p2.x
           var dy = slope * dx;
-          var endY = l.y1 + dy;
+          var endY = adjustedLine.p1.y + dy;
           sonic.land(endY - sonic.h / 2);
 
           // update currentSlope and collideAnySlope variables        
-          currentSlope = l;
+          currentSlope = adjustedLine;
           collideAnySlopes = true;
 
         }

@@ -101,3 +101,6 @@ var shadowsEnabled = false;
 
 // CUSTOM FONT
 var sonicHUD;
+
+// the list of tiles sonic is currently colliding with (for debugging purposes, to display which tiles he is colliding with)
+var collidedTiles = [];
