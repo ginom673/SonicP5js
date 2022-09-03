@@ -163,41 +163,57 @@ function sonicCollisions()
     var platform = platforms[i];
     for (var j = 0; j < platform.tiles.length; j++)
     {
-      var tile = platform.tiles[j];   
+      var tile = platform.tiles[j];      
+      
+      /*
       for (var k = 0; k < tile.slopes.length; k++)
       {
-
         var myLine = tile.slopes[k];
-
+      }
+      */
+      
+      var tileLines = tileData[tile.imgName];
+      for (var k = 0; k < tileLines.length; k++)
+      {
+        var l = tileLines[k];
+    
+        // the hitboxes of the lines are offset for some reason, so adjust the line    
+        var adjustedLine = {
+          x1: currentTile.x + l.p1.x - 35,
+          y1: currentTile.y + l.p1.y - 35,
+          x2: currentTile.x + l.p2.x - 35,
+          y2: currentTile.y + l.p2.y - 35
+        };
+        
         // ignore ignoredslope
-        if (myLine == ignoredSlope)
+        if (adjustedLine == ignoredSlope)
         {
           continue;
         }
 
         // ignore this slope if sonicMidX is beyond the line
-        if (sonicMidX < myLine.p1.x || sonicMidX > myLine.p2.x)
+        if (sonicMidX < adjustedLine.x1 || sonicMidX > adjustedLine.x2)
         {
           continue;
         }
 
         // sonic collides with this slope
-        if (line_intersects_rect(myLine, sonic))
+        if (line_intersects_rect(adjustedLine, sonic))
         {
 
           // calculate sonic's position along slope
-          var slope = (myLine.p2.y - myLine.p1.y) / (myLine.p2.x - myLine.p1.x);
-          var dx = sonic.x - myLine.p1.x;
+          var slope = (adjustedLine.y2 - adjustedLine.y1) / (adjustedLine.x2 - adjustedLine.x1);
+          var dx = sonic.x - adjustedLine.x1;
           var dy = slope * dx;
-          var endY = myLine.p1.y + dy;
+          var endY = adjustedLine.y1 + dy;
           sonic.land(endY - sonic.h / 2);
 
           // update currentSlope and collideAnySlope variables        
-          currentSlope = myLine;
+          currentSlope = adjustedLine;
           collideAnySlopes = true;
 
         }
-      }
+      }  
     }
   }  
 
