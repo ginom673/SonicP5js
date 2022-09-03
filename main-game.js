@@ -523,6 +523,7 @@ function drawDebug()
       //       and that the line data specify offsets from that top-left corner
       //       it is possible that (currentTile.x, currentTile.y) do not actually represent the top left corner of the currentTile as we expect
       //       maybe this has something to do with autoscrolling / camera controls?
+      console.log(currentTile.imgName);
       var tileLines = tileData[currentTile.imgName];
       for (var k = 0; k < tileLines.length; k++)
       {
