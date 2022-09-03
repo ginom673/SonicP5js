@@ -214,8 +214,10 @@ function sonicCollisions()
         {
           
           // add this tile to collidedTiles (for debugging)
-          if(collidedTiles.contains(tile))
-          collidedTiles.push(tile);
+          if(!collidedTiles.includes(tile))
+          {
+            collidedTiles.push(tile);  
+          }          
 
           // calculate sonic's position along slope
           var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.y - adjustedLine.p1.x);
@@ -527,14 +529,16 @@ function drawDebug()
   }
 
   // draw the tile hitboxes for debugging
-  stroke(0,255,255);
+  // stroke(0,255,255);
   strokeWeight(5);
   for (var i = 0; i < platforms.length; i++)
   {
     for (var j = 0; j < platforms[i].tiles.length; j++)
     {  
       var currentTile = platforms[i].tiles[j];
-      stroke(0,255,255);
+      
+      
+      // stroke(0,255,255);
       
       // OLD HITBOX CODE
       /*
@@ -558,7 +562,17 @@ function drawDebug()
       var tileLines = tileData[currentTile.imgName];
       for (var k = 0; k < tileLines.length; k++)
       {
-        stroke(255, 0, 0);
+        // if sonic is currently colliding with this tile, color it blue
+        // otherwise color it red
+        if(collidedTiles.includes(currentTile))
+        {
+          stroke(0, 0, 255);
+        }
+        else
+        {
+          stroke(255, 0, 0);    
+        }
+        
         var l = tileLines[k];
         line(currentTile.x + l.p1.x - 35, currentTile.y + l.p1.y - 35, currentTile.x + l.p2.x - 35, currentTile.y + l.p2.y - 35);
       }

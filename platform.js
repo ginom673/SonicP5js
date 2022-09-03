@@ -164,6 +164,7 @@ function drawPlatforms()
   for (var i=0; i < platforms.length; i++)
   {
     platforms[i].display();
+    console.log(platforms[i]);
   }
 }
 

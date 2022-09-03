@@ -47,6 +47,10 @@ function draw()
   {
     drawGame();
   }
+  
+  // generate an error
+  throw new Error();
+  
 }
 
 // handles the mouse being pressed down

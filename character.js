@@ -560,6 +560,9 @@ function updateEnemies()
 
 function drawSonic()
 {
+  
+  console.log(sonic);
+  
   // the show / hide here cause the image to go away when we are off screen
   // the sonic.isAlive checks make sure that we do not call show() or hide() if sonic.img is a gif
   if (sonic.x > 0 && sonic.x < screenWidth && sonic.y > 0 && sonic.y < screenHeight)
