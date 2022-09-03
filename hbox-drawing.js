@@ -13,8 +13,8 @@ imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FG
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_1.png?v=1615659396765");
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373");
 imageNames.push("https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157");
-*/
 imageNames.push("https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile2.png?v=1615097317124");
+*/
 
 var tileData = {};
 
@@ -236,5 +236,25 @@ function initTileData()
   currentTileLines.push(new Line2D(new Point(0, 512), new Point(1, 396)));
   tileData["https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157"] = currentTileLines;
   
+  // platform 6
+  currentTileLines = [];
+  currentTileLines.push(new Line2D(new Point(0, 264), new Point(0, 264)));
+  currentTileLines.push(new Line2D(new Point(0, 264), new Point(15, 253)));
+  currentTileLines.push(new Line2D(new Point(15, 253), new Point(30, 253)));
+  currentTileLines.push(new Line2D(new Point(30, 253), new Point(61, 261)));
+  currentTileLines.push(new Line2D(new Point(61, 261), new Point(98, 265)));
+  currentTileLines.push(new Line2D(new Point(98, 265), new Point(139, 267)));
+  currentTileLines.push(new Line2D(new Point(139, 267), new Point(236, 255)));
+  currentTileLines.push(new Line2D(new Point(236, 255), new Point(260, 255)));
+  currentTileLines.push(new Line2D(new Point(260, 255), new Point(284, 256)));
+  currentTileLines.push(new Line2D(new Point(284, 256), new Point(356, 265)));
+  currentTileLines.push(new Line2D(new Point(356, 265), new Point(422, 271)));
+  currentTileLines.push(new Line2D(new Point(422, 271), new Point(434, 271)));
+  currentTileLines.push(new Line2D(new Point(434, 271), new Point(496, 255)));
+  currentTileLines.push(new Line2D(new Point(496, 255), new Point(512, 255)));
+  currentTileLines.push(new Line2D(new Point(512, 255), new Point(511, 511)));
+  currentTileLines.push(new Line2D(new Point(511, 511), new Point(0, 512)));
+  currentTileLines.push(new Line2D(new Point(0, 512), new Point(0, 264)));
+  tileData["https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile2.png?v=1615097317124"] = currentTileLines;
   
 }
