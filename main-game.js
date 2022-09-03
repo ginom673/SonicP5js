@@ -176,40 +176,54 @@ function sonicCollisions()
       for (var k = 0; k < tileLines.length; k++)
       {
         var l = tileLines[k];
+        
+        // using the point constructor, create a point 
+        // where its x is l.p1.x - 35
+        // and its y is l.p1.y - 35
+        // then create another point
+        // where its x is l.p2.x - 35
+        // and its y is l.p2.y - 35
+        
+        new Point(l.p1.x - 35, l.p1.y - 35);
+        new Point(l.p2.x - 35, l.p2.y - 35);
+        
+        
     
         // the hitboxes of the lines are offset for some reason, so adjust the line    
+        /*
         var adjustedLine = {
-          x1: currentTile.x + l.p1.x - 35,
-          y1: currentTile.y + l.p1.y - 35,
-          x2: currentTile.x + l.p2.x - 35,
-          y2: currentTile.y + l.p2.y - 35
+          x1: tile.x + l.p1.x - 35,
+          y1: tile.y + l.p1.y - 35,
+          x2: tile.x + l.p2.x - 35,
+          y2: tile.y + l.p2.y - 35
         };
+        */
         
         // ignore ignoredslope
-        if (adjustedLine == ignoredSlope)
+        if (l == ignoredSlope)
         {
           continue;
         }
 
         // ignore this slope if sonicMidX is beyond the line
-        if (sonicMidX < adjustedLine.x1 || sonicMidX > adjustedLine.x2)
+        if (sonicMidX < l.x1 || sonicMidX > l.x2)
         {
           continue;
         }
 
         // sonic collides with this slope
-        if (line_intersects_rect(adjustedLine, sonic))
+        if (line_intersects_rect(l, sonic))
         {
 
           // calculate sonic's position along slope
-          var slope = (adjustedLine.y2 - adjustedLine.y1) / (adjustedLine.x2 - adjustedLine.x1);
-          var dx = sonic.x - adjustedLine.x1;
+          var slope = (l.y2 - l.y1) / (l.x2 - l.x1);
+          var dx = sonic.x - l.x1;
           var dy = slope * dx;
-          var endY = adjustedLine.y1 + dy;
+          var endY = l.y1 + dy;
           sonic.land(endY - sonic.h / 2);
 
           // update currentSlope and collideAnySlope variables        
-          currentSlope = adjustedLine;
+          currentSlope = l;
           collideAnySlopes = true;
 
         }
