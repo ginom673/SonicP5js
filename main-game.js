@@ -225,7 +225,7 @@ function sonicCollisions()
 
           // calculate sonic's position along slope
           var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.x - adjustedLine.p1.x);
-          var dx = sonic.x - adjustedLine.p2.x
+          var dx = sonicMidX - adjustedLine.p2.x
           // var dy = sonic.y - adjustedLine.p2.y
           var dy = slope * dx;
           var endY = adjustedLine.p1.y + dy;
@@ -255,7 +255,7 @@ function sonicCollisions()
       sonic.x = sonic.x - autoscrollRate;
       sonic.hx = sonic.hx - autoscrollRate;
     }
-  }  
+  }
 
 }
 
