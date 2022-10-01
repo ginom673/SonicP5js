@@ -29,7 +29,7 @@ var screenHeight = 640;
 var platforms = [];
 
 // platform autoscrolling rate
-var autoscrollRate = 5;
+var autoscrollRate = 0.5;
 
 // max falling speed for any character
 var maxFallSpeed = 15;

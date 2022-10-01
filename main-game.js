@@ -186,7 +186,7 @@ function sonicCollisions()
         // where its x is l.p2.x - 35
         // and its y is l.p2.y - 35
         
-        var adjustedLine = new Line2D(new Point(l.p1.x - 35, l.p1.y - 35), new Point(l.p2.x - 35, l.p2.y - 35));       
+        var adjustedLine = new Line2D(new Point(tile.x + l.p1.x - 35, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x - 35, tile.y + l.p2.y - 35));       
         // var adjustedLine = new Line2D(new Point(l.p1.x, l.p1.y), new Point(l.p2.x, l.p2.y));       
     
         // the hitboxes of the lines are offset for some reason, so adjust the line    

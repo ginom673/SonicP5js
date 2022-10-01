@@ -164,7 +164,7 @@ function drawPlatforms()
   for (var i=0; i < platforms.length; i++)
   {
     platforms[i].display();
-    console.log(platforms[i]);
+    // console.log(platforms[i]);
   }
 }
 
@@ -178,6 +178,10 @@ function autoscrollPlatforms()
       var tile = platform.tiles[j];      
       tile.x = tile.x - autoscrollRate;
       tile.hx = tile.hx - autoscrollRate;      
+      // NOTE: I don't think auto scrolling the slopes is actually necessary
+      //       the slopes are actually derived from tileData, not tile.slopes ... not sure we need tile.slopes anymore
+      //       and also the slopes are effectively auto scrolled by just anchoring to the tiles, which are auto scrolled
+      //       so I believe we could comment this most inner for loop out and be fine ...
       for (var k = 0; k < tile.slopes.length; k++)
       {
         var l = tile.slopes[k];
