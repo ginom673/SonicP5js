@@ -124,8 +124,7 @@ function autoscrollBG()
 function sonicCollisions()
 {
 
-  // check if sonic is not alive, if that is true, return
-
+  // sonic has no collisions if he is dead
   if (!sonic.isAlive)
   {
     return;
@@ -135,25 +134,27 @@ function sonicCollisions()
   var collisions = sonic.checkPlatformCollisions();    
 
   // handle platform collisions
+  /*
   var collided = false;
   for (var i=0; i < collisions.length; i++)
   {    
     var tileCollisions = collisions[i];    
     for (var j=0; j < tileCollisions.length; j++)
     {
-      // grab the item @ position j from tileCollisions and store that into a variable called collisionStatus
       var collisionStatus = tileCollisions[j];
-      // if collisionStatus is not none, set collided to true
       if (collisionStatus != 'none')
       {
         collided = true;
       }
     }    
   }
+  
+  // sonic is considered in the air if he is not colliding with any platforms
   if (!collided)
   {
     sonic.onGround = false;
   }
+  */
 
   // handle slope collisions
   collidedTiles = [];
@@ -186,6 +187,7 @@ function sonicCollisions()
         // and its y is l.p2.y - 35
         
         var adjustedLine = new Line2D(new Point(l.p1.x - 35, l.p1.y - 35), new Point(l.p2.x - 35, l.p2.y - 35));       
+        // var adjustedLine = new Line2D(new Point(l.p1.x, l.p1.y), new Point(l.p2.x, l.p2.y));       
     
         // the hitboxes of the lines are offset for some reason, so adjust the line    
         /*
@@ -239,6 +241,7 @@ function sonicCollisions()
   if (!collideAnySlopes)
   {
     currentSlope = undefined;
+    sonic.onGround = false;
   }
 
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
