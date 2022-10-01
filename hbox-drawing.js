@@ -191,7 +191,7 @@ function initTileData()
   currentTileLines.push(new Line2D(new Point(475, 382), new Point(512, 384)));
   currentTileLines.push(new Line2D(new Point(512, 384), new Point(511, 510)));
   currentTileLines.push(new Line2D(new Point(511, 510), new Point(0, 511)));
-  currentTileLines.push(new Line2D(new Point(0, 511), new Point(1, 256)));
+  currentTileLines.push(new Line2D(new Point(0, 511), new Point(0, 255)));
   tileData["https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Slope_Down.png?v=1615096004205"] = currentTileLines;
   
   // platform 3
@@ -220,7 +220,7 @@ function initTileData()
   currentTileLines.push(new Line2D(new Point(447, 86), new Point(440, 92)));
   currentTileLines.push(new Line2D(new Point(440, 92), new Point(73, 90)));
   currentTileLines.push(new Line2D(new Point(73, 90), new Point(64, 85)));
-  currentTileLines.push(new Line2D(new Point(64, 85), new Point(63, 72)));
+  currentTileLines.push(new Line2D(new Point(64, 85), new Point(63, 71)));
   tileData["https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Semi-solid_2.png?v=1615659399373"] = currentTileLines;
   
   // platform 5
@@ -234,7 +234,7 @@ function initTileData()
   currentTileLines.push(new Line2D(new Point(396, 395), new Point(511, 381)));
   currentTileLines.push(new Line2D(new Point(511, 381), new Point(512, 510)));
   currentTileLines.push(new Line2D(new Point(512, 510), new Point(0, 512)));
-  currentTileLines.push(new Line2D(new Point(0, 512), new Point(1, 396)));
+  currentTileLines.push(new Line2D(new Point(0, 512), new Point(0, 396)));
   tileData["https://cdn.glitch.global/ea9bc5ca-f0db-4943-a3bc-98bfee9731e7/Green_Hill_Low_Flat_Tile.png?v=1654892954157"] = currentTileLines;
   
   // platform 6

@@ -49,7 +49,7 @@ function draw()
   }
   
   // generate an error
-  throw new Error();
+  // throw new Error();
   
 }
 
