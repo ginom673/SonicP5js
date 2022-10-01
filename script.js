@@ -1,3 +1,15 @@
+// NOTE: we currently have issues with sonic following the slope
+// this is mainly dealing with the code inside main-game.js 
+// the code with the comment "calculate sonic's position along slope"
+// there is an issue with calculating dx
+// what we currently have seems wrong
+// dx should be based on how much sonic's x value changed between now and the last frame
+// this lets us then calculate how much his y should change (dy) given the slope
+// we probably have to do some trig here to figure out how much his x changed given the angle of the slope
+// this also may have to do with any code involving vx (and maybe vy I guess) ... we may have to restrucutre how some of the key processing works
+// so that its not just directly changing vx
+// but perhaps has a separate speedX property which says how much sonic would move along a flat line
+
 // preload is called at beginning of project to load assets
 // preload is before setup which is before draw
 function preload()
