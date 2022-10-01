@@ -206,10 +206,12 @@ function sonicCollisions()
         }
 
         // ignore this slope if sonicMidX is beyond the line
+        /*
         if (sonicMidX < adjustedLine.p1.x || sonicMidX > adjustedLine.p2.x)
         {
           continue;
         }
+        */
 
         // sonic collides with this slope
         if (line_intersects_rect(adjustedLine, sonic))
@@ -222,8 +224,9 @@ function sonicCollisions()
           }          
 
           // calculate sonic's position along slope
-          var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.y - adjustedLine.p1.x);
+          var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.x - adjustedLine.p1.x);
           var dx = sonic.x - adjustedLine.p2.x
+          // var dy = sonic.y - adjustedLine.p2.y
           var dy = slope * dx;
           var endY = adjustedLine.p1.y + dy;
           sonic.land(endY - sonic.h / 2);
