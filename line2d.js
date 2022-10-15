@@ -18,7 +18,15 @@ class Line2D
   
   equals(otherLine)
   {
-    if (this.otherLine == )
+    // this.p1.x == otherLine.p1.x
+    if (this.p1.x == otherLine.p1.x && this.p1.y == otherLine.p1.y && this.p2.x == otherLine.p2.x && this.p2.y == otherLine.p2.y)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
   
 }
