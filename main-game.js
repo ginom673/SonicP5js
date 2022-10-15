@@ -224,12 +224,13 @@ function sonicCollisions()
           }          
 
           // calculate sonic's position along slope
-          var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.x - adjustedLine.p1.x);
-          var dx = sonicMidX - adjustedLine.p2.x
+          var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.x - adjustedLine.p1.x); // calculate slope (rate of change) of this line using slope formula
+          var dx = sonicMidX - adjustedLine.p2.x // how far the middle of sonic is away from the end of the line
           // var dy = sonic.y - adjustedLine.p2.y
-          var dy = slope * dx;
+          var dy = slope * dx; 
           var endY = adjustedLine.p1.y + dy;
-          sonic.land(endY - sonic.h / 2);
+          // sonic.land(endY - sonic.h / 2);
+          sonic.land(endY - sonic.h);
 
           // update currentSlope and collideAnySlope variables        
           currentSlope = adjustedLine;

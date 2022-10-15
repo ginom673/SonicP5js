@@ -164,7 +164,7 @@ function initTileData()
   
   // platform 1
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(0, 256), new Point(0, 256)));
+  // currentTileLines.push(new Line2D(new Point(0, 256), new Point(0, 256)));
   currentTileLines.push(new Line2D(new Point(0, 256), new Point(34, 255)));
   currentTileLines.push(new Line2D(new Point(34, 255), new Point(130, 268)));
   currentTileLines.push(new Line2D(new Point(130, 268), new Point(227, 258)));
@@ -179,7 +179,7 @@ function initTileData()
   
   // platform 2
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(0, 255), new Point(0, 255)));
+  // currentTileLines.push(new Line2D(new Point(0, 255), new Point(0, 255)));
   currentTileLines.push(new Line2D(new Point(0, 255), new Point(64, 251)));
   currentTileLines.push(new Line2D(new Point(64, 251), new Point(89, 253)));
   currentTileLines.push(new Line2D(new Point(89, 253), new Point(135, 264)));
@@ -196,7 +196,7 @@ function initTileData()
   
   // platform 3
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(0, 6), new Point(0, 6)));
+  // currentTileLines.push(new Line2D(new Point(0, 6), new Point(0, 6)));
   currentTileLines.push(new Line2D(new Point(0, 6), new Point(33, 4)));
   currentTileLines.push(new Line2D(new Point(33, 4), new Point(91, 6)));
   currentTileLines.push(new Line2D(new Point(91, 6), new Point(178, 20)));
@@ -212,7 +212,7 @@ function initTileData()
   
   // platform 4
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(63, 71), new Point(63, 71)));
+  // currentTileLines.push(new Line2D(new Point(63, 71), new Point(63, 71)));
   currentTileLines.push(new Line2D(new Point(63, 71), new Point(75, 61)));
   currentTileLines.push(new Line2D(new Point(75, 61), new Point(439, 61)));
   currentTileLines.push(new Line2D(new Point(439, 61), new Point(447, 72)));
@@ -225,7 +225,7 @@ function initTileData()
   
   // platform 5
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(0, 396), new Point(0, 396)));
+  // currentTileLines.push(new Line2D(new Point(0, 396), new Point(0, 396)));
   currentTileLines.push(new Line2D(new Point(0, 396), new Point(113, 383)));
   currentTileLines.push(new Line2D(new Point(113, 383), new Point(172, 383)));
   currentTileLines.push(new Line2D(new Point(172, 383), new Point(220, 384)));
@@ -239,7 +239,7 @@ function initTileData()
   
   // platform 6
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(0, 264), new Point(0, 264)));
+  // currentTileLines.push(new Line2D(new Point(0, 264), new Point(0, 264)));
   currentTileLines.push(new Line2D(new Point(0, 264), new Point(15, 253)));
   currentTileLines.push(new Line2D(new Point(15, 253), new Point(30, 253)));
   currentTileLines.push(new Line2D(new Point(30, 253), new Point(61, 261)));
@@ -260,7 +260,7 @@ function initTileData()
   
   // platform 7
   currentTileLines = [];
-  currentTileLines.push(new Line2D(new Point(0, 0), new Point(0, 0)));
+  // currentTileLines.push(new Line2D(new Point(0, 0), new Point(0, 0)));
   currentTileLines.push(new Line2D(new Point(0, 0), new Point(136, 0)));
   currentTileLines.push(new Line2D(new Point(136, 0), new Point(136, 72)));
   currentTileLines.push(new Line2D(new Point(136, 72), new Point(0, 72)));
