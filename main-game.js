@@ -158,6 +158,7 @@ function sonicCollisions()
 
   // handle slope collisions
   collidedTiles = [];
+  collidedLines = [];
   var collideAnySlopes = false;
   var sonicMidX = sonic.x + sonic.w / 2;
   for (var i = 0; i < platforms.length; i++)
@@ -222,6 +223,12 @@ function sonicCollisions()
           {
             collidedTiles.push(tile);  
           }          
+          
+          // add this line to collidedLines (for debugging)
+          if(!collidedLines.includes(adjustedLine))
+          {
+            collidedLines.push(adjustedLine);
+          }
 
           // calculate sonic's position along slope
           var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.x - adjustedLine.p1.x); // calculate slope (rate of change) of this line using slope formula
@@ -578,6 +585,15 @@ function drawDebug()
         else
         {
           stroke(255, 0, 0);    
+        }
+        
+        if(collidedLines.includes(adjustedLine))
+        {
+          stroke(0, 255, 0);
+        }
+        else
+        {
+          stroke(255, 0, 0);
         }
         
         var l = tileLines[k];
