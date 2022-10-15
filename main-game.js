@@ -236,8 +236,8 @@ function sonicCollisions()
           // var dy = sonic.y - adjustedLine.p2.y
           var dy = slope * dx; 
           var endY = adjustedLine.p1.y + dy;
-          // sonic.land(endY - sonic.h / 2);
-          sonic.land(endY - sonic.h);
+          sonic.land(endY - sonic.h / 2);
+          // sonic.land(endY - sonic.h);
 
           // update currentSlope and collideAnySlope variables        
           currentSlope = adjustedLine;
@@ -576,6 +576,10 @@ function drawDebug()
       var tileLines = tileData[currentTile.imgName];
       for (var k = 0; k < tileLines.length; k++)
       {
+        
+        var l = tileLines[k];
+        var adjustedLine = new Line2D(new Point(currentTile.x + l.p1.x - 35, currentTile.y + l.p1.y - 35), new Point(currentTile.x + l.p2.x - 35, currentTile.y + l.p2.y - 35));       
+        
         // if sonic is currently colliding with this tile, color it blue
         // otherwise color it red
         if(collidedTiles.includes(currentTile))
@@ -594,9 +598,8 @@ function drawDebug()
         else
         {
           stroke(255, 0, 0);
-        }
+        }        
         
-        var l = tileLines[k];
         line(currentTile.x + l.p1.x - 35, currentTile.y + l.p1.y - 35, currentTile.x + l.p2.x - 35, currentTile.y + l.p2.y - 35);
       }
       
