@@ -23,7 +23,7 @@ var bgX = 0;
 
 // screen dimensions
 var screenWidth = 1200;
-var screenHeight = 640;
+var screenHeight = 1200;
 
 // platform list
 var platforms = [];
