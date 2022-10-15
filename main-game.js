@@ -609,7 +609,7 @@ function drawDebug()
         {
           var currentLine = collidedLines[m];
           
-          if (currentLine == adjustedLine)
+          if (adjustedLine.equals(currentLine))
           {
             stroke(0, 255, 0);
           }

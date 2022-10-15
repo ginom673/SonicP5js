@@ -10,6 +10,10 @@
 // so that its not just directly changing vx
 // but perhaps has a separate speedX property which says how much sonic would move along a flat line
 
+// NOTE (10.15.22): I suspect there is an issue with the math behind our line/rectangle collisions or something low-level like that
+// because sonic just seems to collide with the bottom line of a tile for no reason
+// maybe it does some weird stuff around corners?
+
 // preload is called at beginning of project to load assets
 // preload is before setup which is before draw
 function preload()
