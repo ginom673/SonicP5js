@@ -591,6 +591,7 @@ function drawDebug()
           stroke(255, 0, 0);    
         }
         
+        /*
         if(collidedLines.includes(adjustedLine))
         {
           stroke(0, 255, 0);
@@ -598,7 +599,25 @@ function drawDebug()
         else
         {
           stroke(255, 0, 0);
-        }        
+        }
+        */
+        
+        // write a for loop that goes through the collidedLines list
+        // grab the line at position m within collidedLines
+        // then check if all of the data of that line is equal to all of the data of adjustedLine
+        for (var m = 0; m < collidedLines.length; m++)
+        {
+          var currentLine = collidedLines[m];
+          
+          if (currentLine == adjustedLine)
+          {
+            stroke(0, 255, 0);
+          }
+          else
+          {
+            stroke(255, 0, 0);
+          }
+        }
         
         line(currentTile.x + l.p1.x - 35, currentTile.y + l.p1.y - 35, currentTile.x + l.p2.x - 35, currentTile.y + l.p2.y - 35);
       }
