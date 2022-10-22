@@ -172,6 +172,8 @@ function sonicCollisions()
   collidedLines = [];
   var collideAnySlopes = false;
   var sonicMidX = sonic.x + sonic.w / 2;
+  // create a new Point object with x value sonicMidX, y value sonic.y + sonic.h
+  var sonicMidBottom = new Point(sonicMidX, sonic.y + sonic.h);
   for (var i = 0; i < platforms.length; i++)
   {
     var platform = platforms[i];
@@ -220,7 +222,8 @@ function sonicCollisions()
         */
 
         // sonic collides with this slope
-        if (line_intersects_rect(adjustedLine, sonic))
+        // if (line_intersects_rect(adjustedLine, sonic))
+        if (line_intersects_point(adjustedLine, sonicMidBottom))
         {
           
           // add this tile to collidedTiles (for debugging)
@@ -489,6 +492,29 @@ function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
       return false;
   }
   return true;
+}
+
+/*
+determines if line L contains point P
+taken from https://stackoverflow.com/questions/17692922/check-is-a-point-x-y-is-between-two-points-drawn-on-a-straight-line
+*/
+function line_intersects_point(l, p)
+{
+  var A = l.p1;
+  var B = l.p2;
+  if (distance(A, p) + distance(B, p) == distance(A, B))
+  {
+    return true;
+  }    
+  return false; 
+}
+
+/*
+calculates the distance between two points
+*/
+function distance(p1, p2)
+{
+  return Math.sqrt( (p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y) );
 }
 
 /*
