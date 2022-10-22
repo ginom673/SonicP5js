@@ -131,7 +131,9 @@ class Character
   
   // land
   land(newY)
-  {    
+  { 
+    
+    console.log("landing at " + newY);
     
     // update physics variables
     this.y = newY;
