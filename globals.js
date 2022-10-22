@@ -109,7 +109,10 @@ var collidedTiles = [];
 var collidedLines = [];
 
 // debugging flag that forces the game to advance one frame at a time whenever we press a key ("F")
-var debugFrame = false;
+var debugFrame = true;
 
 // whether or not the game is currently frozen
 var gameFrozen = debugFrame;
+
+// middle bottom point of Sonic, used for collisions / debugging
+var sonicMidBottom;

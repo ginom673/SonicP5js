@@ -173,7 +173,7 @@ function sonicCollisions()
   var collideAnySlopes = false;
   var sonicMidX = sonic.x + sonic.w / 2;
   // create a new Point object with x value sonicMidX, y value sonic.y + sonic.h
-  var sonicMidBottom = new Point(sonicMidX, sonic.y + sonic.h);
+  sonicMidBottom = new Point(sonicMidX, sonic.y + sonic.h);
   for (var i = 0; i < platforms.length; i++)
   {
     var platform = platforms[i];
@@ -194,9 +194,9 @@ function sonicCollisions()
         var l = tileLines[k];
         
         
-        // var adjustedLine = new Line2D(new Point(tile.x + l.p1.x - 35, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x - 35, tile.y + l.p2.y - 35));       
+        var adjustedLine = new Line2D(new Point(tile.x + l.p1.x - 35, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x - 35, tile.y + l.p2.y - 35));       
         // var adjustedLine = new Line2D(new Point(l.p1.x, l.p1.y), new Point(l.p2.x, l.p2.y));       
-        var adjustedLine = new Line2D(new Point(tile.x + l.p1.x5, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x, tile.y + l.p2.y - 35));       
+        // var adjustedLine = new Line2D(new Point(tile.x + l.p1.x5, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x, tile.y + l.p2.y - 35));       
     
         // the hitboxes of the lines are offset for some reason, so adjust the line    
         /*
@@ -698,4 +698,24 @@ function drawDebug()
   text("ax: " + sonic.ax.toFixed(2), 950, 250);
   text("aStatus: " + sonic.accelerationStatus.toFixed(2), 950, 275);
   text("status: " + sonic.status, 950, 300);
+  text("midBotX: " + sonicMidBottom.x, 950, 325);
+  text("midBotY: " + sonicMidBottom.y, 950, 350);
+  if (currentSlope == undefined)
+  {
+    var currentSlopeP1X = undefined;
+    var currentSlopeP1Y = undefined;
+    var currentSlopeP2X = undefined;
+    var currentSlopeP2Y = undefined;
+  }
+  else
+  {
+    var currentSlopeP1X = currentSlope.p1.x;
+    var currentSlopeP1Y = currentSlope.p1.y;
+    var currentSlopeP2X = currentSlope.p2.x;
+    var currentSlopeP2Y = currentSlope.p2.y;
+  }
+  text("slopeP1X: " + currentSlopeP1X, 950, 375);
+  text("slopeP1Y: " + currentSlopeP1Y, 950, 400);
+  text("slopeP2X: " + currentSlopeP2X, 950, 425);
+  text("slopeP2Y: " + currentSlopeP2Y, 950, 450);
 }
