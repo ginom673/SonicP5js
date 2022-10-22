@@ -194,8 +194,9 @@ function sonicCollisions()
         var l = tileLines[k];
         
         
-        var adjustedLine = new Line2D(new Point(tile.x + l.p1.x - 35, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x - 35, tile.y + l.p2.y - 35));       
+        // var adjustedLine = new Line2D(new Point(tile.x + l.p1.x - 35, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x - 35, tile.y + l.p2.y - 35));       
         // var adjustedLine = new Line2D(new Point(l.p1.x, l.p1.y), new Point(l.p2.x, l.p2.y));       
+        var adjustedLine = new Line2D(new Point(tile.x + l.p1.x5, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x, tile.y + l.p2.y - 35));       
     
         // the hitboxes of the lines are offset for some reason, so adjust the line    
         /*
@@ -502,8 +503,14 @@ function line_intersects_point(l, p)
 {
   var A = l.p1;
   var B = l.p2;
-  if (distance(A, p) + distance(B, p) == distance(A, B))
+  var apDist = distance(A, p);
+  var bpDist = distance(B, p);
+  var abDist = distance(A, B);
+  var sumDist = apDist + bpDist;
+  // check if it is "close enough" (StackOverflow post suggested there might be floating point precision problems)
+  if (Math.abs(sumDist - abDist) <= 5)
   {
+    // console.log("line intersects point returns true")
     return true;
   }    
   return false; 
@@ -514,7 +521,9 @@ calculates the distance between two points
 */
 function distance(p1, p2)
 {
-  return Math.sqrt( (p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y) );
+  var result = Math.sqrt( (p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y) );
+  // console.log("distance is returning " + result);
+  return result;
 }
 
 /*
