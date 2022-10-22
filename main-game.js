@@ -131,7 +131,7 @@ function sonicCollisions()
   }
 
   // get collisions list
-  var collisions = sonic.checkPlatformCollisions();    
+  // var collisions = sonic.checkPlatformCollisions();    
 
   // handle platform collisions
   /*
@@ -250,6 +250,7 @@ function sonicCollisions()
   }
 
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
+  /*
   for (var i=0; i < collisions.length; i++)
   {
     if(collisions[i].includes("left"))
@@ -258,6 +259,7 @@ function sonicCollisions()
       sonic.hx = sonic.hx - autoscrollRate;
     }
   }
+  */
 
 }
 
