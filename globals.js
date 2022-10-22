@@ -108,8 +108,8 @@ var collidedTiles = [];
 // the list of lines sonic is currently colliding with (for debugging purposes, to display which lines he is colliding with)
 var collidedLines = [];
 
-// debugging flag that forces the game to advance one frame at a time
+// debugging flag that forces the game to advance one frame at a time whenever we press a key ("F")
 var debugFrame = true;
 
-// 
-var freezeFrame = false;
+// whether or not the game is currently frozen
+var gameFrozen = debugFrame;

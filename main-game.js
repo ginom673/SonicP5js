@@ -22,6 +22,17 @@ function setupGame()
 function drawGame()
 {
   
+  // if game is frozen, do nothing
+  if(gameFrozen)
+  {
+    return;
+  }
+  // if game is not frozen and we are debugging frames, flag gameFrozen so we are frozen on next frame
+  else if(debugFrame)
+  {
+    gameFrozen = true;
+  }
+  
   // wipe screen before redrawing
   clear();
 
@@ -230,7 +241,7 @@ function sonicCollisions()
           // var dy = sonic.y - adjustedLine.p2.y
           var dy = slope * dx; 
           var endY = adjustedLine.p1.y + dy;
-          sonic.land(endY - sonic.h / 2);
+          sonic.land(endY - sonic.h / 2 + 105);
           // sonic.land(endY - sonic.h);
 
           // update currentSlope and collideAnySlope variables        
@@ -315,7 +326,12 @@ function keyPressedGame()
   {
     resetGame();
   }
-
+  
+  // space for advancing frame in debug mode
+  if(keyCode == 70 && debugFrame == true)
+  {
+    gameFrozen = false;
+  }
 
 }
 
