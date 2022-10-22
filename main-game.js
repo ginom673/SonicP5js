@@ -180,12 +180,6 @@ function sonicCollisions()
       {
         var l = tileLines[k];
         
-        // using the point constructor, create a point 
-        // where its x is l.p1.x - 35
-        // and its y is l.p1.y - 35
-        // then create another point
-        // where its x is l.p2.x - 35
-        // and its y is l.p2.y - 35
         
         var adjustedLine = new Line2D(new Point(tile.x + l.p1.x - 35, tile.y + l.p1.y - 35), new Point(tile.x + l.p2.x - 35, tile.y + l.p2.y - 35));       
         // var adjustedLine = new Line2D(new Point(l.p1.x, l.p1.y), new Point(l.p2.x, l.p2.y));       

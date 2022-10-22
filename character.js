@@ -462,8 +462,7 @@ function updateSonic()
       motobug.img.hide();
       breakNoise.play();
       score = score + 100;
-    }
-    
+    }    
     
   }
   
