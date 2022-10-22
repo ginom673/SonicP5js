@@ -130,7 +130,7 @@ function sonicCollisions()
     return;
   }
 
-  // get collisions list
+  // get collisions list (used for original rectangular tile collisions)
   // var collisions = sonic.checkPlatformCollisions();    
 
   // handle platform collisions

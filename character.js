@@ -133,8 +133,6 @@ class Character
   land(newY)
   { 
     
-    console.log("landing at " + newY);
-    
     // update physics variables
     this.y = newY;
     this.vy = 0;
@@ -238,6 +236,7 @@ class Character
   // this checks collision between Sonic and ALL of the platforms
   checkPlatformCollisions()
   {        
+    console.log("checkPlatformCollisions called")
     // if hitBoxActive is false, return
     if (!this.hitboxActive)
     {
@@ -256,6 +255,7 @@ class Character
   // NOTE: if the game is slowing down, consider not adding the "none" collision case to the tileCollisions list
   checkPlatformCollision(platform)
   {
+    console.log("checkPlatformCollision called")
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
     {        
@@ -323,6 +323,7 @@ class Character
     sonic.startRun();
     
   }
+  
   transform()
   {
     console.log("transform");
@@ -355,6 +356,7 @@ class Character
       }, 400);
     }
   }
+  
   superRun()
   {
     this.img = sonicImgSRun;
