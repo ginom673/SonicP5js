@@ -64,6 +64,10 @@ function draw()
     drawGame();
   }
   
+  var slopeLine = new Line2D( new Point(14, 429), new Point(142, 557));
+  var midpoint = new Point(132, 559.5);
+  // alert(line_intersects_point(slopeLine, midpoint));
+  
   // generate an error
   // throw new Error();
   
