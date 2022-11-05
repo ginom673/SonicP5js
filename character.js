@@ -143,6 +143,7 @@ class Character
     
     // update physics variables
     this.y = newY;
+    this.hy = newY;
     this.vy = 0;
     this.onGround = true;
     
