@@ -150,13 +150,16 @@ class Platform
 // load platforms
 function setupPlatforms()
 {  
-  new Platform(0, groundY - 276, 2, 1, "tile 1");    
+  new Platform(0, groundY - 276, 1, 1, "tile 1");    
+  // new Platform(0, groundY - 276, 2, 1, "tile 1");  // RESTORE THIS VERSION IF YOU WANT THE PLATFORM TO BE TWO TILES LONG
+  /*
   new Platform(1028, groundY - 276, 1, 1, "semi solid 1");
   new Platform(1088, groundY - 520, 1, 1, "semi solid 2");
   new Platform(1540, groundY - 276, 1, 1, "tile 2");
   new Platform(2052, groundY - 276, 1, 1, "slope 1");
   new Platform(2564, groundY - 276, 1, 1, "low flat tile");
   new Platform(3076, 0, 1, 10, "wall");
+  */
 }
 
 function drawPlatforms()

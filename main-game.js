@@ -515,11 +515,18 @@ function line_intersects_point(l, p)
   var x2 = l.p2.x;
   var y2 = l.p2.y;
   var m = (y2 - y1) / (x2 - x1); // rise over run  
+  // var m = m * -1; // NOTE: maybe issues here with y axis being flipped ...?
   var b = y1 - m * x1; // y = mx + b ...  mx + b = y ... b = y - mx
   if (p.y == m * p.x + b)
   {
+    console.log("line intersects point returns true")
+    console.log(l);
+    console.log(p);
     return true;
   }
+  console.log("line intersects point returns false")
+  console.log(l);
+  console.log(p);
   return false;
 }
 

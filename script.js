@@ -1,7 +1,10 @@
-var line = new Line2D(0, 3, 2, 8);
+/*
+// basic line_intersects_point test
+var line = new Line2D(new Point(0, 2), new Point(2, 8));
 var point = new Point(1, 5);
 var collision = line_intersects_point(line, point);
 alert(collision);
+*/
 
 // NOTE: we currently have issues with sonic following the slope
 // this is mainly dealing with the code inside main-game.js 
