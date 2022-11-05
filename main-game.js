@@ -509,6 +509,7 @@ function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
 determines if line L contains point P
 taken from https://stackoverflow.com/questions/17692922/check-is-a-point-x-y-is-between-two-points-drawn-on-a-straight-line
 */
+/*
 function line_intersects_point(l, p)
 {
   console.log("line_intersects_point");
@@ -532,12 +533,12 @@ function line_intersects_point(l, p)
   console.log(p);
   return false; 
 }
+*/
 
 // determines if line L contains point P
 // check if slope from first point of line L to point P is the same as the slope 
 // and also that p is between the endpoints of l
 // NOTE: this function assumes l.p1 is above and to the left of l.p2 but we probably ought to adjust that
-/*
 function line_intersects_point(l, p)
 {
   var linedx = l.p1.x - l.p2.x;
@@ -565,7 +566,6 @@ function line_intersects_point(l, p)
     return false;
   }
 }
-*/
 
 /*
 calculates the distance between two points
