@@ -179,11 +179,11 @@ function initTileData()
   */
   currentTileLines.push(new Line2D(new Point(0, 256), new Point(128, 256)));
   currentTileLines.push(new Line2D(new Point(128, 256), new Point(256, 384)));
-  currentTileLines.push(new Line2D(new Point(256, 384), new Point(384, 256)));
-  currentTileLines.push(new Line2D(new Point(384, 256), new Point(513, 256)));
-  currentTileLines.push(new Line2D(new Point(513, 256), new Point(513, 511)));
-  currentTileLines.push(new Line2D(new Point(513, 511), new Point(0, 511)));
-  currentTileLines.push(new Line2D(new Point(0, 511), new Point(0, 256)));
+  //currentTileLines.push(new Line2D(new Point(256, 384), new Point(384, 256)));
+  //currentTileLines.push(new Line2D(new Point(384, 256), new Point(513, 256)));
+  //currentTileLines.push(new Line2D(new Point(513, 256), new Point(513, 511)));
+  //currentTileLines.push(new Line2D(new Point(513, 511), new Point(0, 511)));
+  //currentTileLines.push(new Line2D(new Point(0, 511), new Point(0, 256)));
   tileData["https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FGreen_Hill_Tile1.png?v=1611428513830"] = currentTileLines;
   
   // platform 2

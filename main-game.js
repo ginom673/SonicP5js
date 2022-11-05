@@ -331,10 +331,14 @@ function keyPressedGame()
     resetGame();
   }
   
-  // space for advancing frame in debug mode
+  // F for advancing frame in debug mode
   if(keyCode == 70 && debugFrame == true)
   {
     gameFrozen = false;
+    if(clearConsole)
+    {
+      console.clear();
+    }
   }
 
 }

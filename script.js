@@ -55,11 +55,6 @@ function setup()
 function draw()
 {
   
-  if(clearConsole == true)
-  {
-
-  }
-  
   if (drawingMode == true)
   {
     drawDrawing();
