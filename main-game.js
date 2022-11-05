@@ -507,12 +507,20 @@ function line_intersects_line(x1, y1, x2, y2, x3, y3, x4, y4)
 
 // determines if line L contains point P
 // taken from https://www.geeksforgeeks.org/check-whether-the-point-x-y-lies-on-a-given-line/
+// NOTE: this source calls the y-intercept c, we call it b
 function line_intersects_point(l, p)
 {
   var x1 = l.p1.x;
   var y1 = l.p1.y;
   var x2 = l.p2.x;
   var y2 = l.p2.y;
+  var m = (y2 - y1) / (x2 - x1); // rise over run  
+  var b = y1 - m * x1; // y = mx + b ...  mx + b = y ... b = y - mx
+  if (p.y == m * p.x + b)
+  {
+    return true;
+  }
+  return false;
 }
 
 /*
