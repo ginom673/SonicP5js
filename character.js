@@ -75,6 +75,8 @@ class Character
   jump()
   {
     
+    console.log("jump()");
+    
     // prevent double-jumping; if character tries to jump while in midair, do nothing
     if (!this.onGround) 
     {
@@ -137,6 +139,8 @@ class Character
   land(newY)
   { 
     
+    console.log("land(" + newY + ")");
+    
     // update physics variables
     this.y = newY;
     this.vy = 0;
@@ -155,6 +159,9 @@ class Character
   // change to running image, and update w/h and hitbox accordingly
   startRun()
   {
+    
+    console.log("startRun()");
+    
     if (sonic.super == true)
     {
       sonic.superRun();
@@ -179,7 +186,7 @@ class Character
   spin()
   {
     
-    console.log("spin");
+    console.log("spin()");
     
     // don't do anything if we are already spinning
     if (sonic.status == "spindash")
@@ -240,6 +247,9 @@ class Character
   // this checks collision between Sonic and ALL of the platforms
   checkPlatformCollisions()
   {        
+    
+    console.log("checkPlatformCollisions()");
+    
     console.log("checkPlatformCollisions called")
     // if hitBoxActive is false, return
     if (!this.hitboxActive)
@@ -259,6 +269,9 @@ class Character
   // NOTE: if the game is slowing down, consider not adding the "none" collision case to the tileCollisions list
   checkPlatformCollision(platform)
   {
+    
+    console.log("checkPlatformCollision(" + platform + ")");
+    
     console.log("checkPlatformCollision called")
     var tileCollisions = [];
     for (var i=0; i < platform.tiles.length; i++)
@@ -296,6 +309,9 @@ class Character
   // updates sonic properties and image
   die()
   {
+    
+    console.log("die()");
+    
     sonic.isAlive = false;
     sonic.hitboxActive = false;
     sonic.vy = -20;
@@ -314,7 +330,7 @@ class Character
   stopSpin()
   {
     
-    console.log("stopSpin");
+    console.log("stopSpin()");
     
     // if sonic is mid-air when the spin would time out, simply "check back later" to see if we are on the ground
     if (!sonic.onGround)
@@ -330,7 +346,7 @@ class Character
   
   transform()
   {
-    console.log("transform");
+    console.log("transform()");
     
     if (sonic.super == true)
     {
@@ -363,6 +379,9 @@ class Character
   
   superRun()
   {
+    
+    console.log("superRun()");
+    
     this.img = sonicImgSRun;
     this.w = 74;
     this.h = 72;
@@ -384,6 +403,8 @@ class Character
 function setupSonic()
 {
   
+  console.log("setupSonic()");
+  
   // create sonic
   sonic = new Character(100, groundY - 108, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FSonic_Run.gif?v=1599326604172", 64, 72, 100, groundY - 108, 64, 72, true);
   sonicImgRun = sonic.img;
@@ -403,14 +424,16 @@ function setupSonic()
 
 function setupEnemies()
 {
+  
+  console.log("setupEnemies()");
+  
   // create motobug
   motobug = new Character(2000, groundY - 72, 0, 0, false, "https://cdn.glitch.com/6e344420-4b09-4670-a529-dc21e1a4da32%2FMotobug.gif?v=1604167748294", 80, 58, 2000, groundY - 72, 80, 58, true);
   motobug.vx = -2;
 }
 
 function updateSonic()
-{
-  
+{ 
   // handle sonic platform collisions
   sonicCollisions();
   
@@ -559,7 +582,7 @@ function updateEnemies()
 {
   // move motobug if its alive
   if (motobug.isAlive)
-  {
+  { 
     motobug.x = motobug.x + motobug.vx;  
     motobug.hx = motobug.hx + motobug.vx;
   }
@@ -567,7 +590,6 @@ function updateEnemies()
 
 function drawSonic()
 {
-  
   // the show / hide here cause the image to go away when we are off screen
   // the sonic.isAlive checks make sure that we do not call show() or hide() if sonic.img is a gif
   if (sonic.x > 0 && sonic.x < screenWidth && sonic.y > 0 && sonic.y < screenHeight)
@@ -585,7 +607,7 @@ function drawSonic()
 }
 
 function autoscrollEnemies()
-{
+{ 
   motobug.x = motobug.x - autoscrollRate;
   motobug.hx = motobug.hx - autoscrollRate;
 }
@@ -593,7 +615,7 @@ function autoscrollEnemies()
 function drawEnemies()
 {
   if (motobug.isAlive && motobug.x > 0 && motobug.x < screenWidth && motobug.y > 0 && motobug.y < screenHeight)
-  {
+  { 
     motobug.img.show();
     motobug.display();
   }

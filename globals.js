@@ -116,3 +116,6 @@ var gameFrozen = debugFrame;
 
 // middle bottom point of Sonic, used for collisions / debugging
 var sonicMidBottom;
+
+// whether or not the console is cleared on every frame, for debugging
+var clearConsole = true;
