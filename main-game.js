@@ -211,6 +211,7 @@ function sonicCollisions()
         // ignore ignoredslope
         if (adjustedLine == ignoredSlope)
         {
+          console.log("ignoredSlope");
           continue;
         }
 
@@ -510,6 +511,8 @@ taken from https://stackoverflow.com/questions/17692922/check-is-a-point-x-y-is-
 */
 function line_intersects_point(l, p)
 {
+  console.log("line_intersects_point");
+  
   var A = l.p1;
   var B = l.p2;
   var apDist = distance(A, p);
@@ -519,9 +522,14 @@ function line_intersects_point(l, p)
   // check if it is "close enough" (StackOverflow post suggested there might be floating point precision problems)
   if (Math.abs(sumDist - abDist) <= 5)
   {
-    // console.log("line intersects point returns true")
+    console.log("line intersects point returns true")
+    console.log(l);
+    console.log(p);
     return true;
   }    
+  console.log("line intersects point returns true")
+  console.log(l);
+  console.log(p);
   return false; 
 }
 
