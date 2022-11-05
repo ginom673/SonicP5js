@@ -5,6 +5,8 @@ class Character
   constructor(x, y, vx, vy, onGround, imgName, w, h, hx, hy, hw, hh, isGif)
   {
     
+    console.log("Character constructor called");
+    
     // character physics attributes
     this.x = x;
     this.y = y;
@@ -50,6 +52,8 @@ class Character
   // used by draw() to display character
   display()
   {
+    
+    console.log("display()");
     
     if (!this.visible)
     {         
