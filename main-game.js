@@ -262,6 +262,11 @@ function sonicCollisions()
   {
     currentSlope = undefined;
     sonic.onGround = false;
+    console.log("no collisions");
+  }
+  else
+  {
+    console.log("yes collisions");
   }
 
   // check if sonic should be dragged with auto scroll if not moving on left side of a platform
