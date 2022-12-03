@@ -246,7 +246,7 @@ function sonicCollisions()
           // var dy = sonic.y - adjustedLine.p2.y
           var dy = slope * dx; 
           var endY = adjustedLine.p1.y + dy;
-          sonic.land(endY - sonic.h / 2 + 105);
+          sonic.land(endY - sonic.h / 2); // previously + 105
           // sonic.land(endY - sonic.h);
 
           // update currentSlope and collideAnySlope variables        
