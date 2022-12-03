@@ -1,4 +1,4 @@
-// unlike OBstacles, Platforms are inanimative objects that you can land on
+// unlike Obstacles, Platforms are inanimate objects that you can land on
 class Platform
 {
 
