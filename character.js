@@ -11,7 +11,7 @@ class Character
     this.x = x;
     this.y = y;
     this.w = w;
-    this.h = h;    
+    this.h = h;
     this.vx = vx;
     this.vy = vy;
     this.ax = 0;
