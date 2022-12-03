@@ -22,7 +22,7 @@ function setupGame()
 function drawGame()
 {
   
-  if (fKeyHeld)
+  if (shiftKeyHeld && fKeyHeld)
   {
     gameFrozen = false;
     if(clearConsole)
@@ -37,7 +37,7 @@ function drawGame()
     return;
   }
   // if game is not frozen and we are debugging frames, flag gameFrozen so we are frozen on next frame
-  else if(debugFrame && shiftKeyHeld)
+  else if(debugFrame)
   {
     gameFrozen = true;
   }

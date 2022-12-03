@@ -22,6 +22,13 @@ alert(collision);
 // because sonic just seems to collide with the bottom line of a tile for no reason
 // maybe it does some weird stuff around corners?
 
+// NOTE (12.3.22): Still not sure about platform issues, but clearly Sonic is landing on the line then falling through.
+// we could go with the line-rect intersection method instead of the line-point intersection method for sonic-platform collision detection,
+// but then there is the old issue of being unable to snap to the next platform
+// regardless, what we were working on at the end of this session was the frame advancement
+// we tried doing shift+F (advance one frame) and hold F (continuously advance frames), but it'd be better to do separate keys
+// i.e. F (advance while held) and N (advance one frame)
+
 // preload is called at beginning of project to load assets
 // preload is before setup which is before draw
 function preload()
