@@ -119,3 +119,9 @@ var sonicMidBottom;
 
 // whether or not the console is cleared on every frame, for debugging
 var clearConsole = true;
+
+// whether or not F key is currently held, for debugging frame advancement
+var fKeyHeld = false;
+
+// whether or not shift key is currently held, for debugging frame advancement
+var shiftKeyHeld = false;

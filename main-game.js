@@ -22,13 +22,22 @@ function setupGame()
 function drawGame()
 {
   
+  if (fKeyHeld)
+  {
+    gameFrozen = false;
+    if(clearConsole)
+    {
+      console.clear();
+    }
+  }  
+  
   // if game is frozen, do nothing
   if(gameFrozen)
   {
     return;
   }
   // if game is not frozen and we are debugging frames, flag gameFrozen so we are frozen on next frame
-  else if(debugFrame)
+  else if(debugFrame && shiftKeyHeld)
   {
     gameFrozen = true;
   }
@@ -224,8 +233,8 @@ function sonicCollisions()
         */
 
         // sonic collides with this slope
-        // if (line_intersects_rect(adjustedLine, sonic))
-        if (line_intersects_point(adjustedLine, sonicMidBottom))
+        if (line_intersects_rect(adjustedLine, sonic))
+        // if (line_intersects_point(adjustedLine, sonicMidBottom))
         {
           
           // add this tile to collidedTiles (for debugging)
@@ -340,11 +349,12 @@ function keyPressedGame()
   // F for advancing frame in debug mode
   if(keyCode == 70 && debugFrame == true)
   {
-    gameFrozen = false;
-    if(clearConsole)
-    {
-      console.clear();
-    }
+    fKeyHeld = true;
+  }
+  
+  if(keyCode == 16 && debugFrame == true)
+  {
+    shiftKeyHeld = true;
   }
 
 }
@@ -387,6 +397,11 @@ function keyReleasedGame()
       sonic.ax = 0.25;
     }
     sonic.accelerationStatus = -1;
+  }
+  
+  else if (keyCode == 70)
+  {
+    fKeyHeld = false;
   }
   
 }
