@@ -1,3 +1,27 @@
+/*
+var x = 0;
+
+if (x > 0)
+{
+  console.log("a");
+}
+else if (x > 10)
+{
+  console.log("b");
+}
+else if (x > 100)
+{
+  console.log("c");
+}
+else if (x > 1000)
+{
+  console.log("d");
+}
+*/
+
+
+
+
 function setupGame()
 {
   // background is stretched to be larger than screen
@@ -295,6 +319,17 @@ function sonicCollisions()
 
 function keyPressedGame()
 {
+  
+  // F for advancing frame in debug mode
+  if(keyCode == 70 && debugFrame == true)
+  {
+    fKeyHeld = true;
+  }
+  // N for advancing multiple frames in debug mode
+  if(keyCode == 78 && debugFrame == true)
+  {
+    nKeyHeld = true;
+  }
 
   // ignore keys if dead
   if (!sonic.isAlive)
@@ -345,32 +380,32 @@ function keyPressedGame()
   {
     resetGame();
   }
-  
-  // F for advancing frame in debug mode
-  if(keyCode == 70 && debugFrame == true)
-  {
-    fKeyHeld = true;
-  }
-  
-  if(keyCode == 78 && debugFrame == true)
-  {
-    nKeyHeld = true;
-  }
 
 }
 
 // NOTE: set sonic.vx back to 0 if left arrow or right arrow key was just released
 function keyReleasedGame()
 {
-
+  
+  if (keyCode == 70)
+  {
+    fKeyHeld = false;
+  }
+  else if (keyCode == 78)
+  {
+    nKeyHeld = false;
+  }
+  
   // ignore keys if dead
+  /*
   if (!sonic.isAlive)
   {
     return;
   }
+  */
 
   // right arrow
-  if (keyCode == 39)
+  else if (keyCode == 39)
   {
     if(sonic.vx > 0)
     {
@@ -399,10 +434,7 @@ function keyReleasedGame()
     sonic.accelerationStatus = -1;
   }
   
-  else if (keyCode == 70)
-  {
-    fKeyHeld = false;
-  }
+  
   
 }
 
