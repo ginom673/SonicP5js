@@ -53,6 +53,15 @@ function drawGame()
     {
       console.clear();
     }
+  }
+  if (fKeyHeld)
+  {
+    gameFrozen = false;
+    if(clearConsole)
+    {
+      console.clear();
+    }
+    return;
   }  
   
   // if game is frozen, do nothing
@@ -391,21 +400,19 @@ function keyReleasedGame()
   {
     fKeyHeld = false;
   }
-  else if (keyCode == 78)
+  if (keyCode == 78)
   {
     nKeyHeld = false;
   }
   
   // ignore keys if dead
-  /*
   if (!sonic.isAlive)
   {
     return;
   }
-  */
 
   // right arrow
-  else if (keyCode == 39)
+  if (keyCode == 39)
   {
     if(sonic.vx > 0)
     {
@@ -419,7 +426,7 @@ function keyReleasedGame()
   }
 
   // left arrow
-  else if (keyCode == 37)
+  if (keyCode == 37)
   {
     // sonic.vx = 0;
     // sonic.ax = 0.25;
