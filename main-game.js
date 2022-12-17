@@ -270,7 +270,8 @@ function sonicCollisions()
         // where the first condition checks if sonicMidX is greater than or equal to the x value of p1 of adjustedLine
         // where the second condition checks if sonicMidX is less than or equal to the x value of p2 of adjustedLine
         
-        if (line_intersects_rect(adjustedLine, sonic) && sonicMidX >= adjustedLine.p1.x && sonicMidX <= adjustedLine.p2.x)
+        if (line_intersects_rect(adjustedLine, sonic) && sonicMidX >= adjustedLine.p1.x + 35 && sonicMidX <= adjustedLine.p2.x + 35)
+        // if (line_intersects_rect(adjustedLine, sonic) && sonicMidX >= adjustedLine.p1.x && sonicMidX <= adjustedLine.p2.x)
         // if (line_intersects_point(adjustedLine, sonicMidBottom))
         {
           
