@@ -266,7 +266,11 @@ function sonicCollisions()
         */
 
         // sonic collides with this slope
-        if (line_intersects_rect(adjustedLine, sonic))
+        // add two more conditions to this if statments using and's
+        // where the first condition checks if sonicMidX is greater than or equal to the x value of p1 of adjustedLine
+        // where the second condition checks if sonicMidX is less than or equal to the x value of p2 of adjustedLine
+        
+        if (line_intersects_rect(adjustedLine, sonic) && sonicMidX >= adjustedLine.p1.x && sonicMidX <= adjustedLine.p2.x)
         // if (line_intersects_point(adjustedLine, sonicMidBottom))
         {
           
@@ -277,7 +281,7 @@ function sonicCollisions()
             collidedTiles.push(tile);  
           } 
           */
-          if(listIncludesObject(collidedTiles, tile))
+          if(!listIncludesObject(collidedTiles, tile))
           {
             collidedTiles.push(tile);
           }

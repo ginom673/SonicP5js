@@ -76,4 +76,19 @@ class Tile
   {
     image(this.image, this.x + tileHorizontalOffset, this.y + tileVerticalOffset);
   }
+  
+  
+  equals(otherTile)
+  {
+    // this.p1.x == otherTile.p1.x
+    if (this.x == otherTile.x && this.y == otherTile.y && this.w == otherTile.w && this.h == otherTile.h && this.imgName == otherTile.imgName)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+  
 }
