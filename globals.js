@@ -123,5 +123,5 @@ var clearConsole = true;
 // whether or not F key is currently held, for debugging frame advancement
 var fKeyHeld = false;
 
-// whether or not shift key is currently held, for debugging frame advancement
-var shiftKeyHeld = false;
+// whether or not N key is currently held, for debugging frame advancement
+var nKeyHeld = false;

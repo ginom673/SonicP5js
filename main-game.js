@@ -22,7 +22,7 @@ function setupGame()
 function drawGame()
 {
   
-  if (shiftKeyHeld && fKeyHeld)
+  if (nKeyHeld)
   {
     gameFrozen = false;
     if(clearConsole)
@@ -352,9 +352,9 @@ function keyPressedGame()
     fKeyHeld = true;
   }
   
-  if(keyCode == 16 && debugFrame == true)
+  if(keyCode == 78 && debugFrame == true)
   {
-    shiftKeyHeld = true;
+    nKeyHeld = true;
   }
 
 }
