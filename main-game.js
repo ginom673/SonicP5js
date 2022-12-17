@@ -281,6 +281,8 @@ function sonicCollisions()
           {
             collidedLines.push(adjustedLine);
           }
+          
+          console.log(adjustedLine);
 
           // calculate sonic's position along slope
           var slope = (adjustedLine.p2.y - adjustedLine.p1.y) / (adjustedLine.p2.x - adjustedLine.p1.x); // calculate slope (rate of change) of this line using slope formula
@@ -761,6 +763,8 @@ function drawDebug()
         
         // if sonic is currently colliding with this tile, color it blue
         // otherwise color it red
+        // NOTE: I don't think this does anything if we are changing color based on lines, since that coloration has a higher priority by coming later in the code
+        /*
         if(collidedTiles.includes(currentTile))
         {
           stroke(0, 0, 255);
@@ -769,6 +773,7 @@ function drawDebug()
         {
           stroke(255, 0, 0);    
         }
+        */
         
         /*
         if(collidedLines.includes(adjustedLine))
@@ -783,11 +788,10 @@ function drawDebug()
         
         // write a for loop that goes through the collidedLines list
         // grab the line at position m within collidedLines
-        // then check if all of the data of that line is equal to all of the data of adjustedLine
+        // then check if all of the data of that line is equal to all of the data of adjustedLine       
         for (var m = 0; m < collidedLines.length; m++)
         {
-          var currentLine = collidedLines[m];
-          
+          var currentLine = collidedLines[m];          
           if (adjustedLine.equals(currentLine))
           {
             stroke(0, 255, 0);
