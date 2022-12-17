@@ -125,6 +125,7 @@ function keyPressed()
     //keyPressedDrawing();
   }
 }
+
 function keyReleased()
 {
   if (drawingMode == false)
@@ -134,5 +135,23 @@ function keyReleased()
   else
   {
     keyReleasedDrawing();
+  }
+}
+
+// this function allows us to check if a list contains an object whose data matches the given object
+// this function assumes that the relevant object will have an equals function
+function listIncludesObject(list, object)
+{
+  for (var i = 0; i < list.length; i++)
+  {
+    var currentLine = list[i];          
+    if (object.equals(currentLine))
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 }

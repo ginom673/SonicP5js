@@ -271,16 +271,28 @@ function sonicCollisions()
         {
           
           // add this tile to collidedTiles (for debugging)
+          /*
           if(!collidedTiles.includes(tile))
           {
             collidedTiles.push(tile);  
-          }          
-          
+          } 
+          */
+          if(listIncludesObject(collidedTiles, tile))
+          {
+            collidedTiles.push(tile);
+          }
           // add this line to collidedLines (for debugging)
+          /*
           if(!collidedLines.includes(adjustedLine))
           {
             collidedLines.push(adjustedLine);
           }
+          */
+          if(!listIncludesObject(collidedLines, adjustedLine))
+          {
+            collidedLines.push(adjustedLine);
+          }
+          
           
           console.log(adjustedLine);
 
@@ -788,7 +800,16 @@ function drawDebug()
         
         // write a for loop that goes through the collidedLines list
         // grab the line at position m within collidedLines
-        // then check if all of the data of that line is equal to all of the data of adjustedLine       
+        // then check if all of the data of that line is equal to all of the data of adjustedLine    
+        if (listIncludesObject(collidedLines, adjustedLine))
+        {
+          stroke(0, 255, 0);
+        }
+        else
+        {
+          stroke(255, 0, 0);
+        }
+        /*
         for (var m = 0; m < collidedLines.length; m++)
         {
           var currentLine = collidedLines[m];          
@@ -801,6 +822,7 @@ function drawDebug()
             stroke(255, 0, 0);
           }
         }
+        */
         
         line(currentTile.x + l.p1.x - 35, currentTile.y + l.p1.y - 35, currentTile.x + l.p2.x - 35, currentTile.y + l.p2.y - 35);
       }
